@@ -1,0 +1,23 @@
+[project]
+name = "coal-train-cup"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Steven Burman",email = "steven.burman@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "streamlit (>=1.44.0,<2.0.0)",
+    "pydantic[email] (>=2.11.0,<3.0.0)",
+]
+
+[tool.poetry]
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.11.2"
+mypy = "^1.15.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
