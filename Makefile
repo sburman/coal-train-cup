@@ -26,4 +26,4 @@ lint:
 
 .PHONY: run
 run:
-	poetry run streamlit run src/coal-train-cup/app.py
+	poetry run streamlit run src/coal_train_cup/app.py
