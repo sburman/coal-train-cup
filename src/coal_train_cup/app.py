@@ -1,32 +1,6 @@
 import streamlit as st
 
-def page_make_tip() -> None:
-    """
-    Page for making a tip.
-    """
-    st.title("Make a Tip")
-    st.write("This is where you can make your tip.")
-
-def page_view_user_tips() -> None:
-    """
-    Page for viewing tips.
-    """
-    st.title("View user tips")
-    st.write("This is where you can view user tips.")
-
-def page_view_round_tips() -> None:
-    """
-    Page for viewing round tips.
-    """
-    st.title("View round tips")
-    st.write("This is where you can view round tips.")
-
-def page_leaderboard() -> None:
-    """
-    Page for viewing the leaderboard.
-    """
-    st.title("Leaderboard")
-    st.write("This is where you can view the leaderboard.")
+from coal_train_cup.pages import page_make_tip, page_view_user_tips, page_view_round_tips, page_leaderboard
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
@@ -37,8 +11,7 @@ def page_home() -> None:
     """
     Home page of the application.
     """
-    st.title("Welcome to the Coal Train Cup!")
-        
+    st.title("Welcome to the Coal Train Cup!")        
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
