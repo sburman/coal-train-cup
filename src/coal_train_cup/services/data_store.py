@@ -1,39 +1,13 @@
 import streamlit as st
-from pydantic import EmailStr
 from datetime import datetime
 import json
 from pathlib import Path
-from coal_train_cup.models import UserTip, Game
+from coal_train_cup.models import User, Game, UserTip
 
 CURRENT_SEASON = 2025
 
-ALL_TIPS: list[UserTip] = []
 
-
-def all_tips() -> list[UserTip]:
-    return ALL_TIPS
-
-
-def save_tip(
-    email: EmailStr,
-    round_id: int,
-    team: str,
-    opponent: str,
-    is_home: bool,
-    season: int = CURRENT_SEASON,
-) -> UserTip:
-    tip = UserTip(
-        email=email,
-        season=season,
-        round=round_id,
-        team=team,
-        opponent=opponent,
-        home=is_home,
-    )
-    ALL_TIPS.append(tip)
-
-
-@st.cache_data(ttl=60 * 60)
+@st.cache_data
 def all_games() -> list[Game]:
     filename = "data/games_2025.json"
     if not Path(filename).exists():
@@ -53,3 +27,29 @@ def all_games() -> list[Game]:
 
     print(f"Loaded {len(games)} games from {filename}")
     return games
+
+
+@st.cache_data
+def all_user_tips() -> list[UserTip]:
+    filename = "data/user_tips_2025.json"
+    with open(filename, "r") as f:
+        tips_data = json.load(f)
+
+    tips = []
+    for tip_dict in tips_data:
+        tips.append(UserTip(**tip_dict))
+
+    return tips
+
+
+@st.cache_data
+def all_users() -> list[User]:
+    filename = "data/users_2025.json"
+    with open(filename, "r") as f:
+        users_data = json.load(f)
+
+    users = []
+    for user_dict in users_data:
+        users.append(User(**user_dict))
+
+    return users

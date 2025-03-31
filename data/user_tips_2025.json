@@ -1,7 +1,7 @@
 [
   {
     "email": "user_1@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -10,7 +10,7 @@
   },
   {
     "email": "user_1@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -19,7 +19,7 @@
   },
   {
     "email": "user_1@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -28,7 +28,7 @@
   },
   {
     "email": "user_2@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -37,7 +37,7 @@
   },
   {
     "email": "user_2@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -46,7 +46,7 @@
   },
   {
     "email": "user_2@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -55,7 +55,7 @@
   },
   {
     "email": "user_3@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -64,7 +64,7 @@
   },
   {
     "email": "user_3@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -73,7 +73,7 @@
   },
   {
     "email": "user_3@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -82,7 +82,7 @@
   },
   {
     "email": "user_4@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -91,7 +91,7 @@
   },
   {
     "email": "user_4@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -100,7 +100,7 @@
   },
   {
     "email": "user_4@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -109,7 +109,7 @@
   },
   {
     "email": "user_5@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -118,7 +118,7 @@
   },
   {
     "email": "user_5@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -127,7 +127,7 @@
   },
   {
     "email": "user_5@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -136,7 +136,7 @@
   },
   {
     "email": "user_6@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -145,7 +145,7 @@
   },
   {
     "email": "user_6@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -154,7 +154,7 @@
   },
   {
     "email": "user_6@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Parramatta Eels",
     "opponent": "Canterbury-Bankstown Bulldogs",
@@ -163,7 +163,7 @@
   },
   {
     "email": "user_7@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -172,7 +172,7 @@
   },
   {
     "email": "user_7@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -181,7 +181,7 @@
   },
   {
     "email": "user_7@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -190,7 +190,7 @@
   },
   {
     "email": "user_8@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -199,7 +199,7 @@
   },
   {
     "email": "user_8@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -208,7 +208,7 @@
   },
   {
     "email": "user_8@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -217,7 +217,7 @@
   },
   {
     "email": "user_9@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -226,7 +226,7 @@
   },
   {
     "email": "user_9@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -235,7 +235,7 @@
   },
   {
     "email": "user_9@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -244,7 +244,7 @@
   },
   {
     "email": "user_10@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -253,7 +253,7 @@
   },
   {
     "email": "user_10@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -262,7 +262,7 @@
   },
   {
     "email": "user_10@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Newcastle Knights",
     "opponent": "Gold Coast Titans",
@@ -271,7 +271,7 @@
   },
   {
     "email": "user_11@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -280,7 +280,7 @@
   },
   {
     "email": "user_11@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -289,7 +289,7 @@
   },
   {
     "email": "user_11@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -298,7 +298,7 @@
   },
   {
     "email": "user_12@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -307,7 +307,7 @@
   },
   {
     "email": "user_12@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -316,7 +316,7 @@
   },
   {
     "email": "user_12@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -325,7 +325,7 @@
   },
   {
     "email": "user_13@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -334,7 +334,7 @@
   },
   {
     "email": "user_13@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -343,7 +343,7 @@
   },
   {
     "email": "user_13@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -352,7 +352,7 @@
   },
   {
     "email": "user_14@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -361,7 +361,7 @@
   },
   {
     "email": "user_14@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -370,7 +370,7 @@
   },
   {
     "email": "user_14@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -379,7 +379,7 @@
   },
   {
     "email": "user_15@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -388,7 +388,7 @@
   },
   {
     "email": "user_15@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -397,7 +397,7 @@
   },
   {
     "email": "user_15@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Parramatta Eels",
     "opponent": "Canterbury-Bankstown Bulldogs",
@@ -406,7 +406,7 @@
   },
   {
     "email": "user_16@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -415,7 +415,7 @@
   },
   {
     "email": "user_16@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -424,7 +424,7 @@
   },
   {
     "email": "user_16@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -433,7 +433,7 @@
   },
   {
     "email": "user_17@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -442,7 +442,7 @@
   },
   {
     "email": "user_17@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -451,7 +451,7 @@
   },
   {
     "email": "user_17@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -460,7 +460,7 @@
   },
   {
     "email": "user_18@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -469,7 +469,7 @@
   },
   {
     "email": "user_18@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -478,7 +478,7 @@
   },
   {
     "email": "user_18@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Melbourne Storm",
     "opponent": "Penrith Panthers",
@@ -487,7 +487,7 @@
   },
   {
     "email": "user_19@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -496,7 +496,7 @@
   },
   {
     "email": "user_19@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -505,7 +505,7 @@
   },
   {
     "email": "user_19@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -514,7 +514,7 @@
   },
   {
     "email": "user_20@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -523,7 +523,7 @@
   },
   {
     "email": "user_20@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -532,7 +532,7 @@
   },
   {
     "email": "user_20@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -541,7 +541,7 @@
   },
   {
     "email": "user_21@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -550,7 +550,7 @@
   },
   {
     "email": "user_21@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -559,7 +559,7 @@
   },
   {
     "email": "user_21@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -568,7 +568,7 @@
   },
   {
     "email": "user_22@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -577,7 +577,7 @@
   },
   {
     "email": "user_22@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -586,7 +586,7 @@
   },
   {
     "email": "user_22@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Dolphins",
     "opponent": "Wests Tigers",
@@ -595,7 +595,7 @@
   },
   {
     "email": "user_23@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -604,7 +604,7 @@
   },
   {
     "email": "user_23@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -613,7 +613,7 @@
   },
   {
     "email": "user_23@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -622,7 +622,7 @@
   },
   {
     "email": "user_24@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -631,7 +631,7 @@
   },
   {
     "email": "user_24@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -640,7 +640,7 @@
   },
   {
     "email": "user_24@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -649,7 +649,7 @@
   },
   {
     "email": "user_25@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -658,7 +658,7 @@
   },
   {
     "email": "user_25@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -667,7 +667,7 @@
   },
   {
     "email": "user_25@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Newcastle Knights",
     "opponent": "Gold Coast Titans",
@@ -676,7 +676,7 @@
   },
   {
     "email": "user_26@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -685,7 +685,7 @@
   },
   {
     "email": "user_26@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -694,7 +694,7 @@
   },
   {
     "email": "user_26@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -703,7 +703,7 @@
   },
   {
     "email": "user_27@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -712,7 +712,7 @@
   },
   {
     "email": "user_27@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -721,7 +721,7 @@
   },
   {
     "email": "user_27@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Gold Coast Titans",
     "opponent": "Newcastle Knights",
@@ -730,7 +730,7 @@
   },
   {
     "email": "user_28@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -739,7 +739,7 @@
   },
   {
     "email": "user_28@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -748,7 +748,7 @@
   },
   {
     "email": "user_28@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -757,7 +757,7 @@
   },
   {
     "email": "user_29@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -766,7 +766,7 @@
   },
   {
     "email": "user_29@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -775,7 +775,7 @@
   },
   {
     "email": "user_29@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -784,7 +784,7 @@
   },
   {
     "email": "user_30@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -793,7 +793,7 @@
   },
   {
     "email": "user_30@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -802,7 +802,7 @@
   },
   {
     "email": "user_30@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Sydney Roosters",
     "opponent": "New Zealand Warriors",
@@ -811,7 +811,7 @@
   },
   {
     "email": "user_31@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -820,7 +820,7 @@
   },
   {
     "email": "user_31@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -829,7 +829,7 @@
   },
   {
     "email": "user_31@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "New Zealand Warriors",
     "opponent": "Sydney Roosters",
@@ -838,7 +838,7 @@
   },
   {
     "email": "user_32@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -847,7 +847,7 @@
   },
   {
     "email": "user_32@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -856,7 +856,7 @@
   },
   {
     "email": "user_33@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -865,7 +865,7 @@
   },
   {
     "email": "user_33@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -874,7 +874,7 @@
   },
   {
     "email": "user_33@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -883,7 +883,7 @@
   },
   {
     "email": "user_34@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -892,7 +892,7 @@
   },
   {
     "email": "user_34@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Newcastle Knights",
     "opponent": "Dolphins",
@@ -901,7 +901,7 @@
   },
   {
     "email": "user_34@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -910,7 +910,7 @@
   },
   {
     "email": "user_35@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -919,7 +919,7 @@
   },
   {
     "email": "user_35@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Newcastle Knights",
     "opponent": "Dolphins",
@@ -928,7 +928,7 @@
   },
   {
     "email": "user_35@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -937,7 +937,7 @@
   },
   {
     "email": "user_36@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -946,7 +946,7 @@
   },
   {
     "email": "user_36@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Newcastle Knights",
     "opponent": "Dolphins",
@@ -955,7 +955,7 @@
   },
   {
     "email": "user_36@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -964,7 +964,7 @@
   },
   {
     "email": "user_37@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -973,7 +973,7 @@
   },
   {
     "email": "user_37@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Newcastle Knights",
     "opponent": "Dolphins",
@@ -982,7 +982,7 @@
   },
   {
     "email": "user_37@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -991,7 +991,7 @@
   },
   {
     "email": "user_38@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -1000,7 +1000,7 @@
   },
   {
     "email": "user_38@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Gold Coast Titans",
@@ -1009,7 +1009,7 @@
   },
   {
     "email": "user_38@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -1018,7 +1018,7 @@
   },
   {
     "email": "user_39@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canberra Raiders",
     "opponent": "New Zealand Warriors",
@@ -1027,7 +1027,7 @@
   },
   {
     "email": "user_39@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -1036,7 +1036,7 @@
   },
   {
     "email": "user_39@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1045,7 +1045,7 @@
   },
   {
     "email": "user_40@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canberra Raiders",
     "opponent": "New Zealand Warriors",
@@ -1054,7 +1054,7 @@
   },
   {
     "email": "user_40@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -1063,7 +1063,7 @@
   },
   {
     "email": "user_40@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1072,7 +1072,7 @@
   },
   {
     "email": "user_41@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -1081,7 +1081,7 @@
   },
   {
     "email": "user_41@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "South Sydney Rabbitohs",
     "opponent": "St. George Illawarra Dragons",
@@ -1090,7 +1090,7 @@
   },
   {
     "email": "user_41@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1099,7 +1099,7 @@
   },
   {
     "email": "user_42@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -1108,7 +1108,7 @@
   },
   {
     "email": "user_42@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -1117,7 +1117,7 @@
   },
   {
     "email": "user_42@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Newcastle Knights",
     "opponent": "Gold Coast Titans",
@@ -1126,7 +1126,7 @@
   },
   {
     "email": "user_43@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -1135,7 +1135,7 @@
   },
   {
     "email": "user_43@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -1144,7 +1144,7 @@
   },
   {
     "email": "user_43@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1153,7 +1153,7 @@
   },
   {
     "email": "user_44@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -1162,7 +1162,7 @@
   },
   {
     "email": "user_44@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -1171,7 +1171,7 @@
   },
   {
     "email": "user_44@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Dolphins",
     "opponent": "Wests Tigers",
@@ -1180,7 +1180,7 @@
   },
   {
     "email": "user_45@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -1189,7 +1189,7 @@
   },
   {
     "email": "user_45@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -1198,7 +1198,7 @@
   },
   {
     "email": "user_45@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Sydney Roosters",
     "opponent": "New Zealand Warriors",
@@ -1207,7 +1207,7 @@
   },
   {
     "email": "user_46@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Newcastle Knights",
     "opponent": "Wests Tigers",
@@ -1216,7 +1216,7 @@
   },
   {
     "email": "user_46@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -1225,7 +1225,7 @@
   },
   {
     "email": "user_46@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -1234,7 +1234,7 @@
   },
   {
     "email": "user_47@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1243,7 +1243,7 @@
   },
   {
     "email": "user_48@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1252,7 +1252,7 @@
   },
   {
     "email": "user_49@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1261,7 +1261,7 @@
   },
   {
     "email": "user_49@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -1270,7 +1270,7 @@
   },
   {
     "email": "user_49@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1279,7 +1279,7 @@
   },
   {
     "email": "user_50@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1288,7 +1288,7 @@
   },
   {
     "email": "user_50@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -1297,7 +1297,7 @@
   },
   {
     "email": "user_50@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -1306,7 +1306,7 @@
   },
   {
     "email": "user_51@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1315,7 +1315,7 @@
   },
   {
     "email": "user_51@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -1324,7 +1324,7 @@
   },
   {
     "email": "user_51@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -1333,7 +1333,7 @@
   },
   {
     "email": "user_52@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1342,7 +1342,7 @@
   },
   {
     "email": "user_52@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -1351,7 +1351,7 @@
   },
   {
     "email": "user_52@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1360,7 +1360,7 @@
   },
   {
     "email": "user_53@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1369,7 +1369,7 @@
   },
   {
     "email": "user_53@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -1378,7 +1378,7 @@
   },
   {
     "email": "user_53@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Dolphins",
     "opponent": "Wests Tigers",
@@ -1387,7 +1387,7 @@
   },
   {
     "email": "user_54@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1396,7 +1396,7 @@
   },
   {
     "email": "user_54@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1405,7 +1405,7 @@
   },
   {
     "email": "user_54@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1414,7 +1414,7 @@
   },
   {
     "email": "user_55@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1423,7 +1423,7 @@
   },
   {
     "email": "user_55@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1432,7 +1432,7 @@
   },
   {
     "email": "user_55@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1441,7 +1441,7 @@
   },
   {
     "email": "user_56@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1450,7 +1450,7 @@
   },
   {
     "email": "user_56@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1459,7 +1459,7 @@
   },
   {
     "email": "user_56@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -1468,7 +1468,7 @@
   },
   {
     "email": "user_57@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1477,7 +1477,7 @@
   },
   {
     "email": "user_57@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1486,7 +1486,7 @@
   },
   {
     "email": "user_58@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1495,7 +1495,7 @@
   },
   {
     "email": "user_58@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1504,7 +1504,7 @@
   },
   {
     "email": "user_58@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1513,7 +1513,7 @@
   },
   {
     "email": "user_59@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1522,7 +1522,7 @@
   },
   {
     "email": "user_59@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1531,7 +1531,7 @@
   },
   {
     "email": "user_59@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1540,7 +1540,7 @@
   },
   {
     "email": "user_60@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1549,7 +1549,7 @@
   },
   {
     "email": "user_60@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1558,7 +1558,7 @@
   },
   {
     "email": "user_60@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -1567,7 +1567,7 @@
   },
   {
     "email": "user_61@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1576,7 +1576,7 @@
   },
   {
     "email": "user_61@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1585,7 +1585,7 @@
   },
   {
     "email": "user_61@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1594,7 +1594,7 @@
   },
   {
     "email": "user_62@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1603,7 +1603,7 @@
   },
   {
     "email": "user_62@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1612,7 +1612,7 @@
   },
   {
     "email": "user_62@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1621,7 +1621,7 @@
   },
   {
     "email": "user_63@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1630,7 +1630,7 @@
   },
   {
     "email": "user_63@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1639,7 +1639,7 @@
   },
   {
     "email": "user_63@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1648,7 +1648,7 @@
   },
   {
     "email": "user_64@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1657,7 +1657,7 @@
   },
   {
     "email": "user_64@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1666,7 +1666,7 @@
   },
   {
     "email": "user_64@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1675,7 +1675,7 @@
   },
   {
     "email": "user_65@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1684,7 +1684,7 @@
   },
   {
     "email": "user_65@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1693,7 +1693,7 @@
   },
   {
     "email": "user_65@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -1702,7 +1702,7 @@
   },
   {
     "email": "user_66@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1711,7 +1711,7 @@
   },
   {
     "email": "user_66@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1720,7 +1720,7 @@
   },
   {
     "email": "user_66@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1729,7 +1729,7 @@
   },
   {
     "email": "user_67@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1738,7 +1738,7 @@
   },
   {
     "email": "user_67@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1747,7 +1747,7 @@
   },
   {
     "email": "user_67@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Dolphins",
     "opponent": "Wests Tigers",
@@ -1756,7 +1756,7 @@
   },
   {
     "email": "user_68@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1765,7 +1765,7 @@
   },
   {
     "email": "user_68@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1774,7 +1774,7 @@
   },
   {
     "email": "user_68@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1783,7 +1783,7 @@
   },
   {
     "email": "user_69@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1792,7 +1792,7 @@
   },
   {
     "email": "user_69@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1801,7 +1801,7 @@
   },
   {
     "email": "user_69@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1810,7 +1810,7 @@
   },
   {
     "email": "user_70@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -1819,7 +1819,7 @@
   },
   {
     "email": "user_71@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1828,7 +1828,7 @@
   },
   {
     "email": "user_71@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1837,7 +1837,7 @@
   },
   {
     "email": "user_71@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -1846,7 +1846,7 @@
   },
   {
     "email": "user_72@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1855,7 +1855,7 @@
   },
   {
     "email": "user_72@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1864,7 +1864,7 @@
   },
   {
     "email": "user_72@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -1873,7 +1873,7 @@
   },
   {
     "email": "user_73@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1882,7 +1882,7 @@
   },
   {
     "email": "user_73@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1891,7 +1891,7 @@
   },
   {
     "email": "user_74@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1900,7 +1900,7 @@
   },
   {
     "email": "user_74@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1909,7 +1909,7 @@
   },
   {
     "email": "user_74@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1918,7 +1918,7 @@
   },
   {
     "email": "user_75@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1927,7 +1927,7 @@
   },
   {
     "email": "user_75@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1936,7 +1936,7 @@
   },
   {
     "email": "user_75@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Newcastle Knights",
     "opponent": "Gold Coast Titans",
@@ -1945,7 +1945,7 @@
   },
   {
     "email": "user_76@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1954,7 +1954,7 @@
   },
   {
     "email": "user_76@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1963,7 +1963,7 @@
   },
   {
     "email": "user_76@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1972,7 +1972,7 @@
   },
   {
     "email": "user_77@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -1981,7 +1981,7 @@
   },
   {
     "email": "user_77@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -1990,7 +1990,7 @@
   },
   {
     "email": "user_77@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -1999,7 +1999,7 @@
   },
   {
     "email": "user_78@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2008,7 +2008,7 @@
   },
   {
     "email": "user_78@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2017,7 +2017,7 @@
   },
   {
     "email": "user_78@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2026,7 +2026,7 @@
   },
   {
     "email": "user_79@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2035,7 +2035,7 @@
   },
   {
     "email": "user_79@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2044,7 +2044,7 @@
   },
   {
     "email": "user_79@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2053,7 +2053,7 @@
   },
   {
     "email": "user_80@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2062,7 +2062,7 @@
   },
   {
     "email": "user_80@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2071,7 +2071,7 @@
   },
   {
     "email": "user_80@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2080,7 +2080,7 @@
   },
   {
     "email": "user_81@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2089,7 +2089,7 @@
   },
   {
     "email": "user_81@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2098,7 +2098,7 @@
   },
   {
     "email": "user_81@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2107,7 +2107,7 @@
   },
   {
     "email": "user_82@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2116,7 +2116,7 @@
   },
   {
     "email": "user_82@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2125,7 +2125,7 @@
   },
   {
     "email": "user_82@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "Canberra Raiders",
@@ -2134,7 +2134,7 @@
   },
   {
     "email": "user_83@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2143,7 +2143,7 @@
   },
   {
     "email": "user_83@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2152,7 +2152,7 @@
   },
   {
     "email": "user_83@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -2161,7 +2161,7 @@
   },
   {
     "email": "user_84@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2170,7 +2170,7 @@
   },
   {
     "email": "user_84@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2179,7 +2179,7 @@
   },
   {
     "email": "user_84@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2188,7 +2188,7 @@
   },
   {
     "email": "user_85@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2197,7 +2197,7 @@
   },
   {
     "email": "user_85@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2206,7 +2206,7 @@
   },
   {
     "email": "user_85@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -2215,7 +2215,7 @@
   },
   {
     "email": "user_86@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2224,7 +2224,7 @@
   },
   {
     "email": "user_86@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2233,7 +2233,7 @@
   },
   {
     "email": "user_86@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -2242,7 +2242,7 @@
   },
   {
     "email": "user_87@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2251,7 +2251,7 @@
   },
   {
     "email": "user_87@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2260,7 +2260,7 @@
   },
   {
     "email": "user_87@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -2269,7 +2269,7 @@
   },
   {
     "email": "user_88@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2278,7 +2278,7 @@
   },
   {
     "email": "user_88@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2287,7 +2287,7 @@
   },
   {
     "email": "user_88@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2296,7 +2296,7 @@
   },
   {
     "email": "user_89@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2305,7 +2305,7 @@
   },
   {
     "email": "user_89@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2314,7 +2314,7 @@
   },
   {
     "email": "user_89@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2323,7 +2323,7 @@
   },
   {
     "email": "user_90@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2332,7 +2332,7 @@
   },
   {
     "email": "user_90@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2341,7 +2341,7 @@
   },
   {
     "email": "user_90@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2350,7 +2350,7 @@
   },
   {
     "email": "user_91@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2359,7 +2359,7 @@
   },
   {
     "email": "user_91@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2368,7 +2368,7 @@
   },
   {
     "email": "user_91@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2377,7 +2377,7 @@
   },
   {
     "email": "user_92@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2386,7 +2386,7 @@
   },
   {
     "email": "user_92@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2395,7 +2395,7 @@
   },
   {
     "email": "user_92@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2404,7 +2404,7 @@
   },
   {
     "email": "user_93@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2413,7 +2413,7 @@
   },
   {
     "email": "user_93@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2422,7 +2422,7 @@
   },
   {
     "email": "user_93@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -2431,7 +2431,7 @@
   },
   {
     "email": "user_94@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -2440,7 +2440,7 @@
   },
   {
     "email": "user_94@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -2449,7 +2449,7 @@
   },
   {
     "email": "user_94@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2458,7 +2458,7 @@
   },
   {
     "email": "user_95@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -2467,7 +2467,7 @@
   },
   {
     "email": "user_95@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -2476,7 +2476,7 @@
   },
   {
     "email": "user_95@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Dolphins",
     "opponent": "Wests Tigers",
@@ -2485,7 +2485,7 @@
   },
   {
     "email": "user_96@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -2494,7 +2494,7 @@
   },
   {
     "email": "user_96@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -2503,7 +2503,7 @@
   },
   {
     "email": "user_97@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -2512,7 +2512,7 @@
   },
   {
     "email": "user_97@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -2521,7 +2521,7 @@
   },
   {
     "email": "user_97@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -2530,7 +2530,7 @@
   },
   {
     "email": "user_98@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2539,7 +2539,7 @@
   },
   {
     "email": "user_98@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2548,7 +2548,7 @@
   },
   {
     "email": "user_98@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2557,7 +2557,7 @@
   },
   {
     "email": "user_99@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2566,7 +2566,7 @@
   },
   {
     "email": "user_99@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2575,7 +2575,7 @@
   },
   {
     "email": "user_99@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2584,7 +2584,7 @@
   },
   {
     "email": "user_100@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2593,7 +2593,7 @@
   },
   {
     "email": "user_100@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2602,7 +2602,7 @@
   },
   {
     "email": "user_100@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "New Zealand Warriors",
     "opponent": "Sydney Roosters",
@@ -2611,7 +2611,7 @@
   },
   {
     "email": "user_101@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2620,7 +2620,7 @@
   },
   {
     "email": "user_101@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2629,7 +2629,7 @@
   },
   {
     "email": "user_101@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2638,7 +2638,7 @@
   },
   {
     "email": "user_102@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2647,7 +2647,7 @@
   },
   {
     "email": "user_102@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2656,7 +2656,7 @@
   },
   {
     "email": "user_102@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2665,7 +2665,7 @@
   },
   {
     "email": "user_103@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2674,7 +2674,7 @@
   },
   {
     "email": "user_103@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2683,7 +2683,7 @@
   },
   {
     "email": "user_103@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2692,7 +2692,7 @@
   },
   {
     "email": "user_104@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2701,7 +2701,7 @@
   },
   {
     "email": "user_104@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2710,7 +2710,7 @@
   },
   {
     "email": "user_104@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2719,7 +2719,7 @@
   },
   {
     "email": "user_105@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2728,7 +2728,7 @@
   },
   {
     "email": "user_105@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2737,7 +2737,7 @@
   },
   {
     "email": "user_105@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2746,7 +2746,7 @@
   },
   {
     "email": "user_106@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2755,7 +2755,7 @@
   },
   {
     "email": "user_106@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2764,7 +2764,7 @@
   },
   {
     "email": "user_106@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2773,7 +2773,7 @@
   },
   {
     "email": "user_107@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2782,7 +2782,7 @@
   },
   {
     "email": "user_107@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2791,7 +2791,7 @@
   },
   {
     "email": "user_107@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2800,7 +2800,7 @@
   },
   {
     "email": "user_108@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2809,7 +2809,7 @@
   },
   {
     "email": "user_108@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2818,7 +2818,7 @@
   },
   {
     "email": "user_108@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2827,7 +2827,7 @@
   },
   {
     "email": "user_109@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2836,7 +2836,7 @@
   },
   {
     "email": "user_109@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2845,7 +2845,7 @@
   },
   {
     "email": "user_109@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2854,7 +2854,7 @@
   },
   {
     "email": "user_110@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2863,7 +2863,7 @@
   },
   {
     "email": "user_110@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2872,7 +2872,7 @@
   },
   {
     "email": "user_110@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2881,7 +2881,7 @@
   },
   {
     "email": "user_111@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -2890,7 +2890,7 @@
   },
   {
     "email": "user_111@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -2899,7 +2899,7 @@
   },
   {
     "email": "user_111@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2908,7 +2908,7 @@
   },
   {
     "email": "user_112@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -2917,7 +2917,7 @@
   },
   {
     "email": "user_112@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -2926,7 +2926,7 @@
   },
   {
     "email": "user_112@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -2935,7 +2935,7 @@
   },
   {
     "email": "user_113@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -2944,7 +2944,7 @@
   },
   {
     "email": "user_113@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -2953,7 +2953,7 @@
   },
   {
     "email": "user_113@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Gold Coast Titans",
     "opponent": "Newcastle Knights",
@@ -2962,7 +2962,7 @@
   },
   {
     "email": "user_114@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -2971,7 +2971,7 @@
   },
   {
     "email": "user_114@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "North Queensland Cowboys",
@@ -2980,7 +2980,7 @@
   },
   {
     "email": "user_114@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -2989,7 +2989,7 @@
   },
   {
     "email": "user_115@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canberra Raiders",
     "opponent": "New Zealand Warriors",
@@ -2998,7 +2998,7 @@
   },
   {
     "email": "user_115@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -3007,7 +3007,7 @@
   },
   {
     "email": "user_115@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3016,7 +3016,7 @@
   },
   {
     "email": "user_116@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -3025,7 +3025,7 @@
   },
   {
     "email": "user_116@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Brisbane Broncos",
     "opponent": "Canberra Raiders",
@@ -3034,7 +3034,7 @@
   },
   {
     "email": "user_116@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3043,7 +3043,7 @@
   },
   {
     "email": "user_117@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canberra Raiders",
     "opponent": "New Zealand Warriors",
@@ -3052,7 +3052,7 @@
   },
   {
     "email": "user_117@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -3061,7 +3061,7 @@
   },
   {
     "email": "user_117@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3070,7 +3070,7 @@
   },
   {
     "email": "user_118@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "Penrith Panthers",
@@ -3079,7 +3079,7 @@
   },
   {
     "email": "user_118@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Wests Tigers",
     "opponent": "Parramatta Eels",
@@ -3088,7 +3088,7 @@
   },
   {
     "email": "user_118@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3097,7 +3097,7 @@
   },
   {
     "email": "user_119@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3106,7 +3106,7 @@
   },
   {
     "email": "user_119@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3115,7 +3115,7 @@
   },
   {
     "email": "user_119@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3124,7 +3124,7 @@
   },
   {
     "email": "user_120@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3133,7 +3133,7 @@
   },
   {
     "email": "user_120@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3142,7 +3142,7 @@
   },
   {
     "email": "user_120@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -3151,7 +3151,7 @@
   },
   {
     "email": "user_121@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3160,7 +3160,7 @@
   },
   {
     "email": "user_121@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3169,7 +3169,7 @@
   },
   {
     "email": "user_121@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3178,7 +3178,7 @@
   },
   {
     "email": "user_122@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3187,7 +3187,7 @@
   },
   {
     "email": "user_122@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3196,7 +3196,7 @@
   },
   {
     "email": "user_122@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3205,7 +3205,7 @@
   },
   {
     "email": "user_123@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3214,7 +3214,7 @@
   },
   {
     "email": "user_123@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3223,7 +3223,7 @@
   },
   {
     "email": "user_123@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -3232,7 +3232,7 @@
   },
   {
     "email": "user_124@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3241,7 +3241,7 @@
   },
   {
     "email": "user_124@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3250,7 +3250,7 @@
   },
   {
     "email": "user_124@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -3259,7 +3259,7 @@
   },
   {
     "email": "user_125@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3268,7 +3268,7 @@
   },
   {
     "email": "user_125@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3277,7 +3277,7 @@
   },
   {
     "email": "user_125@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3286,7 +3286,7 @@
   },
   {
     "email": "user_126@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3295,7 +3295,7 @@
   },
   {
     "email": "user_126@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3304,7 +3304,7 @@
   },
   {
     "email": "user_126@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3313,7 +3313,7 @@
   },
   {
     "email": "user_127@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3322,7 +3322,7 @@
   },
   {
     "email": "user_127@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3331,7 +3331,7 @@
   },
   {
     "email": "user_127@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3340,7 +3340,7 @@
   },
   {
     "email": "user_128@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3349,7 +3349,7 @@
   },
   {
     "email": "user_128@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3358,7 +3358,7 @@
   },
   {
     "email": "user_128@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3367,7 +3367,7 @@
   },
   {
     "email": "user_129@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3376,7 +3376,7 @@
   },
   {
     "email": "user_129@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3385,7 +3385,7 @@
   },
   {
     "email": "user_129@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3394,7 +3394,7 @@
   },
   {
     "email": "user_130@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3403,7 +3403,7 @@
   },
   {
     "email": "user_130@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3412,7 +3412,7 @@
   },
   {
     "email": "user_130@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3421,7 +3421,7 @@
   },
   {
     "email": "user_131@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3430,7 +3430,7 @@
   },
   {
     "email": "user_131@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3439,7 +3439,7 @@
   },
   {
     "email": "user_131@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -3448,7 +3448,7 @@
   },
   {
     "email": "user_132@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3457,7 +3457,7 @@
   },
   {
     "email": "user_132@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3466,7 +3466,7 @@
   },
   {
     "email": "user_132@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -3475,7 +3475,7 @@
   },
   {
     "email": "user_133@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3484,7 +3484,7 @@
   },
   {
     "email": "user_133@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3493,7 +3493,7 @@
   },
   {
     "email": "user_133@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3502,7 +3502,7 @@
   },
   {
     "email": "user_134@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3511,7 +3511,7 @@
   },
   {
     "email": "user_134@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3520,7 +3520,7 @@
   },
   {
     "email": "user_134@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3529,7 +3529,7 @@
   },
   {
     "email": "user_135@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3538,7 +3538,7 @@
   },
   {
     "email": "user_135@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3547,7 +3547,7 @@
   },
   {
     "email": "user_135@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3556,7 +3556,7 @@
   },
   {
     "email": "user_136@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Melbourne Storm",
     "opponent": "Parramatta Eels",
@@ -3565,7 +3565,7 @@
   },
   {
     "email": "user_136@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3574,7 +3574,7 @@
   },
   {
     "email": "user_136@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3583,7 +3583,7 @@
   },
   {
     "email": "user_137@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3592,7 +3592,7 @@
   },
   {
     "email": "user_137@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3601,7 +3601,7 @@
   },
   {
     "email": "user_137@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3610,7 +3610,7 @@
   },
   {
     "email": "user_138@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3619,7 +3619,7 @@
   },
   {
     "email": "user_138@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3628,7 +3628,7 @@
   },
   {
     "email": "user_138@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -3637,7 +3637,7 @@
   },
   {
     "email": "user_139@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3646,7 +3646,7 @@
   },
   {
     "email": "user_139@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3655,7 +3655,7 @@
   },
   {
     "email": "user_139@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -3664,7 +3664,7 @@
   },
   {
     "email": "user_140@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3673,7 +3673,7 @@
   },
   {
     "email": "user_140@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3682,7 +3682,7 @@
   },
   {
     "email": "user_140@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3691,7 +3691,7 @@
   },
   {
     "email": "user_141@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3700,7 +3700,7 @@
   },
   {
     "email": "user_141@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3709,7 +3709,7 @@
   },
   {
     "email": "user_141@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3718,7 +3718,7 @@
   },
   {
     "email": "user_142@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3727,7 +3727,7 @@
   },
   {
     "email": "user_142@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3736,7 +3736,7 @@
   },
   {
     "email": "user_142@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3745,7 +3745,7 @@
   },
   {
     "email": "user_143@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -3754,7 +3754,7 @@
   },
   {
     "email": "user_143@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Dolphins",
     "opponent": "Newcastle Knights",
@@ -3763,7 +3763,7 @@
   },
   {
     "email": "user_143@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3772,7 +3772,7 @@
   },
   {
     "email": "user_144@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "North Queensland Cowboys",
@@ -3781,7 +3781,7 @@
   },
   {
     "email": "user_144@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Dolphins",
     "opponent": "Newcastle Knights",
@@ -3790,7 +3790,7 @@
   },
   {
     "email": "user_144@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Wests Tigers",
     "opponent": "Dolphins",
@@ -3799,7 +3799,7 @@
   },
   {
     "email": "user_145@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3808,7 +3808,7 @@
   },
   {
     "email": "user_145@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3817,7 +3817,7 @@
   },
   {
     "email": "user_145@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3826,7 +3826,7 @@
   },
   {
     "email": "user_146@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3835,7 +3835,7 @@
   },
   {
     "email": "user_146@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3844,7 +3844,7 @@
   },
   {
     "email": "user_146@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3853,7 +3853,7 @@
   },
   {
     "email": "user_147@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Brisbane Broncos",
     "opponent": "Sydney Roosters",
@@ -3862,7 +3862,7 @@
   },
   {
     "email": "user_147@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3871,7 +3871,7 @@
   },
   {
     "email": "user_147@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -3880,7 +3880,7 @@
   },
   {
     "email": "user_148@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -3889,7 +3889,7 @@
   },
   {
     "email": "user_149@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Newcastle Knights",
     "opponent": "Wests Tigers",
@@ -3898,7 +3898,7 @@
   },
   {
     "email": "user_149@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -3907,7 +3907,7 @@
   },
   {
     "email": "user_149@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -3916,7 +3916,7 @@
   },
   {
     "email": "user_150@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Newcastle Knights",
     "opponent": "Wests Tigers",
@@ -3925,7 +3925,7 @@
   },
   {
     "email": "user_150@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -3934,7 +3934,7 @@
   },
   {
     "email": "user_150@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3943,7 +3943,7 @@
   },
   {
     "email": "user_151@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "South Sydney Rabbitohs",
     "opponent": "Dolphins",
@@ -3952,7 +3952,7 @@
   },
   {
     "email": "user_151@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -3961,7 +3961,7 @@
   },
   {
     "email": "user_151@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -3970,7 +3970,7 @@
   },
   {
     "email": "user_152@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -3979,7 +3979,7 @@
   },
   {
     "email": "user_152@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -3988,7 +3988,7 @@
   },
   {
     "email": "user_152@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -3997,7 +3997,7 @@
   },
   {
     "email": "user_153@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "St. George Illawarra Dragons",
@@ -4006,7 +4006,7 @@
   },
   {
     "email": "user_153@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -4015,7 +4015,7 @@
   },
   {
     "email": "user_153@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Cronulla-Sutherland Sharks",
     "opponent": "South Sydney Rabbitohs",
@@ -4024,7 +4024,7 @@
   },
   {
     "email": "user_154@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "South Sydney Rabbitohs",
     "opponent": "Dolphins",
@@ -4033,7 +4033,7 @@
   },
   {
     "email": "user_154@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -4042,7 +4042,7 @@
   },
   {
     "email": "user_154@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -4051,7 +4051,7 @@
   },
   {
     "email": "user_155@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Newcastle Knights",
     "opponent": "Wests Tigers",
@@ -4060,7 +4060,7 @@
   },
   {
     "email": "user_155@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -4069,7 +4069,7 @@
   },
   {
     "email": "user_155@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Gold Coast Titans",
     "opponent": "Newcastle Knights",
@@ -4078,7 +4078,7 @@
   },
   {
     "email": "user_156@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -4087,7 +4087,7 @@
   },
   {
     "email": "user_157@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -4096,7 +4096,7 @@
   },
   {
     "email": "user_158@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -4105,7 +4105,7 @@
   },
   {
     "email": "user_159@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -4114,7 +4114,7 @@
   },
   {
     "email": "user_159@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -4123,7 +4123,7 @@
   },
   {
     "email": "user_159@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -4132,7 +4132,7 @@
   },
   {
     "email": "user_160@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -4141,7 +4141,7 @@
   },
   {
     "email": "user_160@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "St. George Illawarra Dragons",
     "opponent": "South Sydney Rabbitohs",
@@ -4150,7 +4150,7 @@
   },
   {
     "email": "user_161@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -4159,7 +4159,7 @@
   },
   {
     "email": "user_161@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -4168,7 +4168,7 @@
   },
   {
     "email": "user_161@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -4177,7 +4177,7 @@
   },
   {
     "email": "user_162@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -4186,7 +4186,7 @@
   },
   {
     "email": "user_162@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -4195,7 +4195,7 @@
   },
   {
     "email": "user_162@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -4204,7 +4204,7 @@
   },
   {
     "email": "user_163@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Dolphins",
     "opponent": "South Sydney Rabbitohs",
@@ -4213,7 +4213,7 @@
   },
   {
     "email": "user_163@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -4222,7 +4222,7 @@
   },
   {
     "email": "user_163@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canterbury-Bankstown Bulldogs",
     "opponent": "Parramatta Eels",
@@ -4231,7 +4231,7 @@
   },
   {
     "email": "user_164@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -4240,7 +4240,7 @@
   },
   {
     "email": "user_164@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Manly-Warringah Sea Eagles",
     "opponent": "New Zealand Warriors",
@@ -4249,7 +4249,7 @@
   },
   {
     "email": "user_164@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Canberra Raiders",
     "opponent": "Manly-Warringah Sea Eagles",
@@ -4258,7 +4258,7 @@
   },
   {
     "email": "user_165@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Wests Tigers",
     "opponent": "Newcastle Knights",
@@ -4267,7 +4267,7 @@
   },
   {
     "email": "user_165@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Parramatta Eels",
     "opponent": "Wests Tigers",
@@ -4276,7 +4276,7 @@
   },
   {
     "email": "user_165@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "Brisbane Broncos",
     "opponent": "North Queensland Cowboys",
@@ -4285,7 +4285,7 @@
   },
   {
     "email": "user_166@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 1,
     "team": "Parramatta Eels",
     "opponent": "Melbourne Storm",
@@ -4294,7 +4294,7 @@
   },
   {
     "email": "user_166@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 2,
     "team": "Penrith Panthers",
     "opponent": "Sydney Roosters",
@@ -4303,7 +4303,7 @@
   },
   {
     "email": "user_166@coaltraincup.com",
-    "season": 1,
+    "season": 2025,
     "round": 3,
     "team": "North Queensland Cowboys",
     "opponent": "Brisbane Broncos",

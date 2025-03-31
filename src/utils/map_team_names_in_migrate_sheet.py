@@ -2,8 +2,6 @@ import pandas as pd
 import gspread
 import toml
 
-from coal_train_cup.services.data_store import all_games
-
 
 def connection() -> None:
     secrets_path = (

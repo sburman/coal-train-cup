@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 from coal_train_cup.pages import (
     page_make_tip,
@@ -7,16 +8,12 @@ from coal_train_cup.pages import (
     page_leaderboard,
 )
 
-from coal_train_cup.models import User
-from coal_train_cup.services.data_store import all_games, all_tips, save_tip
-
-import pandas as pd
-
-import gspread
+from coal_train_cup.services.data_store import all_games, all_user_tips
+from coal_train_cup.services.games_service import all_game_results
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
-VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", icon="👀")
+VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", icon="📊")
 LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
 
 
@@ -33,28 +30,12 @@ def page_home() -> None:
 
     st.title("Welcome to the Coal Train Cup!")
 
-    st.write("Total tips made: ", len(all_tips()))
+    st.write("Total tips made: ", len(all_user_tips()))
     st.write("Total games: ", len(all_games()))
 
-    config = st.secrets["connections"]["gsheets"].to_dict()
-    gc = gspread.service_account_from_dict(config)
-    spreadsheet = gc.open("tips")
-    st.write()
-
-    dataframe = pd.DataFrame(spreadsheet.get_worksheet_by_id(0).get_all_records())
-    
-    # # Create User objects and add PIN column
-    # pins = []
-    # for i, row in dataframe.iterrows():
-    #     # Create User object with email and name as username
-    #     user = User(email=row["email"], username=row["name"])
-    #     # Add PIN to list
-    #     pins.append(user.p_i_n)
-
-    # # Add PIN column to dataframe
-    # dataframe["pin"] = pins
-
-    st.dataframe(dataframe)
+    results = all_game_results()
+    df = pd.DataFrame(results)
+    st.dataframe(df)
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
