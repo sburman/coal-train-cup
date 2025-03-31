@@ -25,7 +25,6 @@ def all_games() -> list[Game]:
         game_dict["kickoff"] = datetime.fromisoformat(game_dict["kickoff"])
         games.append(Game(**game_dict))
 
-    print(f"Loaded {len(games)} games from {filename}")
     return games
 
 

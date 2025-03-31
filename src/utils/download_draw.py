@@ -17,6 +17,7 @@ SERVICE_HEADERS = {
     "Content-Type": "application/json, charset=UTF-8",
 }
 
+
 def load_fixtures(
     competition_id: int, season: int, round: int
 ) -> tuple[str, dict[str, Any]]:

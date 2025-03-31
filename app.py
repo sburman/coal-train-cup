@@ -8,7 +8,7 @@ from coal_train_cup.pages import (
     page_leaderboard,
 )
 
-from coal_train_cup.services.data_store import all_games, all_user_tips
+from coal_train_cup.services.data_store import all_games, all_user_tips, all_users
 from coal_train_cup.services.games_service import all_game_results
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")
@@ -30,12 +30,14 @@ def page_home() -> None:
 
     st.title("Welcome to the Coal Train Cup!")
 
+    st.markdown("---")
+    st.write("Total users: ", len(all_users()))
     st.write("Total tips made: ", len(all_user_tips()))
+    st.markdown("---")
     st.write("Total games: ", len(all_games()))
+    st.write("Total resulted games: ", int(len(all_game_results()) / 2))
+    st.markdown("---")
 
-    results = all_game_results()
-    df = pd.DataFrame(results)
-    st.dataframe(df)
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
