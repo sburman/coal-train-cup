@@ -4,12 +4,18 @@ import requests
 from coal_train_cup.models import Game
 import json
 from pathlib import Path
+import toml
+
+secrets_path = ".streamlit/secrets.toml"
+with open(secrets_path, "r") as file:
+    secrets = toml.load(file)
+
+auth_creds = secrets["connections"]["nrl"]["auth"]
 
 SERVICE_HEADERS = {
-    "Authorization": "Basic U291dGhTeWRuZXk6UjRiYmlUMGhT",
+    "Authorization": auth_creds,
     "Content-Type": "application/json, charset=UTF-8",
 }
-
 
 def load_fixtures(
     competition_id: int, season: int, round: int

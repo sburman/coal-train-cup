@@ -5,7 +5,7 @@ import toml
 
 def connection() -> None:
     secrets_path = (
-        "/home/steve/Documents/github/rl/coal-train-cup/.streamlit/secrets.toml"
+        ".streamlit/secrets.toml"
     )
     with open(secrets_path, "r") as file:
         secrets = toml.load(file)

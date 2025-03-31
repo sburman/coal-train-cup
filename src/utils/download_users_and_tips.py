@@ -8,8 +8,9 @@ from coal_train_cup.services.tipping_service import available_tips, make_tip
 
 
 def build_user_and_tips() -> tuple[list[User], list[UserTip]]:
+
     secrets_path = (
-        "/home/steve/Documents/github/rl/coal-train-cup/.streamlit/secrets.toml"
+        ".streamlit/secrets.toml"
     )
     with open(secrets_path, "r") as file:
         secrets = toml.load(file)
