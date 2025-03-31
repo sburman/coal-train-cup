@@ -146,10 +146,10 @@ if __name__ == "__main__":
     all_games = update_draw_by_scraping_online_resource()
 
     # Serialize games to file
-    serialize_games(all_games, "games_2025.json")
+    serialize_games(all_games, "data/games_2025.json")
 
     # Example of deserializing
-    loaded_games = deserialize_games("games_2025.json")
+    loaded_games = deserialize_games("data/games_2025.json")
 
     # Print some information to verify
     for game in loaded_games[:5]:

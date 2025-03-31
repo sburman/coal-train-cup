@@ -35,7 +35,7 @@ def save_tip(
 
 @st.cache_data(ttl=60 * 60)
 def all_games() -> list[Game]:
-    filename = "games_2025.json"
+    filename = "data/games_2025.json"
     if not Path(filename).exists():
         print(f"File {filename} not found")
         return []

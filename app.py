@@ -21,22 +21,7 @@ LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
 
 
 def _seed_data() -> None:
-    if len(all_tips()) > 0:
-        return
-
-    save_tip("user1@coaltraincup.com", 1, "Team A", "Team B", True)
-    save_tip("user2@coaltraincup.com", 1, "Team C", "Team D", True)
-    save_tip("user3@coaltraincup.com", 1, "Team B", "Team A", False)
-    save_tip("user4@coaltraincup.com", 1, "Team D", "Team C", False)
-    save_tip("user5@coaltraincup.com", 1, "Team A", "Team B", True)
-    save_tip("user6@coaltraincup.com", 1, "Team A", "Team B", True)
-
-    save_tip("user1@coaltraincup.com", 2, "Team A", "Team C", True)
-    save_tip("user2@coaltraincup.com", 2, "Team B", "Team D", True)
-    save_tip("user3@coaltraincup.com", 2, "Team C", "Team A", False)
-    save_tip("user4@coaltraincup.com", 2, "Team D", "Team B", False)
-    save_tip("user5@coaltraincup.com", 2, "Team A", "Team C", True)
-    save_tip("user6@coaltraincup.com", 2, "Team A", "Team C", True)
+    pass
 
 
 def page_home() -> None:
@@ -57,19 +42,20 @@ def page_home() -> None:
     st.write()
 
     dataframe = pd.DataFrame(spreadsheet.get_worksheet_by_id(0).get_all_records())
-    # Create User objects and add PIN column
-    pins = []
-    for i, row in dataframe.iterrows():
-        # Create User object with email and name as username
-        user = User(email=row["email"], username=row["name"])
-        # Add PIN to list
-        pins.append(user.p_i_n)
     
-    # Add PIN column to dataframe
-    dataframe["pin"] = pins
+    # # Create User objects and add PIN column
+    # pins = []
+    # for i, row in dataframe.iterrows():
+    #     # Create User object with email and name as username
+    #     user = User(email=row["email"], username=row["name"])
+    #     # Add PIN to list
+    #     pins.append(user.p_i_n)
+
+    # # Add PIN column to dataframe
+    # dataframe["pin"] = pins
 
     st.dataframe(dataframe)
-    
+
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
 

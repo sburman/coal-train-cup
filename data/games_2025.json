@@ -306,8 +306,8 @@
     "home_team": "Manly-Warringah Sea Eagles",
     "away_team": "Parramatta Eels",
     "venue": "4 Pines Park, Sydney",
-    "home_score": null,
-    "away_score": null
+    "home_score": 26,
+    "away_score": 12
   },
   {
     "season": 2025,
@@ -316,8 +316,8 @@
     "home_team": "Wests Tigers",
     "away_team": "New Zealand Warriors",
     "venue": "Campbelltown Sports Stadium, Sydney",
-    "home_score": null,
-    "away_score": null
+    "home_score": 24,
+    "away_score": 26
   },
   {
     "season": 2025,

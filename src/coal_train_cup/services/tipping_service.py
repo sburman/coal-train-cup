@@ -1,39 +1,42 @@
-def make_user_tip(
-    user_id: int,
-    round_id: int,
-    tip: str,
-    tip_time: str,
-) -> dict:
-    return {
-        "user_id": user_id,
-        "round_id": round_id,
-        "tip": tip,
-        "tip_time": tip_time,
-    }
+from datetime import datetime, timezone
+from coal_train_cup.models import User, UserTip, Tip
+from coal_train_cup.services.games_service import games_for_round
 
 
-def get_user_tips(user_id: int) -> list[dict]:
+def available_tips(round: int, season: int = 2025) -> dict[str, Tip]:
     """
-    Get all tips made by a user.
-
-    Args:
-        user_id (int): The ID of the user.
-
-    Returns:
-        list[dict]: A list of dictionaries containing the user's tips.
+    Returns a list of available tips for the given round.
     """
-    # This is a placeholder implementation. Replace with actual database query.
-    return [
-        {
-            "user_id": user_id,
-            "round_id": 1,
-            "tip": "Team A",
-            "tip_time": "2023-10-01T12:00:00Z",
-        },
-        {
-            "user_id": user_id,
-            "round_id": 2,
-            "tip": "Team B",
-            "tip_time": "2023-10-08T12:00:00Z",
-        },
-    ]
+    tips = {}
+    for game in games_for_round(round, season):
+        if game.round == round and game.season == season:
+            tips[game.home_team] = Tip(
+                season=season,
+                round=round,
+                team=game.home_team,
+                opponent=game.away_team,
+                home=True,
+                available_until=game.kickoff,
+            )
+            tips[game.away_team] = Tip(
+                season=season,
+                round=round,
+                team=game.away_team,
+                opponent=game.home_team,
+                home=False,
+                available_until=game.kickoff,
+            )
+
+    return tips
+
+
+def make_tip(user: User, tip: Tip, tipped_at: datetime = datetime.now(timezone.utc)) -> UserTip:
+    return UserTip(
+        email=user.email,
+        season=1,
+        round=tip.round,
+        team=tip.team,
+        opponent=tip.opponent,
+        home=tip.home,
+        tipped_at=tipped_at,
+    )

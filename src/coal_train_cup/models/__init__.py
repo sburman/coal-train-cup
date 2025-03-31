@@ -38,6 +38,16 @@ class UserTip(BaseModel):
     team: str
     opponent: str
     home: bool
+    tipped_at: datetime = datetime.now(timezone.utc)
+
+
+class Tip(BaseModel):
+    season: int
+    round: int
+    team: str
+    opponent: str
+    home: bool
+    available_until: datetime
 
 
 class Game(BaseModel):
