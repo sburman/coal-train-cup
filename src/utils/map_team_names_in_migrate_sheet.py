@@ -1,12 +1,11 @@
 import pandas as pd
 import gspread
-import toml
+
+from coal_train_cup.services.secrets import get_secrets
 
 
 def connection() -> None:
-    secrets_path = ".streamlit/secrets.toml"
-    with open(secrets_path, "r") as file:
-        secrets = toml.load(file)
+    secrets = get_secrets()
 
     config = secrets["connections"]["gsheets"]
     gc = gspread.service_account_from_dict(config)

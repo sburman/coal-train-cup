@@ -1,6 +1,7 @@
 import streamlit as st
 from datetime import datetime
 import json
+import csv
 from pathlib import Path
 from coal_train_cup.models import User, Game, UserTip
 
@@ -9,21 +10,32 @@ CURRENT_SEASON = 2025
 
 @st.cache_data
 def all_games() -> list[Game]:
-    filename = "data/games_2025.json"
+    filename = "data/games_2025.csv"
     if not Path(filename).exists():
         print(f"File {filename} not found")
         return []
 
-    # Read from file
-    with open(filename, "r") as f:
-        games_data = json.load(f)
-
-    # Convert dictionaries back to Game objects
+    # Read from CSV file
     games = []
-    for game_dict in games_data:
-        # Convert ISO format string back to datetime
-        game_dict["kickoff"] = datetime.fromisoformat(game_dict["kickoff"])
-        games.append(Game(**game_dict))
+    with open(filename, "r", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # Convert empty strings to None for optional integer fields
+            if row["home_score"] == "":
+                row["home_score"] = None
+            else:
+                row["home_score"] = int(row["home_score"])
+
+            if row["away_score"] == "":
+                row["away_score"] = None
+            else:
+                row["away_score"] = int(row["away_score"])
+
+            # Convert ISO format string back to datetime
+            row["kickoff"] = datetime.fromisoformat(row["kickoff"])
+
+            # Create Game object from row data
+            games.append(Game(**row))
 
     return games
 

@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 
 from coal_train_cup.pages import (
     page_make_tip,
@@ -37,7 +36,6 @@ def page_home() -> None:
     st.write("Total games: ", len(all_games()))
     st.write("Total resulted games: ", int(len(all_game_results()) / 2))
     st.markdown("---")
-
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)

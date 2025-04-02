@@ -1,16 +1,15 @@
 import pandas as pd
 import gspread
-import toml
 import json
 
 from coal_train_cup.models import User, UserTip
 from coal_train_cup.services.tipping_service import available_tips, make_tip
 
+from coal_train_cup.services.secrets import get_secrets
+
 
 def build_user_and_tips() -> tuple[list[User], list[UserTip]]:
-    secrets_path = ".streamlit/secrets.toml"
-    with open(secrets_path, "r") as file:
-        secrets = toml.load(file)
+    secrets = get_secrets()
 
     config = secrets["connections"]["gsheets"]
 
