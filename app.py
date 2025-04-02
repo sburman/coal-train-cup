@@ -14,7 +14,7 @@ from coal_train_cup.services.data_store import (
     all_game_results,
 )
 
-MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")
+MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="🚧") # ✏️
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
 VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", icon="📊")
 LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")

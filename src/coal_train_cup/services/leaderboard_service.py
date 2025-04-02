@@ -27,7 +27,11 @@ class LeaderboardEntry:
 @st.cache_data
 def get_full_results_dataframe() -> pd.DataFrame:
     all_users_df = pd.DataFrame([user.model_dump() for user in all_users()])
+
     all_user_tips_df = pd.DataFrame([tip.model_dump() for tip in all_user_tips()])
+    # drop username column as it complicates the merge
+    all_users_df = all_users_df.drop(columns=["username"])
+
     game_results = all_game_results()
     game_results_df = pd.DataFrame(
         [
