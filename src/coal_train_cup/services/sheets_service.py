@@ -29,3 +29,21 @@ def dataframe_to_worksheet(
 ) -> None:
     worksheet = get_worksheet(spreadsheet_name, worksheet_name)
     worksheet.update([dataframe.columns.tolist()] + dataframe.values.tolist())
+
+
+def worksheet_exists(spreadsheet_name: str, worksheet_name: str) -> bool:
+    try:
+        worksheet = get_worksheet(spreadsheet_name, worksheet_name)
+        return worksheet.title == worksheet_name
+    except gspread.exceptions.WorksheetNotFound:
+        return False
+
+
+def create_worksheet(spreadsheet_name: str, worksheet_name: str) -> None:
+    spreadsheet = get_spreadsheet(spreadsheet_name)
+    spreadsheet.add_worksheet(title=worksheet_name, rows=500, cols=20)
+
+
+def get_worksheet_names(spreadsheet_name: str) -> list[str]:
+    spreadsheet = get_spreadsheet(spreadsheet_name)
+    return [worksheet.title for worksheet in spreadsheet.worksheets()]

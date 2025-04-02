@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 from coal_train_cup.models import User, UserTip, Tip
-from coal_train_cup.services.games_service import games_for_round
-from coal_train_cup.services.data_store import all_user_tips
+from coal_train_cup.services.data_store import all_user_tips, games_for_round
 
 
 def available_tips(round: int, season: int = 2025) -> dict[str, Tip]:
@@ -40,6 +39,7 @@ def make_tip(
 ) -> UserTip:
     return UserTip(
         email=user.email,
+        username=user.username,
         season=tip.season,
         round=tip.round,
         team=tip.team,

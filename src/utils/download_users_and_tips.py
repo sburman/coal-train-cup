@@ -1,14 +1,21 @@
 import pandas as pd
 import gspread
-import json
 
 from coal_train_cup.models import User, UserTip
 from coal_train_cup.services.tipping_service import available_tips, make_tip
+from coal_train_cup.services.data_service_user_tips import (
+    save_user_tips_to_sheets,
+    load_user_tips_from_sheets,
+)
 
 from coal_train_cup.services.secrets import get_secrets
+from coal_train_cup.services.data_service_users import (
+    save_users_to_sheets,
+    load_users_from_sheets,
+)
 
 
-def build_user_and_tips() -> tuple[list[User], list[UserTip]]:
+def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[UserTip]]:
     secrets = get_secrets()
 
     config = secrets["connections"]["gsheets"]
@@ -53,39 +60,28 @@ def build_user_and_tips() -> tuple[list[User], list[UserTip]]:
     return all_users, all_user_tips
 
 
-def serialize_users(users: list[User]) -> None:
-    filename = "data/users_2025.json"
-    user_data = []
-    for user in users:
-        user_dict = user.model_dump()
-        user_data.append(user_dict)
-
-    # Write to file
-    with open(filename, "w") as f:
-        json.dump(user_data, f, indent=2)
-
-    print(f"Saved {len(users)} users to {filename}")
-
-
-def serialize_user_tips(user_tips: list[UserTip]) -> None:
-    filename = "data/user_tips_2025.json"
-    user_tips_data = []
-    for user_tip in user_tips:
-        user_tip_dict = user_tip.model_dump()
-        user_tip_dict["tipped_at"] = user_tip_dict["tipped_at"].isoformat()
-        user_tips_data.append(user_tip_dict)
-
-    # Write to file
-    with open(filename, "w") as f:
-        json.dump(user_tips_data, f, indent=2)
-
-    print(f"Saved {len(user_tips_data)} user tips to {filename}")
-
-
 if __name__ == "__main__":
-    users, tips = build_user_and_tips()
+    users, tips = build_user_and_tips_from_migrations_workbook()
+
     print(f"Total users: {len(users)}")
     print(f"Total tips: {len(tips)}")
 
-    serialize_users(users)
-    serialize_user_tips(tips)
+    save_users_to_sheets(users)
+
+    loaded_users = load_users_from_sheets()
+    print(f"Loaded {len(loaded_users)} users")
+
+    assert len(loaded_users) == len(users)
+
+    save_user_tips_to_sheets(tips)
+
+    loaded_user_tips = load_user_tips_from_sheets()
+
+    assert len(loaded_user_tips) == len(tips)
+    assert max([tip.round for tip in loaded_user_tips]) == max(
+        [tip.round for tip in tips]
+    )
+
+    print(
+        f"Loaded {len(loaded_user_tips)} user tips across {max([tip.round for tip in loaded_user_tips])} rounds"
+    )

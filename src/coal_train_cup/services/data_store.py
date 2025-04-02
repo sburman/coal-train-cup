@@ -1,20 +1,36 @@
 import streamlit as st
-import json
 from coal_train_cup.models import User, Game, UserTip, GameResult
 from coal_train_cup.services.nrl_api_service import get_latest_draw_from_nrl_api
-from coal_train_cup.services.games_service import (
+from coal_train_cup.services.data_service_games import (
     load_games_from_sheets,
     save_games_to_sheets,
+)
+from coal_train_cup.services.data_service_users import (
+    load_users_from_sheets,
+)
+from coal_train_cup.services.data_service_user_tips import (
+    load_user_tips_from_sheets,
 )
 
 CURRENT_SEASON = 2025
 
 
 @st.cache_data
-def all_games() -> list[Game]:
+def all_user_tips() -> list[UserTip]:
+    return load_user_tips_from_sheets()
+
+
+@st.cache_data
+def all_users() -> list[User]:
+    return load_users_from_sheets()
+
+
+@st.cache_data
+def all_games(force_update: bool = False) -> list[Game]:
     # updates the sheet from nrl api each time we don't hit cache
-    nrl_api_games = get_latest_draw_from_nrl_api()
-    save_games_to_sheets(nrl_api_games)
+    if force_update:
+        nrl_api_games = get_latest_draw_from_nrl_api()
+        save_games_to_sheets(nrl_api_games)
     return load_games_from_sheets()
 
 
@@ -55,29 +71,3 @@ def all_game_results() -> list[GameResult]:
             results.append(home_result)
             results.append(away_result)
     return results
-
-
-@st.cache_data
-def all_user_tips() -> list[UserTip]:
-    filename = "data/user_tips_2025.json"
-    with open(filename, "r") as f:
-        tips_data = json.load(f)
-
-    tips = []
-    for tip_dict in tips_data:
-        tips.append(UserTip(**tip_dict))
-
-    return tips
-
-
-@st.cache_data
-def all_users() -> list[User]:
-    filename = "data/users_2025.json"
-    with open(filename, "r") as f:
-        users_data = json.load(f)
-
-    users = []
-    for user_dict in users_data:
-        users.append(User(**user_dict))
-
-    return users

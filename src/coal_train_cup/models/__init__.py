@@ -1,39 +1,45 @@
 from datetime import datetime, timezone
-from pydantic import BaseModel, EmailStr, field_validator
+from pydantic import BaseModel, EmailStr, field_validator, Field
 from typing import Optional
 import hashlib
 from dataclasses import dataclass
+from coal_train_cup.services.secrets import get_secrets
+
+
+def _generate_pin(email: EmailStr) -> str:
+    """
+    Returns a 4-digit PIN derived from the user's email.
+    This is a one-way hash that can be consistently generated from the email.
+    """
+    secrets = get_secrets()
+    salt = secrets["salt"]["value"]
+
+    if not isinstance(salt, str):
+        raise ValueError("Salt must be a string")
+
+    # Get lowercase email and combine with salt
+    email_lower = str(email).lower()
+    salted_input = email_lower + salt
+
+    # Create a SHA-256 hash
+    hash_obj = hashlib.sha256(salted_input.encode())
+    hash_hex = hash_obj.hexdigest()
+
+    # Convert to integer and limit to 4 digits (0-9999)
+    hash_int = int(hash_hex, 16) % 10000
+
+    return str(hash_int).zfill(4) + "69"
 
 
 class User(BaseModel):
     email: EmailStr
     username: str
-
-    @property
-    def p_i_n(self) -> str:
-        """
-        Returns a 4-digit PIN derived from the user's email.
-        This is a one-way hash that can be consistently generated from the email.
-        """
-        # Salt for the hash
-        salt = "COAL_TRAIN_CUP_2025"
-
-        # Get lowercase email and combine with salt
-        email_lower = str(self.email).lower()
-        salted_input = email_lower + salt
-
-        # Create a SHA-256 hash
-        hash_obj = hashlib.sha256(salted_input.encode())
-        hash_hex = hash_obj.hexdigest()
-
-        # Convert to integer and limit to 4 digits (0-9999)
-        hash_int = int(hash_hex, 16) % 10000
-
-        return str(hash_int).zfill(4) + "69"
+    pin: str = Field(default_factory=_generate_pin)
 
 
 class UserTip(BaseModel):
     email: EmailStr
+    username: str
     season: int
     round: int
     team: str

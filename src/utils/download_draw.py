@@ -1,5 +1,5 @@
 from coal_train_cup.services.nrl_api_service import get_latest_draw_from_nrl_api
-from coal_train_cup.services.games_service import (
+from coal_train_cup.services.data_service_games import (
     save_games_to_sheets,
     load_games_from_sheets,
 )
