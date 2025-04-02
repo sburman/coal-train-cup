@@ -85,12 +85,12 @@ def get_leaderboard_dataframe(round: int | None = None) -> pd.DataFrame:
     if round:
         reduced_df = reduced_df[reduced_df["round"] <= round]
 
-    reduced_df = reduced_df[["email", "username", "result", "margin"]]
+    reduced_df = reduced_df[["email", "username", "points", "margin"]]
     reduced_df = reduced_df.groupby(["email", "username"]).agg(
         {
-            "result": "sum",
+            "points": "sum",
             "margin": "sum",
         }
     )
-    reduced_df = reduced_df.sort_values(by=["result", "margin"], ascending=False)
+    reduced_df = reduced_df.sort_values(by=["points", "margin"], ascending=False)
     return reduced_df
