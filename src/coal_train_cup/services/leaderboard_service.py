@@ -58,7 +58,20 @@ def get_full_results_dataframe() -> pd.DataFrame:
     )
 
     # adds result column
-    all_results_df["result"] = all_results_df["margin"].apply(
+    all_results_df["win"] = all_results_df["margin"].apply(
+        lambda x: True if x > 0 else False
+    )
+
+    all_results_df["draw"] = all_results_df["margin"].apply(
+        lambda x: True if x == 0 else False
+    )
+
+    all_results_df["loss"] = all_results_df["margin"].apply(
+        lambda x: True if x < 0 else False
+    )
+
+    # adds result column
+    all_results_df["points"] = all_results_df["margin"].apply(
         lambda x: 2 if x > 0 else 1 if x == 0 else 0
     )
 

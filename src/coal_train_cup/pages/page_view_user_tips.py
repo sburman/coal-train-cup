@@ -19,7 +19,7 @@ def page_view_user_tips() -> None:
     if user:
         user_display_df = results_df[results_df["email"] == user.email]
         user_display_df = user_display_df[
-            ["round", "team", "home", "opponent", "result", "margin"]
+            ["round", "team", "home", "opponent", "points", "margin"]
         ]
         # Convert boolean home values to "H" for home (True) and "A" for away (False)
         user_display_df["home"] = user_display_df["home"].map(
@@ -32,13 +32,13 @@ def page_view_user_tips() -> None:
                 "team": "Team",
                 "home": "Venue",
                 "opponent": "vs Opponent",
-                "result": "Result",
+                "points": "Points",
                 "margin": "Margin",
             }
         )
         user_display_df.index.name = "Round"
 
-        result_total = user_display_df["Result"].sum()
+        result_total = user_display_df["Points"].sum()
         margin_total = user_display_df["Margin"].sum()
 
         # use st.metric to display the result total and margin total
