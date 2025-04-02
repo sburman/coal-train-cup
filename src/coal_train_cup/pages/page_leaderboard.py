@@ -1,6 +1,6 @@
 import streamlit as st
 from coal_train_cup.services.leaderboard_service import get_leaderboard_dataframe
-from coal_train_cup.services.games_service import all_game_results
+from coal_train_cup.services.data_store import all_game_results
 
 
 def page_leaderboard() -> None:

@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 from pydantic import BaseModel, EmailStr, field_validator
 from typing import Optional
 import hashlib
+from dataclasses import dataclass
 
 
 class User(BaseModel):
@@ -93,3 +94,18 @@ class Game(BaseModel):
             return self.away_team
         else:
             return "Draw"
+
+
+@dataclass
+class GameResult:
+    season: int
+    round: int
+    team: str
+    opponent: str
+    home: bool
+    score_for: int
+    score_against: int
+
+    @property
+    def margin(self) -> int:
+        return self.score_for - self.score_against

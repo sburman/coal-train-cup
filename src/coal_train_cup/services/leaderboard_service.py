@@ -1,7 +1,10 @@
 import streamlit as st
 from dataclasses import dataclass
-from coal_train_cup.services.data_store import all_users, all_user_tips
-from coal_train_cup.services.games_service import all_game_results
+from coal_train_cup.services.data_store import (
+    all_users,
+    all_user_tips,
+    all_game_results,
+)
 import pandas as pd
 
 

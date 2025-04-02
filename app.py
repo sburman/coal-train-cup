@@ -7,8 +7,12 @@ from coal_train_cup.pages import (
     page_leaderboard,
 )
 
-from coal_train_cup.services.data_store import all_games, all_user_tips, all_users
-from coal_train_cup.services.games_service import all_game_results
+from coal_train_cup.services.data_store import (
+    all_games,
+    all_user_tips,
+    all_users,
+    all_game_results,
+)
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
