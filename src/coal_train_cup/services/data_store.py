@@ -34,15 +34,9 @@ def all_games(force_update: bool = False) -> list[Game]:
     return load_games_from_sheets()
 
 
-def games_for_round(round: int, season: int = 2025) -> list[Game]:
-    """
-    Returns a list of games for the given round.
-    """
-    games = []
-    for game in all_games():
-        if game.round == round and game.season == season:
-            games.append(game)
-    return games
+@st.cache_data
+def all_teams() -> list[str]:
+    return list(set([game.home_team for game in all_games()]))
 
 
 @st.cache_data

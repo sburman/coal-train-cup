@@ -25,7 +25,7 @@ class LeaderboardEntry:
 
 
 @st.cache_data
-def get_full_results_dataframe() -> pd.DataFrame:
+def get_full_results_dataframe(up_to_round: int | None = None) -> pd.DataFrame:
     all_users_df = pd.DataFrame([user.model_dump() for user in all_users()])
 
     all_user_tips_df = pd.DataFrame([tip.model_dump() for tip in all_user_tips()])
@@ -33,6 +33,8 @@ def get_full_results_dataframe() -> pd.DataFrame:
     all_users_df = all_users_df.drop(columns=["username"])
 
     game_results = all_game_results()
+    if up_to_round:
+        game_results = [r for r in game_results if r.round <= up_to_round]
     game_results_df = pd.DataFrame(
         [
             {

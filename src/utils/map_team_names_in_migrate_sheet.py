@@ -58,6 +58,7 @@ def connection() -> None:
     dataframe["round 1"] = dataframe["round 1"].apply(enforce_long_name)
     dataframe["round 2"] = dataframe["round 2"].apply(enforce_long_name)
     dataframe["round 3"] = dataframe["round 3"].apply(enforce_long_name)
+    dataframe["round 4"] = dataframe["round 4"].apply(enforce_long_name)
 
     worksheet.update([dataframe.columns.values.tolist()] + dataframe.values.tolist())
 

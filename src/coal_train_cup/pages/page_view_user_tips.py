@@ -3,12 +3,13 @@ from coal_train_cup.services.data_store import all_users
 from coal_train_cup.services.leaderboard_service import (
     get_full_results_dataframe,
 )
+from coal_train_cup.services.games_service import get_most_recent_closed_round
 
 
 def page_view_user_tips() -> None:
     st.title("View user tips")
 
-    results_df = get_full_results_dataframe()
+    results_df = get_full_results_dataframe(up_to_round=get_most_recent_closed_round())
     users = all_users()
 
     # select box to select a user by name

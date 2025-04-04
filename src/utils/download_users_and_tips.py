@@ -2,7 +2,7 @@ import pandas as pd
 import gspread
 
 from coal_train_cup.models import User, UserTip
-from coal_train_cup.services.tipping_service import available_tips, make_tip
+from coal_train_cup.services.tipping_service import available_tips_for_round, make_tip
 from coal_train_cup.services.data_service_user_tips import (
     save_user_tips_to_sheets,
     load_user_tips_from_sheets,
@@ -28,9 +28,10 @@ def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[Use
     all_users = []
     all_user_tips = []
 
-    available_round_1 = available_tips(round=1)
-    available_round_2 = available_tips(round=2)
-    available_round_3 = available_tips(round=3)
+    available_round_1 = available_tips_for_round(round=1)
+    available_round_2 = available_tips_for_round(round=2)
+    available_round_3 = available_tips_for_round(round=3)
+    available_round_4 = available_tips_for_round(round=4)
 
     for index, row in dataframe.iterrows():
         user = User(email=row["email"], username=row["name"])
@@ -57,6 +58,12 @@ def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[Use
                 make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
             )
 
+        # round 4
+        selected_tip = available_round_4.get(row["round 4"])
+        if selected_tip:
+            all_user_tips.append(
+                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+            )
     return all_users, all_user_tips
 
 

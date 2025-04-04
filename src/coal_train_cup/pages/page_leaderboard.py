@@ -1,6 +1,6 @@
 import streamlit as st
 from coal_train_cup.services.leaderboard_service import get_leaderboard_dataframe
-from coal_train_cup.services.data_store import all_game_results
+from coal_train_cup.services.games_service import get_most_recent_closed_round
 
 
 def page_leaderboard() -> None:
@@ -10,12 +10,15 @@ def page_leaderboard() -> None:
     st.title("Leaderboard")
 
     # use all_game_results to get the max round
-    max_round = max([r.round for r in all_game_results()])
-    selected_round = st.selectbox(
-        "Leaderboard after:",
-        range(1, max_round + 1),
-        format_func=lambda x: f"Round {x}",
-        index=max_round - 1,
+    max_round = get_most_recent_closed_round()
+    available_rounds = range(1, max_round + 1)
+
+    selected_round = st.pills(
+        "Show leaderboard after:",
+        options=available_rounds,
+        default=available_rounds[-1] if available_rounds else None,
+        selection_mode="single",
+        format_func=lambda x: f"Round {x}" if x == 1 else f"{x}",
     )
 
     # filter the leaderboard_df for the selected round
