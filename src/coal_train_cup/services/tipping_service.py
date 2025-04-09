@@ -89,6 +89,18 @@ def get_tips_for_user(user: User) -> list[UserTip]:
 def make_tip(
     user: User, tip: Tip, tipped_at: datetime = datetime.now(timezone.utc)
 ) -> UserTip:
+    # Ensure both times are in UTC
+    if tipped_at.tzinfo != timezone.utc:
+        raise ValueError("Tipped at must be in UTC")
+
+    if tip.available_until.tzinfo != timezone.utc:
+        raise ValueError("Available until must be in UTC")
+
+    # Add 10 min grace period to available_until time
+    grace_period = timedelta(minutes=10)
+    if tip.available_until + grace_period < tipped_at:
+        raise ValueError("Can't make tip for a game that has already kicked off")
+
     return UserTip(
         email=user.email,
         username=user.username,
@@ -102,13 +114,6 @@ def make_tip(
 
 
 def submit_tip(tip: UserTip) -> None:
-    """
-    Submit a user tip to the Google Sheet.
-
-    Args:
-        tip: The UserTip object to submit
-    """
-    # Convert UserTip to dictionary
     tip_data = {
         "email": tip.email,
         "username": tip.username,

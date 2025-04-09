@@ -18,7 +18,7 @@ def page_make_tip() -> None:
     st.title("✏️ Make a Tip")
 
     current_round = get_current_tipping_round()
-    # current_round = 5
+    current_round = 5
     st.header(f"Current round: {current_round}")
 
     email = st.text_input("Enter your email address")
@@ -63,9 +63,9 @@ def page_make_tip() -> None:
 
             margin = previous_round_tip.margin
             if margin > 0:
-                st.write(f"They won by {margin} points.")
+                st.write(f"✅ They won by {margin} points.")
             elif margin < 0:
-                st.write(f"They lost by {abs(margin)} points.")
+                st.write(f"❌ They lost by {abs(margin)} points.")
             else:
                 st.write("It was a draw.")
 
@@ -89,14 +89,15 @@ def page_make_tip() -> None:
         }
 
         if unavailable_tips:
-            st.write("This week you can't select:")
-            for team, reason in unavailable_tips.items():
-                st.write(f"• {team} [{reason}]")
+            unavailable_text = "This week you can't select:\n" + "\n".join(
+                [f"- {team} [{reason}]" for team, reason in unavailable_tips.items()]
+            )
+            st.info(unavailable_text)
 
         tip_team = st.radio(
             f"Select a tip for round {current_round}",
             list(current_round_tips.keys()),
-            format_func=lambda x: f"{x} ({'h' if current_round_tips[x].home else 'a'}) vs {current_round_tips[x].opponent}",
+            format_func=lambda x: f"**{x} ({'H' if current_round_tips[x].home else 'A'})** vs {current_round_tips[x].opponent}",
         )
 
         tip = current_round_tips[tip_team]
@@ -104,4 +105,4 @@ def page_make_tip() -> None:
         if st.button("Submit tip"):
             user_tip = make_tip(user, tip)
             submit_tip(user_tip)
-            st.write("Tip submitted. God speed.")
+            st.success("✅ Tip submitted. God speed.")
