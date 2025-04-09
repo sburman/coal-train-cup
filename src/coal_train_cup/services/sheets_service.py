@@ -54,12 +54,13 @@ def append_row_to_worksheet(
     spreadsheet_name: str,
     worksheet_name: str,
 ) -> None:
+    headers = list(row_data.keys())
+    row_values = [row_data[header] for header in headers]
+
     if not worksheet_exists(spreadsheet_name, worksheet_name):
         create_worksheet(spreadsheet_name, worksheet_name)
         worksheet = get_worksheet(spreadsheet_name, worksheet_name)
-        headers = list(row_data.keys())
         worksheet.append_row(headers)
 
     worksheet = get_worksheet(spreadsheet_name, worksheet_name)
-    row_values = [row_data[header] for header in headers]
     worksheet.append_row(row_values)

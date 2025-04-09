@@ -15,7 +15,7 @@ def page_make_tip() -> None:
     """
     Page for making a tip.
     """
-    st.title("🚧 Make a Tip 🚧")
+    st.title("✏️ Make a Tip")
 
     current_round = get_current_tipping_round()
     # current_round = 5
@@ -71,19 +71,21 @@ def page_make_tip() -> None:
 
             current_round_tips = available_tips_for_round(current_round)
 
-            unavailable_tips = {
-                previous_round_tip.team: "Last round tip"
-            }
+            unavailable_tips = {previous_round_tip.team: "Last round tip"}
 
             for tip in current_round_tips.values():
                 if tip.opponent == previous_round_tip.opponent:
-                    unavailable_tips[tip.team] = f"Playing last round tip's opponent {previous_round_tip.opponent}"
+                    unavailable_tips[tip.team] = (
+                        f"Playing last round tip's opponent {previous_round_tip.opponent}"
+                    )
 
         else:
             st.write("No previous round tip found")
 
         current_round_tips = {
-            k: v for k, v in current_round_tips.items() if k not in unavailable_tips.keys()
+            k: v
+            for k, v in current_round_tips.items()
+            if k not in unavailable_tips.keys()
         }
 
         if unavailable_tips:
