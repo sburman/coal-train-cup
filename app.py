@@ -37,7 +37,7 @@ def page_home() -> None:
     st.write("Total users: ", len(all_users()))
     st.write("Total tips made: ", len(all_user_tips()))
     st.markdown("---")
-    st.write("Total games: ", len(all_games()))
+    st.write("Total games: ", len(all_games(True)))
     st.write("Total resulted games: ", int(len(all_game_results()) / 2))
     st.markdown("---")
 

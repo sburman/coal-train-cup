@@ -7,6 +7,7 @@ from coal_train_cup.services.tipping_service import (
     available_tips_for_round,
     get_current_tipping_round,
     make_tip,
+    submit_tip,
 )
 
 
@@ -33,8 +34,6 @@ def page_make_tip() -> None:
             st.warning(f"No user found with email: {email}")
             st.stop()
 
-        st.success("User found!")
-
         # get tip from previous round
         previous_round = current_round - 1
         if previous_round < 1:
@@ -50,7 +49,7 @@ def page_make_tip() -> None:
             if not filtered_tips.empty:
                 previous_round_tip = filtered_tips.iloc[0]
 
-        unavailable_tips = []
+        unavailable_tips: dict[str, str] = {}
         current_round_tips = available_tips_for_round(current_round)
 
         if previous_round_tip is not None:
@@ -72,20 +71,25 @@ def page_make_tip() -> None:
 
             current_round_tips = available_tips_for_round(current_round)
 
-            unavailable_tips = [previous_round_tip.team]
+            unavailable_tips = {
+                previous_round_tip.team: "Last round tip"
+            }
 
             for tip in current_round_tips.values():
                 if tip.opponent == previous_round_tip.opponent:
-                    unavailable_tips.append(tip.team)
+                    unavailable_tips[tip.team] = f"Playing last round tip's opponent {previous_round_tip.opponent}"
 
         else:
             st.write("No previous round tip found")
 
         current_round_tips = {
-            k: v for k, v in current_round_tips.items() if k not in unavailable_tips
+            k: v for k, v in current_round_tips.items() if k not in unavailable_tips.keys()
         }
 
-        st.write(f"This week you can't select: {', '.join(unavailable_tips)}")
+        if unavailable_tips:
+            st.write("This week you can't select:")
+            for team, reason in unavailable_tips.items():
+                st.write(f"• {team} [{reason}]")
 
         tip_team = st.radio(
             f"Select a tip for round {current_round}",
@@ -97,5 +101,5 @@ def page_make_tip() -> None:
 
         if st.button("Submit tip"):
             user_tip = make_tip(user, tip)
-            st.write(user_tip)
+            submit_tip(user_tip)
             st.write("Tip submitted. God speed.")

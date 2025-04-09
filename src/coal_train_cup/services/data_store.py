@@ -26,7 +26,7 @@ def all_users() -> list[User]:
 
 
 @st.cache_data
-def all_games(force_update: bool = False) -> list[Game]:
+def all_games(force_update: bool) -> list[Game]:
     # updates the sheet from nrl api each time we don't hit cache
     if force_update:
         nrl_api_games = get_latest_draw_from_nrl_api()
@@ -36,14 +36,14 @@ def all_games(force_update: bool = False) -> list[Game]:
 
 @st.cache_data
 def all_teams() -> list[str]:
-    return list(set([game.home_team for game in all_games()]))
+    return list(set([game.home_team for game in all_games(False)]))
 
 
 @st.cache_data
 def all_game_results() -> list[GameResult]:
     results = []
-    for game in all_games():
-        if game.home_score and game.away_score:
+    for game in all_games(False):
+        if game.home_score is not None and game.away_score is not None:
             home_result = GameResult(
                 season=game.season,
                 round=game.round,

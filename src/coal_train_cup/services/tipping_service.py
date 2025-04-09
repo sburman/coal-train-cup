@@ -4,6 +4,7 @@ from coal_train_cup.services.data_store import all_games
 from coal_train_cup.models import User, UserTip, Tip
 from coal_train_cup.services.data_store import all_user_tips
 from coal_train_cup.services.games_service import get_games_for_round
+from coal_train_cup.services.sheets_service import append_row_to_worksheet
 
 
 # enum for round status
@@ -19,7 +20,7 @@ def get_all_rounds_status(
     """
     Returns a dictionary of all rounds and their statuses for the given season.
     """
-    games = all_games(season)
+    games = all_games(False)
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:
@@ -97,4 +98,34 @@ def make_tip(
         opponent=tip.opponent,
         home=tip.home,
         tipped_at=tipped_at,
+    )
+
+
+def submit_tip(tip: UserTip) -> None:
+    """
+    Submit a user tip to the Google Sheet.
+
+    Args:
+        tip: The UserTip object to submit
+    """
+    # Convert UserTip to dictionary
+    tip_data = {
+        "email": tip.email,
+        "username": tip.username,
+        "season": tip.season,
+        "round": tip.round,
+        "team": tip.team,
+        "opponent": tip.opponent,
+        "home": tip.home,
+        "tipped_at": tip.tipped_at.isoformat(),
+    }
+
+    # Create worksheet name based on season and round
+    worksheet_name = f"Round {tip.round}"
+
+    # Submit to Google Sheet
+    append_row_to_worksheet(
+        row_data=tip_data,
+        spreadsheet_name="Coal Train Cup App 2025",
+        worksheet_name=worksheet_name,
     )
