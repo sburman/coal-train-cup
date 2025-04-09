@@ -1,4 +1,9 @@
 import streamlit as st
+from coal_train_cup.services.data_store import (
+    all_users,
+)
+from coal_train_cup.services.leaderboard_service import get_full_results_dataframe
+from coal_train_cup.services.tipping_service import available_tips_for_round, get_current_tipping_round, make_tip
 
 
 def page_make_tip() -> None:
@@ -6,7 +11,86 @@ def page_make_tip() -> None:
     Page for making a tip.
     """
     st.title("🚧 Make a Tip 🚧")
-    st.write("The Coal Train Cup website is currently read-only.")
-    st.markdown("Hopefully this will change soon! :smile:")
 
-    
+    current_round = get_current_tipping_round()
+    current_round = 5
+    st.header(f"Current round: {current_round}")
+
+    email = st.text_input("Enter your email address")
+
+    if email:
+        # Check if user exists
+        users = all_users()
+        user = next(
+            (user for user in users if user.email.lower() == email.lower()), None
+        )
+
+        if not user:
+            st.warning(f"No user found with email: {email}")
+            st.stop()
+
+        st.success("User found!")
+        st.write(user)
+
+        # get tip from previous round
+        previous_round = current_round - 1
+        if previous_round < 1:
+            st.warning("No previous round found")
+            st.stop()
+
+        user_results = get_full_results_dataframe(previous_round)
+        user_results = user_results[user_results["email"] == user.email]
+
+        previous_round_tip = None
+        if not user_results.empty:
+            previous_round_tip = user_results[user_results["round"] == previous_round].iloc[0]
+
+        unavailable_tips = []
+        if previous_round_tip is not None:
+            if previous_round_tip["round"] != previous_round:
+                st.warning("Previous round tip selection has failed")
+                st.stop()
+            
+            st.write(
+                f"In round {previous_round_tip["round"]} you tipped: {previous_round_tip.team} ({'home' if previous_round_tip.home else 'away'}) vs {previous_round_tip.opponent}."
+            )
+
+            margin = previous_round_tip.margin
+            if margin > 0:
+                st.write(f"They won by {margin} points.")
+            elif margin < 0:
+                st.write(f"They lost by {abs(margin)} points.")
+            else:
+                st.write("It was a draw.")
+
+            current_round_tips = available_tips_for_round(current_round)
+
+            unavailable_tips = [previous_round_tip.team]
+
+            for tip in current_round_tips.values():
+                if tip.opponent == previous_round_tip.opponent:
+                    unavailable_tips.append(tip.team)
+
+        else:
+            st.write("No previous round tip found")
+        
+        current_round_tips = {
+            k: v for k, v in current_round_tips.items() if k not in unavailable_tips
+        }
+
+        st.write(f"This week you can't select: {', '.join(unavailable_tips)}")
+        st.write(current_round_tips.keys())
+
+        tip_team = st.radio(
+            f"Select a tip for round {current_round}",
+            list(current_round_tips.keys()),
+            format_func=lambda x: f"{x} ({"h" if current_round_tips[x].home else "a"}) vs {current_round_tips[x].opponent}"
+        )
+
+        tip = current_round_tips[tip_team]
+        st.write(tip)
+
+        if st.button("Submit tip"):
+            user_tip = make_tip(user, tip)
+            st.write(user_tip)
+            st.write("Tip submitted. God speed.")

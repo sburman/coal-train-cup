@@ -37,6 +37,19 @@ def get_all_rounds_status(
     return result
 
 
+def get_current_tipping_round(season: int = 2025) -> int:
+    current_round_statuses = get_all_rounds_status(season)
+    max_closed_round = max(
+        round
+        for round, status in current_round_statuses.items()
+        if status == RoundStatus.CLOSED
+    )
+    if not max_closed_round:
+        return 1
+    else:
+        return max_closed_round + 1
+
+
 if __name__ == "__main__":
     print(get_all_rounds_status())
 
