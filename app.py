@@ -14,7 +14,7 @@ from coal_train_cup.services.data_store import (
     all_game_results,
 )
 
-MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip 🚧", icon="🚧")  # ✏️
+MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")  # ✏️
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
 VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", icon="📊")
 LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
@@ -32,12 +32,13 @@ def page_home() -> None:
     _seed_data()
 
     st.title("Welcome to the Coal Train Cup!")
+    st.markdown("_version: 1.1.0_")
 
     st.markdown("---")
     st.write("Total users: ", len(all_users()))
     st.write("Total tips made: ", len(all_user_tips()))
     st.markdown("---")
-    st.write("Total games: ", len(all_games()))
+    st.write("Total games: ", len(all_games(False)))
     st.write("Total resulted games: ", int(len(all_game_results()) / 2))
     st.markdown("---")
 

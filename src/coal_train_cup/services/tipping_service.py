@@ -4,6 +4,7 @@ from coal_train_cup.services.data_store import all_games
 from coal_train_cup.models import User, UserTip, Tip
 from coal_train_cup.services.data_store import all_user_tips
 from coal_train_cup.services.games_service import get_games_for_round
+from coal_train_cup.services.sheets_service import append_row_to_worksheet
 
 
 # enum for round status
@@ -19,7 +20,7 @@ def get_all_rounds_status(
     """
     Returns a dictionary of all rounds and their statuses for the given season.
     """
-    games = all_games(season)
+    games = all_games(False)
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:
@@ -35,6 +36,19 @@ def get_all_rounds_status(
             result[round] = RoundStatus.CLOSED
 
     return result
+
+
+def get_current_tipping_round(season: int = 2025) -> int:
+    current_round_statuses = get_all_rounds_status(season)
+    max_closed_round = max(
+        round
+        for round, status in current_round_statuses.items()
+        if status == RoundStatus.CLOSED
+    )
+    if not max_closed_round:
+        return 1
+    else:
+        return max_closed_round + 1
 
 
 if __name__ == "__main__":
@@ -75,6 +89,18 @@ def get_tips_for_user(user: User) -> list[UserTip]:
 def make_tip(
     user: User, tip: Tip, tipped_at: datetime = datetime.now(timezone.utc)
 ) -> UserTip:
+    # Ensure both times are in UTC
+    if tipped_at.tzinfo != timezone.utc:
+        raise ValueError("Tipped at must be in UTC")
+
+    if tip.available_until.tzinfo != timezone.utc:
+        raise ValueError("Available until must be in UTC")
+
+    # Add 10 min grace period to available_until time
+    grace_period = timedelta(minutes=10)
+    if tip.available_until + grace_period < tipped_at:
+        raise ValueError("Can't make tip for a game that has already kicked off")
+
     return UserTip(
         email=user.email,
         username=user.username,
@@ -84,4 +110,27 @@ def make_tip(
         opponent=tip.opponent,
         home=tip.home,
         tipped_at=tipped_at,
+    )
+
+
+def submit_tip(tip: UserTip) -> None:
+    tip_data = {
+        "email": tip.email,
+        "username": tip.username,
+        "season": tip.season,
+        "round": tip.round,
+        "team": tip.team,
+        "opponent": tip.opponent,
+        "home": tip.home,
+        "tipped_at": tip.tipped_at.isoformat(),
+    }
+
+    # Create worksheet name based on season and round
+    worksheet_name = f"Round {tip.round}"
+
+    # Submit to Google Sheet
+    append_row_to_worksheet(
+        row_data=tip_data,
+        spreadsheet_name="Coal Train Cup App 2025",
+        worksheet_name=worksheet_name,
     )
