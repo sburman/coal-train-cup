@@ -51,3 +51,8 @@ def page_view_user_tips() -> None:
     st.metric(label="Accumulated margin", value=margin_total)
 
     st.table(user_display_df)
+
+    if user.email == "steven.burman@gmail.com":
+        if st.button("Clear Cache"):
+            st.cache_data.clear()
+            st.success("Cache cleared!")
