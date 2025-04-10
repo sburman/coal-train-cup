@@ -42,35 +42,45 @@ def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[Use
         selected_tip = available_round_1.get(row["round 1"])
         if selected_tip:
             all_user_tips.append(
-                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+                make_tip(
+                    user, selected_tip, tipped_at_time=selected_tip.available_until
+                )
             )
 
         # round 2
         selected_tip = available_round_2.get(row["round 2"])
         if selected_tip:
             all_user_tips.append(
-                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+                make_tip(
+                    user, selected_tip, tipped_at_time=selected_tip.available_until
+                )
             )
 
         # round 3
         selected_tip = available_round_3.get(row["round 3"])
         if selected_tip:
             all_user_tips.append(
-                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+                make_tip(
+                    user, selected_tip, tipped_at_time=selected_tip.available_until
+                )
             )
 
         # round 4
         selected_tip = available_round_4.get(row["round 4"])
         if selected_tip:
             all_user_tips.append(
-                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+                make_tip(
+                    user, selected_tip, tipped_at_time=selected_tip.available_until
+                )
             )
 
         # round 5
         selected_tip = available_round_5.get(row["round 5"])
         if selected_tip:
             all_user_tips.append(
-                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+                make_tip(
+                    user, selected_tip, tipped_at_time=selected_tip.available_until
+                )
             )
     return all_users, all_user_tips
 

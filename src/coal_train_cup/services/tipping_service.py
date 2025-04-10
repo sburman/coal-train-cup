@@ -86,11 +86,12 @@ def get_tips_for_user(user: User) -> list[UserTip]:
     return [tip for tip in all_user_tips() if tip.email == user.email]
 
 
-def make_tip(
-    user: User, tip: Tip, tipped_at: datetime = datetime.now(timezone.utc)
-) -> UserTip:
+def make_tip(user: User, tip: Tip, tipped_at_time: datetime | None = None) -> UserTip:
     # Ensure both times are in UTC
-    if tipped_at.tzinfo != timezone.utc:
+    if tipped_at_time is None:
+        tipped_at_time = datetime.now(timezone.utc)
+
+    if tipped_at_time.tzinfo != timezone.utc:
         raise ValueError("Tipped at must be in UTC")
 
     if tip.available_until.tzinfo != timezone.utc:
@@ -98,7 +99,7 @@ def make_tip(
 
     # Add 10 min grace period to available_until time
     grace_period = timedelta(minutes=10)
-    if tip.available_until + grace_period < tipped_at:
+    if tip.available_until + grace_period < tipped_at_time:
         raise ValueError("Can't make tip for a game that has already kicked off")
 
     return UserTip(
@@ -109,7 +110,7 @@ def make_tip(
         team=tip.team,
         opponent=tip.opponent,
         home=tip.home,
-        tipped_at=tipped_at,
+        tipped_at=tipped_at_time,
     )
 
 
