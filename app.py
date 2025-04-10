@@ -32,13 +32,13 @@ def page_home() -> None:
     _seed_data()
 
     st.title("Welcome to the Coal Train Cup!")
-    st.markdown("_version: 1.1.4_")
+    st.markdown("_version: 1.1.5_")
 
     st.markdown("---")
     st.write("Total users: ", len(all_users()))
     st.write("Total tips made: ", len(all_user_tips()))
     st.markdown("---")
-    st.write("Total games: ", len(all_games(False)))
+    st.write("Total games: ", len(all_games(True)))
     st.write("Total resulted games: ", int(len(all_game_results()) / 2))
     st.markdown("---")
 
