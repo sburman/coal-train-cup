@@ -32,6 +32,7 @@ def page_home() -> None:
     _seed_data()
 
     st.title("Welcome to the Coal Train Cup!")
+    st.markdown("_version: 1.1.0_")
 
     st.markdown("---")
     st.write("Total users: ", len(all_users()))
