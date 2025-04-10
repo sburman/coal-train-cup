@@ -18,7 +18,7 @@ def page_make_tip() -> None:
     st.title("✏️ Make a Tip")
 
     current_round = get_current_tipping_round()
-    current_round = 5
+    # current_round = 5
     st.header(f"Current round: {current_round}")
 
     email = st.text_input("Enter your email address")
@@ -103,6 +103,9 @@ def page_make_tip() -> None:
         tip = current_round_tips[tip_team]
 
         if st.button("Submit tip"):
-            user_tip = make_tip(user, tip)
-            submit_tip(user_tip)
-            st.success("✅ Tip submitted. God speed.")
+            try:
+                user_tip = make_tip(user, tip)
+                submit_tip(user_tip)
+                st.success("✅ Tip submitted. God speed.")
+            except Exception as e:
+                st.error(f"❌ Could not submit tip: {e}")

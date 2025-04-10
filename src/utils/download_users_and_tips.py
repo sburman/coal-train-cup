@@ -32,6 +32,7 @@ def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[Use
     available_round_2 = available_tips_for_round(round=2)
     available_round_3 = available_tips_for_round(round=3)
     available_round_4 = available_tips_for_round(round=4)
+    available_round_5 = available_tips_for_round(round=5)
 
     for index, row in dataframe.iterrows():
         user = User(email=row["email"], username=row["name"])
@@ -60,6 +61,13 @@ def build_user_and_tips_from_migrations_workbook() -> tuple[list[User], list[Use
 
         # round 4
         selected_tip = available_round_4.get(row["round 4"])
+        if selected_tip:
+            all_user_tips.append(
+                make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
+            )
+
+        # round 5
+        selected_tip = available_round_5.get(row["round 5"])
         if selected_tip:
             all_user_tips.append(
                 make_tip(user, selected_tip, tipped_at=selected_tip.available_until)
