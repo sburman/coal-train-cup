@@ -15,7 +15,7 @@ def get_games_for_round(round: int, season: int = 2025) -> list[Game]:
     Returns a list of games for the given round.
     """
     games = []
-    for game in all_games(False):
+    for game in all_games():
         if game.round == round and game.season == season:
             games.append(game)
     return games
@@ -38,7 +38,7 @@ def get_all_rounds_status(
     """
     Returns a dictionary of all rounds and their statuses for the given season.
     """
-    games = all_games(False)
+    games = all_games()
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:

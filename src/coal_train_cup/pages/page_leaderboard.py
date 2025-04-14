@@ -11,6 +11,7 @@ def page_leaderboard() -> None:
 
     # use all_game_results to get the max round
     max_round = get_most_recent_closed_round()
+    print(f"Max round: {max_round}")
     available_rounds = range(1, max_round + 1)
 
     selected_round = st.pills(

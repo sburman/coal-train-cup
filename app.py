@@ -20,25 +20,15 @@ VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", ic
 LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
 
 
-def _seed_data() -> None:
-    pass
-
-
 def page_home() -> None:
-    """
-    Home page of the application.
-    """
-
-    _seed_data()
-
     st.title("Welcome to the Coal Train Cup!")
-    st.markdown("_version: 1.1.5_")
+    st.markdown("_version: 1.1.6_")
 
     st.markdown("---")
     st.write("Total users: ", len(all_users()))
     st.write("Total tips made: ", len(all_user_tips()))
     st.markdown("---")
-    st.write("Total games: ", len(all_games(True)))
+    st.write("Total games: ", len(all_games()))
     st.write("Total resulted games: ", int(len(all_game_results()) / 2))
     st.markdown("---")
 

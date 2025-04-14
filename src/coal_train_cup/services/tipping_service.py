@@ -20,7 +20,7 @@ def get_all_rounds_status(
     """
     Returns a dictionary of all rounds and their statuses for the given season.
     """
-    games = all_games(False)
+    games = all_games()
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:
