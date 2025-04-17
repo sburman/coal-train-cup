@@ -61,9 +61,7 @@ def available_tips_for_round(round: int, season: int = 2025) -> dict[str, Tip]:
     """
     tips = {}
     for game in get_games_for_round(round, season):
-
         if game.round == round and game.season == season:
-
             tips[game.home_team] = Tip(
                 season=season,
                 round=round,
