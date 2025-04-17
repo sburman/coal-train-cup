@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime, timezone, timedelta
 from coal_train_cup.services.data_store import (
     all_users,
 )
@@ -18,7 +19,6 @@ def page_make_tip() -> None:
     st.title("✏️ Make a Tip")
 
     current_round = get_current_tipping_round()
-    # current_round = 5
     st.header(f"Current round: {current_round}")
 
     email = st.text_input("Enter your email address")
@@ -69,8 +69,6 @@ def page_make_tip() -> None:
             else:
                 st.write("It was a draw.")
 
-            current_round_tips = available_tips_for_round(current_round)
-
             unavailable_tips = {previous_round_tip.team: "Last round tip"}
 
             for tip in current_round_tips.values():
@@ -82,11 +80,24 @@ def page_make_tip() -> None:
         else:
             st.write("No previous round tip found")
 
+        # Filter out tips that are not available
         current_round_tips = {
             k: v
             for k, v in current_round_tips.items()
             if k not in unavailable_tips.keys()
         }
+
+        # Filter out tips that have already kicked off
+        grace_period = timedelta(minutes=5)
+        current_round_tips = {
+            k: v
+            for k, v in current_round_tips.items()
+            if (v.available_until + grace_period) > datetime.now(timezone.utc)
+        }
+
+        if not current_round_tips:
+            st.warning("No tips available for this round. Round is closed.")
+            st.stop()
 
         if unavailable_tips:
             unavailable_text = "This week you can't select:\n" + "\n".join(
