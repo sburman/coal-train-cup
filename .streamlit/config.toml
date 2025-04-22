@@ -1,0 +1,20 @@
+[theme]
+base = "dark"
+primaryColor = "#00E5B4"  # Mint/teal green from the logo
+backgroundColor = "#2D0A54"  # Deep purple from the logo background
+secondaryBackgroundColor = "#3B1373"  # Slightly lighter purple for contrast
+textColor = "#FFFFFF"  # White text like the logo
+linkColor = "#00E5B4"  # Use the mint green for links too
+codeBackgroundColor = "#1E0638"  # Darker purple for code blocks
+font = "sans-serif"  # Clean, modern font for body text
+headingFont = "sans-serif"  # Bold, sporty font for headings
+codeFont = "monospace"  # Standard for code readability
+
+[theme.sidebar]
+backgroundColor = "#2D0A54"  # Match main background
+secondaryBackgroundColor = "#3B1373"  # Slightly lighter purple
+textColor = "#FFFFFF"  # White text
+primaryColor = "#00E5B4"  # Mint green accents
+font = "sans-serif"
+headingFont = "sans-serif"
+
