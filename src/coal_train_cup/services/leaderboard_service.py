@@ -9,6 +9,7 @@ import pandas as pd
 
 CACHE_TTL_SECONDS = 60 * 60 * 8  # 8 hours
 
+
 @dataclass
 class LeaderboardEntry:
     name: str
