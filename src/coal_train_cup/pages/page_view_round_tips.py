@@ -77,10 +77,10 @@ def page_view_round_tips() -> None:
             team_stats = team_stats.merge(round_results_df, on="team", how="left")
 
             # Create color map based on results
-            # Won: Green (#2ecc71)
-            # Lost: Red (#e74c3c)
-            # Draw: Yellow (#f1c40f)
-            color_map = {"Won": "#2ecc71", "Lost": "#e74c3c", "Draw": "#f1c40f"}
+            # Won: Mint/teal green (#00E5B4) from our theme
+            # Lost: Coral red (#F45866) that works with our theme
+            # Draw: Light purple (#9C6ADE) for neutral result that matches theme
+            color_map = {"Won": "#00E5B4", "Lost": "#F45866", "Draw": "#9C6ADE"}
             team_stats["color"] = team_stats["result"].map(color_map)
 
             # Calculate total winning and losing tips

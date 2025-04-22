@@ -24,12 +24,14 @@ def page_home() -> None:
     st.title("Welcome to the Coal Train Cup!")
     st.markdown("_version: 1.2.0_")
 
+    st.image("assets/brlogo.jpeg", width=300)
+
     st.markdown("---")
-    st.write("Total users: ", len(all_users()))
-    st.write("Total tips made: ", len(all_user_tips()))
+    st.markdown(f"<h3 style='color: white;'>Total users: <span style='color: #00E5B4;'>{len(all_users())}</span></h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='color: white;'>Total tips made: <span style='color: #00E5B4;'>{len(all_user_tips())}</span></h3>", unsafe_allow_html=True)
     st.markdown("---")
-    st.write("Total games: ", len(all_games()))
-    st.write("Total resulted games: ", int(len(all_game_results()) / 2))
+    st.markdown(f"<h3 style='color: white;'>Total games: <span style='color: #00E5B4;'>{len(all_games())}</span></h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='color: white;'>Total resulted games: <span style='color: #00E5B4;'>{int(len(all_game_results()) / 2)}</span></h3>", unsafe_allow_html=True)
     st.markdown("---")
 
 
