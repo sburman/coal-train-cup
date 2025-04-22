@@ -1,7 +1,7 @@
 import gspread
 import pandas as pd
-from typing import Any, Dict
-
+from typing import Any
+from coal_train_cup.models import UserTip
 from coal_train_cup.services.secrets import get_secrets
 
 
@@ -50,12 +50,23 @@ def get_worksheet_names(spreadsheet_name: str) -> list[str]:
 
 
 def append_row_to_worksheet(
-    row_data: Dict[str, Any],
+    tip: UserTip,
     spreadsheet_name: str,
     worksheet_name: str,
 ) -> None:
     headers = list(row_data.keys())
     row_values = [row_data[header] for header in headers]
+
+    row_data = {
+        "email": tip.email,
+        "username": tip.username,
+        "season": tip.season,
+        "round": tip.round,
+        "team": tip.team,
+        "opponent": tip.opponent,
+        "home": tip.home,
+        "tipped_at": tip.tipped_at.isoformat(),
+    }
 
     if not worksheet_exists(spreadsheet_name, worksheet_name):
         create_worksheet(spreadsheet_name, worksheet_name)
@@ -64,3 +75,28 @@ def append_row_to_worksheet(
 
     worksheet = get_worksheet(spreadsheet_name, worksheet_name)
     worksheet.append_row(row_values)
+
+
+def delete_user_tip_row(
+    spreadsheet_name: str,
+    worksheet_name: str,
+    tip: UserTip,
+) -> None:
+    worksheet = get_worksheet(spreadsheet_name, worksheet_name)
+    record_list = worksheet.get_all_records()
+
+    # Get the row index of the tip by matching the email, season, round, team, and opponent
+
+    for i, record in enumerate(record_list):
+        if (
+            record["email"] == tip.email
+            and record["season"] == tip.season
+            and record["round"] == tip.round
+            and record["team"] == tip.team
+            and record["opponent"] == tip.opponent
+        ):
+            worksheet.delete_rows(i + 2)  # +2 for header + 1-based indexing
+            print(f"Deleted row {i + 2} for {tip.email}")
+            break
+    else:
+        raise ValueError(f"Tip not found in worksheet {worksheet_name}")

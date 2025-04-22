@@ -1,12 +1,14 @@
 import streamlit as st
-import pandas as pd
 from coal_train_cup.models import User
 from coal_train_cup.services.data_store import all_users, all_user_tips, all_games
 from coal_train_cup.services.leaderboard_service import (
     get_full_results_dataframe,
 )
 from coal_train_cup.services.games_service import get_most_recent_closed_round
-import pytz
+from coal_train_cup.services.cleanup_service import (
+    display_remaining_duplicates,
+    cleanup_duplicates,
+)
 
 
 def page_view_user_tips() -> None:
@@ -81,40 +83,8 @@ def page_view_user_tips() -> None:
         st.subheader("Late tips?")
         st.write(invalid_tips)
 
-        # find duplicates by grouping by round and email and if size > 1
-        t_df = pd.DataFrame([t.model_dump() for t in t])
-        duplicates = t_df.groupby(["round", "email"]).size().reset_index(name="count")
-        duplicates = duplicates[duplicates["count"] > 1]
-        st.subheader("Duplicate tips?")
-        if len(duplicates) > 0:
-            duplicates_display = t_df[
-                t_df.duplicated(subset=["round", "email"], keep=False)
-            ]
-            duplicates_display = duplicates_display.sort_values(by="email")
-            # Convert UTC to Sydney time
-            duplicates_display["tipped_at_sydney_time"] = pd.to_datetime(
-                duplicates_display["tipped_at"]
-            ).dt.tz_convert("Australia/Sydney")
-            # Find matching games and add kickoff time
-            games = all_games()
-            duplicates_display["kickoff_time"] = duplicates_display.apply(
-                lambda row: next(
-                    (
-                        g.kickoff.astimezone(pytz.timezone("Australia/Sydney"))
-                        for g in games
-                        if g.season == row["season"]
-                        and g.round == row["round"]
-                        and (g.home_team == row["team"] or g.away_team == row["team"])
-                    ),
-                    None,
-                ),
-                axis=1,
-            )
-            duplicates_display = duplicates_display.drop(columns=["tipped_at"])
-
-            st.write(duplicates_display)
-        else:
-            st.write("No duplicates found")
+        display_remaining_duplicates(t)
+        cleanup_duplicates(t)
 
         if st.button("Clear Cache"):
             st.cache_data.clear()
