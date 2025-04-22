@@ -115,23 +115,12 @@ def make_tip(user: User, tip: Tip, tipped_at_time: datetime | None = None) -> Us
 
 
 def submit_tip(tip: UserTip) -> None:
-    tip_data = {
-        "email": tip.email,
-        "username": tip.username,
-        "season": tip.season,
-        "round": tip.round,
-        "team": tip.team,
-        "opponent": tip.opponent,
-        "home": tip.home,
-        "tipped_at": tip.tipped_at.isoformat(),
-    }
-
     # Create worksheet name based on season and round
     worksheet_name = f"Round {tip.round}"
 
     # Submit to Google Sheet
     append_row_to_worksheet(
-        row_data=tip_data,
+        tip=tip,
         spreadsheet_name="Coal Train Cup App 2025",
         worksheet_name=worksheet_name,
     )
