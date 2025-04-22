@@ -7,6 +7,7 @@ from coal_train_cup.services.data_store import (
 )
 import pandas as pd
 
+CACHE_TTL_SECONDS = 60 * 60 * 8  # 8 hours
 
 @dataclass
 class LeaderboardEntry:
@@ -24,7 +25,7 @@ class LeaderboardEntry:
         return self.correct * 2
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def build_full_results_dataframe() -> pd.DataFrame:
     all_users_df = pd.DataFrame([user.model_dump() for user in all_users()])
 
@@ -85,7 +86,7 @@ def get_full_results_dataframe(round: int | None) -> pd.DataFrame:
     return full_results_df
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def get_leaderboard_dataframe(round: int) -> pd.DataFrame:
     reduced_df = build_full_results_dataframe()
 

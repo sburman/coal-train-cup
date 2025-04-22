@@ -59,7 +59,11 @@ def page_view_user_tips() -> None:
     st.table(user_display_df)
 
     if user.email == "steven.burman@gmail.com":
-        st.write("Invalid tips:")
+        if st.button("Clear Cache"):
+            st.cache_data.clear()
+            st.success("Cache cleared!")
+
+        st.write("Invalid tips summary:")
         t = all_user_tips()
 
         # find invalid where tipped at is after the game kicked off
@@ -84,8 +88,8 @@ def page_view_user_tips() -> None:
         st.write(invalid_tips)
 
         display_remaining_duplicates(t)
-        cleanup_duplicates(t)
 
-        if st.button("Clear Cache"):
+        if st.button("Cleanup obvious duplicates"):
+            cleanup_duplicates(t)
             st.cache_data.clear()
-            st.success("Cache cleared!")
+            st.write("Obvious duplicates cleaned up. Cache forced clean.")

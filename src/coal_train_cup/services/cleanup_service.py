@@ -3,7 +3,7 @@ import pandas as pd
 from coal_train_cup.services.data_store import all_games
 from coal_train_cup.models import UserTip
 import pytz
-from coal_train_cup.services.sheets_service import delete_user_tip_row
+from coal_train_cup.services.sheets_service import delete_user_tips
 
 
 def display_remaining_duplicates(t: list[UserTip]) -> None:
@@ -58,19 +58,8 @@ def cleanup_duplicates(t: list[UserTip]) -> None:
     ]
 
     if len(candidates) > 0:
-        st.write("Candidates for deletion:")
-        st.write(candidates)
-
-        # Convert candidates DataFrame back to UserTip objects
         candidates_to_delete = [UserTip(**row) for _, row in candidates.iterrows()]
+        delete_user_tips(candidates_to_delete)
 
-        for tip in candidates_to_delete[:1]:  # test with 1 tip only
-            st.write(tip)
-            delete_user_tip_row(
-                spreadsheet_name="Coal Train Cup App 2025",
-                worksheet_name=f"Round {tip.round}",
-                tip=tip,
-            )
-            st.write(f"Deleted tip for {tip.email} in round {tip.round}")
     else:
         st.write("No duplicate tips found to clean up")

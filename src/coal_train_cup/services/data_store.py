@@ -14,30 +14,32 @@ from coal_train_cup.services.data_service_user_tips import (
 
 CURRENT_SEASON = 2025
 
+CACHE_TTL_SECONDS = 60 * 60 * 8  # 8 hours
 
-@st.cache_data
+
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_user_tips() -> list[UserTip]:
     return load_user_tips_from_sheets()
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_users() -> list[User]:
     return load_users_from_sheets()
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_games() -> list[Game]:
     nrl_api_games = get_latest_draw_from_nrl_api()
     save_games_to_sheets(nrl_api_games)
     return load_games_from_sheets()
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_teams() -> list[str]:
     return list(set([game.home_team for game in all_games()]))
 
 
-@st.cache_data
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_game_results() -> list[GameResult]:
     results = []
     for game in all_games():

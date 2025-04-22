@@ -54,9 +54,6 @@ def append_row_to_worksheet(
     spreadsheet_name: str,
     worksheet_name: str,
 ) -> None:
-    headers = list(row_data.keys())
-    row_values = [row_data[header] for header in headers]
-
     row_data = {
         "email": tip.email,
         "username": tip.username,
@@ -68,6 +65,9 @@ def append_row_to_worksheet(
         "tipped_at": tip.tipped_at.isoformat(),
     }
 
+    headers = list(row_data.keys())
+    row_values = [row_data[header] for header in headers]
+
     if not worksheet_exists(spreadsheet_name, worksheet_name):
         create_worksheet(spreadsheet_name, worksheet_name)
         worksheet = get_worksheet(spreadsheet_name, worksheet_name)
@@ -77,26 +77,47 @@ def append_row_to_worksheet(
     worksheet.append_row(row_values)
 
 
-def delete_user_tip_row(
-    spreadsheet_name: str,
-    worksheet_name: str,
-    tip: UserTip,
+def delete_user_tips(
+    tips: list[UserTip],
 ) -> None:
-    worksheet = get_worksheet(spreadsheet_name, worksheet_name)
+    if not tips:
+        raise ValueError("No tips to delete")
+
+    # Check all tips are for same round
+    first_round = tips[0].round
+    if not all(tip.round == first_round for tip in tips):
+        raise ValueError("All tips must be from the same round")
+
+    worksheet = get_worksheet("Coal Train Cup App 2025", f"Round {first_round}")
     record_list = worksheet.get_all_records()
 
-    # Get the row index of the tip by matching the email, season, round, team, and opponent
+    print("record count", len(record_list))
 
-    for i, record in enumerate(record_list):
-        if (
-            record["email"] == tip.email
-            and record["season"] == tip.season
-            and record["round"] == tip.round
-            and record["team"] == tip.team
-            and record["opponent"] == tip.opponent
-        ):
-            worksheet.delete_rows(i + 2)  # +2 for header + 1-based indexing
-            print(f"Deleted row {i + 2} for {tip.email}")
-            break
-    else:
-        raise ValueError(f"Tip not found in worksheet {worksheet_name}")
+    indexes = []
+    for tip in tips:
+        print("==============")
+        print("")
+        print(tip)
+        print("")
+        for i, record in enumerate(record_list):
+            if (
+                record["email"] == tip.email
+                and record["season"] == tip.season
+                and record["round"] == tip.round
+                and record["team"] == tip.team
+                and record["opponent"] == tip.opponent
+                and record["tipped_at"] == tip.tipped_at.isoformat()
+            ):
+                print("Deleting at index", i + 2)
+                print("")
+                print(record)
+                print("")
+                indexes.append(i + 2)  # +2 for header + 1-based indexing
+
+    if not indexes:
+        raise ValueError("No tips matched for deletion")
+
+    reversed_indexes = sorted(indexes, reverse=True)
+    for index in reversed_indexes:
+        print(f"Deleting row {index}")
+        worksheet.delete_rows(index)
