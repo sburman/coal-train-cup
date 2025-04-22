@@ -41,6 +41,7 @@ def main():
         page_title="Coal Train Cup",
         page_icon="🚂",
         layout="wide",
+        initial_sidebar_state="expanded",
     )
 
     pages = {
