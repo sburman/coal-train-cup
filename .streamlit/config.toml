@@ -24,10 +24,6 @@ gatherUsageStats = false
 [client]
 toolbarMode = "minimal"  # Hide developer tools and GitHub links
 
-[server]
-enableStaticServing = true  # Enable static file serving
-
 [ui]
 hideTopBar = true  # Hide the top bar
-hideFooter = true  # Hide the footer with "Hosted by Streamlit" and creator info
 
