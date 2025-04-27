@@ -21,6 +21,9 @@ def page_make_tip() -> None:
     current_round = get_current_tipping_round()
     st.header(f"Current round: {current_round}")
 
+    if current_round == 9:
+        st.warning("Reminder that home/away is not relevant for Magic Round.")
+
     email = st.text_input("Enter your email address")
 
     if email:
