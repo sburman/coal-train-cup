@@ -118,6 +118,6 @@ def page_make_tip() -> None:
                 st.info("Congratulations, you clicked the button. Now wait. You will see a confirmation message when the tip is finalised...")
                 user_tip = make_tip(user, tip)
                 submit_tip(user_tip)
-                st.success("✅ Tip submitted. Choo choo, conductor.")
+                st.success("✅ Tip submitted. Maybe this week _you_ will be the magic 🎩")
             except Exception as e:
                 st.error(f"❌ Could not submit tip: {e}")
