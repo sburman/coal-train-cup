@@ -21,9 +21,6 @@ def page_make_tip() -> None:
     current_round = get_current_tipping_round()
     st.header(f"Current round: {current_round}")
 
-    if current_round == 9:
-        st.warning("Reminder that home/away is not relevant for Magic Round.")
-
     email = st.text_input("Enter your email address")
 
     if email:
@@ -121,6 +118,6 @@ def page_make_tip() -> None:
                 st.info("Congratulations, you clicked the button. Now wait. You will see a confirmation message when the tip is finalised...")
                 user_tip = make_tip(user, tip)
                 submit_tip(user_tip)
-                st.success("✅ Tip submitted. Maybe this week _you_ will be the magic 🎩")
+                st.success("✅ Tip submitted. I'm proud of you.")
             except Exception as e:
                 st.error(f"❌ Could not submit tip: {e}")
