@@ -77,17 +77,22 @@ def __map_nrl_api_fixture_to_game(
     return game
 
 
-def get_latest_draw_from_nrl_api() -> list[Game]:
+def get_latest_draw_from_nrl_api(existing: list[Game], rounds_to_update: list[int] = []) -> list[Game]:
     """
     Scrape an online resource to create a list of Game objects.
     """
     season = 2025
-    season_games = []
-    for round_number in range(1, 28):
+    season_games = existing
+    lookup_rounds = rounds_to_update if rounds_to_update else range(1, 28)  # all rounds default
+    for round_number in lookup_rounds:
+        print(f"Loading round {round_number} from NRL API")
         fixtures = __load_fixtures_from_nrl_api(111, season, round_number)
-
+        # clear out any existing games for this round
+        season_games = [game for game in season_games if game.round != round_number]
         for fixture in fixtures:
             game = __map_nrl_api_fixture_to_game(fixture, season, round_number)
             season_games.append(game)
 
+    # sort the games by kickoff time
+    season_games.sort(key=lambda x: x.kickoff)
     return season_games

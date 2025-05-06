@@ -31,14 +31,8 @@ def get_game_results_for_round(round: int, season: int = 2025) -> list[GameResul
             games.append(game)
     return games
 
-
-def get_all_rounds_status(
-    season: int = 2025, at_time: datetime = datetime.now(timezone.utc)
-) -> dict[int, RoundStatus]:
-    """
-    Returns a dictionary of all rounds and their statuses for the given season.
-    """
-    games = all_games()
+def get_all_rounds_status_from_games(games: list[Game], at_time: datetime = datetime.now(timezone.utc)) -> dict[int, RoundStatus]:
+    
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:
@@ -51,13 +45,23 @@ def get_all_rounds_status(
             result[round] = RoundStatus.UPCOMING
 
     return result
+    
+
+def get_all_rounds_status(
+    at_time: datetime = datetime.now(timezone.utc)
+) -> dict[int, RoundStatus]:
+    """
+    Returns a dictionary of all rounds and their statuses for the given season.
+    """
+    games = all_games()
+    return get_all_rounds_status_from_games(games, at_time)
 
 
-def get_most_recent_closed_round(season: int = 2025) -> int:
+def get_most_recent_closed_round() -> int:
     """
     Returns the most recent closed round for the given season.
     """
-    round_statuses = get_all_rounds_status(season)
+    round_statuses = get_all_rounds_status()
     closed_rounds = [
         round
         for round, status in round_statuses.items()
