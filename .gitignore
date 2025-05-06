@@ -173,5 +173,7 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+archive/
+
 .streamlit/secrets.toml
 coal-train-cup-e5bc2171b118.json

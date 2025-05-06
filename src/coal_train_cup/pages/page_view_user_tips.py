@@ -1,14 +1,11 @@
 import streamlit as st
 from coal_train_cup.models import User
-from coal_train_cup.services.data_store import all_users, all_user_tips, all_games
+from coal_train_cup.services.data_store import all_users
 from coal_train_cup.services.leaderboard_service import (
     get_full_results_dataframe,
 )
 from coal_train_cup.services.games_service import get_most_recent_closed_round
-from coal_train_cup.services.cleanup_service import (
-    display_remaining_duplicates,
-    cleanup_duplicates,
-)
+from coal_train_cup.pages.section_admin import section_admin
 
 
 def page_view_user_tips() -> None:
@@ -59,37 +56,4 @@ def page_view_user_tips() -> None:
     st.table(user_display_df)
 
     if user.email == "steven.burman@gmail.com":
-        if st.button("Clear Cache"):
-            st.cache_data.clear()
-            st.success("Cache cleared!")
-
-        st.write("Invalid tips summary:")
-        t = all_user_tips()
-
-        # find invalid where tipped at is after the game kicked off
-        games = all_games()
-        invalid_tips = []
-        for tip in t:
-            # Find matching game
-            game = next(
-                (
-                    g
-                    for g in games
-                    if g.season == tip.season
-                    and g.round == tip.round
-                    and ((g.home_team == tip.team) or (g.away_team == tip.team))
-                ),
-                None,
-            )
-            if game and tip.tipped_at > game.kickoff:
-                invalid_tips.append(tip)
-
-        st.subheader("Late tips?")
-        st.write(invalid_tips)
-
-        display_remaining_duplicates(t)
-
-        if st.button("Cleanup obvious duplicates"):
-            cleanup_duplicates(t)
-            st.cache_data.clear()
-            st.write("Obvious duplicates cleaned up. Cache forced clean.")
+        section_admin()

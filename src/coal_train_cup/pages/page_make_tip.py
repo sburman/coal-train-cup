@@ -115,7 +115,9 @@ def page_make_tip() -> None:
 
         if st.button("Submit tip"):
             try:
-                st.info("Congratulations, you clicked the button. Now wait. You will see a confirmation message when the tip is finalised...")
+                st.info(
+                    "Congratulations, you clicked the button. Now wait. You will see a confirmation message when the tip is finalised..."
+                )
                 user_tip = make_tip(user, tip)
                 submit_tip(user_tip)
                 st.success("✅ Tip submitted. I'm proud of you.")

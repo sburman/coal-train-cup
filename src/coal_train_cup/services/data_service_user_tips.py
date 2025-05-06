@@ -1,5 +1,5 @@
 import pandas as pd
-
+import os
 from coal_train_cup.models import UserTip
 from coal_train_cup.services.sheets_service import (
     dataframe_to_worksheet,
@@ -8,6 +8,28 @@ from coal_train_cup.services.sheets_service import (
     create_worksheet,
     get_worksheet_names,
 )
+
+WORKSHEET_NAME = "Coal Train Cup App 2025"
+
+
+def get_local_archive_path(sheet_name: str) -> str:
+    return os.path.join(os.getcwd(), "archive", WORKSHEET_NAME, f"{sheet_name}.json")
+
+
+def local_archive_exists(sheet_name: str) -> tuple[bool, str]:
+    path = get_local_archive_path(sheet_name)
+    return os.path.exists(path), path
+
+
+def locally_archive_tips_for_round(round_number: int) -> None:
+    sheet_name = f"Round {round_number}"
+
+    # get the worksheet
+    worksheet_df = worksheet_to_dataframe(WORKSHEET_NAME, sheet_name)
+
+    file_path = get_local_archive_path(sheet_name)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    worksheet_df.to_json(file_path, orient="records")
 
 
 def save_user_tips_to_sheets(user_tips: list[UserTip]) -> None:
@@ -49,7 +71,14 @@ def load_user_tips_from_sheets() -> list[UserTip]:
 
     user_tips = []
     for sheet_name in round_worksheets:
-        if worksheet_exists("Coal Train Cup App 2025", sheet_name):
+        exists, path = local_archive_exists(sheet_name)
+        if exists:
+            print(f"Loading user tips from local archive: {path}")
+            df = pd.read_json(path)
+            for _, row in df.iterrows():
+                user_tips.append(UserTip(**row.to_dict()))
+        elif worksheet_exists("Coal Train Cup App 2025", sheet_name):
+            print(f"Loading user tips from Google Sheets: {sheet_name}")
             df = worksheet_to_dataframe("Coal Train Cup App 2025", sheet_name)
             for _, row in df.iterrows():
                 user_tips.append(UserTip(**row.to_dict()))
