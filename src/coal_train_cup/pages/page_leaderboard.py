@@ -27,10 +27,11 @@ def page_leaderboard() -> None:
 
     # Reset the index to convert MultiIndex to regular columns
     leaderboard_df = leaderboard_df.reset_index()
-    leaderboard_df = leaderboard_df[["username", "points", "margin"]]
+    leaderboard_df = leaderboard_df[["username", "tips_count", "points", "margin"]]
     leaderboard_df = leaderboard_df.rename(
         columns={
             "username": "Username",
+            "tips_count": "Tips made",
             "points": "Coal Train Cup points",
             "margin": "Accumulated margin",
         }

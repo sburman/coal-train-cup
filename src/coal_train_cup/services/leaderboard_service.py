@@ -99,7 +99,8 @@ def get_leaderboard_dataframe(round: int) -> pd.DataFrame:
         {
             "points": "sum",
             "margin": "sum",
+            "email": "count"
         }
-    )
+    ).rename(columns={"email": "tips_count"})
     reduced_df = reduced_df.sort_values(by=["points", "margin"], ascending=False)
     return reduced_df
