@@ -59,8 +59,10 @@ def __map_nrl_api_fixture_to_game(
     venue = f"{venue_name}, {city}"
 
     # Extract scores if available
-    home_score = home_team.get("teamFinalScore", None)
-    away_score = away_team.get("teamFinalScore", None)
+    state = fixture.get("gameStateName", "")
+    score_default = 0 if state == "Final" else None
+    home_score = home_team.get("teamFinalScore", score_default)
+    away_score = away_team.get("teamFinalScore", score_default)
 
     # Create a single Game object with home and away teams, venue, and scores
     game = Game(

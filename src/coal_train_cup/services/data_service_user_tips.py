@@ -83,5 +83,5 @@ def load_user_tips_from_sheets() -> list[UserTip]:
             for _, row in df.iterrows():
                 user_tips.append(UserTip(**row.to_dict()))
 
-    print(f"Loaded {len(user_tips)} user tips from Google Sheets")
+    print(f"Loaded {len(user_tips)} user tips from combined sources")
     return user_tips
