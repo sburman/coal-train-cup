@@ -48,9 +48,6 @@ def page_view_user_tips() -> None:
     )
     user_display_df.index.name = "Round"
 
-    result_total = user_display_df["Points"].sum()
-    margin_total = user_display_df["Margin"].sum()
-
     # Get count of home tips
     home_tips_count = user_display_df[
         (user_display_df["Venue"] == "Home") & 
