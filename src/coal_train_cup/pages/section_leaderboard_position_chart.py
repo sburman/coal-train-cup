@@ -3,6 +3,14 @@ import pandas as pd
 import altair as alt
 from coal_train_cup.services.leaderboard_service import get_leaderboard_dataframe
 
+# Centralized color map for result types
+RESULT_COLOR_MAP = {
+    "Win": "#00e6c3",   # Teal (matches pie chart for Win)
+    "Loss": "#ff6f6f",  # Red (matches pie chart for Loss)
+    "Draw": "#b388ff",  # Purple (matches pie chart for Draw)
+    "": "#b388ff"        # Default for missing/empty
+}
+
 
 def leaderboard_position_chart(user, user_display_df, max_round):
     positions = []
@@ -59,29 +67,45 @@ def leaderboard_position_chart(user, user_display_df, max_round):
             "Margin": margins,
         }
     )
-    chart = (
-        alt.Chart(pos_df)
-        .mark_line(point=True)
-        .encode(
-            x=alt.X(
-                "Round:O", axis=alt.Axis(title="Round", labelAngle=0, tickMinStep=1)
-            ),
-            y=alt.Y(
-                "Position:Q",
-                sort="descending",  # Flip so 1 is at the top
-                axis=alt.Axis(title="Position", format="d", tickMinStep=1),
-                scale=alt.Scale(reverse=True),  # This ensures 1 is at the top
-            ),
-            tooltip=[
-                "Round",
-                "Position",
-                "Team",
-                "Opponent",
-                "Venue",
-                "Result",
-                "Margin",
-            ],
-        )
-        .properties(height=400)
+    pos_df["Color"] = [RESULT_COLOR_MAP.get(r, "#b388ff") for r in results]
+
+    # Draw the main line in theme color, and overlay colored points for result
+    base = alt.Chart(pos_df)
+    line = base.mark_line(color=RESULT_COLOR_MAP["Draw"]).encode(
+        x=alt.X("Round:O", axis=alt.Axis(title="Round", labelAngle=0, tickMinStep=1)),
+        y=alt.Y(
+            "Position:Q",
+            sort="descending",
+            axis=alt.Axis(title="Position", format="d", tickMinStep=1),
+            scale=alt.Scale(reverse=True),
+        ),
+        tooltip=[
+            "Round",
+            "Position",
+            "Team",
+            "Opponent",
+            "Venue",
+            "Result",
+            "Margin",
+        ],
     )
+    points = base.mark_point(filled=True, size=100).encode(
+        x=alt.X("Round:O"),
+        y=alt.Y("Position:Q"),
+        color=alt.Color(
+            "Result:N",
+            scale=alt.Scale(domain=list(RESULT_COLOR_MAP.keys()), range=list(RESULT_COLOR_MAP.values())),
+            legend=None
+        ),
+        tooltip=[
+            "Round",
+            "Position",
+            "Team",
+            "Opponent",
+            "Venue",
+            "Result",
+            "Margin",
+        ],
+    )
+    chart = (line + points).properties(height=400)
     st.altair_chart(chart, use_container_width=True)
