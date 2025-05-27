@@ -64,6 +64,10 @@ def page_view_user_tips() -> None:
 
     # --- Leaderboard position chart ---
     positions = []
+    teams_tipped = []
+    results = []
+    margins = []
+    venues = []
     rounds = list(range(1, max_round + 1))
     for rnd in rounds:
         leaderboard_df = get_leaderboard_dataframe(rnd).reset_index()
@@ -73,8 +77,33 @@ def page_view_user_tips() -> None:
             positions.append(int(user_row["Position"].iloc[0]))
         else:
             positions.append(None)
-    st.subheader("Your leaderboard position by round")
-    pos_df = pd.DataFrame({"Round": rounds, "Position": positions})
+        # Get team tipped, result, margin, and venue for this round
+        tip_row = user_display_df.loc[user_display_df.index == rnd]
+        if not tip_row.empty:
+            teams_tipped.append(tip_row["Team"].iloc[0])
+            margin = tip_row["Margin"].iloc[0]
+            margins.append(margin)
+            venues.append(tip_row["Venue"].iloc[0])
+            if margin > 0:
+                results.append("Win")
+            elif margin == 0:
+                results.append("Draw")
+            else:
+                results.append("Loss")
+        else:
+            teams_tipped.append("")
+            results.append("")
+            margins.append("")
+            venues.append("")
+    st.subheader("Leaderboard position by round")
+    pos_df = pd.DataFrame({
+        "Round": rounds,
+        "Position": positions,
+        "Team": teams_tipped,
+        "Venue": venues,
+        "Result": results,
+        "Margin": margins
+    })
     chart = (
         alt.Chart(pos_df)
         .mark_line(point=True)
@@ -88,7 +117,7 @@ def page_view_user_tips() -> None:
                 axis=alt.Axis(title="Position", format="d", tickMinStep=1),
                 scale=alt.Scale(reverse=True),  # This ensures 1 is at the top
             ),
-            tooltip=["Round", "Position"],
+            tooltip=["Round", "Position", "Team", "Venue", "Result", "Margin"],
         )
         .properties(height=400)
     )
