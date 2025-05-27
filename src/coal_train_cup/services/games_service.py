@@ -31,8 +31,10 @@ def get_game_results_for_round(round: int, season: int = 2025) -> list[GameResul
             games.append(game)
     return games
 
-def get_all_rounds_status_from_games(games: list[Game], at_time: datetime = datetime.now(timezone.utc)) -> dict[int, RoundStatus]:
-    
+
+def get_all_rounds_status_from_games(
+    games: list[Game], at_time: datetime = datetime.now(timezone.utc)
+) -> dict[int, RoundStatus]:
     all_rounds = set(game.round for game in games)
     result = {}
     for round in all_rounds:
@@ -45,10 +47,10 @@ def get_all_rounds_status_from_games(games: list[Game], at_time: datetime = date
             result[round] = RoundStatus.UPCOMING
 
     return result
-    
+
 
 def get_all_rounds_status(
-    at_time: datetime = datetime.now(timezone.utc)
+    at_time: datetime = datetime.now(timezone.utc),
 ) -> dict[int, RoundStatus]:
     """
     Returns a dictionary of all rounds and their statuses for the given season.
