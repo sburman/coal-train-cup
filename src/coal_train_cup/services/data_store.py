@@ -17,10 +17,10 @@ CURRENT_SEASON = 2025
 
 CACHE_TTL_SECONDS = 60 * 60 * 8  # 8 hours
 
-def _round_needing_lookup(games: list[Game]) -> int:
 
+def _round_needing_lookup(games: list[Game]) -> int:
     at_time: datetime = datetime.now(timezone.utc)
-    
+
     all_rounds = set(game.round for game in games)
     closed = []
     for round in all_rounds:
@@ -45,7 +45,9 @@ def all_users() -> list[User]:
 def all_games() -> list[Game]:
     existing = load_games_from_sheets()
     latest_closed = _round_needing_lookup(existing)
-    nrl_api_games = get_latest_draw_from_nrl_api(existing, [latest_closed, latest_closed + 1])
+    nrl_api_games = get_latest_draw_from_nrl_api(
+        existing, [latest_closed, latest_closed + 1]
+    )
     save_games_to_sheets(nrl_api_games)
     return nrl_api_games
 

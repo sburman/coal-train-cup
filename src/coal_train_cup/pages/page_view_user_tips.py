@@ -7,6 +7,9 @@ from coal_train_cup.services.leaderboard_service import (
 )
 from coal_train_cup.services.games_service import get_most_recent_closed_round
 from coal_train_cup.pages.section_admin import section_admin
+from coal_train_cup.pages.section_leaderboard_position_chart import (
+    leaderboard_position_chart,
+)
 
 
 def page_view_user_tips() -> None:
@@ -17,7 +20,7 @@ def page_view_user_tips() -> None:
     results_df = get_full_results_dataframe(max_round)
     users = all_users()
     teams = all_teams()
-    
+
     user: User | None = None
     email = st.text_input("Enter your email address")
     if not email:
@@ -48,17 +51,18 @@ def page_view_user_tips() -> None:
     )
     user_display_df.index.name = "Round"
 
+    # --- Leaderboard position chart ---
+    leaderboard_position_chart(user, user_display_df, max_round)
+
     # Get count of home tips
     home_tips_count = user_display_df[
-        (user_display_df["Venue"] == "Home") & 
-        (user_display_df.index != 9)
+        (user_display_df["Venue"] == "Home") & (user_display_df.index != 9)
     ].shape[0]
     st.metric(label="Home tips used", value=f"{home_tips_count} / 13")
 
     # Get count of away tips
     away_tips_count = user_display_df[
-        (user_display_df["Venue"] == "Away") & 
-        (user_display_df.index != 9)
+        (user_display_df["Venue"] == "Away") & (user_display_df.index != 9)
     ].shape[0]
     st.metric(label="Away tips used", value=f"{away_tips_count} / 13")
 
@@ -67,9 +71,11 @@ def page_view_user_tips() -> None:
     team_summary = user_display_df.groupby("Team").size().reindex(t, fill_value=0)
     team_summary = team_summary.reset_index()
     team_summary.columns = ["Team", "Number of Tips"]
-    team_summary = team_summary.sort_values(["Number of Tips", "Team"], ascending=[False, True])
+    team_summary = team_summary.sort_values(
+        ["Number of Tips", "Team"], ascending=[False, True]
+    )
     team_summary = team_summary.set_index("Team")
-    
+
     st.subheader("Tips used by team")
     st.table(team_summary)
 
