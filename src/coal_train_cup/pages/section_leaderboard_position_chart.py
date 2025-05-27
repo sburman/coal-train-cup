@@ -26,7 +26,14 @@ def leaderboard_position_chart(user, user_display_df, max_round):
             teams_tipped.append(tip_row["Team"].iloc[0])
             opponents.append(tip_row["vs Opponent"].iloc[0])
             margin = tip_row["Margin"].iloc[0]
-            margins.append(margin)
+            # Ensure margin is always an int or None, never an empty string
+            if pd.isna(margin):
+                margins.append(None)
+            else:
+                try:
+                    margins.append(int(margin))
+                except Exception:
+                    margins.append(None)
             venues.append(tip_row["Venue"].iloc[0])
             if margin > 0:
                 results.append("Win")
@@ -38,7 +45,7 @@ def leaderboard_position_chart(user, user_display_df, max_round):
             teams_tipped.append("")
             opponents.append("")
             results.append("")
-            margins.append("")
+            margins.append(None)
             venues.append("")
     st.subheader("Leaderboard position by round")
     pos_df = pd.DataFrame(
@@ -78,4 +85,3 @@ def leaderboard_position_chart(user, user_display_df, max_round):
         .properties(height=400)
     )
     st.altair_chart(chart, use_container_width=True)
-    st.caption("Lower is better (1 = top)")
