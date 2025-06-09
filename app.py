@@ -22,7 +22,7 @@ LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
 
 def page_home() -> None:
     st.title("Welcome to the Coal Train Cup!")
-    st.markdown("_version: 1.14.2_")
+    st.markdown("_version: 1.15.1_")
 
     st.image("assets/brlogo.jpeg", width=300)
 
