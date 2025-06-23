@@ -22,21 +22,22 @@ LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
 
 def page_home() -> None:
     st.title("Welcome to the Coal Train Cup!")
-    st.markdown("_version: 1.17.2_")
-
+    
     st.image("assets/brlogo.jpeg", width=300)
 
-    st.header("Competition rules")
-
+    st.header("Weekly competition rules")
     st.markdown(
         """
         - Return to this site weekly to submit one tip per round
         - If you choose to submit again, your previous tip will be replaced
         - You can't tip _for_ the same team in consecutive rounds
         - You can't tip _against_ the same team in consecutive rounds
+        """
+    )
 
-        ### End of season compliance
-
+    st.header("End of season compliance")
+    st.markdown(
+        """
         After 27 rounds, you must have:
         - tipped 13 home teams and 13 away teams (magic round counts as neutral)
         - tipped every team at least once
@@ -63,6 +64,8 @@ def page_home() -> None:
         unsafe_allow_html=True,
     )
     st.markdown("---")
+    
+    st.caption("_version: 1.17.3_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
