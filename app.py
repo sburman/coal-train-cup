@@ -65,7 +65,7 @@ def page_home() -> None:
     )
     st.markdown("---")
     
-    st.caption("_version: 1.19.1_")
+    st.caption("_version: 1.20.1_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
