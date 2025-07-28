@@ -49,7 +49,7 @@ def page_make_tip() -> None:
             if not filtered_tips.empty:
                 previous_round_tip = filtered_tips.iloc[0]
 
-        unavailable_tips: dict[str, str] = {}
+        unavailable_tips: dict[str, list[str]] = {}
         current_round_tips = available_tips_for_round(current_round)
 
         if previous_round_tip is not None:
@@ -69,13 +69,27 @@ def page_make_tip() -> None:
             else:
                 st.write("It was a draw.")
 
-            unavailable_tips = {previous_round_tip.team: "Last round tip"}
+            if previous_round_tip.team not in unavailable_tips:
+                unavailable_tips[previous_round_tip.team] = []
+            unavailable_tips[previous_round_tip.team].append("Last round tip")
 
             for tip in current_round_tips.values():
                 if tip.opponent == previous_round_tip.opponent:
-                    unavailable_tips[tip.team] = (
+                    if tip.team not in unavailable_tips:
+                        unavailable_tips[tip.team] = []
+                    unavailable_tips[tip.team].append(
                         f"Playing last round tip's opponent {previous_round_tip.opponent}"
                     )
+
+            # Add teams that have been selected 3 or more times to unavailable_tips
+            max_tip_count_per_team = 3
+            if not user_results.empty:
+                team_counts = user_results['team'].value_counts()
+                for team, count in team_counts.items():
+                    if count >= max_tip_count_per_team:
+                        if team not in unavailable_tips:
+                            unavailable_tips[team] = []
+                        unavailable_tips[team].append(f"Team already tipped {count} times")
 
         else:
             st.write("No previous round tip found")
@@ -101,7 +115,7 @@ def page_make_tip() -> None:
 
         if unavailable_tips:
             unavailable_text = "This week you can't select:\n" + "\n".join(
-                [f"- {team} [{reason}]" for team, reason in unavailable_tips.items()]
+                [f"- {team} [{', '.join(reasons)}]" for team, reasons in unavailable_tips.items()]
             )
             st.info(unavailable_text)
 
