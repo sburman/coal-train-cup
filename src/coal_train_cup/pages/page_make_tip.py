@@ -91,6 +91,23 @@ def page_make_tip() -> None:
                             unavailable_tips[team] = []
                         unavailable_tips[team].append(f"Team already tipped {count} times")
 
+                # Add home/away team limit rule (13 each, excluding round 9)
+                non_round_9_results = user_results[user_results['round'] != 9]
+                home_tip_count = len(non_round_9_results[non_round_9_results['home'] == True])
+                away_tip_count = len(non_round_9_results[non_round_9_results['home'] == False])
+                
+                # Check each available tip against home/away limits
+                max_venue_count_per_team = 13
+                for team, tip in current_round_tips.items():
+                    if tip.home and home_tip_count >= max_venue_count_per_team:
+                        if team not in unavailable_tips:
+                            unavailable_tips[team] = []
+                        unavailable_tips[team].append(f"Already tipped {max_venue_count_per_team} home teams")
+                    elif not tip.home and away_tip_count >= max_venue_count_per_team:
+                        if team not in unavailable_tips:
+                            unavailable_tips[team] = []
+                        unavailable_tips[team].append(f"Already tipped {max_venue_count_per_team} away teams")
+
         else:
             st.write("No previous round tip found")
 
@@ -110,7 +127,7 @@ def page_make_tip() -> None:
         }
 
         if not current_round_tips:
-            st.warning("No tips available for this round. Round is closed.")
+            st.warning("No tips available for this round. Either the round is closed or you have no eligible tips remaining.")
             st.stop()
 
         if unavailable_tips:
