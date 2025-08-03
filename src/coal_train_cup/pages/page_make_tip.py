@@ -151,6 +151,6 @@ def page_make_tip() -> None:
                 )
                 user_tip = make_tip(user, tip)
                 submit_tip(user_tip)
-                st.success("✅ Tip submitted. The Penrith 5-peat induced depression is real. I've got no pith left to give.")
+                st.success("✅ Tip submitted. Claws... out?")
             except Exception as e:
                 st.error(f"❌ Could not submit tip: {e}")
