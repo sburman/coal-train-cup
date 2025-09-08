@@ -17,11 +17,15 @@ from coal_train_cup.services.data_store import (
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")  # ✏️
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="View user tips", icon="🗒️")
 VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="View round tips", icon="📊")
-LEADERBOARD_PAGE = st.Page(page_leaderboard, title="Leaderboard", icon="🏆")
+LEADERBOARD_PAGE = st.Page(page_leaderboard, title="2025 Final Leaderboard", icon="🏆")
 
 
 def page_home() -> None:
     st.title("Welcome to the Coal Train Cup!")
+
+    st.markdown("---")
+    st.header("Congrats to the 2025 Coal Train Cup winner... Paul Mac")
+    st.markdown("---")
     
     st.image("assets/brlogo.jpeg", width=300)
 
@@ -65,7 +69,7 @@ def page_home() -> None:
     )
     st.markdown("---")
     
-    st.caption("_version: 1.27.0_")
+    st.caption("_version: 2025.28.0_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
@@ -82,7 +86,7 @@ def main():
     pages = {
         "Coal Train Cup": [
             HOME_PAGE,
-            MAKE_TIP_PAGE,
+            # MAKE_TIP_PAGE,
             VIEW_USER_TIPS_PAGE,
             VIEW_ROUND_TIPS_PAGE,
             LEADERBOARD_PAGE,
