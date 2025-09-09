@@ -111,13 +111,16 @@ def __get_match_snapshot(match_id: str) -> dict[str, Any]:
         "Authorization": nrl_auth,
         "Content-Type": "application/json, charset=UTF-8",
     }
-    url = f"http://rugbyleague-api.stats.com/api/NRL/matchStatsAndEvents/{match_id}.json"
+    url = (
+        f"http://rugbyleague-api.stats.com/api/NRL/matchStatsAndEvents/{match_id}.json"
+    )
     r = requests.get(url, headers=service_headers, timeout=30)
     return r.json()
 
+
 def __extract_player_names_from_snapshot(snapshot: dict[str, Any]) -> list[str]:
     player_names = []
-    
+
     # Extract from gameStats.teams.teamsMatch
     if "gameStats" in snapshot and "teams" in snapshot["gameStats"]:
         teams = snapshot["gameStats"]["teams"]
@@ -125,30 +128,42 @@ def __extract_player_names_from_snapshot(snapshot: dict[str, Any]) -> list[str]:
             for team in teams["teamsMatch"]:
                 if "teamLineup" in team:
                     lineup = team["teamLineup"]
-                    
-                    # Extract from insAndOuts.inOut (player changes/lineup)
-                    if "insAndOuts" in lineup and "inOut" in lineup["insAndOuts"]:
-                        for player in lineup["insAndOuts"]["inOut"]:
-                            if "playerName" in player:
-                                player_names.append(player["playerName"])
-                    
+
+                    # # Extract from insAndOuts.inOut (player changes/lineup)
+                    # # this block allows some players to be loaded before team lists are out
+                    # if "insAndOuts" in lineup and "inOut" in lineup["insAndOuts"]:
+                    #     for player in lineup["insAndOuts"]["inOut"]:
+                    #         if "playerName" in player:
+                    #             player_names.append(player["playerName"])
+
                     # Extract from teamPlayer (main roster)
                     if "teamPlayer" in lineup:
                         for player in lineup["teamPlayer"]:
                             if "playerName" in player:
                                 player_names.append(player["playerName"])
-    
+
     return player_names
 
-def get_list_of_player_names_in_round(competition_id: int, season: int, round: int) -> list[str]:
 
+def get_list_of_player_names_in_round(
+    competition_id: int, season: int, round: int
+) -> list[str]:
     fixtures = __load_fixtures_from_nrl_api(competition_id, season, round)
     print(f"get_list_of_player_names_in_round :: Loaded {len(fixtures)} fixtures")
-    matches = [(fixture["gameId"], fixture["teams"][0]["teamName"], fixture["teams"][1]["teamName"]) for fixture in fixtures]
+    matches = [
+        (
+            fixture["gameId"],
+            fixture["teams"][0]["teamName"],
+            fixture["teams"][1]["teamName"],
+        )
+        for fixture in fixtures
+    ]
     all_players = []
     for match in matches:
-        snapshot = __get_match_snapshot(match[0])   
+        snapshot = __get_match_snapshot(match[0])
         players = __extract_player_names_from_snapshot(snapshot)
-        print(f"get_list_of_player_names_in_round :: Found {len(players)} players for match {match[0]} {match[1]} vs {match[2]}")
+        print(
+            f"get_list_of_player_names_in_round :: Found {len(players)} players for match {match[0]} {match[1]} vs {match[2]}"
+        )
         all_players.extend(players)
     return sorted(list(set(all_players)))

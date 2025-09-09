@@ -36,7 +36,6 @@ def page_home() -> None:
     st.markdown("Make your tip [here](/page_siliva_shield)")
     st.markdown("---")
 
-
     st.header("Coal Train Cup weekly competition rules")
     st.markdown(
         """
@@ -77,7 +76,7 @@ def page_home() -> None:
     )
     st.markdown("---")
 
-    st.caption("_version: 2025.28.2_")
+    st.caption("_version: 2025.28.3_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)

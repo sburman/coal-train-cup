@@ -95,12 +95,8 @@ def page_make_tip() -> None:
 
                 # Add home/away team limit rule (13 each, excluding round 9)
                 non_round_9_results = user_results[user_results["round"] != 9]
-                home_tip_count = len(
-                    non_round_9_results[non_round_9_results["home"] == True]
-                )
-                away_tip_count = len(
-                    non_round_9_results[non_round_9_results["home"] == False]
-                )
+                home_tip_count = len(non_round_9_results[non_round_9_results["home"]])
+                away_tip_count = len(non_round_9_results[~non_round_9_results["home"]])
 
                 # Check each available tip against home/away limits
                 max_venue_count_per_team = 13

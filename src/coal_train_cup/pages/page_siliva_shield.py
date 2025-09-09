@@ -44,11 +44,11 @@ def page_siliva_shield() -> None:
     selected_team = st.selectbox("Select a team", available_teams, index=None)
 
     tryscorer = st.selectbox(
-        "Select a tryscorer", 
-        all_players, 
+        "Select a tryscorer",
+        all_players,
         index=None,
         placeholder="Type player name to search...",
-        help="Start typing a player's name to filter the list"
+        help="Start typing a player's name to filter the list",
     )
 
     if st.button("Submit"):
