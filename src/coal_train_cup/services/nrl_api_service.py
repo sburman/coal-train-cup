@@ -102,3 +102,51 @@ def get_latest_draw_from_nrl_api(
     # sort the games by kickoff time
     season_games.sort(key=lambda x: x.kickoff)
     return season_games
+
+
+def __get_match_snapshot(match_id: str) -> dict[str, Any]:
+    secrets = get_secrets()
+    nrl_auth = secrets["connections"]["nrl"]["auth"]
+    service_headers = {
+        "Authorization": nrl_auth,
+        "Content-Type": "application/json, charset=UTF-8",
+    }
+    url = f"http://rugbyleague-api.stats.com/api/NRL/matchStatsAndEvents/{match_id}.json"
+    r = requests.get(url, headers=service_headers, timeout=30)
+    return r.json()
+
+def __extract_player_names_from_snapshot(snapshot: dict[str, Any]) -> list[str]:
+    player_names = []
+    
+    # Extract from gameStats.teams.teamsMatch
+    if "gameStats" in snapshot and "teams" in snapshot["gameStats"]:
+        teams = snapshot["gameStats"]["teams"]
+        if "teamsMatch" in teams:
+            for team in teams["teamsMatch"]:
+                if "teamLineup" in team:
+                    lineup = team["teamLineup"]
+                    
+                    # Extract from insAndOuts.inOut (player changes/lineup)
+                    if "insAndOuts" in lineup and "inOut" in lineup["insAndOuts"]:
+                        for player in lineup["insAndOuts"]["inOut"]:
+                            if "playerName" in player:
+                                player_names.append(player["playerName"])
+                    
+                    # Extract from teamPlayer (main roster)
+                    if "teamPlayer" in lineup:
+                        for player in lineup["teamPlayer"]:
+                            if "playerName" in player:
+                                player_names.append(player["playerName"])
+    
+    return player_names
+
+def get_list_of_player_names_in_round(competition_id: int, season: int, round: int) -> list[str]:
+
+    fixtures = __load_fixtures_from_nrl_api(competition_id, season, round)
+    match_ids = list(set([fixture["gameId"] for fixture in fixtures]))
+    all_players = []
+    for match_id in match_ids:
+        snapshot = __get_match_snapshot(match_id)   
+        players = __extract_player_names_from_snapshot(snapshot)
+        all_players.extend(players)
+    return sorted(list(set(all_players)))

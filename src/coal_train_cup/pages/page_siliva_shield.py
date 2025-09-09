@@ -3,6 +3,7 @@ from coal_train_cup.services.shield_tipping_service import (
     make_shield_tip,
     submit_shield_tip,
 )
+from coal_train_cup.services.data_store import all_players_in_round
 
 
 def page_siliva_shield() -> None:
@@ -36,11 +37,19 @@ def page_siliva_shield() -> None:
         "Brisbane Broncos",
     ]
 
+    all_players = all_players_in_round(THIS_WEEK)
+
     email = st.text_input("Enter your email address")
 
     selected_team = st.selectbox("Select a team", available_teams, index=None)
 
-    tryscorer = st.text_input("Enter a tryscorer")
+    tryscorer = st.selectbox(
+        "Select a tryscorer", 
+        all_players, 
+        index=None,
+        placeholder="Type player name to search...",
+        help="Start typing a player's name to filter the list"
+    )
 
     if st.button("Submit"):
         if not email:

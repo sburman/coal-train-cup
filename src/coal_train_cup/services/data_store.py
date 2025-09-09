@@ -1,7 +1,7 @@
 import streamlit as st
 from datetime import datetime, timezone
 from coal_train_cup.models import User, Game, UserTip, GameResult
-from coal_train_cup.services.nrl_api_service import get_latest_draw_from_nrl_api
+from coal_train_cup.services.nrl_api_service import get_latest_draw_from_nrl_api, get_list_of_player_names_in_round
 from coal_train_cup.services.data_service_games import (
     load_games_from_sheets,
     save_games_to_sheets,
@@ -55,6 +55,11 @@ def all_games() -> list[Game]:
 @st.cache_data(ttl=CACHE_TTL_SECONDS)
 def all_teams() -> list[str]:
     return list(set([game.home_team for game in all_games()]))
+
+
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
+def all_players_in_round(round: int, competition_id: int = 111, season: int = 2025) -> list[str]:
+    return get_list_of_player_names_in_round(competition_id, season, round)
 
 
 @st.cache_data(ttl=CACHE_TTL_SECONDS)
