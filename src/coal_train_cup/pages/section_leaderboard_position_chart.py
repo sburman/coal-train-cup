@@ -5,10 +5,10 @@ from coal_train_cup.services.leaderboard_service import get_leaderboard_datafram
 
 # Centralized color map for result types
 RESULT_COLOR_MAP = {
-    "Win": "#00e6c3",   # Teal (matches pie chart for Win)
+    "Win": "#00e6c3",  # Teal (matches pie chart for Win)
     "Loss": "#ff6f6f",  # Red (matches pie chart for Loss)
     "Draw": "#b388ff",  # Purple (matches pie chart for Draw)
-    "": "#b388ff"        # Default for missing/empty
+    "": "#b388ff",  # Default for missing/empty
 }
 
 
@@ -94,8 +94,11 @@ def leaderboard_position_chart(user, user_display_df, max_round):
         y=alt.Y("Position:Q"),
         color=alt.Color(
             "Result:N",
-            scale=alt.Scale(domain=list(RESULT_COLOR_MAP.keys()), range=list(RESULT_COLOR_MAP.values())),
-            legend=None
+            scale=alt.Scale(
+                domain=list(RESULT_COLOR_MAP.keys()),
+                range=list(RESULT_COLOR_MAP.values()),
+            ),
+            legend=None,
         ),
         tooltip=[
             "Round",

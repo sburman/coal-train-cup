@@ -17,18 +17,22 @@ from coal_train_cup.services.data_store import (
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")  # ✏️
 VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="2025 tips by user", icon="🗒️")
-VIEW_ROUND_TIPS_PAGE = st.Page(page_view_round_tips, title="2025 tips by round", icon="📊")
+VIEW_ROUND_TIPS_PAGE = st.Page(
+    page_view_round_tips, title="2025 tips by round", icon="📊"
+)
 LEADERBOARD_PAGE = st.Page(page_leaderboard, title="2025 Final Leaderboard", icon="🏆")
 SILIVA_SHIELD_PAGE = st.Page(page_siliva_shield, title="Siliva Shield", icon="🛡️")
 
 
-
 def page_home() -> None:
-
     st.markdown("---")
     st.header("Congrats to the 2025 Coal Train Cup winner... Paul Mac")
     st.markdown("---")
-    
+
+    st.header("🛡️ 2025 Siliva Shield")
+    st.markdown("Make your tip [here](/page_siliva_shield)")
+    st.markdown("---")
+
     st.image("assets/brlogo.jpeg", width=300)
 
     st.header("Weekly competition rules")
@@ -70,7 +74,7 @@ def page_home() -> None:
         unsafe_allow_html=True,
     )
     st.markdown("---")
-    
+
     st.caption("_version: 2025.28.0_")
 
 

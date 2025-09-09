@@ -1,7 +1,7 @@
 import gspread
 import pandas as pd
 from typing import Any
-from coal_train_cup.models import UserTip
+from coal_train_cup.models import UserTip, UserShieldTip
 from coal_train_cup.services.secrets import get_secrets
 
 
@@ -62,6 +62,32 @@ def append_row_to_worksheet(
         "team": tip.team,
         "opponent": tip.opponent,
         "home": tip.home,
+        "tipped_at": tip.tipped_at.isoformat(),
+    }
+
+    headers = list(row_data.keys())
+    row_values = [row_data[header] for header in headers]
+
+    if not worksheet_exists(spreadsheet_name, worksheet_name):
+        create_worksheet(spreadsheet_name, worksheet_name)
+        worksheet = get_worksheet(spreadsheet_name, worksheet_name)
+        worksheet.append_row(headers)
+
+    worksheet = get_worksheet(spreadsheet_name, worksheet_name)
+    worksheet.append_row(row_values)
+
+
+def append_shield_row_to_worksheet(
+    tip: UserShieldTip,
+    spreadsheet_name: str,
+    worksheet_name: str,
+) -> None:
+    row_data = {
+        "email": tip.email,
+        "season": tip.season,
+        "round": tip.round,
+        "team": tip.team,
+        "tryscorer": tip.tryscorer,
         "tipped_at": tip.tipped_at.isoformat(),
     }
 

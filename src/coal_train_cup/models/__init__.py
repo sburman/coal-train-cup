@@ -37,6 +37,15 @@ class User(BaseModel):
     pin: str = Field(default_factory=_generate_pin)
 
 
+class UserShieldTip(BaseModel):
+    email: EmailStr
+    season: int
+    round: int
+    team: str
+    tryscorer: str
+    tipped_at: datetime = datetime.now(timezone.utc)
+
+
 class UserTip(BaseModel):
     email: EmailStr
     username: str
