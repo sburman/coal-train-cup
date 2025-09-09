@@ -15,6 +15,16 @@ def page_siliva_shield() -> None:
     st.title("🛡️ Siliva Shield")
     st.header("Finals Week 1")
 
+    st.markdown("""
+        Rules:
+        - Submit 1 team that you think will win this weekend
+        - Submit 1 player as a tryscorer for this weekend
+        
+        *IMPORTANT*
+        - You can't repeat a team or tryscorer selection throught the entire finals... choose wisely!
+    """)
+    st.markdown("---")
+
     available_teams = [
         "Melbourne Storm",
         "Canterbury-Bankstown Bulldogs",

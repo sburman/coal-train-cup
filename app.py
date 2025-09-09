@@ -26,7 +26,8 @@ SILIVA_SHIELD_PAGE = st.Page(page_siliva_shield, title="Siliva Shield", icon="�
 
 def page_home() -> None:
     st.markdown("---")
-    st.header("Congrats to the 2025 Coal Train Cup winner... Paul Mac")
+    st.markdown("Congrats to the 2025 Coal Train Cup winner!")
+    st.header("Paul Mac 🏆")
     st.markdown("---")
 
     st.header("🛡️ 2025 Siliva Shield")
