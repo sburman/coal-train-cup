@@ -57,7 +57,7 @@ def all_teams() -> list[str]:
     return list(set([game.home_team for game in all_games()]))
 
 
-@st.cache_data(ttl=CACHE_TTL_SECONDS)
+@st.cache_data(ttl=600)
 def all_players_in_round(round: int, competition_id: int = 111, season: int = 2025) -> list[str]:
     return get_list_of_player_names_in_round(competition_id, season, round)
 
