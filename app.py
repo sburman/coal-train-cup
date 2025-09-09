@@ -25,18 +25,19 @@ SILIVA_SHIELD_PAGE = st.Page(page_siliva_shield, title="Siliva Shield", icon="�
 
 
 def page_home() -> None:
+    st.image("assets/brlogo.jpeg", width=300)
+
     st.markdown("---")
     st.markdown("Congrats to the 2025 Coal Train Cup winner!")
-    st.header("Paul Mac 🏆")
+    st.header("🏆 Paul Mac")
     st.markdown("---")
 
     st.header("🛡️ 2025 Siliva Shield")
     st.markdown("Make your tip [here](/page_siliva_shield)")
     st.markdown("---")
 
-    st.image("assets/brlogo.jpeg", width=300)
 
-    st.header("Weekly competition rules")
+    st.header("Coal Train Cup weekly competition rules")
     st.markdown(
         """
         - Return to this site weekly to submit one tip per round

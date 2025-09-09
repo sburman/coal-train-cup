@@ -20,7 +20,7 @@ def make_shield_tip(
 
 def submit_shield_tip(tip: UserShieldTip) -> None:
     # Create worksheet name based on season and round
-    worksheet_name = f"Round {tip.round}"
+    worksheet_name = f"Shield Round {tip.round}"
 
     # Submit to Google Sheet
     append_shield_row_to_worksheet(
