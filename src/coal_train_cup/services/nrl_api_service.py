@@ -143,10 +143,12 @@ def __extract_player_names_from_snapshot(snapshot: dict[str, Any]) -> list[str]:
 def get_list_of_player_names_in_round(competition_id: int, season: int, round: int) -> list[str]:
 
     fixtures = __load_fixtures_from_nrl_api(competition_id, season, round)
-    match_ids = list(set([fixture["gameId"] for fixture in fixtures]))
+    print(f"get_list_of_player_names_in_round :: Loaded {len(fixtures)} fixtures")
+    matches = [(fixture["gameId"], fixture["teams"][0]["teamName"], fixture["teams"][1]["teamName"]) for fixture in fixtures]
     all_players = []
-    for match_id in match_ids:
-        snapshot = __get_match_snapshot(match_id)   
+    for match in matches:
+        snapshot = __get_match_snapshot(match[0])   
         players = __extract_player_names_from_snapshot(snapshot)
+        print(f"get_list_of_player_names_in_round :: Found {len(players)} players for match {match[0]} {match[1]} vs {match[2]}")
         all_players.extend(players)
     return sorted(list(set(all_players)))
