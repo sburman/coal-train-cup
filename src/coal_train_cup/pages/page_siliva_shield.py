@@ -33,10 +33,10 @@ def page_siliva_shield() -> None:
     Page for viewing the Siliva Shield.
     """
 
-    THIS_WEEK = 29
+    THIS_WEEK = 30
 
     st.title("🛡️ Siliva Shield")
-    st.header("Finals Week 2")
+    st.header("Finals Week 3")
 
     st.markdown("""
         Rules:
@@ -49,15 +49,15 @@ def page_siliva_shield() -> None:
     st.markdown("---")
 
     available_teams = [
-        # "Melbourne Storm",
-        "Canterbury-Bankstown Bulldogs",
+        "Melbourne Storm",
         "Penrith Panthers",
         "Cronulla-Sutherland Sharks",
-        "Canberra Raiders",
-        # "Brisbane Broncos",
+        "Brisbane Broncos",
     ]
 
     all_players = all_players_in_round(THIS_WEEK)
+    
+    earlier_winners = __last_round_winners(28)
     last_round_winners = __last_round_winners(THIS_WEEK - 1)
 
     email = st.text_input("Enter your email address")
@@ -71,10 +71,25 @@ def page_siliva_shield() -> None:
     
         last_weeks_selection = user_last_round_winners[0]
         st.success(f"🎉 Congratulations! You were a winner last round tipping {last_weeks_selection.team} and {last_weeks_selection.tryscorer}.")
-        st.info(f"Remember, you can't repeat a team or tryscorer selection so those options are not available to you this week.")
 
-        available_teams = [team for team in available_teams if team != last_weeks_selection.team]
-        all_players = [player for player in all_players if player != last_weeks_selection.tryscorer]
+        unavailable_teams = [last_weeks_selection.team]
+        unavailable_tryscorers = [last_weeks_selection.tryscorer]
+
+        earlier_selections = [w for w in earlier_winners if w.email == email]
+        if earlier_selections:
+            for selection in earlier_selections:
+                unavailable_teams.append(selection.team)
+                unavailable_tryscorers.append(selection.tryscorer)
+
+        st.info(f"""Remember, you can't repeat a team or tryscorer selection so those options are not available to you this week.
+        
+        You have already selected:
+        - {", ".join(unavailable_teams)}
+        - {", ".join(unavailable_tryscorers)}
+        """)
+        
+        available_teams = [team for team in available_teams if team not in unavailable_teams]
+        all_players = [player for player in all_players if player not in unavailable_tryscorers]
 
         selected_team = st.selectbox("Select a team", available_teams, index=None)
 
