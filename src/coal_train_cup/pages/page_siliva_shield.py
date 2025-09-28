@@ -93,8 +93,6 @@ def page_siliva_shield() -> None:
 
         selected_team = st.selectbox("Select a team", available_teams, index=None)
 
-        all_players = ["Test Player"]
-
         tryscorer = st.selectbox(
             "Select a tryscorer",
             all_players,
