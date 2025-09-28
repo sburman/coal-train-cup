@@ -40,7 +40,7 @@ def get_round_try_scorers(round: int, season: int = 2025) -> list[str]:
 
 if __name__ == "__main__":
 
-    round = 29
+    round = 30
 
     print("==========================")
     print("")

@@ -43,6 +43,7 @@ class UserShieldTip(BaseModel):
     round: int
     team: str
     tryscorer: str
+    match_total: int | None = None
     tipped_at: datetime = datetime.now(timezone.utc)
 
 

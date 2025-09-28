@@ -88,6 +88,7 @@ def append_shield_row_to_worksheet(
         "round": tip.round,
         "team": tip.team,
         "tryscorer": tip.tryscorer,
+        "match_total": tip.match_total,
         "tipped_at": tip.tipped_at.isoformat(),
     }
 

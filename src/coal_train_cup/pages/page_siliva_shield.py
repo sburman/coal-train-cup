@@ -33,10 +33,10 @@ def page_siliva_shield() -> None:
     Page for viewing the Siliva Shield.
     """
 
-    THIS_WEEK = 30
+    THIS_WEEK = 31
 
     st.title("🛡️ Siliva Shield")
-    st.header("Finals Week 3")
+    st.header("Finals Week 4")
 
     st.markdown("""
         Rules:
@@ -50,16 +50,16 @@ def page_siliva_shield() -> None:
 
     available_teams = [
         "Melbourne Storm",
-        "Penrith Panthers",
-        "Cronulla-Sutherland Sharks",
         "Brisbane Broncos",
     ]
 
     all_players = all_players_in_round(THIS_WEEK)
     
     earlier_winners = __last_round_winners(28)
-    last_round_winners = __last_round_winners(THIS_WEEK - 1)
+    earlier_winners.extend(__last_round_winners(29))
 
+    last_round_winners = __last_round_winners(30)
+    
     email = st.text_input("Enter your email address")
     last_weeks_selection = None
 
@@ -93,6 +93,8 @@ def page_siliva_shield() -> None:
 
         selected_team = st.selectbox("Select a team", available_teams, index=None)
 
+        all_players = ["Test Player"]
+
         tryscorer = st.selectbox(
             "Select a tryscorer",
             all_players,
@@ -100,6 +102,15 @@ def page_siliva_shield() -> None:
             placeholder="Type player name to search...",
             help="Start typing a player's name to filter the list",
         )
+
+        if THIS_WEEK == 31:
+            total = st.number_input("Match points total", min_value=0, max_value=100, value=None)
+            if total:
+                match_total = int(total)
+            else:
+                match_total = None
+        else:
+            match_total = None
 
         if st.button("Submit"):
             if not email:
@@ -111,12 +122,15 @@ def page_siliva_shield() -> None:
             if not tryscorer:
                 st.error("Please enter a tryscorer")
                 st.stop()
+            if THIS_WEEK == 31 and not match_total:
+                st.error("Please enter a match points total")
+                st.stop()
 
             try:
                 st.info(
                     "Congratulations, you clicked the button. Now wait. You will see a confirmation message when the tip is finalised..."
                 )
-                user_tip = make_shield_tip(email, selected_team, tryscorer, THIS_WEEK)
+                user_tip = make_shield_tip(email, selected_team, tryscorer, THIS_WEEK, match_total)
                 submit_shield_tip(user_tip)
                 st.success("✅ Siliva Shield tip submitted.")
             except Exception as e:
