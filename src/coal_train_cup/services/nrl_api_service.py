@@ -91,6 +91,11 @@ def get_latest_draw_from_nrl_api(
         rounds_to_update if rounds_to_update else range(1, 28)
     )  # all rounds default
     for round_number in lookup_rounds:
+        
+        if round_number > 31:
+            print(f"SKIPPING loading round {round_number} from NRL API")
+            continue
+
         print(f"Loading round {round_number} from NRL API")
         fixtures = __load_fixtures_from_nrl_api(111, season, round_number)
         # clear out any existing games for this round

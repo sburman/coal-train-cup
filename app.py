@@ -30,10 +30,11 @@ def page_home() -> None:
     st.markdown("---")
     st.markdown("Congrats to the 2025 Coal Train Cup winner!")
     st.header("🏆 Paul Mac")
+
     st.markdown("---")
 
-    st.header("🛡️ 2025 Siliva Shield")
-    st.markdown("Make your tip [here](/page_siliva_shield)")
+    st.markdown("Congrats to the 2025 Siliva Shield winner!")
+    st.header("🛡️ Kyle (damiencooked)")
     st.markdown("---")
 
     st.header("Coal Train Cup weekly competition rules")
@@ -76,7 +77,7 @@ def page_home() -> None:
     )
     st.markdown("---")
 
-    st.caption("_version: 2025.31.1_")
+    st.caption("_version: 2025.52.0_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
@@ -97,7 +98,7 @@ def main():
             LEADERBOARD_PAGE,
             VIEW_USER_TIPS_PAGE,
             VIEW_ROUND_TIPS_PAGE,
-            SILIVA_SHIELD_PAGE,
+            # SILIVA_SHIELD_PAGE,
         ]
     }
 
