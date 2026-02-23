@@ -5,6 +5,7 @@ from coal_train_cup.pages import (
     page_view_user_tips,
     page_view_round_tips,
     page_leaderboard,
+    page_leaderboard_2025,
     page_siliva_shield,
 )
 
@@ -16,16 +17,18 @@ from coal_train_cup.services.data_store import (
 )
 
 MAKE_TIP_PAGE = st.Page(page_make_tip, title="Make a tip", icon="✏️")  # ✏️
-VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="2025 tips by user", icon="🗒️")
+VIEW_USER_TIPS_PAGE = st.Page(page_view_user_tips, title="2026 tips by user", icon="🗒️")
 VIEW_ROUND_TIPS_PAGE = st.Page(
-    page_view_round_tips, title="2025 tips by round", icon="📊"
+    page_view_round_tips, title="2026 tips by round", icon="📊"
 )
-LEADERBOARD_PAGE = st.Page(page_leaderboard, title="2025 Final Leaderboard", icon="🏆")
+LEADERBOARD_PAGE = st.Page(page_leaderboard, title="2026 Leaderboard", icon="🏆")
+LEADERBOARD_2025_PAGE = st.Page(page_leaderboard_2025, title="2025 Results", icon="📜")
 SILIVA_SHIELD_PAGE = st.Page(page_siliva_shield, title="Siliva Shield", icon="🛡️")
 
 
 def page_home() -> None:
     st.image("assets/brlogo.jpeg", width=300)
+    st.markdown("<em style='color: white;'>Join the [patreon](https://www.patreon.com/nrlboomrookies), to access the competition!</em>", unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("Congrats to the 2025 Coal Train Cup winner!")
@@ -68,16 +71,16 @@ def page_home() -> None:
     )
     st.markdown("---")
     st.markdown(
-        f"<h3 style='color: white;'>Total games: <span style='color: #00E5B4;'>{len(all_games())}</span></h3>",
+        f"<h3 style='color: white;'>2026 games loaded: <span style='color: #00E5B4;'>{len(all_games())}</span></h3>",
         unsafe_allow_html=True,
     )
     st.markdown(
-        f"<h3 style='color: white;'>Total resulted games: <span style='color: #00E5B4;'>{int(len(all_game_results()) / 2)}</span></h3>",
+        f"<h3 style='color: white;'>2026 resulted games: <span style='color: #00E5B4;'>{int(len(all_game_results()) / 2)}</span></h3>",
         unsafe_allow_html=True,
     )
     st.markdown("---")
 
-    st.caption("_version: 2025.52.0_")
+    st.caption("_version: 2026.1.0_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
@@ -94,11 +97,12 @@ def main():
     pages = {
         "Coal Train Cup": [
             HOME_PAGE,
-            # MAKE_TIP_PAGE,
-            LEADERBOARD_PAGE,
-            VIEW_USER_TIPS_PAGE,
-            VIEW_ROUND_TIPS_PAGE,
+            MAKE_TIP_PAGE,
+            # LEADERBOARD_PAGE,
+            # VIEW_USER_TIPS_PAGE,
+            # VIEW_ROUND_TIPS_PAGE,
             # SILIVA_SHIELD_PAGE,
+            LEADERBOARD_2025_PAGE,
         ]
     }
 

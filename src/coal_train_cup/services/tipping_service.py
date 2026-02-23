@@ -5,6 +5,7 @@ from coal_train_cup.models import User, UserTip, Tip
 from coal_train_cup.services.data_store import all_user_tips
 from coal_train_cup.services.games_service import get_games_for_round
 from coal_train_cup.services.sheets_service import append_row_to_worksheet
+from coal_train_cup.constants import CURRENT_SEASON, SPREADSHEET_NAME
 
 
 # enum for round status
@@ -15,7 +16,7 @@ class RoundStatus(StrEnum):
 
 
 def get_all_rounds_status(
-    season: int = 2025, at_time: datetime = datetime.now(timezone.utc)
+    season: int = CURRENT_SEASON, at_time: datetime = datetime.now(timezone.utc)
 ) -> dict[int, RoundStatus]:
     """
     Returns a dictionary of all rounds and their statuses for the given season.
@@ -38,24 +39,23 @@ def get_all_rounds_status(
     return result
 
 
-def get_current_tipping_round(season: int = 2025) -> int:
+def get_current_tipping_round(season: int = CURRENT_SEASON) -> int:
     current_round_statuses = get_all_rounds_status(season)
-    max_closed_round = max(
+    closed_rounds = [
         round
         for round, status in current_round_statuses.items()
         if status == RoundStatus.CLOSED
-    )
-    if not max_closed_round:
-        return 1
-    else:
-        return max_closed_round + 1
+    ]
+    if not closed_rounds:
+        return 1  # No rounds closed yet (start of season) - current round is 1
+    return max(closed_rounds) + 1
 
 
 if __name__ == "__main__":
     print(get_all_rounds_status())
 
 
-def available_tips_for_round(round: int, season: int = 2025) -> dict[str, Tip]:
+def available_tips_for_round(round: int, season: int = CURRENT_SEASON) -> dict[str, Tip]:
     """
     Returns a list of available tips for the given round.
     """
@@ -121,6 +121,6 @@ def submit_tip(tip: UserTip) -> None:
     # Submit to Google Sheet
     append_row_to_worksheet(
         tip=tip,
-        spreadsheet_name="Coal Train Cup App 2025",
+        spreadsheet_name=SPREADSHEET_NAME,
         worksheet_name=worksheet_name,
     )

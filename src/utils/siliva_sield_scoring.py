@@ -3,9 +3,10 @@ from coal_train_cup.services.sheets_service import (
     dataframe_to_worksheet,
     worksheet_to_dataframe,
 )
+from coal_train_cup.constants import CURRENT_SEASON, SPREADSHEET_NAME
 import pandas as pd
 
-def get_round_team_winners(round: int, season: int = 2025) -> list[str]:
+def get_round_team_winners(round: int, season: int = CURRENT_SEASON) -> list[str]:
     fixtures = __load_fixtures_from_nrl_api(111, season, round)
     game_ids = [fixture["gameId"] for fixture in fixtures]
     winners = []
@@ -18,7 +19,7 @@ def get_round_team_winners(round: int, season: int = 2025) -> list[str]:
 
     return winners
 
-def get_round_try_scorers(round: int, season: int = 2025) -> list[str]:
+def get_round_try_scorers(round: int, season: int = CURRENT_SEASON) -> list[str]:
     fixtures = __load_fixtures_from_nrl_api(111, season, round)
     game_ids = [fixture["gameId"] for fixture in fixtures]
     try_scorers = []
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     print(try_scorers)
     print("==========================")
 
-    df: pd.DataFrame = worksheet_to_dataframe("Coal Train Cup App 2025", f"Shield Round {round}")
+    df: pd.DataFrame = worksheet_to_dataframe(SPREADSHEET_NAME, f"Shield Round {round}")
     print(df.shape)
 
     # Filter DataFrame to keep only rows where team is in team_winners
@@ -75,7 +76,7 @@ if __name__ == "__main__":
     if len(duplicate_emails) > 0:
         raise Exception(f"Found duplicate emails: {duplicate_emails.to_dict()}")
 
-    workbook_name = "Coal Train Cup App 2025"
+    workbook_name = SPREADSHEET_NAME
     winners_sheet_name = f"Winners - Shield Round {round}"
 
     # print a blank dataframe to the winners sheet to clear it

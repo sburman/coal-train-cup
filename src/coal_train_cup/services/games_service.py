@@ -2,6 +2,7 @@ from enum import StrEnum
 from datetime import datetime, timezone
 from coal_train_cup.services.data_store import all_games, all_game_results
 from coal_train_cup.models import Game, GameResult
+from coal_train_cup.constants import CURRENT_SEASON
 
 
 class RoundStatus(StrEnum):
@@ -10,7 +11,7 @@ class RoundStatus(StrEnum):
     CLOSED = "closed"
 
 
-def get_games_for_round(round: int, season: int = 2025) -> list[Game]:
+def get_games_for_round(round: int, season: int = CURRENT_SEASON) -> list[Game]:
     """
     Returns a list of games for the given round.
     """
@@ -21,7 +22,7 @@ def get_games_for_round(round: int, season: int = 2025) -> list[Game]:
     return games
 
 
-def get_game_results_for_round(round: int, season: int = 2025) -> list[GameResult]:
+def get_game_results_for_round(round: int, season: int = CURRENT_SEASON) -> list[GameResult]:
     """
     Returns a list of games for the given round.
     """

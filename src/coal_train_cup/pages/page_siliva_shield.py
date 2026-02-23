@@ -4,13 +4,14 @@ from coal_train_cup.services.shield_tipping_service import (
     submit_shield_tip,
 )
 from coal_train_cup.services.data_store import all_players_in_round
+from coal_train_cup.constants import SPREADSHEET_NAME
 import pandas as pd
 from coal_train_cup.services.sheets_service import worksheet_to_dataframe
 from coal_train_cup.models import UserShieldTip
 
 @st.cache_data(ttl=60 * 60 * 24)
 def __last_round_winners(round: int) -> list[UserShieldTip]:
-    df: pd.DataFrame = worksheet_to_dataframe("Coal Train Cup App 2025", f"Winners - Shield Round {round}")
+    df: pd.DataFrame = worksheet_to_dataframe(SPREADSHEET_NAME, f"Winners - Shield Round {round}")
     
     # Convert DataFrame rows to UserShieldTip objects
     winners = []
@@ -60,7 +61,7 @@ def page_siliva_shield() -> None:
 
     last_round_winners = __last_round_winners(30)
     
-    email = st.text_input("Enter your email address")
+    email = st.text_input("Enter your patreon email address")
     last_weeks_selection = None
 
     if email:
@@ -112,7 +113,7 @@ def page_siliva_shield() -> None:
 
         if st.button("Submit"):
             if not email:
-                st.error("Please enter your email address")
+                st.error("Please enter your patreon email address")
                 st.stop()
             if not selected_team:
                 st.error("Please select a team")
