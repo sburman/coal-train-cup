@@ -54,7 +54,7 @@ Set these in Vercel → Project → Settings → Environment Variables:
 
 ## Cron (Hobby)
 
-- One cron is configured: `/api/cron/warm` runs daily at 06:00 UTC.
+- One cron is configured: `/api/cron/warm` runs daily at 14:00 UTC (midnight AEST).
 - It warms the in-memory caches (users, tips, games) so the first user requests after a cold start are faster.
 - On Hobby, cron can run at most **once per day**. More frequent schedules are not supported.
 
