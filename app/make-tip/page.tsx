@@ -146,7 +146,7 @@ export default function MakeTipPage() {
             className="mt-3"
             onClick={() => setSubmittedTip(null)}
           >
-            Make another tip
+            Resubmit to change tip
           </Button>
         </Alert>
       )}
