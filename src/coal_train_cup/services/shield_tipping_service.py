@@ -1,10 +1,11 @@
 from datetime import datetime, timezone
 from coal_train_cup.models import UserShieldTip
+from coal_train_cup.constants import CURRENT_SEASON, SPREADSHEET_NAME
 from coal_train_cup.services.sheets_service import append_shield_row_to_worksheet
 
 
 def make_shield_tip(
-    email: str, team: str, tryscorer: str, round: int, match_total: int | None = None, season: int = 2025
+    email: str, team: str, tryscorer: str, round: int, match_total: int | None = None, season: int = CURRENT_SEASON
 ) -> UserShieldTip:
     tipped_at_time = datetime.now(timezone.utc)
 
@@ -26,6 +27,6 @@ def submit_shield_tip(tip: UserShieldTip) -> None:
     # Submit to Google Sheet
     append_shield_row_to_worksheet(
         tip=tip,
-        spreadsheet_name="Coal Train Cup App 2025",
+        spreadsheet_name=SPREADSHEET_NAME,
         worksheet_name=worksheet_name,
     )

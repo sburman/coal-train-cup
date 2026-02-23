@@ -22,7 +22,7 @@ def page_view_user_tips() -> None:
     teams = all_teams()
 
     user: User | None = None
-    email = st.text_input("Enter your email address")
+    email = st.text_input("Enter your patreon email address")
     if not email:
         st.stop()
 

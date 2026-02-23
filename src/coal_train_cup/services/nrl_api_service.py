@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Any
 import requests
 from coal_train_cup.models import Game
-
+from coal_train_cup.constants import CURRENT_SEASON
 from coal_train_cup.services.secrets import get_secrets
 
 
@@ -85,7 +85,7 @@ def get_latest_draw_from_nrl_api(
     """
     Scrape an online resource to create a list of Game objects.
     """
-    season = 2025
+    season = CURRENT_SEASON
     season_games = existing
     lookup_rounds = (
         rounds_to_update if rounds_to_update else range(1, 28)

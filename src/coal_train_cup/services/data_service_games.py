@@ -2,6 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 from coal_train_cup.models import Game
+from coal_train_cup.constants import SPREADSHEET_NAME
 from coal_train_cup.services.sheets_service import (
     dataframe_to_worksheet,
     worksheet_to_dataframe,
@@ -26,13 +27,14 @@ def save_games_to_sheets(games: list[Game]) -> None:
     df = df.where(pd.notna(df), None)
 
     # Get the worksheet and update it
-    dataframe_to_worksheet(df, "Coal Train Cup App 2025", "Games")
+    dataframe_to_worksheet(df, SPREADSHEET_NAME, "Games")
     print(f"Saved {len(games)} games to Google Sheets")
 
 
-def load_games_from_sheets() -> list[Game]:
+def load_games_from_sheets(spreadsheet_name: str | None = None) -> list[Game]:
+    sheet = spreadsheet_name or SPREADSHEET_NAME
     # Get the worksheet and convert to DataFrame
-    df = worksheet_to_dataframe("Coal Train Cup App 2025", "Games")
+    df = worksheet_to_dataframe(sheet, "Games")
 
     # Convert DataFrame rows to Game objects
     games = []

@@ -21,7 +21,7 @@ def page_make_tip() -> None:
     current_round = get_current_tipping_round()
     st.header(f"Current round: {current_round}")
 
-    email = st.text_input("Enter your email address")
+    email = st.text_input("Enter your patreon email address")
 
     if email:
         # Check if user exists
@@ -34,14 +34,14 @@ def page_make_tip() -> None:
             st.warning(f"No user found with email: {email}")
             st.stop()
 
-        # get tip from previous round
+        # get tip from previous round (round 1 has no previous round - all options allowed)
         previous_round = current_round - 1
-        if previous_round < 1:
-            st.warning("No previous round found")
-            st.stop()
-
-        user_results = get_full_results_dataframe(previous_round)
-        user_results = user_results[user_results["email"] == user.email]
+        if previous_round >= 1:
+            user_results = get_full_results_dataframe(previous_round)
+            user_results = user_results[user_results["email"] == user.email]
+        else:
+            # Round 1: no previous round, use empty dataframe with correct structure
+            user_results = get_full_results_dataframe(1).head(0)
 
         previous_round_tip = None
         if not user_results.empty:
@@ -115,7 +115,10 @@ def page_make_tip() -> None:
                         )
 
         else:
-            st.write("No previous round tip found")
+            if current_round == 1:
+                st.info("Round 1 – no restrictions from previous round. All options available.")
+            else:
+                st.write("No previous round tip found")
 
         # Filter out tips that are not available
         current_round_tips = {

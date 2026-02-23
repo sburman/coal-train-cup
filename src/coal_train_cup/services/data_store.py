@@ -15,8 +15,7 @@ from coal_train_cup.services.data_service_users import (
 from coal_train_cup.services.data_service_user_tips import (
     load_user_tips_from_sheets,
 )
-
-CURRENT_SEASON = 2025
+from coal_train_cup.constants import CURRENT_SEASON
 
 CACHE_TTL_SECONDS = 60 * 60 * 8  # 8 hours
 
@@ -31,6 +30,8 @@ def _round_needing_lookup(games: list[Game]) -> int:
         if all(game.kickoff <= at_time for game in games_in_round):
             closed.append(round)
 
+    if not closed:
+        return 0  # No rounds closed yet (start of season) - fetch round 1
     return max(closed)
 
 
@@ -48,9 +49,8 @@ def all_users() -> list[User]:
 def all_games() -> list[Game]:
     existing = load_games_from_sheets()
     latest_closed = _round_needing_lookup(existing)
-    nrl_api_games = get_latest_draw_from_nrl_api(
-        existing, [latest_closed, latest_closed + 1]
-    )
+    rounds_to_update = [1] if latest_closed == 0 else [latest_closed, latest_closed + 1]
+    nrl_api_games = get_latest_draw_from_nrl_api(existing, rounds_to_update)
     save_games_to_sheets(nrl_api_games)
     return nrl_api_games
 
@@ -62,7 +62,7 @@ def all_teams() -> list[str]:
 
 @st.cache_data(ttl=600)
 def all_players_in_round(
-    round: int, competition_id: int = 111, season: int = 2025
+    round: int, competition_id: int = 111, season: int = CURRENT_SEASON
 ) -> list[str]:
     return get_list_of_player_names_in_round(competition_id, season, round)
 

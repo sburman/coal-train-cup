@@ -6,7 +6,8 @@ from coal_train_cup.services.data_service_games import (
 
 
 if __name__ == "__main__":
-    games = get_latest_draw_from_nrl_api()
+    # Pass empty list to load full schedule from scratch; rounds_to_update=[] loads all rounds (1-27)
+    games = get_latest_draw_from_nrl_api(existing=[], rounds_to_update=[])
     save_games_to_sheets(games)
     loaded_games = load_games_from_sheets()
 

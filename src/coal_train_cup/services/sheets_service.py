@@ -2,6 +2,7 @@ import gspread
 import pandas as pd
 from typing import Any
 from coal_train_cup.models import UserTip, UserShieldTip
+from coal_train_cup.constants import SPREADSHEET_NAME
 from coal_train_cup.services.secrets import get_secrets
 
 
@@ -115,7 +116,7 @@ def delete_user_tips(
     if not all(tip.round == first_round for tip in tips):
         raise ValueError("All tips must be from the same round")
 
-    worksheet = get_worksheet("Coal Train Cup App 2025", f"Round {first_round}")
+    worksheet = get_worksheet(SPREADSHEET_NAME, f"Round {first_round}")
     record_list = worksheet.get_all_records()
 
     print("record count", len(record_list))

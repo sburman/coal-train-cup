@@ -1,31 +1,31 @@
 import streamlit as st
-from coal_train_cup.services.leaderboard_service import build_full_results_dataframe
-from coal_train_cup.services.games_service import get_most_recent_closed_round
+from coal_train_cup.services.leaderboard_service import get_full_results_for_spreadsheet
+from coal_train_cup.constants import LEGACY_SPREADSHEET_2025
 
 
-def page_leaderboard() -> None:
+def page_leaderboard_2025() -> None:
     """
-    Page for viewing the leaderboard.
+    Page for viewing the 2025 season leaderboard (archived).
     """
-    st.title("Leaderboard")
+    st.title("2025 Leaderboard")
+    st.caption("Archived final standings from the 2025 season.")
 
-    # use all_game_results to get the max round
-    max_round = get_most_recent_closed_round()
-    print(f"Max round: {max_round}")
+    # 2025 had 27 regular rounds
+    max_round = 27
     available_rounds = list(range(1, max_round + 1))
 
     selected_round = st.pills(
         "Show leaderboard after:",
         options=available_rounds,
-        default=available_rounds[-1] if available_rounds else None,
+        default=max_round,
         selection_mode="single",
-        format_func=lambda x: f"Round {x}" if x == 1 else f"{x}",
+        format_func=lambda x: f"Round {x}",
     )
 
-    # Load full results once (cached); filter by round in-page for instant round switches
-    full_results_df = build_full_results_dataframe()
+    # Load full 2025 data once (cached); filter by round in-page for instant round switches
+    full_results_df = get_full_results_for_spreadsheet(LEGACY_SPREADSHEET_2025)
     if full_results_df.empty:
-        st.info("No leaderboard data yet.")
+        st.info("No 2025 data available. Tips may need to be loaded from archive.")
         return
 
     reduced_df = full_results_df[full_results_df["round"] <= selected_round]
@@ -36,6 +36,10 @@ def page_leaderboard() -> None:
         .rename(columns={"email": "tips_count"})
     )
     leaderboard_df = leaderboard_df.sort_values(by=["points", "margin"], ascending=False)
+
+    if leaderboard_df.empty:
+        st.info("No data for the selected round.")
+        return
 
     # Reset the index to convert MultiIndex to regular columns
     leaderboard_df = leaderboard_df.reset_index()
@@ -49,8 +53,6 @@ def page_leaderboard() -> None:
         }
     )
 
-    # Create a new DataFrame with 1-based position index
-    # Reset the default index and add a "Position" column starting from 1
     leaderboard_df = leaderboard_df.reset_index(drop=True)
     leaderboard_df.index = range(1, len(leaderboard_df) + 1)
     leaderboard_df.index.name = "Position"
