@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { StatCard } from "@/components/ui/stat-card";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function HomeStats() {
   const [stats, setStats] = useState<{
@@ -12,26 +14,26 @@ export default function HomeStats() {
 
   useEffect(() => {
     fetch("/api/stats")
-      .then((r) => r.ok ? r.json() : null)
+      .then((r) => (r.ok ? r.json() : null))
       .then(setStats);
   }, []);
 
-  if (!stats) return null;
+  if (!stats) {
+    return (
+      <div className="grid gap-4 sm:grid-cols-2">
+        {[1, 2, 3, 4].map((i) => (
+          <Skeleton key={i} className="h-20 w-full" />
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <>
-      <h3 style={{ marginBottom: "0.25rem" }}>
-        Total users: <span style={{ color: "var(--primary)" }}>{stats.usersCount}</span>
-      </h3>
-      <h3 style={{ marginBottom: "0.25rem" }}>
-        Total tips made: <span style={{ color: "var(--primary)" }}>{stats.tipsCount}</span>
-      </h3>
-      <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "1rem 0" }} />
-      <h3 style={{ marginBottom: "0.25rem" }}>
-        2026 games loaded: <span style={{ color: "var(--primary)" }}>{stats.gamesCount}</span>
-      </h3>
-      <h3 style={{ marginBottom: "0.25rem" }}>
-        2026 resulted games: <span style={{ color: "var(--primary)" }}>{stats.resultedGamesCount}</span>
-      </h3>
-    </>
+    <div className="grid gap-4 sm:grid-cols-2">
+      <StatCard label="Total users" value={stats.usersCount} />
+      <StatCard label="Total tips made" value={stats.tipsCount} />
+      <StatCard label="2026 games loaded" value={stats.gamesCount} />
+      <StatCard label="2026 resulted games" value={stats.resultedGamesCount} />
+    </div>
   );
 }

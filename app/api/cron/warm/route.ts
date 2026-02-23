@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import * as data from "@/lib/data";
 
 /**
- * Daily cron (e.g. 06:00 UTC) to warm caches so first user requests are fast.
+ * Daily cron at 14:00 UTC (midnight AEST) to warm caches so first user requests are fast.
  * Hobby plan: cron runs at most once per day.
  */
 export const dynamic = "force-dynamic";

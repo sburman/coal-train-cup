@@ -1,6 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { SectionHeader } from "@/components/layout/section-header";
+import { RoundSwitcher } from "@/components/ui/round-switcher";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { EmptyState } from "@/components/ui/empty-state";
+import { Skeleton } from "@/components/ui/skeleton";
+import { TableSkeleton } from "@/components/ui/table-skeleton";
 
 type LeaderboardRow = {
   username: string;
@@ -15,6 +28,7 @@ export default function LeaderboardPage() {
   const [availableRounds, setAvailableRounds] = useState<number[]>([]);
   const [leaderboard, setLeaderboard] = useState<LeaderboardRow[]>([]);
   const [loading, setLoading] = useState(true);
+  const [roundLoading, setRoundLoading] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -24,7 +38,9 @@ export default function LeaderboardPage() {
         setRound(data.round);
         setLeaderboard(data.leaderboard ?? []);
         setAvailableRounds(
-          data.round ? Array.from({ length: data.round }, (_, i) => i + 1) : []
+          data.round
+            ? Array.from({ length: data.round }, (_, i) => i + 1)
+            : []
         );
       }
       setLoading(false);
@@ -33,68 +49,72 @@ export default function LeaderboardPage() {
 
   useEffect(() => {
     if (round == null) return;
+    setRoundLoading(true);
     fetch(`/api/leaderboard?round=${round}`)
       .then((r) => r.json())
-      .then((data) => setLeaderboard(data.leaderboard ?? []));
+      .then((data) => {
+        setLeaderboard(data.leaderboard ?? []);
+      })
+      .finally(() => setRoundLoading(false));
   }, [round]);
 
-  if (loading) return <p>Loading…</p>;
+  if (loading) {
+    return (
+      <>
+        <SectionHeader as="h1">2026 Leaderboard</SectionHeader>
+        <Skeleton className="mb-4 h-10 w-64" />
+        <TableSkeleton aria-label="Loading leaderboard" />
+      </>
+    );
+  }
+
+  const showTableLoading = roundLoading;
+  const showEmpty = !roundLoading && leaderboard.length === 0;
+  const showTable = !roundLoading && leaderboard.length > 0;
 
   return (
     <>
-      <h1 style={{ marginBottom: "0.5rem" }}>2026 Leaderboard</h1>
-      {availableRounds.length > 0 && (
-        <div style={{ marginBottom: "1rem" }}>
-          <p style={{ marginBottom: "0.5rem" }}>Show leaderboard after:</p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-            {availableRounds.map((r) => (
-              <button
-                key={r}
-                type="button"
-                onClick={() => setRound(r)}
-                style={{
-                  padding: "0.35rem 0.75rem",
-                  background: round === r ? "var(--primary)" : "var(--bg-secondary)",
-                  color: round === r ? "var(--bg)" : "var(--text)",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                }}
-              >
-                {r === 1 ? "Round 1" : r}
-              </button>
+      <SectionHeader as="h1">2026 Leaderboard</SectionHeader>
+      <RoundSwitcher
+        rounds={availableRounds}
+        value={round}
+        onValueChange={setRound}
+        label="Show leaderboard after:"
+        roundLabel={(r) => (r === 1 ? "Round 1" : String(r))}
+        className="mb-6"
+      />
+      {showTableLoading && (
+        <TableSkeleton aria-label="Loading leaderboard" />
+      )}
+      {showEmpty && (
+        <EmptyState
+          title="No leaderboard data yet."
+          description="Check back once rounds are in progress."
+        />
+      )}
+      {showTable && (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Position</TableHead>
+              <TableHead>Username</TableHead>
+              <TableHead className="text-right">Tips made</TableHead>
+              <TableHead className="text-right">Coal Train Cup points</TableHead>
+              <TableHead className="text-right">Accumulated margin</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {leaderboard.map((row) => (
+              <TableRow key={row.username + row.position}>
+                <TableCell>{row.position}</TableCell>
+                <TableCell className="font-medium">{row.username}</TableCell>
+                <TableCell className="text-right">{row.tips_count}</TableCell>
+                <TableCell className="text-right">{row.points}</TableCell>
+                <TableCell className="text-right">{row.margin}</TableCell>
+              </TableRow>
             ))}
-          </div>
-        </div>
-      )}
-      {leaderboard.length === 0 && !loading && (
-        <p>No leaderboard data yet.</p>
-      )}
-      {leaderboard.length > 0 && (
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse" }}>
-            <thead>
-              <tr>
-                <th style={{ textAlign: "left", padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.3)" }}>Position</th>
-                <th style={{ textAlign: "left", padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.3)" }}>Username</th>
-                <th style={{ textAlign: "right", padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.3)" }}>Tips made</th>
-                <th style={{ textAlign: "right", padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.3)" }}>Coal Train Cup points</th>
-                <th style={{ textAlign: "right", padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.3)" }}>Accumulated margin</th>
-              </tr>
-            </thead>
-            <tbody>
-              {leaderboard.map((row) => (
-                <tr key={row.username + row.position}>
-                  <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>{row.position}</td>
-                  <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>{row.username}</td>
-                  <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)", textAlign: "right" }}>{row.tips_count}</td>
-                  <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)", textAlign: "right" }}>{row.points}</td>
-                  <td style={{ padding: "0.5rem", borderBottom: "1px solid rgba(255,255,255,0.1)", textAlign: "right" }}>{row.margin}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+          </TableBody>
+        </Table>
       )}
     </>
   );
