@@ -40,12 +40,19 @@ export default function MakeTipPage() {
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<"ok" | "err" | null>(null);
+  const [submittedTip, setSubmittedTip] = useState<{
+    round: number;
+    team: string;
+    opponent: string;
+    home: boolean;
+  } | null>(null);
 
   const fetchPayload = async () => {
     if (!email.trim()) return;
     setLoading(true);
     setPayload(null);
     setSubmitResult(null);
+    setSubmittedTip(null);
     try {
       const res = await fetch(
         `/api/make-tip?email=${encodeURIComponent(email.trim())}`
@@ -78,6 +85,12 @@ export default function MakeTipPage() {
       const data = await res.json();
       if (res.ok && data.ok) {
         setSubmitResult("ok");
+        setSubmittedTip({
+          round: tip.round,
+          team: tip.team,
+          opponent: tip.opponent,
+          home: tip.home,
+        });
         setPayload(null);
         setSelectedTeam(null);
       } else {
@@ -97,17 +110,46 @@ export default function MakeTipPage() {
         Enter your Patreon email, then we&apos;ll show your options for this
         round.
       </p>
-      <div className="mb-6 max-w-xs space-y-2">
+      <div className="mb-6 max-w-md space-y-2">
         <Label htmlFor="email">Patreon email</Label>
-        <Input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onBlur={() => email.trim() && fetchPayload()}
-          placeholder="your@email.com"
-        />
+        <div className="flex flex-wrap gap-2">
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && fetchPayload()}
+            placeholder="your@email.com"
+            className="min-w-[200px] flex-1"
+          />
+          <Button
+            type="button"
+            onClick={fetchPayload}
+            disabled={loading || !email.trim()}
+          >
+            {loading ? "Loading…" : "Go!"}
+          </Button>
+        </div>
       </div>
+      {submittedTip && (
+        <Alert variant="success" className="mb-6">
+          <p className="font-medium">Tip submitted.</p>
+          <p className="mt-1 text-white/90">
+            For round {submittedTip.round}, you tipped{" "}
+            <strong>{submittedTip.team}</strong> (
+            {submittedTip.home ? "home" : "away"}) vs {submittedTip.opponent}.
+          </p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-3"
+            onClick={() => setSubmittedTip(null)}
+          >
+            Make another tip
+          </Button>
+        </Alert>
+      )}
       {loading && (
         <div className="space-y-4">
           <Skeleton className="h-10 w-64" />
@@ -221,11 +263,6 @@ export default function MakeTipPage() {
                       {submitting ? "Submitting…" : "Submit tip"}
                     </Button>
                   </div>
-                  {submitResult === "ok" && (
-                    <Alert variant="success" className="mt-4">
-                      Tip submitted. If you are seeing this, I&apos;m proud of you.
-                    </Alert>
-                  )}
                   {submitResult === "err" && (
                     <Alert variant="destructive" className="mt-4">
                       Could not submit tip. Please try again.

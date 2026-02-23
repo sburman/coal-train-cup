@@ -32,7 +32,6 @@ export default function HomeStats() {
     <div className="grid gap-4 sm:grid-cols-2">
       <StatCard label="Total users" value={stats.usersCount} />
       <StatCard label="Total tips made" value={stats.tipsCount} />
-      <div className="col-span-full border-t border-white/20" />
       <StatCard label="2026 games loaded" value={stats.gamesCount} />
       <StatCard label="2026 resulted games" value={stats.resultedGamesCount} />
     </div>

@@ -59,8 +59,8 @@ export default function RootLayout({
                 src="/brlogo.jpeg"
                 alt=""
                 width={120}
-                height={40}
-                className="h-8 w-auto object-contain sm:h-9"
+                height={48}
+                className="h-12 min-h-12 min-w-12 w-auto object-contain"
               />
               <span>Coal Train Cup</span>
             </Link>
