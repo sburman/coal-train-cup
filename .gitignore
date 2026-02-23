@@ -14,7 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+# Python lib (do not ignore repo root lib/ - that is Next.js code)
 lib64/
 parts/
 sdist/
@@ -175,3 +175,9 @@ cython_debug/
 
 .streamlit/secrets.toml
 coal-train-cup-e5bc2171b118.json
+
+# Next.js
+.next/
+node_modules/
+.env.local
+.env*.local

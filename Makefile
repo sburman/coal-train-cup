@@ -27,3 +27,21 @@ lint:
 .PHONY: run
 run:
 	poetry run streamlit run app.py
+
+# --- Next.js web app (run locally before deploy) ---
+
+# Build .env.local from .streamlit/secrets.toml (run once, or after changing secrets)
+.PHONY: env-local
+env-local:
+	poetry run python scripts/build_env_local.py
+
+# Install Node deps and generate .env.local if missing
+.PHONY: web-deps
+web-deps:
+	npm install
+	@if [ ! -f .env.local ]; then $(MAKE) env-local; fi
+
+# Run Next.js dev server (ensure .env.local exists: make env-local)
+.PHONY: run-web
+run-web: web-deps
+	npm run dev

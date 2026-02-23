@@ -1,0 +1,43 @@
+:root {
+  --primary: #00e5b4;
+  --bg: #2d0a54;
+  --bg-secondary: #3b1373;
+  --text: #ffffff;
+  --link: #00e5b4;
+  --code-bg: #1e0638;
+  --chart-win: #00e5b4;
+  --chart-loss: #f45866;
+  --chart-draw: #9c6ade;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+a {
+  color: var(--link);
+}
+
+/* Mobile-first base */
+main {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  main {
+    padding: 1.5rem 2rem;
+  }
+}
