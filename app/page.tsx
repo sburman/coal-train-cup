@@ -49,7 +49,7 @@ export default function HomePage() {
       <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "1rem 0" }} />
       <HomeStats />
       <hr style={{ borderColor: "rgba(255,255,255,0.2)", margin: "1rem 0" }} />
-      <p style={{ fontSize: "0.875rem", opacity: 0.8 }}>version: 2026.1.0</p>
+      <p style={{ fontSize: "0.875rem", opacity: 0.8 }}>version: 2026.1.1</p>
     </>
   );
 }
