@@ -3,6 +3,7 @@ import HomeStats from "./HomeStats";
 import { SectionHeader } from "@/components/layout/section-header";
 import { IconTrophy, IconShield } from "@/components/icons/nav-icons";
 import { WinnerBadge } from "@/components/ui/winner-badge";
+import { EasterEggVersion } from "@/components/easter-egg-version";
 
 export const dynamic = "force-dynamic";
 
@@ -37,8 +38,6 @@ export default function HomePage() {
         <li>tipped no single team more than 3 times</li>
       </ul>
       <hr className="my-6 border-white/20" />
-      <HomeStats />
-      <hr className="my-6 border-white/20" />
       <SectionHeader as="h2" className="mb-4">
         Past Champions
       </SectionHeader>
@@ -55,7 +54,9 @@ export default function HomePage() {
         />
       </div>
       <hr className="my-6 border-white/20" />
-      <p className="text-sm text-white/70">version: 2026.1.1</p>
+      <HomeStats />      
+      <hr className="my-6 border-white/20" />
+      <EasterEggVersion>version: 2026.1.1</EasterEggVersion>
     </>
   );
 }
