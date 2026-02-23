@@ -2,20 +2,13 @@ import Link from "next/link";
 import HomeStats from "./HomeStats";
 import { SectionHeader } from "@/components/layout/section-header";
 import { IconTrophy, IconShield } from "@/components/icons/nav-icons";
+import { WinnerBadge } from "@/components/ui/winner-badge";
 
 export const dynamic = "force-dynamic";
 
 export default function HomePage() {
   return (
     <>
-      <div className="mb-6">
-        <img
-          src="/brlogo.jpeg"
-          alt="Boom Rookies"
-          width={300}
-          className="max-h-24 w-auto max-w-full object-contain md:max-h-32"
-        />
-      </div>
       <p className="mb-4 italic text-white/90">
         Join the{" "}
         <Link
@@ -28,18 +21,6 @@ export default function HomePage() {
         </Link>
         , to access the competition!
       </p>
-      <hr className="my-6 border-white/20" />
-      <p className="text-white/90">Congrats to the 2025 Coal Train Cup winner!</p>
-      <SectionHeader as="h2" className="mt-2 mb-4 flex items-center gap-2 text-primary">
-        <IconTrophy />
-        Paul Mac
-      </SectionHeader>
-      <hr className="my-6 border-white/20" />
-      <p className="text-white/90">Congrats to the 2025 Siliva Shield winner!</p>
-      <SectionHeader as="h2" className="mt-2 mb-4 flex items-center gap-2 text-primary">
-        <IconShield />
-        Kyle (damiencooked)
-      </SectionHeader>
       <hr className="my-6 border-white/20" />
       <SectionHeader as="h2">Coal Train Cup weekly competition rules</SectionHeader>
       <ul className="mb-4 ml-5 list-disc space-y-1 text-white/90">
@@ -57,6 +38,22 @@ export default function HomePage() {
       </ul>
       <hr className="my-6 border-white/20" />
       <HomeStats />
+      <hr className="my-6 border-white/20" />
+      <SectionHeader as="h2" className="mb-4">
+        Past Champions
+      </SectionHeader>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <WinnerBadge
+          title="2025 Coal Train Cup winner"
+          winner="Paul Mac"
+          icon={<IconTrophy />}
+        />
+        <WinnerBadge
+          title="2025 Siliva Shield winner"
+          winner="Kyle (damiencooked)"
+          icon={<IconShield />}
+        />
+      </div>
       <hr className="my-6 border-white/20" />
       <p className="text-sm text-white/70">version: 2026.1.1</p>
     </>

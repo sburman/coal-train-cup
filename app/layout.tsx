@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
@@ -54,9 +55,16 @@ export default function RootLayout({
               href="/"
               className="flex items-center gap-2 rounded-lg py-2 pr-3 font-display text-lg font-bold text-white no-underline transition-colors hover:bg-white/5 sm:mr-2 sm:pr-4"
             >
-              Coal Train Cup
+              <Image
+                src="/brlogo.jpeg"
+                alt=""
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain sm:h-9"
+              />
+              <span>Coal Train Cup</span>
             </Link>
-            <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden />
+            <span className="hidden h-4 w-px bg-primary/80 sm:block" aria-hidden />
             <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-0">
               {navItems.slice(1).map(({ href, label, Icon }) => (
                 <Link

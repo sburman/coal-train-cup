@@ -20,7 +20,7 @@ export default function HomeStats() {
 
   if (!stats) {
     return (
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2">
         {[1, 2, 3, 4].map((i) => (
           <Skeleton key={i} className="h-20 w-full" />
         ))}
@@ -29,7 +29,7 @@ export default function HomeStats() {
   }
 
   return (
-    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid gap-4 sm:grid-cols-2">
       <StatCard label="Total users" value={stats.usersCount} />
       <StatCard label="Total tips made" value={stats.tipsCount} />
       <div className="col-span-full border-t border-white/20" />
