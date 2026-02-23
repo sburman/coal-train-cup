@@ -1,6 +1,26 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import {
+  IconHome,
+  IconPencil,
+  IconScroll,
+  IconTrophy,
+  IconShield,
+} from "@/components/icons/nav-icons";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Coal Train Cup",
@@ -8,14 +28,10 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
-const nav = [
-  { href: "/", label: "Home", icon: "🚂" },
-  { href: "/make-tip", label: "Make a tip", icon: "✏️" },
-  // { href: "/tips-by-user", label: "2026 tips by user", icon: "🗒️" },
-  // { href: "/tips-by-round", label: "2026 tips by round", icon: "📊" },
-  // { href: "/leaderboard", label: "2026 Leaderboard", icon: "🏆" },
-  { href: "/leaderboard-2025", label: "2025 Results", icon: "📜" },
-  // { href: "/siliva-shield", label: "Siliva Shield", icon: "🛡️" },
+const navItems = [
+  { href: "/", label: "Home", Icon: IconHome },
+  { href: "/make-tip", label: "Make a tip", Icon: IconPencil },
+  { href: "/leaderboard-2025", label: "2025 Results", Icon: IconScroll },
 ] as const;
 
 export default function RootLayout({
@@ -24,53 +40,40 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable}`}>
+      <body className="min-h-screen font-sans antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <nav
-          style={{
-            background: "var(--bg-secondary)",
-            padding: "0.75rem 1rem",
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
-          }}
+          className="border-b border-white/10 bg-brand-elevated px-4 py-3"
+          aria-label="Main"
         >
-          <div
-            style={{
-              maxWidth: 1200,
-              margin: "0 auto",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem 1rem",
-              alignItems: "center",
-            }}
-          >
+          <div className="mx-auto flex max-w-[1200px] items-center gap-1 sm:gap-2">
             <Link
               href="/"
-              style={{
-                fontWeight: 700,
-                marginRight: "0.5rem",
-                color: "var(--text)",
-                textDecoration: "none",
-              }}
+              className="flex items-center gap-2 rounded-lg py-2 pr-3 font-display text-lg font-bold text-white no-underline transition-colors hover:bg-white/5 sm:mr-2 sm:pr-4"
             >
               Coal Train Cup
             </Link>
-            {nav.slice(1).map(({ href, label, icon }) => (
-              <Link
-                key={href}
-                href={href}
-                style={{
-                  color: "var(--link)",
-                  textDecoration: "none",
-                  fontSize: "0.9rem",
-                }}
-              >
-                {icon} {label}
-              </Link>
-            ))}
+            <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden />
+            <div className="flex flex-1 flex-wrap items-center gap-1 sm:gap-0">
+              {navItems.slice(1).map(({ href, label, Icon }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-white/80 no-underline transition-colors hover:bg-white/5 hover:text-white"
+                >
+                  <Icon />
+                  <span>{label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
         </nav>
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
       </body>
     </html>
   );
 }
+

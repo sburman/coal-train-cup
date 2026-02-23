@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -10,6 +10,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { SectionHeader } from "@/components/layout/section-header";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert } from "@/components/ui/alert";
+import { StatCard } from "@/components/ui/stat-card";
+import { ChartContainer } from "@/components/ui/chart-container";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type ResultRow = {
   round: number;
@@ -40,7 +56,10 @@ export default function TipsByUserPage() {
     setError(null);
     fetch(`/api/user-tips?email=${encodeURIComponent(email.trim())}`)
       .then((r) => {
-        if (!r.ok) return r.json().then((d) => { throw new Error(d.error || "Failed"); });
+        if (!r.ok)
+          return r.json().then((d) => {
+            throw new Error(d.error || "Failed");
+          });
         return r.json();
       })
       .then(setData)
@@ -71,83 +90,128 @@ export default function TipsByUserPage() {
         })
       : [];
 
-  const homeCount = data?.results.filter((r) => r.home && r.round !== 9).length ?? 0;
-  const awayCount = data?.results.filter((r) => !r.home && r.round !== 9).length ?? 0;
+  const homeCount =
+    data?.results.filter((r) => r.home && r.round !== 9).length ?? 0;
+  const awayCount =
+    data?.results.filter((r) => !r.home && r.round !== 9).length ?? 0;
 
-  const teamSummary = data?.teams?.map((team) => ({
-    team,
-    count: data.results.filter((r) => r.team === team).length,
-  })).sort((a, b) => b.count - a.count) ?? [];
+  const teamSummary =
+    data?.teams
+      ?.map((team) => ({
+        team,
+        count: data.results.filter((r) => r.team === team).length,
+      }))
+      .sort((a, b) => b.count - a.count) ?? [];
 
   return (
     <>
-      <h1 style={{ marginBottom: "0.5rem" }}>2026 tips by user</h1>
-      <div style={{ marginBottom: "1rem", maxWidth: "20rem" }}>
-        <label htmlFor="email" style={{ display: "block", marginBottom: "0.25rem" }}>
-          Patreon email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && fetchUser()}
-          placeholder="your@email.com"
-          style={{
-            width: "100%",
-            padding: "0.5rem",
-            background: "var(--bg-secondary)",
-            border: "1px solid rgba(255,255,255,0.3)",
-            borderRadius: "4px",
-            color: "var(--text)",
-          }}
-        />
-        <button
-          type="button"
-          onClick={fetchUser}
-          disabled={loading}
-          style={{
-            marginTop: "0.5rem",
-            padding: "0.5rem 1rem",
-            background: "var(--primary)",
-            color: "var(--bg)",
-            border: "none",
-            borderRadius: "4px",
-            cursor: loading ? "not-allowed" : "pointer",
-          }}
-        >
-          {loading ? "Loading…" : "Load"}
-        </button>
+      <SectionHeader as="h1">2026 tips by user</SectionHeader>
+      <div className="mb-6 max-w-xs space-y-2">
+        <Label htmlFor="email">Patreon email</Label>
+        <div className="flex gap-2">
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && fetchUser()}
+            placeholder="your@email.com"
+            className="flex-1"
+          />
+          <Button type="button" onClick={fetchUser} disabled={loading}>
+            {loading ? "Loading…" : "Load"}
+          </Button>
+        </div>
       </div>
-      {error && <p style={{ color: "var(--chart-loss)", marginBottom: "1rem" }}>{error}</p>}
+      {loading && (
+        <div role="status" aria-label="Loading your tips" className="mt-6 space-y-4">
+          <p className="text-sm text-white/70">Loading your tips…</p>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <Skeleton className="h-20 w-full rounded-brand" />
+            <Skeleton className="h-20 w-full rounded-brand" />
+          </div>
+          <Skeleton className="h-64 w-full rounded-brand-lg" />
+          <Skeleton className="h-48 w-full rounded-brand-lg" />
+        </div>
+      )}
+      {error && (
+        <Alert variant="destructive" className="mb-4" role="alert">
+          <p>{error}</p>
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="mt-2"
+            onClick={() => fetchUser()}
+          >
+            Try again
+          </Button>
+        </Alert>
+      )}
       {data && !error && (
         <>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))", gap: "1rem", marginBottom: "1rem" }}>
-            <div style={{ padding: "0.75rem", background: "var(--bg-secondary)", borderRadius: "4px" }}>
-              <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>Home tips used</div>
-              <div style={{ fontSize: "1.25rem", color: "var(--primary)" }}>{homeCount} / 13</div>
-            </div>
-            <div style={{ padding: "0.75rem", background: "var(--bg-secondary)", borderRadius: "4px" }}>
-              <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>Away tips used</div>
-              <div style={{ fontSize: "1.25rem", color: "var(--primary)" }}>{awayCount} / 13</div>
-            </div>
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            <StatCard label="Home tips used" value={`${homeCount} / 13`} />
+            <StatCard label="Away tips used" value={`${awayCount} / 13`} />
           </div>
           {chartPoints.length > 0 && (
-            <div style={{ marginBottom: "1.5rem", width: "100%", minHeight: 280 }}>
-              <h3 style={{ marginBottom: "0.5rem" }}>Leaderboard position by round</h3>
+            <ChartContainer
+              title="Leaderboard position by round"
+              className="mb-6 min-h-[280px]"
+            >
               <ResponsiveContainer width="100%" height={280}>
-                <LineChart data={chartPoints} margin={{ top: 8, right: 8, left: 8, bottom: 8 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <XAxis dataKey="round" type="number" domain={["dataMin", "dataMax"]} tick={{ fill: "#fff" }} />
-                  <YAxis type="number" reversed domain={["dataMax + 2", "0"]} tick={{ fill: "#fff" }} />
+                <LineChart
+                  data={chartPoints}
+                  margin={{ top: 8, right: 8, left: 8, bottom: 8 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="rgba(255,255,255,0.1)"
+                  />
+                  <XAxis
+                    dataKey="round"
+                    type="number"
+                    domain={["dataMin", "dataMax"]}
+                    tick={{ fill: "#fff" }}
+                  />
+                  <YAxis
+                    type="number"
+                    reversed
+                    domain={["dataMax + 2", "0"]}
+                    tick={{ fill: "#fff" }}
+                  />
                   <Tooltip
-                    contentStyle={{ background: "var(--bg-secondary)", border: "1px solid rgba(255,255,255,0.2)" }}
-                    formatter={(value: number, _name: string, props: { payload?: { round: number; team: string; opponent: string; venue: string; result: string; margin: number } }) => {
+                    contentStyle={{
+                      background: "var(--bg-secondary)",
+                      border: "1px solid rgba(255,255,255,0.2)",
+                    }}
+                    formatter={(
+                      value: number,
+                      _name: string,
+                      props: {
+                        payload?: {
+                          round: number;
+                          team: string;
+                          opponent: string;
+                          venue: string;
+                          result: string;
+                          margin: number;
+                        };
+                      }
+                    ) => {
                       const p = props?.payload;
-                      const detail = p ? `${p.team} vs ${p.opponent} (${p.venue}) — ${p.result}${p.margin !== 0 ? ` ${p.margin > 0 ? "+" : ""}${p.margin}` : ""}` : "";
+                      const detail = p
+                        ? `${p.team} vs ${p.opponent} (${p.venue}) — ${p.result}${p.margin !== 0 ? ` ${p.margin > 0 ? "+" : ""}${p.margin}` : ""}`
+                        : "";
                       return [detail, "Position " + value];
                     }}
-                    labelFormatter={(_label, payload) => payload?.[0]?.payload && `Round ${(payload[0].payload as { round: number }).round}`}
+                    labelFormatter={(
+                      _label,
+                      payload
+                    ) =>
+                      payload?.[0]?.payload &&
+                      `Round ${(payload[0].payload as { round: number }).round}`
+                    }
                   />
                   <Line
                     type="monotone"
@@ -159,62 +223,64 @@ export default function TipsByUserPage() {
                         cx={cx}
                         cy={cy}
                         r={5}
-                        fill={RESULT_COLORS[payload?.result as keyof typeof RESULT_COLORS] ?? "#9c6ade"}
+                        fill={
+                          RESULT_COLORS[
+                            payload?.result as keyof typeof RESULT_COLORS
+                          ] ?? "#9c6ade"
+                        }
                       />
                     )}
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
+            </ChartContainer>
           )}
-          <h3 style={{ marginBottom: "0.5rem" }}>Tips used by team</h3>
-          <div style={{ overflowX: "auto", marginBottom: "1rem" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  <th style={{ textAlign: "left", padding: "0.5rem" }}>Team</th>
-                  <th style={{ textAlign: "right", padding: "0.5rem" }}>Number of tips</th>
-                </tr>
-              </thead>
-              <tbody>
+          <SectionHeader as="h3">Tips used by team</SectionHeader>
+          <div className="mb-6">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Team</TableHead>
+                  <TableHead className="text-right">Number of tips</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
                 {teamSummary.map(({ team, count }) => (
-                  <tr key={team}>
-                    <td style={{ padding: "0.5rem" }}>{team}</td>
-                    <td style={{ padding: "0.5rem", textAlign: "right" }}>{count}</td>
-                  </tr>
+                  <TableRow key={team}>
+                    <TableCell>{team}</TableCell>
+                    <TableCell className="text-right">{count}</TableCell>
+                  </TableRow>
                 ))}
-              </tbody>
-            </table>
+              </TableBody>
+            </Table>
           </div>
-          <h3 style={{ marginBottom: "0.5rem" }}>Tipping history</h3>
-          <div style={{ overflowX: "auto" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  <th style={{ textAlign: "left", padding: "0.5rem" }}>Round</th>
-                  <th style={{ textAlign: "left", padding: "0.5rem" }}>Team</th>
-                  <th style={{ textAlign: "left", padding: "0.5rem" }}>Venue</th>
-                  <th style={{ textAlign: "left", padding: "0.5rem" }}>vs Opponent</th>
-                  <th style={{ textAlign: "right", padding: "0.5rem" }}>Points</th>
-                  <th style={{ textAlign: "right", padding: "0.5rem" }}>Margin</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.results
-                  .sort((a, b) => a.round - b.round)
-                  .map((r, i) => (
-                    <tr key={i}>
-                      <td style={{ padding: "0.5rem" }}>{r.round}</td>
-                      <td style={{ padding: "0.5rem" }}>{r.team}</td>
-                      <td style={{ padding: "0.5rem" }}>{r.home ? "Home" : "Away"}</td>
-                      <td style={{ padding: "0.5rem" }}>{r.opponent}</td>
-                      <td style={{ padding: "0.5rem", textAlign: "right" }}>{r.points}</td>
-                      <td style={{ padding: "0.5rem", textAlign: "right" }}>{r.margin}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          </div>
+          <SectionHeader as="h3">Tipping history</SectionHeader>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Round</TableHead>
+                <TableHead>Team</TableHead>
+                <TableHead>Venue</TableHead>
+                <TableHead>vs Opponent</TableHead>
+                <TableHead className="text-right">Points</TableHead>
+                <TableHead className="text-right">Margin</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data.results
+                .sort((a, b) => a.round - b.round)
+                .map((r, i) => (
+                  <TableRow key={i}>
+                    <TableCell>{r.round}</TableCell>
+                    <TableCell>{r.team}</TableCell>
+                    <TableCell>{r.home ? "Home" : "Away"}</TableCell>
+                    <TableCell>{r.opponent}</TableCell>
+                    <TableCell className="text-right">{r.points}</TableCell>
+                    <TableCell className="text-right">{r.margin}</TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
         </>
       )}
     </>
