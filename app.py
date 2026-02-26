@@ -30,6 +30,8 @@ def page_home() -> None:
     st.image("assets/brlogo.jpeg", width=300)
     st.markdown("<em style='color: white;'>Join the [patreon](https://www.patreon.com/nrlboomrookies), to access the competition!</em>", unsafe_allow_html=True)
 
+    st.warning("This site is currently still operational but very soon we will only support the new app at https://coal-train-cup.vercel.app. Update your bookmarks!")
+
     st.markdown("---")
     st.markdown("Congrats to the 2025 Coal Train Cup winner!")
     st.header("🏆 Paul Mac")
@@ -80,7 +82,7 @@ def page_home() -> None:
     )
     st.markdown("---")
 
-    st.caption("_version: 2026.1.0_")
+    st.caption("_version: 2026.1.2_")
 
 
 HOME_PAGE = st.Page(page_home, title="Home", icon="🚂", default=True)
