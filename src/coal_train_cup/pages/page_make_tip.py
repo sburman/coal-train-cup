@@ -116,7 +116,9 @@ def page_make_tip() -> None:
 
         else:
             if current_round == 1:
-                st.info("Round 1 – no restrictions from previous round. All options available.")
+                st.info(
+                    "Round 1 – no restrictions from previous round. All options available."
+                )
             else:
                 st.write("No previous round tip found")
 

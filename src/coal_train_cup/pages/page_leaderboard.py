@@ -35,7 +35,9 @@ def page_leaderboard() -> None:
         .agg({"points": "sum", "margin": "sum", "email": "count"})
         .rename(columns={"email": "tips_count"})
     )
-    leaderboard_df = leaderboard_df.sort_values(by=["points", "margin"], ascending=False)
+    leaderboard_df = leaderboard_df.sort_values(
+        by=["points", "margin"], ascending=False
+    )
 
     # Reset the index to convert MultiIndex to regular columns
     leaderboard_df = leaderboard_df.reset_index()

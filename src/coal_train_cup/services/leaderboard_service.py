@@ -33,8 +33,19 @@ def _empty_results_dataframe() -> pd.DataFrame:
     """Empty DataFrame with expected schema for start-of-season (no tips yet)."""
     return pd.DataFrame(
         columns=[
-            "email", "username", "season", "round", "team", "opponent", "home",
-            "tipped_at", "margin", "win", "draw", "loss", "points",
+            "email",
+            "username",
+            "season",
+            "round",
+            "team",
+            "opponent",
+            "home",
+            "tipped_at",
+            "margin",
+            "win",
+            "draw",
+            "loss",
+            "points",
         ]
     )
 
@@ -43,8 +54,14 @@ def _empty_game_results_dataframe() -> pd.DataFrame:
     """Empty DataFrame with merge columns for when no games have results yet."""
     return pd.DataFrame(
         columns=[
-            "season", "round", "team", "opponent", "home",
-            "score_for", "score_against", "margin",
+            "season",
+            "round",
+            "team",
+            "opponent",
+            "home",
+            "score_for",
+            "score_against",
+            "margin",
         ]
     )
 

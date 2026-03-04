@@ -55,7 +55,9 @@ if __name__ == "__main__":
     print(get_all_rounds_status())
 
 
-def available_tips_for_round(round: int, season: int = CURRENT_SEASON) -> dict[str, Tip]:
+def available_tips_for_round(
+    round: int, season: int = CURRENT_SEASON
+) -> dict[str, Tip]:
     """
     Returns a list of available tips for the given round.
     """

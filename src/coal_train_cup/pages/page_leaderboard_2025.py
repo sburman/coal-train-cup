@@ -35,7 +35,9 @@ def page_leaderboard_2025() -> None:
         .agg({"points": "sum", "margin": "sum", "email": "count"})
         .rename(columns={"email": "tips_count"})
     )
-    leaderboard_df = leaderboard_df.sort_values(by=["points", "margin"], ascending=False)
+    leaderboard_df = leaderboard_df.sort_values(
+        by=["points", "margin"], ascending=False
+    )
 
     if leaderboard_df.empty:
         st.info("No data for the selected round.")

@@ -16,7 +16,9 @@ def get_local_archive_path(sheet_name: str, spreadsheet_name: str | None = None)
     return os.path.join(os.getcwd(), "archive", sheet, f"{sheet_name}.json")
 
 
-def local_archive_exists(sheet_name: str, spreadsheet_name: str | None = None) -> tuple[bool, str]:
+def local_archive_exists(
+    sheet_name: str, spreadsheet_name: str | None = None
+) -> tuple[bool, str]:
     path = get_local_archive_path(sheet_name, spreadsheet_name)
     return os.path.exists(path), path
 

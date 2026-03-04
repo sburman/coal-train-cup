@@ -22,7 +22,7 @@ fix:
 .PHONY: lint
 lint:
 	poetry run ruff check --preview
-	poetry run mypy .
+	MYPYPATH= poetry run mypy .
 
 .PHONY: run
 run:

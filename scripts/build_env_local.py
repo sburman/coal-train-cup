@@ -4,6 +4,7 @@ Build .env.local from .streamlit/secrets.toml so the Next.js app can run locally
 without manually copying credentials.
 Usage: poetry run python scripts/build_env_local.py
 """
+
 import base64
 import json
 import os
@@ -20,7 +21,9 @@ OUT_PATH = ".env.local"
 
 def main() -> None:
     if not os.path.isfile(SECRETS_PATH):
-        print(f"{SECRETS_PATH} not found. Create it or copy .env.local.example to .env.local and fill in.")
+        print(
+            f"{SECRETS_PATH} not found. Create it or copy .env.local.example to .env.local and fill in."
+        )
         raise SystemExit(1)
 
     with open(SECRETS_PATH) as f:
@@ -41,7 +44,9 @@ def main() -> None:
         b64 = base64.standard_b64encode(json_str.encode("utf-8")).decode("ascii")
         lines.append(f"GOOGLE_SERVICE_ACCOUNT_JSON_B64={b64}")
     else:
-        lines.append("# GOOGLE_SERVICE_ACCOUNT_JSON_B64=... (add from secrets [connections.gsheets])")
+        lines.append(
+            "# GOOGLE_SERVICE_ACCOUNT_JSON_B64=... (add from secrets [connections.gsheets])"
+        )
 
     # NRL auth
     nrl = conn.get("nrl", {})

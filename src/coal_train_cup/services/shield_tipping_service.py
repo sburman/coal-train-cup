@@ -5,7 +5,12 @@ from coal_train_cup.services.sheets_service import append_shield_row_to_workshee
 
 
 def make_shield_tip(
-    email: str, team: str, tryscorer: str, round: int, match_total: int | None = None, season: int = CURRENT_SEASON
+    email: str,
+    team: str,
+    tryscorer: str,
+    round: int,
+    match_total: int | None = None,
+    season: int = CURRENT_SEASON,
 ) -> UserShieldTip:
     tipped_at_time = datetime.now(timezone.utc)
 

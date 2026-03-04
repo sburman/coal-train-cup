@@ -22,7 +22,9 @@ def get_games_for_round(round: int, season: int = CURRENT_SEASON) -> list[Game]:
     return games
 
 
-def get_game_results_for_round(round: int, season: int = CURRENT_SEASON) -> list[GameResult]:
+def get_game_results_for_round(
+    round: int, season: int = CURRENT_SEASON
+) -> list[GameResult]:
     """
     Returns a list of games for the given round.
     """
