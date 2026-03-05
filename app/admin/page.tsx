@@ -35,7 +35,9 @@ export default function AdminPage() {
   const [cacheClearing, setCacheClearing] = useState(false);
   const [cacheMessage, setCacheMessage] = useState<"ok" | "err" | null>(null);
   const [cleanupLoading, setCleanupLoading] = useState(false);
-  const [cleanupResult, setCleanupResult] = useState<{ deleted: number } | { error: string } | null>(null);
+  const [cleanupResult, setCleanupResult] = useState<
+    { deleted: number; illegalTips?: { email: string; round: number; team: string; opponent: string; tipped_at: string }[] } | { error: string } | null
+ >(null);
 
   const unlock = () => {
     if (!email.trim()) return;
@@ -108,7 +110,10 @@ export default function AdminPage() {
       .then((r) => r.json())
       .then((data) => {
         if (data.error) setCleanupResult({ error: data.error });
-        else setCleanupResult({ deleted: data.deleted ?? 0 });
+        else setCleanupResult({
+          deleted: data.deleted ?? 0,
+          illegalTips: data.illegalTips ?? [],
+        });
         if (data.deleted > 0) refreshReports();
       })
       .catch((e) => setCleanupResult({ error: e.message }))
@@ -192,7 +197,7 @@ export default function AdminPage() {
             {cleanupLoading ? "Cleaning…" : "Cleanup duplicates"}
           </Button>
           <p className="text-sm text-white/70">
-            Finds tips that are duplicates (same email, round, team, opponent) and removes all but the latest submission from the spreadsheet. Expect a count of rows deleted; refresh reports afterward to see the updated duplicate list.
+            Two phases: (1) Same tip submitted more than once — keeps the latest. (2) Multiple different tips for the same round — keeps the latest legal tip (you can’t override once an earlier tip’s game has started). Expect a count of rows deleted; refresh reports afterward.
           </p>
         </div>
       </div>
@@ -203,9 +208,42 @@ export default function AdminPage() {
         <Alert variant="destructive" className="mb-4">Failed to clear cache.</Alert>
       )}
       {cleanupResult && "deleted" in cleanupResult && (
-        <Alert className="mb-4">
-          Duplicate cleanup complete: {cleanupResult.deleted} row{cleanupResult.deleted === 1 ? "" : "s"} removed from the spreadsheet.
-        </Alert>
+        <div className="mb-4 space-y-3">
+          <Alert>
+            Duplicate cleanup complete: {cleanupResult.deleted} row{cleanupResult.deleted === 1 ? "" : "s"} removed from the spreadsheet.
+          </Alert>
+          {cleanupResult.illegalTips && cleanupResult.illegalTips.length > 0 && (
+            <div className="space-y-2">
+              <p className="text-sm font-medium text-white/90">
+                Illegal tips removed (submitted after an earlier tip’s game had started):
+              </p>
+              <div className="overflow-x-auto rounded-lg border border-white/20">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Round</TableHead>
+                      <TableHead>Team</TableHead>
+                      <TableHead>Opponent</TableHead>
+                      <TableHead>Tipped at</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {cleanupResult.illegalTips.map((t, i) => (
+                      <TableRow key={i}>
+                        <TableCell>{t.email}</TableCell>
+                        <TableCell>{t.round}</TableCell>
+                        <TableCell>{t.team}</TableCell>
+                        <TableCell>{t.opponent}</TableCell>
+                        <TableCell>{new Date(t.tipped_at).toISOString()}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            </div>
+          )}
+        </div>
       )}
       {cleanupResult && "error" in cleanupResult && (
         <Alert variant="destructive" className="mb-4">{cleanupResult.error}</Alert>
