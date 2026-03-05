@@ -34,6 +34,8 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(false);
   const [cacheClearing, setCacheClearing] = useState(false);
   const [cacheMessage, setCacheMessage] = useState<"ok" | "err" | null>(null);
+  const [cleanupLoading, setCleanupLoading] = useState(false);
+  const [cleanupResult, setCleanupResult] = useState<{ deleted: number } | { error: string } | null>(null);
 
   const unlock = () => {
     if (!email.trim()) return;
@@ -94,6 +96,25 @@ export default function AdminPage() {
       .finally(() => setLoading(false));
   };
 
+  const cleanupDuplicates = () => {
+    if (!allowedEmail) return;
+    setCleanupLoading(true);
+    setCleanupResult(null);
+    fetch("/api/admin/cleanup-duplicates", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: allowedEmail }),
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) setCleanupResult({ error: data.error });
+        else setCleanupResult({ deleted: data.deleted ?? 0 });
+        if (data.deleted > 0) refreshReports();
+      })
+      .catch((e) => setCleanupResult({ error: e.message }))
+      .finally(() => setCleanupLoading(false));
+  };
+
   if (allowedEmail == null || reports == null) {
     return (
       <>
@@ -131,7 +152,7 @@ export default function AdminPage() {
     <>
       <SectionHeader as="h1">Admin</SectionHeader>
       <p className="mb-4 text-sm text-white/70">
-        Logged in as {allowedEmail}. Use the Streamlit app for duplicate cleanup and round archive.
+        Logged in as {allowedEmail}. Use the Streamlit app for round archive only.
       </p>
 
       <div className="mb-6 space-y-4">
@@ -161,12 +182,33 @@ export default function AdminPage() {
             Reloads the four reports below from the current data. Use after clearing cache or if you’ve made changes elsewhere; tables update with the latest invalid tips, duplicates, and rule violations.
           </p>
         </div>
+        <div className="space-y-1">
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={cleanupDuplicates}
+            disabled={cleanupLoading}
+          >
+            {cleanupLoading ? "Cleaning…" : "Cleanup duplicates"}
+          </Button>
+          <p className="text-sm text-white/70">
+            Finds tips that are duplicates (same email, round, team, opponent) and removes all but the latest submission from the spreadsheet. Expect a count of rows deleted; refresh reports afterward to see the updated duplicate list.
+          </p>
+        </div>
       </div>
       {cacheMessage === "ok" && (
         <Alert className="mb-4">Cache cleared.</Alert>
       )}
       {cacheMessage === "err" && (
         <Alert variant="destructive" className="mb-4">Failed to clear cache.</Alert>
+      )}
+      {cleanupResult && "deleted" in cleanupResult && (
+        <Alert className="mb-4">
+          Duplicate cleanup complete: {cleanupResult.deleted} row{cleanupResult.deleted === 1 ? "" : "s"} removed from the spreadsheet.
+        </Alert>
+      )}
+      {cleanupResult && "error" in cleanupResult && (
+        <Alert variant="destructive" className="mb-4">{cleanupResult.error}</Alert>
       )}
 
       <SectionHeader as="h2">Late tips (tipped after kickoff)</SectionHeader>
@@ -204,7 +246,7 @@ export default function AdminPage() {
 
       <SectionHeader as="h2">Duplicate tips (same round + email)</SectionHeader>
       <p className="mb-2 text-sm text-white/70">
-        Same round and email with more than one tip recorded (e.g. double submit). To remove duplicates and keep the latest, use the Streamlit app’s cleanup.
+        Same round and email with more than one tip recorded (e.g. double submit). Use the “Cleanup duplicates” button above to remove extras and keep the latest tip only.
       </p>
       {reports.duplicateTips.length === 0 ? (
         <p className="mb-6 text-sm text-white/70">None.</p>

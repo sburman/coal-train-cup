@@ -75,6 +75,18 @@ export async function getWorksheetRecords(
   spreadsheetName: string,
   worksheetName: string
 ): Promise<Record<string, string | number>[]> {
+  const withIndices = await getWorksheetRecordsWithRowIndices(
+    spreadsheetName,
+    worksheetName
+  );
+  return withIndices.map(({ record }) => record);
+}
+
+/** Get all rows as records plus 0-based row index in sheet (row 0 = header, first data row = 1). */
+async function getWorksheetRecordsWithRowIndices(
+  spreadsheetName: string,
+  worksheetName: string
+): Promise<{ record: Record<string, string | number>; zeroBasedRowIndex: number }[]> {
   return withRetry429(async () => {
     const sheets = await getSheetsClient();
     const id = await getSpreadsheetId(spreadsheetName);
@@ -84,19 +96,19 @@ export async function getWorksheetRecords(
       range,
     });
     const rows = (res.data.values ?? []) as string[][];
-  if (rows.length === 0) return [];
-  const headers = rows[0].map((h) => String(h).trim());
-  const records: Record<string, string | number>[] = [];
-  for (let i = 1; i < rows.length; i++) {
-    const row = rows[i];
-    const rec: Record<string, string | number> = {};
-    headers.forEach((h, j) => {
-      const v = row[j];
-      if (v !== undefined && v !== "") rec[h] = v;
-    });
-    records.push(rec);
-  }
-  return records;
+    if (rows.length === 0) return [];
+    const headers = rows[0].map((h) => String(h).trim());
+    const out: { record: Record<string, string | number>; zeroBasedRowIndex: number }[] = [];
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const rec: Record<string, string | number> = {};
+      headers.forEach((h, j) => {
+        const v = row[j];
+        if (v !== undefined && v !== "") rec[h] = v;
+      });
+      out.push({ record: rec, zeroBasedRowIndex: i });
+    }
+    return out;
   });
 }
 
@@ -107,6 +119,57 @@ export async function getWorksheetNames(spreadsheetName: string): Promise<string
     const res = await sheets.spreadsheets.get({ spreadsheetId: id });
     return (res.data.sheets ?? []).map((s) => s.properties?.title ?? "").filter(Boolean);
   });
+}
+
+/** Get the sheetId (for batchUpdate) of a worksheet by title. */
+export async function getSheetId(
+  spreadsheetName: string,
+  worksheetName: string
+): Promise<number> {
+  return withRetry429(async () => {
+    const sheets = await getSheetsClient();
+    const id = await getSpreadsheetId(spreadsheetName);
+    const res = await sheets.spreadsheets.get({
+      spreadsheetId: id,
+      fields: "sheets(properties(sheetId,title))",
+    });
+    const sheet = (res.data.sheets ?? []).find(
+      (s) => (s.properties?.title ?? "") === worksheetName
+    );
+    if (sheet?.properties?.sheetId == null)
+      throw new Error(`Worksheet not found: ${worksheetName}`);
+    return sheet.properties.sheetId;
+  });
+}
+
+/** Delete rows by 0-based row index. Indices are processed in descending order so positions stay valid. */
+export async function deleteRows(
+  spreadsheetName: string,
+  worksheetName: string,
+  zeroBasedRowIndices: number[]
+): Promise<void> {
+  if (zeroBasedRowIndices.length === 0) return;
+  const sheetId = await getSheetId(spreadsheetName, worksheetName);
+  const sorted = [...zeroBasedRowIndices].sort((a, b) => b - a);
+  const sheets = await getSheetsClient();
+  const id = await getSpreadsheetId(spreadsheetName);
+  await withRetry429(() =>
+    sheets.spreadsheets.batchUpdate({
+      spreadsheetId: id,
+      requestBody: {
+        requests: sorted.map((startIndex) => ({
+          deleteDimension: {
+            range: {
+              sheetId,
+              dimension: "ROWS",
+              startIndex,
+              endIndex: startIndex + 1,
+            },
+          },
+        })),
+      },
+    })
+  );
 }
 
 export async function worksheetExists(
@@ -216,6 +279,40 @@ export async function loadUserTipsFromSheets(
     }
   }
   return tips;
+}
+
+export type UserTipWithRow = { tip: UserTip; round: number; zeroBasedRowIndex: number };
+
+/** Load all user tips with their sheet row index (for duplicate cleanup). */
+export async function loadUserTipsWithRowIndices(
+  spreadsheetName: string = SPREADSHEET_NAME
+): Promise<UserTipWithRow[]> {
+  const names = await getWorksheetNames(spreadsheetName);
+  const roundSheets = names.filter((n) => n.startsWith("Round "));
+  const out: UserTipWithRow[] = [];
+  for (const sheetName of roundSheets) {
+    const withIndices = await getWorksheetRecordsWithRowIndices(
+      spreadsheetName,
+      sheetName
+    );
+    for (const { record: r, zeroBasedRowIndex } of withIndices) {
+      out.push({
+        tip: {
+          email: String(r.email ?? ""),
+          username: String(r.username ?? ""),
+          season: Number(r.season),
+          round: Number(r.round),
+          team: String(r.team ?? ""),
+          opponent: String(r.opponent ?? ""),
+          home: [true, "TRUE", "1", 1].includes(r.home as boolean | string | number),
+          tipped_at: String(r.tipped_at ?? ""),
+        },
+        round: Number(r.round),
+        zeroBasedRowIndex,
+      });
+    }
+  }
+  return out;
 }
 
 export async function loadShieldWinners(
