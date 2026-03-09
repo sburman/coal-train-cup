@@ -6,9 +6,8 @@ import Link from "next/link";
 import {
   IconHome,
   IconPencil,
-  IconScroll,
-  IconTrophy,
-  IconShield,
+  IconChartBar,
+  IconUser,
 } from "@/components/icons/nav-icons";
 
 const spaceGrotesk = Space_Grotesk({
@@ -32,7 +31,8 @@ export const metadata: Metadata = {
 const navItems = [
   { href: "/", label: "Home", Icon: IconHome },
   { href: "/make-tip", label: "Make a tip", Icon: IconPencil },
-  { href: "/leaderboard-2025", label: "2025 Results", Icon: IconScroll },
+  { href: "/tips-by-round", label: "Tips by round", Icon: IconChartBar },
+  { href: "/tips-by-user", label: "Tips by user", Icon: IconUser },
 ] as const;
 
 export default function RootLayout({

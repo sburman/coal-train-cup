@@ -46,7 +46,14 @@ export default function HomePage() {
           title="2025 Coal Train Cup winner"
           winner="Paul Mac"
           icon={<IconTrophy />}
-        />
+        >
+          <Link
+            href="/leaderboard-2025"
+            className="text-sm text-primary underline-offset-2 hover:underline"
+          >
+            View 2025 results
+          </Link>
+        </WinnerBadge>
         <WinnerBadge
           title="2025 Siliva Shield winner"
           winner="Kyle (damiencooked)"
@@ -56,7 +63,7 @@ export default function HomePage() {
       <hr className="my-6 border-white/20" />
       <HomeStats />      
       <hr className="my-6 border-white/20" />
-      <EasterEggVersion>version: 2026.1.3</EasterEggVersion>
+      <EasterEggVersion>version: 2026.2.1</EasterEggVersion>
     </>
   );
 }
