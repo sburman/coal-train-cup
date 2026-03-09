@@ -57,7 +57,6 @@ def append_row_to_worksheet(
 ) -> None:
     row_data = {
         "email": tip.email,
-        "username": tip.username,
         "season": tip.season,
         "round": tip.round,
         "team": tip.team,
