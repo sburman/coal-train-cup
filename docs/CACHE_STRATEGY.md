@@ -2,7 +2,7 @@
 
 ## In-memory TTL cache (`lib/cache.ts`)
 
-In **Next.js dev**, hot reload normally re-runs modules and clears the cache every time, so each request could hit Google Sheets and you can hit **429 (rate limit)**. The cache is therefore attached to `globalThis` so it survives HMR and behaves more like Streamlit’s 8h cache. If you still see 429, wait ~1 minute (Sheets quota is per minute); the Sheets client will retry once after 65s on 429.
+In **Next.js dev**, hot reload normally re-runs modules and clears the cache every time, so each request could hit Google Sheets and you can hit **429 (rate limit)**. The cache is therefore attached to `globalThis` so it survives HMR. If you still see 429, wait ~1 minute (Sheets quota is per minute); the Sheets client will retry once after 65s on 429.
 
 - **Scope**: Per serverless instance. Not shared across invocations or regions.
 - **Keys**: `data:users`, `data:games:{spreadsheetName}`, `data:tips:{spreadsheetName}`, `data:shield:...`, `data:players:{round}`, `lb:full:...`, `lb:legacy:...`.

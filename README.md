@@ -4,15 +4,19 @@ Application for managing the Coal Train Cup tipping competition.
 
 ## Web app (Next.js)
 
-The main UI is a Next.js app (Vercel-ready, mobile-friendly).
+The app is Next.js (Vercel-ready, mobile-friendly).
 
-- **Run locally**: `make run-web` (or `make env-local` then `npm run dev`). Open http://localhost:3000. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md#run-locally-first) for env setup.
+- **Run locally**: `make run-web` or `npm run dev` and open http://localhost:3000
 - **Build**: `npm run build && npm start`
+- **Lint**: `npm run lint`
 - **Tests**: `npm test`
-- **Deploy**: See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for Vercel Hobby setup, env vars, and cron.
+- **Deploy**: see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 
-Data is read from and written to **Google Sheets** (same as the legacy Streamlit app). Env vars required: `GOOGLE_SERVICE_ACCOUNT_JSON`, and optionally `GOOGLE_SPREADSHEET_ID`, `NRL_AUTH`, `PIN_SALT`, `CRON_SECRET`.
+Data is read from and written to Google Sheets. Required env vars:
+- `GOOGLE_SERVICE_ACCOUNT_JSON` (or `GOOGLE_SERVICE_ACCOUNT_JSON_B64`)
+- `NRL_AUTH`
 
-## Legacy Streamlit app
-
-The previous UI lives in `app.py` and can still be run with Poetry: `poetry run streamlit run app.py`. It shares the same Google Sheets backend.
+Optional env vars:
+- `GOOGLE_SPREADSHEET_ID`
+- `PIN_SALT`
+- `CRON_SECRET`

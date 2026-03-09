@@ -1,47 +1,15 @@
-.PHONY: install
-install:
-	poetry install
-
-.PHONY: all
-all: clean fix lint
-
-.PHONY: clean
-clean:
-	rm -rf .mypy_cache
-	rm -rf .pytest_cache
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
-	find . -name '*~' -exec rm -f {} +
-	find . -name '__pycache__' -exec rm -fr {} +
-
-.PHONY: fix
-fix:
-	poetry run ruff format
-	poetry run ruff check --preview --fix
+.PHONY: deps
+deps:
+	npm install
 
 .PHONY: lint
 lint:
-	poetry run ruff check --preview
-	MYPYPATH= poetry run mypy .
+	npm run lint
 
-.PHONY: run
-run:
-	poetry run streamlit run app.py
+.PHONY: test
+test:
+	npm test
 
-# --- Next.js web app (run locally before deploy) ---
-
-# Build .env.local from .streamlit/secrets.toml (run once, or after changing secrets)
-.PHONY: env-local
-env-local:
-	poetry run python scripts/build_env_local.py
-
-# Install Node deps and generate .env.local if missing
-.PHONY: web-deps
-web-deps:
-	npm install
-	@if [ ! -f .env.local ]; then $(MAKE) env-local; fi
-
-# Run Next.js dev server (ensure .env.local exists: make env-local)
 .PHONY: run-web
-run-web: web-deps
+run-web:
 	npm run dev
