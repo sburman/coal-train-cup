@@ -3,21 +3,16 @@
 ## Run locally first
 
 1. **Environment**
-   - **Option A**: From existing Streamlit secrets:
-     ```bash
-     make env-local
-     ```
-     This reads `.streamlit/secrets.toml` and writes `.env.local` (Google + NRL + salt).
-   - **Option B**: Manual:
-     - Copy `.env.local.example` to `.env.local`
-     - Set `GOOGLE_SERVICE_ACCOUNT_JSON` (full service account JSON string), `NRL_AUTH`, and optionally `PIN_SALT`, `GOOGLE_SPREADSHEET_ID`.
+   - Copy `.env.local.example` to `.env.local`
+   - Set `GOOGLE_SERVICE_ACCOUNT_JSON` (or `GOOGLE_SERVICE_ACCOUNT_JSON_B64`) and `NRL_AUTH`
+   - Optionally set `PIN_SALT`, `GOOGLE_SPREADSHEET_ID`
 
 2. **Install and run**
    ```bash
    npm install
    npm run dev
    ```
-   Or in one step: `make run-web` (installs deps, runs `env-local` if `.env.local` is missing, then `npm run dev`).
+   Or in one step: `make run-web`.
 
 3. **Use the app**
    - Open http://localhost:3000
@@ -57,15 +52,6 @@ Set these in Vercel → Project → Settings → Environment Variables:
 - One cron is configured: `/api/cron/warm` runs daily at 14:00 UTC (midnight AEST).
 - It warms the in-memory caches (users, tips, games) so the first user requests after a cold start are faster.
 - On Hobby, cron can run at most **once per day**. More frequent schedules are not supported.
-
-## Side-by-side validation
-
-1. Deploy the Next.js app to a Vercel preview URL.
-2. Run the existing Streamlit app locally (or on a separate host).
-3. For a fixed round and a known user email, compare:
-   - Leaderboard order and points (GET `/api/leaderboard?round=N` vs Streamlit leaderboard).
-   - User tips view (GET `/api/user-tips?email=…` vs Streamlit “2026 tips by user”).
-4. After validation, point your domain to the Vercel deployment and retire the Streamlit deployment.
 
 ## Rollback
 

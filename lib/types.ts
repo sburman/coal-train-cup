@@ -1,5 +1,5 @@
 /**
- * Domain types – parity with coal_train_cup.models.
+ * Domain types for the web app.
  * All optional timestamps are ISO strings in API payloads.
  */
 

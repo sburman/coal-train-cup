@@ -7,7 +7,7 @@ import {
   TIP_GRACE_PERIOD_MINUTES,
   TIP_DISPLAY_GRACE_MINUTES,
 } from "./constants";
-import type { User, UserTip, Tip, Game, ResultRow } from "./types";
+import type { User, UserTip, Game, ResultRow } from "./types";
 import * as lb from "./leaderboard";
 
 export interface AvailableTip {
