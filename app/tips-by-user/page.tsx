@@ -218,8 +218,9 @@ export default function TipsByUserPage() {
                     dataKey="position"
                     stroke="#9c6ade"
                     connectNulls
-                    dot={({ payload, cx, cy }) => (
+                    dot={({ payload, cx, cy, index }) => (
                       <circle
+                        key={`position-dot-${payload?.round ?? index}-${index}`}
                         cx={cx}
                         cy={cy}
                         r={5}

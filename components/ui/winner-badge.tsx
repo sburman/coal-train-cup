@@ -6,6 +6,7 @@ export function WinnerBadge({
   winner,
   icon,
   className,
+  children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & {
   title: string;
@@ -32,6 +33,7 @@ export function WinnerBadge({
           {winner}
         </p>
       </div>
+      {children ? <div className="mt-3">{children}</div> : null}
     </div>
   );
 }

@@ -4,10 +4,12 @@ import { cn } from "@/lib/utils";
 export function ChartContainer({
   title,
   className,
+  contentClassName,
   children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement> & {
   title?: string;
+  contentClassName?: string;
 }) {
   return (
     <div
@@ -22,7 +24,9 @@ export function ChartContainer({
           {title}
         </h3>
       )}
-      <div className="min-h-[200px] w-full">{children}</div>
+      <div className={cn("min-h-[200px] w-full", contentClassName)}>
+        {children}
+      </div>
     </div>
   );
 }

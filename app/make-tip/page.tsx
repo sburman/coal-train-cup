@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionHeader } from "@/components/layout/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
+import { StatCard } from "@/components/ui/stat-card";
 
 type AvailableTip = {
   season: number;
@@ -35,6 +36,9 @@ type Payload = {
 
 export default function MakeTipPage() {
   const [email, setEmail] = useState("");
+  const [currentRound, setCurrentRound] = useState<number | null>(null);
+  const [currentRoundLoading, setCurrentRoundLoading] = useState(true);
+  const [currentRoundError, setCurrentRoundError] = useState<string | null>(null);
   const [payload, setPayload] = useState<Payload | null>(null);
   const [loading, setLoading] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
@@ -46,6 +50,39 @@ export default function MakeTipPage() {
     opponent: string;
     home: boolean;
   } | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCurrentRound = async () => {
+      setCurrentRoundLoading(true);
+      setCurrentRoundError(null);
+      try {
+        const res = await fetch("/api/tipping/current-round");
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || "Could not load current round.");
+        }
+        if (isMounted) {
+          setCurrentRound(data.round ?? null);
+        }
+      } catch (e) {
+        if (isMounted) {
+          setCurrentRoundError(
+            e instanceof Error ? e.message : "Could not load current round."
+          );
+        }
+      } finally {
+        if (isMounted) {
+          setCurrentRoundLoading(false);
+        }
+      }
+    };
+
+    fetchCurrentRound();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const fetchPayload = async () => {
     if (!email.trim()) return;
@@ -110,6 +147,17 @@ export default function MakeTipPage() {
         Enter your Patreon email, then we&apos;ll show your options for this
         round.
       </p>
+      <div className="mb-6 max-w-md">
+        {currentRoundLoading ? (
+          <Skeleton className="h-20 w-full rounded-brand-lg" />
+        ) : currentRoundError ? (
+          <Alert variant="destructive">
+            Could not load current tipping round. Please refresh and try again.
+          </Alert>
+        ) : (
+          <StatCard label="Current tipping round" value={`Round ${currentRound}`} />
+        )}
+      </div>
       <div className="mb-6 max-w-md space-y-2">
         <Label htmlFor="email">Patreon email</Label>
         <div className="flex flex-wrap gap-2">
@@ -158,9 +206,6 @@ export default function MakeTipPage() {
       )}
       {payload && !loading && (
         <>
-          <SectionHeader as="h2" className="mb-4">
-            Current round: {payload.currentRound}
-          </SectionHeader>
           {payload.error && (
             <Alert variant="destructive" className="mb-4">
               <p>{payload.error}</p>
@@ -178,24 +223,28 @@ export default function MakeTipPage() {
           {payload.user && !payload.error && (
             <>
               {payload.previousRoundTip && (
-                <Card className="mb-4">
-                  <CardContent className="pt-4">
-                    <p className="text-white/90">
-                      In round {payload.previousRoundTip.round} you tipped:{" "}
-                      {payload.previousRoundTip.team} (
+                <Card className="mb-4 border-white/10 bg-brand-elevated/60">
+                  <CardHeader className="pb-2">
+                    <p className="text-sm font-medium text-white/90">Last round tip</p>
+                  </CardHeader>
+                  <CardContent className="space-y-1 pt-0 text-white/90">
+                    <p>
+                      <strong>{payload.previousRoundTip.team}</strong> (
                       {payload.previousRoundTip.home ? "home" : "away"}) vs{" "}
-                      {payload.previousRoundTip.opponent}.
+                      {payload.previousRoundTip.opponent}
                     </p>
                     {payload.previousRoundTip.margin > 0 && (
-                      <p className="mt-1">They won by {payload.previousRoundTip.margin} points.</p>
+                      <p className="text-primary">
+                        Result: won by {payload.previousRoundTip.margin} points.
+                      </p>
                     )}
                     {payload.previousRoundTip.margin < 0 && (
-                      <p className="mt-1">
-                        They lost by {Math.abs(payload.previousRoundTip.margin)} points.
+                      <p className="text-red-300">
+                        Result: lost by {Math.abs(payload.previousRoundTip.margin)} points.
                       </p>
                     )}
                     {payload.previousRoundTip.margin === 0 && (
-                      <p className="mt-1">It was a draw.</p>
+                      <p className="text-white/80">Result: draw.</p>
                     )}
                   </CardContent>
                 </Card>
@@ -207,17 +256,20 @@ export default function MakeTipPage() {
                 </p>
               )}
               {payload.unavailableReasons.length > 0 && (
-                <Card className="mb-4 border-white/20 bg-[var(--code-bg)]">
+                <Card className="mb-4 border-white/10 bg-brand-elevated/60">
                   <CardHeader className="pb-2">
                     <p className="text-sm font-medium">
-                      This week you can&apos;t select:
+                      Unavailable this week
                     </p>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <ul className="ml-5 list-disc space-y-0.5 text-sm text-white/90">
+                    <p className="mb-2 text-sm text-white/70">
+                      These teams are blocked by round-to-round tipping rules.
+                    </p>
+                    <ul className="ml-5 list-disc space-y-1 text-sm text-white/90">
                       {payload.unavailableReasons.map(({ team, reasons }) => (
                         <li key={team}>
-                          {team} [{reasons.join(", ")}]
+                          <strong>{team}</strong>: {reasons.join(", ")}
                         </li>
                       ))}
                     </ul>

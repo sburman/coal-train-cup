@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react";
 import {
-  PieChart,
-  Pie,
-  Cell,
   BarChart,
   Bar,
+  Cell,
+  LabelList,
   XAxis,
   YAxis,
   ResponsiveContainer,
@@ -17,8 +16,10 @@ import { RoundSwitcher } from "@/components/ui/round-switcher";
 import { ChartContainer } from "@/components/ui/chart-container";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getTeamMascotName } from "@/lib/team-name";
 
 const RESULT_COLORS = { Won: "#00e5b4", Lost: "#f45866", Draw: "#9c6ade" };
+const RESULT_ORDER = { Won: 0, Draw: 1, Lost: 2, Unknown: 3 } as const;
 
 export default function TipsByRoundPage() {
   const [availableRounds, setAvailableRounds] = useState<number[]>([]);
@@ -65,6 +66,19 @@ export default function TipsByRoundPage() {
         { name: "Draw", value: resultCounts.Draw, color: RESULT_COLORS.Draw },
       ].filter((d) => d.value > 0)
     : [];
+  const totalTips = pieData.reduce((sum, d) => sum + d.value, 0);
+  const sortedTeamStats = [...teamStats].sort((a, b) => {
+    const aOrder =
+      RESULT_ORDER[a.result as keyof typeof RESULT_ORDER] ?? RESULT_ORDER.Unknown;
+    const bOrder =
+      RESULT_ORDER[b.result as keyof typeof RESULT_ORDER] ?? RESULT_ORDER.Unknown;
+    if (aOrder !== bOrder) {
+      return aOrder - bOrder;
+    }
+    return b.count - a.count;
+  });
+  const teamLabelWidth = 130;
+  const teamChartHeight = Math.max(320, sortedTeamStats.length * 30);
 
   if (loading) {
     return (
@@ -107,59 +121,96 @@ export default function TipsByRoundPage() {
           )}
           {!roundDataLoading && pieData.length > 0 && (
             <ChartContainer
-              title="Distribution of Winning vs Losing Tips"
-              className="mb-6 min-h-[260px]"
+              title="Competition results"
+              className="mb-6"
+              contentClassName="min-h-0"
             >
-              <ResponsiveContainer width="100%" height={260}>
-                <PieChart>
-                  <Pie
-                    data={pieData}
-                    dataKey="value"
-                    nameKey="name"
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    label={({ name, value }) => `${name} ${value}`}
-                  >
-                    {pieData.map((entry, i) => (
-                      <Cell key={i} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    contentStyle={{
-                      background: "var(--bg-secondary)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                    }}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <div className="space-y-3">
+                {pieData.map((entry) => {
+                  const percent =
+                    totalTips > 0 ? Math.round((entry.value / totalTips) * 100) : 0;
+                  return (
+                    <div key={entry.name}>
+                      <div className="mb-1 flex items-center justify-between text-sm text-white/90">
+                        <span className="font-medium">{entry.name}</span>
+                        <span>
+                          {percent}% ({entry.value})
+                        </span>
+                      </div>
+                      <div className="h-3 overflow-hidden rounded-full bg-white/10">
+                        <div
+                          className="h-full rounded-full"
+                          style={{
+                            width: `${percent}%`,
+                            backgroundColor: entry.color,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </ChartContainer>
           )}
           {!roundDataLoading && teamStats.length > 0 && (
             <ChartContainer
-              title="Team tips"
-              className="min-h-[300px]"
+              className="min-h-[320px]"
             >
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={teamChartHeight}>
                 <BarChart
-                  data={teamStats.sort((a, b) => b.count - a.count)}
+                  data={sortedTeamStats}
                   layout="vertical"
-                  margin={{ left: 8, right: 8 }}
+                  margin={{ top: 8, right: 32, bottom: 8, left: 8 }}
                 >
-                  <XAxis type="number" tick={{ fill: "#fff" }} />
+                  <XAxis
+                    type="number"
+                    allowDecimals={false}
+                    domain={[0, "dataMax + 6"]}
+                    tick={{ fill: "#fff" }}
+                  />
                   <YAxis
                     type="category"
                     dataKey="team"
-                    width={120}
+                    interval={0}
+                    width={teamLabelWidth}
+                    tickMargin={10}
+                    tickFormatter={getTeamMascotName}
                     tick={{ fill: "#fff", fontSize: 12 }}
                   />
                   <Tooltip
+                    cursor={{ fill: "rgba(255,255,255,0.06)" }}
                     contentStyle={{
-                      background: "var(--bg-secondary)",
-                      border: "1px solid rgba(255,255,255,0.2)",
+                      background: "rgba(31, 15, 82, 0.98)",
+                      border: "1px solid rgba(255,255,255,0.25)",
+                      borderRadius: "12px",
+                      color: "#fff",
                     }}
+                    itemStyle={{ color: "#fff" }}
+                    labelStyle={{ color: "#fff", fontWeight: 600 }}
+                    formatter={(value: number) => [value, "Tips"]}
+                    labelFormatter={(_label, payload) =>
+                      payload?.[0]?.payload?.team ?? ""
+                    }
                   />
-                  <Bar dataKey="count" name="Tips" fill="#9c6ade" />
+                  <Bar dataKey="count" name="Tips">
+                    {sortedTeamStats.map((entry) => (
+                      <Cell
+                        key={`${entry.team}-${entry.result}`}
+                        fill={
+                          RESULT_COLORS[
+                            entry.result as keyof typeof RESULT_COLORS
+                          ] ?? "#9c6ade"
+                        }
+                      />
+                    ))}
+                    <LabelList
+                      dataKey="count"
+                      position="right"
+                      formatter={(value: number) => (value > 0 ? value : "")}
+                      fill="#fff"
+                      fontSize={12}
+                    />
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </ChartContainer>
