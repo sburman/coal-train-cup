@@ -1,11 +1,9 @@
 import {
   SPREADSHEET_NAME,
-  LEGACY_SPREADSHEET_2025,
   CURRENT_SEASON,
   CACHE_TTL_SECONDS,
   PLAYERS_CACHE_TTL_SECONDS,
   SHIELD_WINNERS_CACHE_TTL_SECONDS,
-  ROUND_IN_PROGRESS_HOURS,
 } from "./constants";
 import * as sheets from "./sheets";
 import { getLatestDrawFromNrl, getPlayerNamesInRound as fetchPlayersInRound } from "./nrl";
@@ -22,7 +20,7 @@ const CACHE_KEYS = {
 };
 
 export async function allUsers(): Promise<User[]> {
-  let cached = get<User[]>(CACHE_KEYS.users);
+  const cached = get<User[]>(CACHE_KEYS.users);
   if (cached) return cached;
   const list = await sheets.loadUsersFromSheets(SPREADSHEET_NAME);
   set(CACHE_KEYS.users, list, CACHE_TTL_SECONDS);
@@ -31,7 +29,7 @@ export async function allUsers(): Promise<User[]> {
 
 export async function allUserTips(spreadsheetName: string = SPREADSHEET_NAME): Promise<UserTip[]> {
   const key = CACHE_KEYS.tips(spreadsheetName);
-  let cached = get<UserTip[]>(key);
+  const cached = get<UserTip[]>(key);
   if (cached) return cached;
   const list = await sheets.loadUserTipsFromSheets(spreadsheetName);
   set(key, list, CACHE_TTL_SECONDS);
@@ -54,10 +52,10 @@ function roundNeedingLookup(games: Game[]): number {
 
 export async function allGames(spreadsheetName: string = SPREADSHEET_NAME): Promise<Game[]> {
   const key = CACHE_KEYS.games(spreadsheetName);
-  let cached = get<Game[]>(key);
+  const cached = get<Game[]>(key);
   if (cached) return cached;
 
-  let existing = await sheets.loadGamesFromSheets(spreadsheetName);
+  const existing = await sheets.loadGamesFromSheets(spreadsheetName);
   const latestClosed = roundNeedingLookup(existing);
   const roundsToUpdate =
     latestClosed === 0 ? [1] : [latestClosed, latestClosed + 1];
@@ -109,7 +107,7 @@ export async function allPlayersInRound(
   season: number = CURRENT_SEASON
 ): Promise<string[]> {
   const key = CACHE_KEYS.players(round);
-  let cached = get<string[]>(key);
+  const cached = get<string[]>(key);
   if (cached) return cached;
   const list = await fetchPlayersInRound(round, season);
   set(key, list, PLAYERS_CACHE_TTL_SECONDS);
@@ -121,7 +119,7 @@ export async function getShieldWinners(
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<import("./types").UserShieldTip[]> {
   const key = CACHE_KEYS.shieldWinners(spreadsheetName, round);
-  let cached = get<import("./types").UserShieldTip[]>(key);
+  const cached = get<import("./types").UserShieldTip[]>(key);
   if (cached) return cached;
   const list = await sheets.loadShieldWinners(spreadsheetName, round);
   set(key, list, SHIELD_WINNERS_CACHE_TTL_SECONDS);

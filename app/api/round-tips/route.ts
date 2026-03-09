@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as data from "@/lib/data";
-import * as lb from "@/lib/leaderboard";
 
 export const dynamic = "force-dynamic";
 
