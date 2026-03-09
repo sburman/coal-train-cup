@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/table";
 import { EmptyState } from "@/components/ui/empty-state";
 import { TableSkeleton } from "@/components/ui/table-skeleton";
-import { maskDisplayUsername } from "@/lib/username-mask";
 
 type LeaderboardRow = {
   username: string;
@@ -76,9 +75,7 @@ export default function Leaderboard2025Page() {
             {leaderboard.map((row) => (
               <TableRow key={row.username + row.position}>
                 <TableCell>{row.position}</TableCell>
-                <TableCell className="font-medium">
-                  {maskDisplayUsername(row.username)}
-                </TableCell>
+                <TableCell className="font-medium">{row.username}</TableCell>
                 <TableCell className="text-right">{row.tips_count}</TableCell>
                 <TableCell className="text-right">{row.points}</TableCell>
                 <TableCell className="text-right">{row.margin}</TableCell>

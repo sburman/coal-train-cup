@@ -231,6 +231,7 @@ export async function loadUsersFromSheets(
   return records.map((r) => ({
     email: String(r.email ?? ""),
     username: String(r.username ?? ""),
+    username_masked: String(r.username_masked ?? ""),
     pin: r.pin != null ? String(r.pin) : undefined,
   }));
 }

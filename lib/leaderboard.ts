@@ -18,7 +18,8 @@ export async function buildFullResultsDataframe(
     spreadsheetName === SPREADSHEET_NAME
       ? await data.allUserTips(SPREADSHEET_NAME)
       : await sheets.loadUserTipsFromSheets(spreadsheetName);
-  // Always use current app users (username/email) for display
+  // Always use current app users (username/email) for display.
+  // Prefer username_masked when available for on-screen privacy.
   const users = await data.allUsers();
   const gameResults =
     spreadsheetName === SPREADSHEET_NAME
@@ -69,7 +70,7 @@ export async function buildFullResultsDataframe(
   const rows: ResultRow[] = [];
   for (const tip of tips) {
     const user = userByEmail.get(tip.email.toLowerCase());
-    const username = user?.username ?? tip.username;
+    const username = user?.username_masked ?? user?.username ?? tip.username;
     const resKey = `${tip.season}:${tip.round}:${tip.team}:${tip.opponent}:${tip.home}`;
     const res = resultsByKey.get(resKey);
     if (!res) continue; // no result yet for this tip
