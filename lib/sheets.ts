@@ -342,9 +342,17 @@ export async function appendTipToSheet(
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<void> {
   const worksheetName = `Round ${tip.round}`;
+  const headers: (string | number)[] = [
+    "email",
+    "season",
+    "round",
+    "team",
+    "opponent",
+    "home",
+    "tipped_at",
+  ];
   const values: (string | number)[] = [
     tip.email,
-    tip.username,
     tip.season,
     tip.round,
     tip.team,
@@ -352,7 +360,161 @@ export async function appendTipToSheet(
     tip.home ? "TRUE" : "FALSE",
     tip.tipped_at,
   ];
+  const exists = await worksheetExists(spreadsheetName, worksheetName);
+  if (!exists) {
+    await createWorksheet(spreadsheetName, worksheetName);
+    await appendRow(spreadsheetName, worksheetName, headers);
+  }
   await appendRow(spreadsheetName, worksheetName, values);
+}
+
+const TIP_HEADERS = [
+  "email",
+  "season",
+  "round",
+  "team",
+  "opponent",
+  "home",
+  "tipped_at",
+] as const;
+const LEGACY_TIP_HEADERS = [
+  "email",
+  "username",
+  "season",
+  "round",
+  "team",
+  "opponent",
+  "home",
+  "tipped_at",
+] as const;
+
+function normalizeHeaderCells(row: string[]): string[] {
+  return row.map((c) => String(c ?? "").trim().toLowerCase());
+}
+
+function headersMatch(row: string[], expected: readonly string[]): boolean {
+  if (row.length < expected.length) return false;
+  const normalized = normalizeHeaderCells(row);
+  return expected.every((h, i) => normalized[i] === h);
+}
+
+function toSevenColumnTipRow(row: string[]): string[] {
+  if (row.length >= 8) {
+    return [
+      String(row[0] ?? ""),
+      String(row[2] ?? ""),
+      String(row[3] ?? ""),
+      String(row[4] ?? ""),
+      String(row[5] ?? ""),
+      String(row[6] ?? ""),
+      String(row[7] ?? ""),
+    ];
+  }
+  if (row.length >= 7) {
+    return [
+      String(row[0] ?? ""),
+      String(row[1] ?? ""),
+      String(row[2] ?? ""),
+      String(row[3] ?? ""),
+      String(row[4] ?? ""),
+      String(row[5] ?? ""),
+      String(row[6] ?? ""),
+    ];
+  }
+  return [
+    String(row[0] ?? ""),
+    String(row[1] ?? ""),
+    String(row[2] ?? ""),
+    String(row[3] ?? ""),
+    String(row[4] ?? ""),
+    String(row[5] ?? ""),
+    String(row[6] ?? ""),
+  ];
+}
+
+export interface TipSheetMigrationResult {
+  sheetName: string;
+  status: "already_current" | "migrated_legacy_header" | "recovered_missing_header";
+  rowsWritten: number;
+}
+
+/**
+ * Normalize all Round sheets to the 7-column tip schema:
+ * email, season, round, team, opponent, home, tipped_at
+ */
+export async function migrateRoundTipSheetsSchema(
+  spreadsheetName: string = SPREADSHEET_NAME
+): Promise<TipSheetMigrationResult[]> {
+  const worksheetNames = await getWorksheetNames(spreadsheetName);
+  const roundSheets = worksheetNames.filter((n) => n.startsWith("Round "));
+  const sheets = await getSheetsClient();
+  const id = await getSpreadsheetId(spreadsheetName);
+  const results: TipSheetMigrationResult[] = [];
+
+  for (const sheetName of roundSheets) {
+    const read = await withRetry429(() =>
+      sheets.spreadsheets.values.get({
+        spreadsheetId: id,
+        range: `'${sheetName}'!A:Z`,
+      })
+    );
+    const rows = (read.data.values ?? []) as string[][];
+
+    if (rows.length === 0) {
+      await withRetry429(() =>
+        sheets.spreadsheets.values.update({
+          spreadsheetId: id,
+          range: `'${sheetName}'!A1:G1`,
+          valueInputOption: "USER_ENTERED",
+          requestBody: { values: [Array.from(TIP_HEADERS)] },
+        })
+      );
+      results.push({
+        sheetName,
+        status: "recovered_missing_header",
+        rowsWritten: 0,
+      });
+      continue;
+    }
+
+    const header = rows[0];
+    if (headersMatch(header, TIP_HEADERS)) {
+      results.push({
+        sheetName,
+        status: "already_current",
+        rowsWritten: Math.max(rows.length - 1, 0),
+      });
+      continue;
+    }
+
+    const dataRows = headersMatch(header, LEGACY_TIP_HEADERS)
+      ? rows.slice(1).map(toSevenColumnTipRow)
+      : rows.map(toSevenColumnTipRow);
+    const out = [Array.from(TIP_HEADERS), ...dataRows];
+    await withRetry429(() =>
+      sheets.spreadsheets.values.clear({
+        spreadsheetId: id,
+        range: `'${sheetName}'!A:Z`,
+      })
+    );
+    await withRetry429(() =>
+      sheets.spreadsheets.values.update({
+        spreadsheetId: id,
+        range: `'${sheetName}'!A1:G${out.length}`,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { values: out },
+      })
+    );
+    results.push({
+      sheetName,
+      status: headersMatch(header, LEGACY_TIP_HEADERS)
+        ? "migrated_legacy_header"
+        : "recovered_missing_header",
+      rowsWritten: dataRows.length,
+    });
+  }
+
+  return results;
 }
 
 export async function appendShieldTipToSheet(

@@ -106,7 +106,6 @@ def make_tip(user: User, tip: Tip, tipped_at_time: datetime | None = None) -> Us
 
     return UserTip(
         email=user.email,
-        username=user.username,
         season=tip.season,
         round=tip.round,
         team=tip.team,

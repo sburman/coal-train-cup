@@ -49,7 +49,7 @@ class UserShieldTip(BaseModel):
 
 class UserTip(BaseModel):
     email: EmailStr
-    username: str
+    username: Optional[str] = None
     season: int
     round: int
     team: str

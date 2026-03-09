@@ -174,7 +174,6 @@ export function validateAndBuildTip(
   }
   return {
     email: user.email,
-    username: user.username,
     season: tip.season,
     round: tip.round,
     team: tip.team,

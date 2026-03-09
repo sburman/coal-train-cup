@@ -12,7 +12,7 @@ export interface User {
 
 export interface UserTip {
   email: string;
-  username: string;
+  username?: string;
   season: number;
   round: number;
   team: string;
