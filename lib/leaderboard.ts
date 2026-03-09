@@ -7,6 +7,16 @@ import * as sheets from "./sheets";
 const CACHE_FULL_RESULTS = "lb:full:";
 const CACHE_LEGACY_FULL = "lb:legacy:";
 
+function resultKey(
+  season: number,
+  round: number,
+  team: string,
+  opponent: string,
+  home: boolean
+): string {
+  return `${season}:${round}:${team}:${opponent}:${home}`;
+}
+
 export async function buildFullResultsDataframe(
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<ResultRow[]> {
@@ -62,7 +72,7 @@ export async function buildFullResultsDataframe(
   const userByEmail = new Map(users.map((u) => [u.email.toLowerCase(), u]));
   const resultsByKey = new Map(
     gameResults.map((r) => [
-      `${r.season}:${r.round}:${r.team}:${r.opponent}:${r.home}`,
+      resultKey(r.season, r.round, r.team, r.opponent, r.home),
       r,
     ])
   );
@@ -70,8 +80,14 @@ export async function buildFullResultsDataframe(
   const rows: ResultRow[] = [];
   for (const tip of tips) {
     const user = userByEmail.get(tip.email.toLowerCase());
-    const username = user?.username_masked ?? user?.username ?? tip.username;
-    const resKey = `${tip.season}:${tip.round}:${tip.team}:${tip.opponent}:${tip.home}`;
+    const username = user?.username_masked ?? user?.username ?? tip.username ?? "";
+    const resKey = resultKey(
+      tip.season,
+      tip.round,
+      tip.team,
+      tip.opponent,
+      tip.home
+    );
     const res = resultsByKey.get(resKey);
     if (!res) continue; // no result yet for this tip
     const margin = res.margin;
