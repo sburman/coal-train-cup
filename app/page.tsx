@@ -63,7 +63,7 @@ export default function HomePage() {
       <hr className="my-6 border-white/20" />
       <HomeStats />      
       <hr className="my-6 border-white/20" />
-      <EasterEggVersion>version: 2026.2.4</EasterEggVersion>
+      <EasterEggVersion>version: 2026.3.1</EasterEggVersion>
     </>
   );
 }

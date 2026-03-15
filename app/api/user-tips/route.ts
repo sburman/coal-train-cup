@@ -29,14 +29,19 @@ export async function GET(request: NextRequest) {
     }
     const teams = await data.allTeams();
     const positionsByRound: { round: number; position: number }[] = [];
+    let maxLeaderboardSize = 0;
     for (let r = 1; r <= maxRound; r++) {
       const board = lb.getLeaderboardDataframe(full, r);
+      if (board.length > maxLeaderboardSize) {
+        maxLeaderboardSize = board.length;
+      }
       const row = board.find((x) => x.email.toLowerCase() === user.email.toLowerCase());
       if (row) positionsByRound.push({ round: r, position: row.position });
     }
     return NextResponse.json({
       user,
       maxRound,
+      maxLeaderboardSize,
       results: userResults,
       teams,
       positionsByRound,

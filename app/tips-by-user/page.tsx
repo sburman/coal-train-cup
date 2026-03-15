@@ -43,6 +43,7 @@ export default function TipsByUserPage() {
   const [data, setData] = useState<{
     user: { email: string; username: string };
     maxRound: number;
+    maxLeaderboardSize: number;
     results: ResultRow[];
     teams: string[];
     positionsByRound: { round: number; position: number }[];
@@ -103,6 +104,14 @@ export default function TipsByUserPage() {
       }))
       .sort((a, b) => b.count - a.count) ?? [];
 
+  const xTicks =
+    data?.maxRound && data.maxRound > 0
+      ? Array.from({ length: data.maxRound }, (_, i) => i + 1)
+      : [];
+
+  const maxLeaderboardSize = Math.max(data?.maxLeaderboardSize ?? 1, 1);
+  const yTicks = maxLeaderboardSize === 1 ? [1] : [1, maxLeaderboardSize];
+
   return (
     <>
       <SectionHeader as="h1">2026 tips by user</SectionHeader>
@@ -150,10 +159,6 @@ export default function TipsByUserPage() {
       )}
       {data && !error && (
         <>
-          <div className="mb-6 grid gap-3 sm:grid-cols-2">
-            <StatCard label="Home tips used" value={`${homeCount} / 13`} />
-            <StatCard label="Away tips used" value={`${awayCount} / 13`} />
-          </div>
           {chartPoints.length > 0 && (
             <ChartContainer
               title="Leaderboard position by round"
@@ -162,7 +167,7 @@ export default function TipsByUserPage() {
               <ResponsiveContainer width="100%" height={280}>
                 <LineChart
                   data={chartPoints}
-                  margin={{ top: 8, right: 8, left: 8, bottom: 8 }}
+                  margin={{ top: 18, right: 16, left: 16, bottom: 8 }}
                 >
                   <CartesianGrid
                     strokeDasharray="3 3"
@@ -171,13 +176,17 @@ export default function TipsByUserPage() {
                   <XAxis
                     dataKey="round"
                     type="number"
-                    domain={["dataMin", "dataMax"]}
+                    domain={["dataMin - 0.25", "dataMax + 0.25"]}
+                    ticks={xTicks}
+                    allowDecimals={false}
                     tick={{ fill: "#fff" }}
                   />
                   <YAxis
                     type="number"
                     reversed
-                    domain={["dataMax + 2", "0"]}
+                    domain={[1, maxLeaderboardSize]}
+                    ticks={yTicks}
+                    allowDecimals={false}
                     tick={{ fill: "#fff" }}
                   />
                   <Tooltip
@@ -236,6 +245,10 @@ export default function TipsByUserPage() {
               </ResponsiveContainer>
             </ChartContainer>
           )}
+          <div className="mb-6 grid gap-3 sm:grid-cols-2">
+            <StatCard label="Home tips used" value={`${homeCount} / 13`} />
+            <StatCard label="Away tips used" value={`${awayCount} / 13`} />
+          </div>
           <SectionHeader as="h3">Tips used by team</SectionHeader>
           <div className="mb-6">
             <Table>

@@ -24,24 +24,72 @@ const RESULT_ORDER = { Won: 0, Draw: 1, Lost: 2, Unknown: 3 } as const;
 export default function TipsByRoundPage() {
   const [availableRounds, setAvailableRounds] = useState<number[]>([]);
   const [round, setRound] = useState<number | null>(null);
+  const [seasonRoundResults, setSeasonRoundResults] = useState<
+    {
+      round: number;
+      wonCount: number;
+      lostCount: number;
+      drawCount: number;
+      wonPercent: number;
+      lostPercent: number;
+      drawPercent: number;
+      totalTips: number;
+    }[]
+  >([]);
   const [teamStats, setTeamStats] = useState<
     { team: string; count: number; result: string }[]
   >([]);
-  const [resultCounts, setResultCounts] = useState<{
-    Won: number;
-    Lost: number;
-    Draw: number;
-  } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [seasonResultsLoading, setSeasonResultsLoading] = useState(false);
   const [roundDataLoading, setRoundDataLoading] = useState(false);
 
   useEffect(() => {
     fetch("/api/round-tips")
       .then((r) => r.json())
       .then((data) => {
-        setAvailableRounds(data.availableRounds ?? []);
-        if (data.availableRounds?.length) {
-          setRound(data.availableRounds[data.availableRounds.length - 1]);
+        const rounds = data.availableRounds ?? [];
+        setAvailableRounds(rounds);
+        if (rounds.length) {
+          setRound(rounds[rounds.length - 1]);
+          setSeasonResultsLoading(true);
+          Promise.all(
+            rounds.map((r: number) =>
+              fetch(`/api/round-tips?round=${r}`)
+                .then((res) => res.json())
+                .then((roundData) => {
+                  const counts = roundData.resultCounts ?? {
+                    Won: 0,
+                    Lost: 0,
+                    Draw: 0,
+                  };
+                  const wonCount = counts.Won ?? 0;
+                  const lostCount = counts.Lost ?? 0;
+                  const drawCount = counts.Draw ?? 0;
+                  const totalTips = wonCount + lostCount + drawCount;
+                  const wonPercent =
+                    totalTips > 0 ? Math.round((wonCount / totalTips) * 100) : 0;
+                  const lostPercent =
+                    totalTips > 0 ? Math.round((lostCount / totalTips) * 100) : 0;
+                  const drawPercent = Math.max(0, 100 - wonPercent - lostPercent);
+                  return {
+                    round: r,
+                    wonCount,
+                    lostCount,
+                    drawCount,
+                    wonPercent,
+                    lostPercent,
+                    drawPercent,
+                    totalTips,
+                  };
+                })
+            )
+          )
+            .then((rows) =>
+              setSeasonRoundResults(rows.sort((a, b) => a.round - b.round))
+            )
+            .finally(() => setSeasonResultsLoading(false));
+        } else {
+          setSeasonRoundResults([]);
         }
       })
       .finally(() => setLoading(false));
@@ -54,19 +102,10 @@ export default function TipsByRoundPage() {
       .then((r) => r.json())
       .then((data) => {
         setTeamStats(data.teamStats ?? []);
-        setResultCounts(data.resultCounts ?? null);
       })
       .finally(() => setRoundDataLoading(false));
   }, [round]);
 
-  const pieData = resultCounts
-    ? [
-        { name: "Won", value: resultCounts.Won, color: RESULT_COLORS.Won },
-        { name: "Lost", value: resultCounts.Lost, color: RESULT_COLORS.Lost },
-        { name: "Draw", value: resultCounts.Draw, color: RESULT_COLORS.Draw },
-      ].filter((d) => d.value > 0)
-    : [];
-  const totalTips = pieData.reduce((sum, d) => sum + d.value, 0);
   const sortedTeamStats = [...teamStats].sort((a, b) => {
     const aOrder =
       RESULT_ORDER[a.result as keyof typeof RESULT_ORDER] ?? RESULT_ORDER.Unknown;
@@ -79,6 +118,15 @@ export default function TipsByRoundPage() {
   });
   const teamLabelWidth = 130;
   const teamChartHeight = Math.max(320, sortedTeamStats.length * 30);
+  const maxTipCount = Math.max(0, ...sortedTeamStats.map((entry) => entry.count));
+  const xTickStep = Math.max(1, Math.ceil(maxTipCount / 8));
+  const xTicks =
+    maxTipCount === 0
+      ? [0, 1]
+      : Array.from({ length: Math.floor(maxTipCount / xTickStep) + 1 }, (_, i) => i * xTickStep);
+  if (xTicks[xTicks.length - 1] !== maxTipCount) {
+    xTicks.push(maxTipCount);
+  }
 
   if (loading) {
     return (
@@ -102,6 +150,59 @@ export default function TipsByRoundPage() {
   return (
     <>
       <SectionHeader as="h1">2026 tips by round</SectionHeader>
+      {!seasonResultsLoading && seasonRoundResults.length > 0 && (
+        <ChartContainer
+          className="mb-6"
+          contentClassName="min-h-0"
+        >
+          <div className="space-y-3">
+            {seasonRoundResults.map((row) => (
+              <div key={row.round} className="flex items-center gap-3">
+                <div className="w-20 shrink-0 text-sm font-medium text-white/90">
+                  Round {row.round}
+                </div>
+                <div className="h-5 flex-1 overflow-hidden rounded-full bg-white/10">
+                  <div className="flex h-full w-full">
+                    <div
+                      className="flex items-center justify-center overflow-hidden text-[11px] font-semibold text-black"
+                      style={{
+                        width: `${row.wonPercent}%`,
+                        backgroundColor: RESULT_COLORS.Won,
+                      }}
+                    >
+                      {row.wonPercent > 0 ? `${row.wonPercent}% (${row.wonCount})` : ""}
+                    </div>
+                    <div
+                      className="flex items-center justify-center overflow-hidden text-[11px] font-semibold text-white"
+                      style={{
+                        width: `${row.drawPercent}%`,
+                        backgroundColor: RESULT_COLORS.Draw,
+                      }}
+                    >
+                      {row.drawPercent > 0 ? `${row.drawPercent}% (${row.drawCount})` : ""}
+                    </div>
+                    <div
+                      className="flex items-center justify-center overflow-hidden text-[11px] font-semibold text-white"
+                      style={{
+                        width: `${row.lostPercent}%`,
+                        backgroundColor: RESULT_COLORS.Lost,
+                      }}
+                    >
+                      {row.lostPercent > 0 ? `${row.lostPercent}% (${row.lostCount})` : ""}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ChartContainer>
+      )}
+      {seasonResultsLoading && (
+        <div role="status" aria-label="Loading season results" className="mb-6 space-y-2">
+          <p className="text-sm text-white/70">Loading competition results by round…</p>
+          <Skeleton className="h-[220px] w-full rounded-brand-lg" />
+        </div>
+      )}
       <RoundSwitcher
         rounds={availableRounds}
         value={round}
@@ -119,39 +220,6 @@ export default function TipsByRoundPage() {
               <Skeleton className="h-[300px] w-full rounded-brand-lg" />
             </div>
           )}
-          {!roundDataLoading && pieData.length > 0 && (
-            <ChartContainer
-              title="Competition results"
-              className="mb-6"
-              contentClassName="min-h-0"
-            >
-              <div className="space-y-3">
-                {pieData.map((entry) => {
-                  const percent =
-                    totalTips > 0 ? Math.round((entry.value / totalTips) * 100) : 0;
-                  return (
-                    <div key={entry.name}>
-                      <div className="mb-1 flex items-center justify-between text-sm text-white/90">
-                        <span className="font-medium">{entry.name}</span>
-                        <span>
-                          {percent}% ({entry.value})
-                        </span>
-                      </div>
-                      <div className="h-3 overflow-hidden rounded-full bg-white/10">
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${percent}%`,
-                            backgroundColor: entry.color,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </ChartContainer>
-          )}
           {!roundDataLoading && teamStats.length > 0 && (
             <ChartContainer
               className="min-h-[320px]"
@@ -166,6 +234,7 @@ export default function TipsByRoundPage() {
                     type="number"
                     allowDecimals={false}
                     domain={[0, "dataMax + 6"]}
+                    ticks={xTicks}
                     tick={{ fill: "#fff" }}
                   />
                   <YAxis
@@ -215,7 +284,7 @@ export default function TipsByRoundPage() {
               </ResponsiveContainer>
             </ChartContainer>
           )}
-          {!roundDataLoading && teamStats.length === 0 && resultCounts && (
+          {!roundDataLoading && teamStats.length === 0 && (
             <p className="text-white/80">No tips for this round.</p>
           )}
         </>
