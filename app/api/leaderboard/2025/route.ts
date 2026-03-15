@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     const full = await lb.getFullResultsForSpreadsheet(LEGACY_SPREADSHEET_2025);
     const leaderboard = lb.getLeaderboardDataframe(full, maxRound);
     const res = NextResponse.json({ round: maxRound, leaderboard });
-    res.headers.set("Cache-Control", "public, s-maxage=60, stale-while-revalidate=300");
+    res.headers.set("Cache-Control", "public, s-maxage=600, stale-while-revalidate=300");
     return res;
   } catch (e) {
     console.error(e);
