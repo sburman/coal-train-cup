@@ -31,6 +31,7 @@ type Payload = {
   } | null;
   availableTips: AvailableTip[];
   unavailableReasons: { team: string; reasons: string[] }[];
+  alreadyTippedThisRound?: boolean;
   error?: string;
 };
 
@@ -276,7 +277,14 @@ export default function MakeTipPage() {
                   </CardContent>
                 </Card>
               )}
-              {payload.availableTips.length === 0 ? (
+              {payload.alreadyTippedThisRound ? (
+                <Alert variant="success">
+                  <p className="font-medium">Tip already received for this round.</p>
+                  <p className="mt-1 text-white/90">
+                    You have already submitted a tip for round {payload.currentRound}.
+                  </p>
+                </Alert>
+              ) : payload.availableTips.length === 0 ? (
                 <Alert variant="destructive">
                   No tips available for this round. Either the round is closed or
                   you have no eligible tips remaining.

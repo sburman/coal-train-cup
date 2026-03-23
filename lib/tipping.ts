@@ -67,6 +67,7 @@ export interface MakeTipPayload {
   previousRoundTip: ResultRow | null;
   availableTips: AvailableTip[];
   unavailableReasons: UnavailableReason[];
+  alreadyTippedThisRound?: boolean;
   error?: string;
 }
 
@@ -81,9 +82,16 @@ export async function getMakeTipPayload(email: string): Promise<MakeTipPayload> 
       previousRoundTip: null,
       availableTips: [],
       unavailableReasons: [],
+      alreadyTippedThisRound: false,
       error: `No user found with email: ${email}`,
     };
   }
+
+  // Check if user has already tipped for the current round
+  const allUserTips = await data.allUserTips();
+  const alreadyTippedThisRound = allUserTips.some(
+    (t) => t.email.toLowerCase() === user.email.toLowerCase() && t.round === currentRound
+  );
 
   const previousRound = currentRound - 1;
   const fullResults = await lb.buildFullResultsDataframe();
@@ -158,6 +166,7 @@ export async function getMakeTipPayload(email: string): Promise<MakeTipPayload> 
     previousRoundTip: previousRoundTipRow,
     availableTips: availableTipsList,
     unavailableReasons: unavailableReasons.map((r) => ({ team: r.team, reasons: r.reasons })),
+    alreadyTippedThisRound,
   };
 }
 
