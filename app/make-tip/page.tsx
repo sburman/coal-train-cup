@@ -5,7 +5,7 @@ import { SectionHeader } from "@/components/layout/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatCard } from "@/components/ui/stat-card";
@@ -31,6 +31,7 @@ type Payload = {
   } | null;
   availableTips: AvailableTip[];
   unavailableReasons: { team: string; reasons: string[] }[];
+  alreadyTippedThisRound?: boolean;
   error?: string;
 };
 
@@ -222,29 +223,66 @@ export default function MakeTipPage() {
           )}
           {payload.user && !payload.error && (
             <>
-              {payload.previousRoundTip && (
+              {payload.alreadyTippedThisRound && (
+                <Alert variant="warning" className="mb-4">
+                  <p className="font-medium">Tip already received for this round!</p>
+                  <p className="mt-1 text-amber-100/90">
+                    Just a friendly notice that you have already submitted a tip for round {payload.currentRound}.
+                    <br />You can continue to change your tip until the round is closed by resubmitting below.
+                  </p>
+                </Alert>
+              )}
+              {(payload.previousRoundTip ||
+                payload.unavailableReasons.length > 0) && (
                 <Card className="mb-4 border-white/10 bg-brand-elevated/60">
-                  <CardHeader className="pb-2">
-                    <p className="text-sm font-medium text-white/90">Last round tip</p>
-                  </CardHeader>
-                  <CardContent className="space-y-1 pt-0 text-white/90">
-                    <p>
-                      <strong>{payload.previousRoundTip.team}</strong> (
-                      {payload.previousRoundTip.home ? "home" : "away"}) vs{" "}
-                      {payload.previousRoundTip.opponent}
-                    </p>
-                    {payload.previousRoundTip.margin > 0 && (
-                      <p className="text-primary">
-                        Result: won by {payload.previousRoundTip.margin} points.
-                      </p>
+                  <CardContent className="space-y-5 p-4 pt-5 md:p-5 md:pt-6">
+                    {payload.previousRoundTip && (
+                      <div className="space-y-1 text-white/90">
+                        <p className="text-sm font-medium text-white/90">
+                          Last round tip
+                        </p>
+                        <p>
+                          <strong>{payload.previousRoundTip.team}</strong> (
+                          {payload.previousRoundTip.home ? "home" : "away"}) vs{" "}
+                          {payload.previousRoundTip.opponent}
+                        </p>
+                        {payload.previousRoundTip.margin > 0 && (
+                          <p className="text-primary">
+                            Result: won by {payload.previousRoundTip.margin}{" "}
+                            points.
+                          </p>
+                        )}
+                        {payload.previousRoundTip.margin < 0 && (
+                          <p className="text-red-300">
+                            Result: lost by{" "}
+                            {Math.abs(payload.previousRoundTip.margin)} points.
+                          </p>
+                        )}
+                        {payload.previousRoundTip.margin === 0 && (
+                          <p className="text-white/80">Result: draw.</p>
+                        )}
+                      </div>
                     )}
-                    {payload.previousRoundTip.margin < 0 && (
-                      <p className="text-red-300">
-                        Result: lost by {Math.abs(payload.previousRoundTip.margin)} points.
-                      </p>
-                    )}
-                    {payload.previousRoundTip.margin === 0 && (
-                      <p className="text-white/80">Result: draw.</p>
+                    {payload.unavailableReasons.length > 0 && (
+                      <div
+                        className={
+                          payload.previousRoundTip
+                            ? "space-y-2 border-t border-white/10 pt-5"
+                            : "space-y-2"
+                        }
+                      >
+                        <p className="text-sm text-white/70">
+                          These teams are blocked this week by round-to-round tipping
+                          rules:
+                        </p>
+                        <ul className="ml-5 list-disc space-y-1 text-sm text-white/90">
+                          {payload.unavailableReasons.map(({ team, reasons }) => (
+                            <li key={team}>
+                              <strong>{team}</strong>: {reasons.join(", ")}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
                   </CardContent>
                 </Card>
@@ -255,27 +293,6 @@ export default function MakeTipPage() {
                   available.
                 </p>
               )}
-              {payload.unavailableReasons.length > 0 && (
-                <Card className="mb-4 border-white/10 bg-brand-elevated/60">
-                  <CardHeader className="pb-2">
-                    <p className="text-sm font-medium">
-                      Unavailable this week
-                    </p>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="mb-2 text-sm text-white/70">
-                      These teams are blocked by round-to-round tipping rules.
-                    </p>
-                    <ul className="ml-5 list-disc space-y-1 text-sm text-white/90">
-                      {payload.unavailableReasons.map(({ team, reasons }) => (
-                        <li key={team}>
-                          <strong>{team}</strong>: {reasons.join(", ")}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              )}
               {payload.availableTips.length === 0 ? (
                 <Alert variant="destructive">
                   No tips available for this round. Either the round is closed or
@@ -284,7 +301,7 @@ export default function MakeTipPage() {
               ) : (
                 <>
                   <p className="mb-2 font-medium text-white/90">
-                    Select a tip for round {payload.currentRound}:
+                    Submit a tip for round {payload.currentRound}:
                   </p>
                   <div className="flex max-w-md flex-col gap-2">
                     {payload.availableTips.map((t) => (
@@ -312,7 +329,11 @@ export default function MakeTipPage() {
                       onClick={handleSubmit}
                       disabled={submitting}
                     >
-                      {submitting ? "Submitting…" : "Submit tip"}
+                      {submitting
+                        ? "Submitting…"
+                        : payload.alreadyTippedThisRound
+                          ? "Resubmit tip"
+                          : "Submit tip"}
                     </Button>
                   </div>
                   {submitResult === "err" && (
