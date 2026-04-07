@@ -31,7 +31,7 @@ export default function Leaderboard2025Page() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`/api/leaderboard/2025?round=${round}`)
+    fetch(`/api/leaderboard/2025?round=${round}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => {
         setLeaderboard(data.leaderboard ?? []);

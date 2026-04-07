@@ -32,7 +32,7 @@ export default function LeaderboardPage() {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("/api/leaderboard");
+      const res = await fetch("/api/leaderboard", { cache: "no-store" });
       const data = await res.json();
       if (res.ok) {
         setRound(data.round);
@@ -50,7 +50,7 @@ export default function LeaderboardPage() {
   useEffect(() => {
     if (round == null) return;
     setRoundLoading(true);
-    fetch(`/api/leaderboard?round=${round}`)
+    fetch(`/api/leaderboard?round=${round}`, { cache: "no-store" })
       .then((r) => r.json())
       .then((data) => {
         setLeaderboard(data.leaderboard ?? []);

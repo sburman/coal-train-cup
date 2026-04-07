@@ -17,7 +17,8 @@ export async function GET(request: NextRequest) {
     const full = await lb.getFullResultsForSpreadsheet(LEGACY_SPREADSHEET_2025);
     const leaderboard = lb.getLeaderboardDataframe(full, maxRound);
     const res = NextResponse.json({ round: maxRound, leaderboard });
-    res.headers.set("Cache-Control", "public, s-maxage=600, stale-while-revalidate=300");
+    // Keep this uncached at the HTTP/CDN layer so admin cache clear takes effect immediately.
+    res.headers.set("Cache-Control", "no-store");
     return res;
   } catch (e) {
     console.error(e);
