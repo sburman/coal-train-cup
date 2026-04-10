@@ -2,6 +2,7 @@ import {
   SPREADSHEET_NAME,
   CURRENT_SEASON,
   CACHE_TTL_SECONDS,
+  GAMES_CACHE_TTL_SECONDS,
   PLAYERS_CACHE_TTL_SECONDS,
   SHIELD_WINNERS_CACHE_TTL_SECONDS,
 } from "./constants";
@@ -63,7 +64,7 @@ export async function allGames(spreadsheetName: string = SPREADSHEET_NAME): Prom
   if (spreadsheetName === SPREADSHEET_NAME) {
     await sheets.saveGamesToSheets(updated, SPREADSHEET_NAME);
   }
-  set(key, updated, CACHE_TTL_SECONDS);
+  set(key, updated, GAMES_CACHE_TTL_SECONDS);
   return updated;
 }
 

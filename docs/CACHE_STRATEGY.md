@@ -6,7 +6,7 @@ In **Next.js dev**, hot reload normally re-runs modules and clears the cache eve
 
 - **Scope**: Per serverless instance. Not shared across invocations or regions.
 - **Keys**: `data:users`, `data:games:{spreadsheetName}`, `data:tips:{spreadsheetName}`, `data:shield:...`, `data:players:{round}`, `lb:full:...`, `lb:legacy:...`.
-- **TTLs**: 8h for users, games, tips, leaderboard; 10min for players-in-round; 24h for shield winners.
+- **TTLs**: 8h for users, tips, leaderboard; 5min for games; 10min for players-in-round; 24h for shield winners.
 
 ## Invalidation on writes
 

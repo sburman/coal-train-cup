@@ -4,6 +4,7 @@ export const SPREADSHEET_NAME = "Coal Train Cup App 2026";
 export const LEGACY_SPREADSHEET_2025 = "Coal Train Cup App 2025";
 
 export const CACHE_TTL_SECONDS = 60 * 60 * 8; // 8 hours
+export const GAMES_CACHE_TTL_SECONDS = 60 * 5; // 5 minutes
 export const PLAYERS_CACHE_TTL_SECONDS = 600;
 export const SHIELD_WINNERS_CACHE_TTL_SECONDS = 60 * 60 * 24;
 
