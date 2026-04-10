@@ -6,12 +6,16 @@ export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
   const roundParam = request.nextUrl.searchParams.get("round");
   if (!roundParam) {
-    const statuses = await data.getAllRoundsStatus();
-    const closed = Object.entries(statuses)
-      .filter(([, s]) => s === "closed")
-      .map(([r]) => parseInt(r, 10))
+    const games = await data.allGames();
+    const roundsWithCompletedGames = Array.from(
+      new Set(
+        games
+          .filter((g) => g.home_score != null && g.away_score != null)
+          .map((g) => g.round)
+      )
+    )
       .sort((a, b) => a - b);
-    return NextResponse.json({ availableRounds: closed });
+    return NextResponse.json({ availableRounds: roundsWithCompletedGames });
   }
   const round = parseInt(roundParam, 10);
   if (Number.isNaN(round)) {
@@ -21,12 +25,17 @@ export async function GET(request: NextRequest) {
     );
   }
   try {
-    const [tips, gameResults] = await Promise.all([
+    const [tips, gameResults, games] = await Promise.all([
       data.allUserTips(),
       data.allGameResults(),
+      data.allGames(),
     ]);
     const roundTips = tips.filter((t) => t.round === round);
     const roundResults = data.getGameResultsForRound(gameResults, round);
+    const roundGames = data.getGamesForRound(games, round);
+    const completedGames = roundGames.filter(
+      (g) => g.home_score != null && g.away_score != null
+    );
     const teamCounts = new Map<string, number>();
     for (const t of roundTips) {
       teamCounts.set(t.team, (teamCounts.get(t.team) ?? 0) + 1);
@@ -51,6 +60,11 @@ export async function GET(request: NextRequest) {
       tips: roundTips,
       teamStats,
       resultCounts,
+      roundProgress: {
+        completedGames: completedGames.length,
+        totalGames: roundGames.length,
+        inProgress: completedGames.length < roundGames.length,
+      },
     });
   } catch (e) {
     console.error(e);

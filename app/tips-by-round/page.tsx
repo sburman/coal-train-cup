@@ -39,6 +39,11 @@ export default function TipsByRoundPage() {
   const [teamStats, setTeamStats] = useState<
     { team: string; count: number; result: string }[]
   >([]);
+  const [roundProgress, setRoundProgress] = useState<{
+    completedGames: number;
+    totalGames: number;
+    inProgress: boolean;
+  } | null>(null);
   const [loading, setLoading] = useState(true);
   const [seasonResultsLoading, setSeasonResultsLoading] = useState(false);
   const [roundDataLoading, setRoundDataLoading] = useState(false);
@@ -102,6 +107,7 @@ export default function TipsByRoundPage() {
       .then((r) => r.json())
       .then((data) => {
         setTeamStats(data.teamStats ?? []);
+        setRoundProgress(data.roundProgress ?? null);
       })
       .finally(() => setRoundDataLoading(false));
   }, [round]);
@@ -142,7 +148,7 @@ export default function TipsByRoundPage() {
     return (
       <>
         <SectionHeader as="h1">2026 tips by round</SectionHeader>
-        <EmptyState title="No closed rounds yet." />
+        <EmptyState title="No completed games yet." />
       </>
     );
   }
@@ -211,6 +217,11 @@ export default function TipsByRoundPage() {
         roundLabel={(r) => (r === 1 ? "Round 1" : String(r))}
         className="mb-6"
       />
+      {roundProgress?.inProgress && (
+        <div className="mb-6 inline-flex items-center rounded-full border border-[#f6c55f]/45 bg-[#f6c55f]/15 px-3 py-1 text-xs font-semibold tracking-wide text-[#f8d88a]">
+          In progress: showing {roundProgress.completedGames} of {roundProgress.totalGames} games completed
+        </div>
+      )}
       {round != null && (
         <>
           {roundDataLoading && (
