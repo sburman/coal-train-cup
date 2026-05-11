@@ -4,7 +4,7 @@ import * as data from "@/lib/data";
 import {
   MAX_HOME_AWAY_TIPS,
   MAX_TIPS_PER_TEAM,
-  ROUND_9_MAGIC_ROUND,
+  MAGIC_ROUNDS,
 } from "@/lib/constants";
 import type { UserTip, Game } from "@/lib/types";
 
@@ -87,7 +87,7 @@ export async function GET(request: NextRequest) {
 
     const userVenueCounts = new Map<string, { home: number; away: number }>();
     for (const tip of tips) {
-      if (tip.round === ROUND_9_MAGIC_ROUND) continue;
+      if (MAGIC_ROUNDS[tip.season] === tip.round) continue;
       const u = tip.email;
       if (!userVenueCounts.has(u)) userVenueCounts.set(u, { home: 0, away: 0 });
       const v = userVenueCounts.get(u)!;

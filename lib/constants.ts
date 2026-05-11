@@ -8,7 +8,7 @@ export const GAMES_CACHE_TTL_SECONDS = 60 * 5; // 5 minutes
 export const PLAYERS_CACHE_TTL_SECONDS = 600;
 export const SHIELD_WINNERS_CACHE_TTL_SECONDS = 60 * 60 * 24;
 
-export const ROUND_9_MAGIC_ROUND = 9;
+export const MAGIC_ROUNDS: Record<number, number> = { 2025: 9, 2026: 11 };
 export const MAX_HOME_AWAY_TIPS = 13;
 export const MAX_TIPS_PER_TEAM = 3;
 export const TIP_GRACE_PERIOD_MINUTES = 10;

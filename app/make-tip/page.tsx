@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 import { Skeleton } from "@/components/ui/skeleton";
 import { StatCard } from "@/components/ui/stat-card";
+import { MAGIC_ROUNDS, CURRENT_SEASON } from "@/lib/constants";
 
 type AvailableTip = {
   season: number;
@@ -159,6 +160,16 @@ export default function MakeTipPage() {
           <StatCard label="Current tipping round" value={`Round ${currentRound}`} />
         )}
       </div>
+      {currentRound && MAGIC_ROUNDS[CURRENT_SEASON] === currentRound && (
+        <div className="mb-6 max-w-md">
+          <Alert variant="info">
+            <p className="font-medium">✨ Magic Round!</p>
+            <p className="mt-1 text-blue-100/90">
+              Home/away venue selection is ignored for this week.
+            </p>
+          </Alert>
+        </div>
+      )}
       <div className="mb-6 max-w-md space-y-2">
         <Label htmlFor="email">Patreon email</Label>
         <div className="flex flex-wrap gap-2">
@@ -232,61 +243,62 @@ export default function MakeTipPage() {
                   </p>
                 </Alert>
               )}
+
               {(payload.previousRoundTip ||
                 payload.unavailableReasons.length > 0) && (
-                <Card className="mb-4 border-white/10 bg-brand-elevated/60">
-                  <CardContent className="space-y-5 p-4 pt-5 md:p-5 md:pt-6">
-                    {payload.previousRoundTip && (
-                      <div className="space-y-1 text-white/90">
-                        <p className="text-sm font-medium text-white/90">
-                          Last round tip
-                        </p>
-                        <p>
-                          <strong>{payload.previousRoundTip.team}</strong> (
-                          {payload.previousRoundTip.home ? "home" : "away"}) vs{" "}
-                          {payload.previousRoundTip.opponent}
-                        </p>
-                        {payload.previousRoundTip.margin > 0 && (
-                          <p className="text-primary">
-                            Result: won by {payload.previousRoundTip.margin}{" "}
-                            points.
+                  <Card className="mb-4 border-white/10 bg-brand-elevated/60">
+                    <CardContent className="space-y-5 p-4 pt-5 md:p-5 md:pt-6">
+                      {payload.previousRoundTip && (
+                        <div className="space-y-1 text-white/90">
+                          <p className="text-sm font-medium text-white/90">
+                            Last round tip
                           </p>
-                        )}
-                        {payload.previousRoundTip.margin < 0 && (
-                          <p className="text-red-300">
-                            Result: lost by{" "}
-                            {Math.abs(payload.previousRoundTip.margin)} points.
+                          <p>
+                            <strong>{payload.previousRoundTip.team}</strong> (
+                            {payload.previousRoundTip.home ? "home" : "away"}) vs{" "}
+                            {payload.previousRoundTip.opponent}
                           </p>
-                        )}
-                        {payload.previousRoundTip.margin === 0 && (
-                          <p className="text-white/80">Result: draw.</p>
-                        )}
-                      </div>
-                    )}
-                    {payload.unavailableReasons.length > 0 && (
-                      <div
-                        className={
-                          payload.previousRoundTip
-                            ? "space-y-2 border-t border-white/10 pt-5"
-                            : "space-y-2"
-                        }
-                      >
-                        <p className="text-sm text-white/70">
-                          These teams are blocked this week by round-to-round tipping
-                          rules:
-                        </p>
-                        <ul className="ml-5 list-disc space-y-1 text-sm text-white/90">
-                          {payload.unavailableReasons.map(({ team, reasons }) => (
-                            <li key={team}>
-                              <strong>{team}</strong>: {reasons.join(", ")}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              )}
+                          {payload.previousRoundTip.margin > 0 && (
+                            <p className="text-primary">
+                              Result: won by {payload.previousRoundTip.margin}{" "}
+                              points.
+                            </p>
+                          )}
+                          {payload.previousRoundTip.margin < 0 && (
+                            <p className="text-red-300">
+                              Result: lost by{" "}
+                              {Math.abs(payload.previousRoundTip.margin)} points.
+                            </p>
+                          )}
+                          {payload.previousRoundTip.margin === 0 && (
+                            <p className="text-white/80">Result: draw.</p>
+                          )}
+                        </div>
+                      )}
+                      {payload.unavailableReasons.length > 0 && (
+                        <div
+                          className={
+                            payload.previousRoundTip
+                              ? "space-y-2 border-t border-white/10 pt-5"
+                              : "space-y-2"
+                          }
+                        >
+                          <p className="text-sm text-white/70">
+                            These teams are blocked this week by round-to-round tipping
+                            rules:
+                          </p>
+                          <ul className="ml-5 list-disc space-y-1 text-sm text-white/90">
+                            {payload.unavailableReasons.map(({ team, reasons }) => (
+                              <li key={team}>
+                                <strong>{team}</strong>: {reasons.join(", ")}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </CardContent>
+                  </Card>
+                )}
               {!payload.previousRoundTip && payload.currentRound === 1 && (
                 <p className="mb-4 text-white/90">
                   Round 1 – no restrictions from previous round. All options
