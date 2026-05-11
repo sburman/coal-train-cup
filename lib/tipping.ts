@@ -1,7 +1,7 @@
 import * as data from "./data";
 import {
   CURRENT_SEASON,
-  ROUND_9_MAGIC_ROUND,
+  MAGIC_ROUNDS,
   MAX_HOME_AWAY_TIPS,
   MAX_TIPS_PER_TEAM,
   TIP_GRACE_PERIOD_MINUTES,
@@ -128,9 +128,9 @@ export async function getMakeTipPayload(email: string): Promise<MakeTipPayload> 
         unavailableTeams.set(team, existing);
       }
     }
-    const nonRound9 = userResults.filter((r) => r.round !== ROUND_9_MAGIC_ROUND);
-    const homeCount = nonRound9.filter((r) => r.home).length;
-    const awayCount = nonRound9.filter((r) => !r.home).length;
+    const nonMagic = userResults.filter((r) => MAGIC_ROUNDS[r.season] !== r.round);
+    const homeCount = nonMagic.filter((r) => r.home).length;
+    const awayCount = nonMagic.filter((r) => !r.home).length;
     for (const [team, tip] of Object.entries(currentRoundTips)) {
       if (tip.home && homeCount >= MAX_HOME_AWAY_TIPS) {
         const existing = unavailableTeams.get(team) ?? [];
