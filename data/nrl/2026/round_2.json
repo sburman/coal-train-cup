@@ -1,0 +1,2172 @@
+[
+  {
+    "tip": {
+      "email": "luke.sangiorgio@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Gold Coast Titans",
+      "opponent": "Dolphins",
+      "home": false,
+      "tipped_at": "2026-03-09T02:50:25.909Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 1
+  },
+  {
+    "tip": {
+      "email": "chris.walker.ttfc@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-09T03:49:55.644Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 2
+  },
+  {
+    "tip": {
+      "email": "ryanparkinson2001@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-09T04:49:22.182Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 3
+  },
+  {
+    "tip": {
+      "email": "steven.burman@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-09T06:03:12.154Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 4
+  },
+  {
+    "tip": {
+      "email": "mitchell.joseph.g@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-09T06:32:47.389Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 5
+  },
+  {
+    "tip": {
+      "email": "more_then_jack@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-09T08:03:17.615Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 6
+  },
+  {
+    "tip": {
+      "email": "Mindless08@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-09T08:25:23.642Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 7
+  },
+  {
+    "tip": {
+      "email": "js.larnach@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-09T10:29:06.821Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 8
+  },
+  {
+    "tip": {
+      "email": "joshuacoleman98@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-09T18:30:15.279Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 9
+  },
+  {
+    "tip": {
+      "email": "jeffimms93@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-09T22:43:12.168Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 10
+  },
+  {
+    "tip": {
+      "email": "jamesk_1312@yahoo.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T01:14:34.223Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 11
+  },
+  {
+    "tip": {
+      "email": "nickvrusso1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-10T03:28:33.372Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 12
+  },
+  {
+    "tip": {
+      "email": "aplchalmers@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-10T05:27:01.497Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 13
+  },
+  {
+    "tip": {
+      "email": "joel.nevile@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-10T08:15:01.283Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 14
+  },
+  {
+    "tip": {
+      "email": "chwrestling@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-10T11:36:46.291Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 15
+  },
+  {
+    "tip": {
+      "email": "djbutlerplastering@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-10T18:49:42.862Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 16
+  },
+  {
+    "tip": {
+      "email": "kriszvirbulis@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T21:41:27.409Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 17
+  },
+  {
+    "tip": {
+      "email": "dr_gilbert@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T21:55:55.181Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 18
+  },
+  {
+    "tip": {
+      "email": "tomhay1812@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T22:14:27.584Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 19
+  },
+  {
+    "tip": {
+      "email": "tlunn3750@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T22:51:45.410Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 20
+  },
+  {
+    "tip": {
+      "email": "john.m.millward@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-10T23:25:13.745Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 21
+  },
+  {
+    "tip": {
+      "email": "mradamsmall1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-10T23:43:27.291Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 22
+  },
+  {
+    "tip": {
+      "email": "dan_gerritsen@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T00:37:20.616Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 23
+  },
+  {
+    "tip": {
+      "email": "ryan.graham.dunn@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T01:26:24.194Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 24
+  },
+  {
+    "tip": {
+      "email": "chewco88888@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T01:27:13.128Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 25
+  },
+  {
+    "tip": {
+      "email": "plattc117@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T02:44:59.127Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 26
+  },
+  {
+    "tip": {
+      "email": "Timothytoogood@me.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T03:05:30.656Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 27
+  },
+  {
+    "tip": {
+      "email": "joshb78@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T03:46:24.456Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 28
+  },
+  {
+    "tip": {
+      "email": "gclarke@aap.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-11T04:20:49.924Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 29
+  },
+  {
+    "tip": {
+      "email": "kellsey@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-11T04:38:01.426Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 30
+  },
+  {
+    "tip": {
+      "email": "jasperbruce1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-11T05:24:57.004Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 31
+  },
+  {
+    "tip": {
+      "email": "lstehbens83@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T06:25:12.709Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 32
+  },
+  {
+    "tip": {
+      "email": "danielgsullivan@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T07:31:54.384Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 33
+  },
+  {
+    "tip": {
+      "email": "jmcollett@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T07:43:30.438Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 34
+  },
+  {
+    "tip": {
+      "email": "daniel_henrypt@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-11T08:16:29.806Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 35
+  },
+  {
+    "tip": {
+      "email": "charlierwinterburn@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-11T09:19:49.455Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 36
+  },
+  {
+    "tip": {
+      "email": "adricmason@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T09:48:36.048Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 37
+  },
+  {
+    "tip": {
+      "email": "eros_romero@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T11:02:47.307Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 38
+  },
+  {
+    "tip": {
+      "email": "dannyando32@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T13:06:21.815Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 39
+  },
+  {
+    "tip": {
+      "email": "johndoe92@y7mail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T13:16:28.626Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 40
+  },
+  {
+    "tip": {
+      "email": "samuel.john.mullins@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T14:28:55.745Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 41
+  },
+  {
+    "tip": {
+      "email": "alasitisashley@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T16:48:22.127Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 42
+  },
+  {
+    "tip": {
+      "email": "miles.petersen99@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T19:58:38.290Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 43
+  },
+  {
+    "tip": {
+      "email": "benno_wallace@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T21:22:39.029Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 44
+  },
+  {
+    "tip": {
+      "email": "markjhindle29@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T22:22:45.545Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 45
+  },
+  {
+    "tip": {
+      "email": "jack.parle1989@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T22:37:51.209Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 46
+  },
+  {
+    "tip": {
+      "email": "jmhughes292@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-11T22:39:10.877Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 47
+  },
+  {
+    "tip": {
+      "email": "ogress-ascent0r@icloud.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-11T22:43:46.502Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 48
+  },
+  {
+    "tip": {
+      "email": "teamvivzilla@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T22:44:51.759Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 49
+  },
+  {
+    "tip": {
+      "email": "sam_stephens89@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T22:47:48.147Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 50
+  },
+  {
+    "tip": {
+      "email": "brentonsloane@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T22:53:24.737Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 51
+  },
+  {
+    "tip": {
+      "email": "watkmo@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-11T23:07:31.970Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 52
+  },
+  {
+    "tip": {
+      "email": "andrew.vassilopoulos@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-11T23:10:21.233Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 53
+  },
+  {
+    "tip": {
+      "email": "langerslpc@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-11T23:14:11.315Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 54
+  },
+  {
+    "tip": {
+      "email": "n.townsend@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T23:34:13.966Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 55
+  },
+  {
+    "tip": {
+      "email": "king.gronk@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-11T23:47:46.911Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 56
+  },
+  {
+    "tip": {
+      "email": "blake.ritchie93@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T23:50:18.907Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 57
+  },
+  {
+    "tip": {
+      "email": "twfbyrnes@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-11T23:55:51.217Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 58
+  },
+  {
+    "tip": {
+      "email": "hunteraustin98@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-11T23:56:30.203Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 59
+  },
+  {
+    "tip": {
+      "email": "phil.mccarroll@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T00:11:24.158Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 60
+  },
+  {
+    "tip": {
+      "email": "cameron.hull@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T01:22:29.856Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 61
+  },
+  {
+    "tip": {
+      "email": "brendan.dacosta@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T01:24:33.107Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 62
+  },
+  {
+    "tip": {
+      "email": "silatham1997@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T02:27:09.552Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 63
+  },
+  {
+    "tip": {
+      "email": "wjkitto539@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T02:41:07.533Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 64
+  },
+  {
+    "tip": {
+      "email": "erik.nielsen2759@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T02:42:12.550Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 65
+  },
+  {
+    "tip": {
+      "email": "jackcronin12@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T03:27:44.939Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 66
+  },
+  {
+    "tip": {
+      "email": "gnbm@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T03:31:44.519Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 67
+  },
+  {
+    "tip": {
+      "email": "brockcorfe@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T03:49:06.794Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 68
+  },
+  {
+    "tip": {
+      "email": "jackbrady93@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T03:54:10.561Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 69
+  },
+  {
+    "tip": {
+      "email": "Drewcratchley@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T03:54:14.051Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 70
+  },
+  {
+    "tip": {
+      "email": "adamturner81@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T03:58:19.355Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 71
+  },
+  {
+    "tip": {
+      "email": "fmwakeford@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T04:00:36.770Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 72
+  },
+  {
+    "tip": {
+      "email": "warwick.ahern@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T04:16:18.485Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 73
+  },
+  {
+    "tip": {
+      "email": "aliciamartin647@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T05:39:42.320Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 74
+  },
+  {
+    "tip": {
+      "email": "michaelgbrown3@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Sydney Roosters",
+      "home": false,
+      "tipped_at": "2026-03-12T05:48:54.711Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 75
+  },
+  {
+    "tip": {
+      "email": "craigmarsh@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Sydney Roosters",
+      "home": false,
+      "tipped_at": "2026-03-12T05:56:57.038Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 76
+  },
+  {
+    "tip": {
+      "email": "leaguegod692@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T06:11:04.469Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 77
+  },
+  {
+    "tip": {
+      "email": "sydmiller2696@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T06:14:26.311Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 78
+  },
+  {
+    "tip": {
+      "email": "lcsmidmore@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T06:15:02.487Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 79
+  },
+  {
+    "tip": {
+      "email": "pcampton@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T06:23:48.852Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 80
+  },
+  {
+    "tip": {
+      "email": "Scottoftheantipodes@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T06:24:38.497Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 81
+  },
+  {
+    "tip": {
+      "email": "ben.robertsdtd@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T06:32:17.325Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 82
+  },
+  {
+    "tip": {
+      "email": "ajlopez29@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T06:38:06.008Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 83
+  },
+  {
+    "tip": {
+      "email": "jack@bohointeractive.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T07:00:21.222Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 84
+  },
+  {
+    "tip": {
+      "email": "adam.hux12@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-12T07:02:45.848Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 85
+  },
+  {
+    "tip": {
+      "email": "jameswdeady@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T07:26:12.533Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 86
+  },
+  {
+    "tip": {
+      "email": "camry_bezzo@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T07:30:39.664Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 87
+  },
+  {
+    "tip": {
+      "email": "thedecider00994@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T07:40:37.917Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 88
+  },
+  {
+    "tip": {
+      "email": "matthew.bungard@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T07:49:53.179Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 89
+  },
+  {
+    "tip": {
+      "email": "spudgun242@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T08:01:34.702Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 90
+  },
+  {
+    "tip": {
+      "email": "tim.tamm@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T08:02:48.740Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 91
+  },
+  {
+    "tip": {
+      "email": "edwin_smith@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T08:04:22.086Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 92
+  },
+  {
+    "tip": {
+      "email": "dragonpunk33@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T08:13:20.325Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 93
+  },
+  {
+    "tip": {
+      "email": "kitallenwaters@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T08:31:11.138Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 94
+  },
+  {
+    "tip": {
+      "email": "emma.sprouster@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T08:46:53.099Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 95
+  },
+  {
+    "tip": {
+      "email": "nigel_smith66@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T08:51:33.822Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 96
+  },
+  {
+    "tip": {
+      "email": "harry.scorse@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Brisbane Broncos",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-03-12T08:55:10.657Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 97
+  },
+  {
+    "tip": {
+      "email": "marcusevans94@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-12T09:04:45.887Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 98
+  },
+  {
+    "tip": {
+      "email": "tomgunther94@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T09:13:48.874Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 99
+  },
+  {
+    "tip": {
+      "email": "daniel.poppi@bigpond.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T09:14:20.001Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 100
+  },
+  {
+    "tip": {
+      "email": "jarradhunt_@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T09:45:25.135Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 101
+  },
+  {
+    "tip": {
+      "email": "njg4@pm.me",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T09:45:29.720Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 102
+  },
+  {
+    "tip": {
+      "email": "usaussie96@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T10:04:44.961Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 103
+  },
+  {
+    "tip": {
+      "email": "paumicra@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T11:11:07.544Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 104
+  },
+  {
+    "tip": {
+      "email": "mickey.bee@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T11:18:32.783Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 105
+  },
+  {
+    "tip": {
+      "email": "amckechniee@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-03-12T12:04:59.457Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 106
+  },
+  {
+    "tip": {
+      "email": "khabilan@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T13:10:38.938Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 107
+  },
+  {
+    "tip": {
+      "email": "19richardsonl@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T19:40:12.432Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 108
+  },
+  {
+    "tip": {
+      "email": "7kpf26jwyj@privaterelay.appleid.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T20:18:20.810Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 109
+  },
+  {
+    "tip": {
+      "email": "jesse.nolan@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-12T20:32:51.500Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 110
+  },
+  {
+    "tip": {
+      "email": "jtmthompson1998@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T20:39:06.120Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 111
+  },
+  {
+    "tip": {
+      "email": "krisbritland@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T22:43:51.643Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 112
+  },
+  {
+    "tip": {
+      "email": "thomasbuckland@bigpond.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-12T22:47:09.520Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 113
+  },
+  {
+    "tip": {
+      "email": "rowanedwards@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-12T22:50:28.932Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 114
+  },
+  {
+    "tip": {
+      "email": "michaeljdavid87@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-13T00:27:39.156Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 115
+  },
+  {
+    "tip": {
+      "email": "jlear4017@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-13T01:12:57.015Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 116
+  },
+  {
+    "tip": {
+      "email": "rayfischer71@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T01:24:17.758Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 117
+  },
+  {
+    "tip": {
+      "email": "samueltherkelsen@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T02:16:04.120Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 118
+  },
+  {
+    "tip": {
+      "email": "matthew.duggan@my.jcu.edu.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T02:16:25.185Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 119
+  },
+  {
+    "tip": {
+      "email": "alexanderholt13@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-13T03:06:03.134Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 120
+  },
+  {
+    "tip": {
+      "email": "ryanstevo34@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T03:35:07.397Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 121
+  },
+  {
+    "tip": {
+      "email": "chelsea.gordon100@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T04:44:01.836Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 122
+  },
+  {
+    "tip": {
+      "email": "stevenl1987@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T05:29:25.607Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 123
+  },
+  {
+    "tip": {
+      "email": "muffinbass@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T05:34:33.056Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 124
+  },
+  {
+    "tip": {
+      "email": "jack.ricky1912@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T05:45:54.943Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 125
+  },
+  {
+    "tip": {
+      "email": "damonberg@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T06:01:10.707Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 126
+  },
+  {
+    "tip": {
+      "email": "dtang90@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-13T06:43:09.756Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 127
+  },
+  {
+    "tip": {
+      "email": "a_kirkpatrick_13@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T07:02:22.404Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 128
+  },
+  {
+    "tip": {
+      "email": "treesapzombie@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T07:16:31.009Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 129
+  },
+  {
+    "tip": {
+      "email": "rorydoyle01@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T07:33:19.937Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 130
+  },
+  {
+    "tip": {
+      "email": "declancampton@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T09:06:59.109Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 131
+  },
+  {
+    "tip": {
+      "email": "adamrosser86@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T09:31:03.473Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 132
+  },
+  {
+    "tip": {
+      "email": "scottcabailey@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T10:54:44.416Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 133
+  },
+  {
+    "tip": {
+      "email": "andrew.cussen1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-13T11:17:18.639Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 134
+  },
+  {
+    "tip": {
+      "email": "jamiebradnam@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T11:29:44.097Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 135
+  },
+  {
+    "tip": {
+      "email": "jakeghayward@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T20:12:39.254Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 136
+  },
+  {
+    "tip": {
+      "email": "mitchellsmith3869@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T20:12:54.437Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 137
+  },
+  {
+    "tip": {
+      "email": "ang3r1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T22:00:07.231Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 138
+  },
+  {
+    "tip": {
+      "email": "kjwynn72@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T22:16:16.271Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 139
+  },
+  {
+    "tip": {
+      "email": "11hunterharris@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-13T22:45:06.435Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 140
+  },
+  {
+    "tip": {
+      "email": "jack.isaksen@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-13T22:52:54.469Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 141
+  },
+  {
+    "tip": {
+      "email": "dancullinane1995@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Wests Tigers",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-03-13T23:49:42.800Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 142
+  },
+  {
+    "tip": {
+      "email": "mwbxyz@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T00:21:55.226Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 143
+  },
+  {
+    "tip": {
+      "email": "Joshstuff24@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T03:00:46.214Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 144
+  },
+  {
+    "tip": {
+      "email": "md.knight57@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T03:43:04.336Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 145
+  },
+  {
+    "tip": {
+      "email": "reecewilliambrown@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-14T03:50:18.951Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 146
+  },
+  {
+    "tip": {
+      "email": "adam_poole_9191@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-14T04:22:11.743Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 147
+  },
+  {
+    "tip": {
+      "email": "nathanpoole@hotmail.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Melbourne Storm",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-03-14T05:48:43.031Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 148
+  },
+  {
+    "tip": {
+      "email": "benjamin.quagliata@bigpond.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-14T07:28:27.429Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 149
+  },
+  {
+    "tip": {
+      "email": "matt.anderson2101@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T07:53:35.101Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 150
+  },
+  {
+    "tip": {
+      "email": "andre.gilovitch@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-14T09:34:13.504Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 151
+  },
+  {
+    "tip": {
+      "email": "maddie.jenkins@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T10:24:50.136Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 152
+  },
+  {
+    "tip": {
+      "email": "dom@sunroom.group",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Newcastle Knights",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": false,
+      "tipped_at": "2026-03-14T12:32:16.113Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 153
+  },
+  {
+    "tip": {
+      "email": "melindabrennan297@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-14T16:21:54.336Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 154
+  },
+  {
+    "tip": {
+      "email": "kyle.robson.1991@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 2,
+      "team": "Dolphins",
+      "opponent": "Gold Coast Titans",
+      "home": true,
+      "tipped_at": "2026-03-15T06:14:11.934Z"
+    },
+    "round": 2,
+    "zeroBasedRowIndex": 155
+  }
+]

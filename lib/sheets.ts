@@ -1,7 +1,36 @@
 import { google } from "googleapis";
 import { getEnv } from "./env";
-import { SPREADSHEET_NAME } from "./constants";
+import { SPREADSHEET_NAME, CURRENT_SEASON, LEGACY_SPREADSHEET_2025 } from "./constants";
 import type { User, UserTip, UserShieldTip, Game } from "./types";
+import fs from "fs";
+import path from "path";
+
+export type UserTipWithRow = { tip: UserTip; round: number; zeroBasedRowIndex: number };
+
+function getSeasonFromSpreadsheetName(name: string): number {
+  if (name === LEGACY_SPREADSHEET_2025) return 2025;
+  return CURRENT_SEASON;
+}
+
+function getCachedTipsWithRows(season: number): UserTipWithRow[] {
+  const cached: UserTipWithRow[] = [];
+  try {
+    const dir = path.join(process.cwd(), "data", "nrl", String(season));
+    if (fs.existsSync(dir)) {
+      const files = fs.readdirSync(dir);
+      for (const file of files) {
+        if (file.startsWith("round_") && file.endsWith(".json")) {
+          const content = fs.readFileSync(path.join(dir, file), "utf-8");
+          const tips = JSON.parse(content) as UserTipWithRow[];
+          cached.push(...tips);
+        }
+      }
+    }
+  } catch (e) {
+    console.error(`Failed to read disk cache for season ${season}`, e);
+  }
+  return cached;
+}
 
 const SCOPES = [
   "https://www.googleapis.com/auth/spreadsheets",
@@ -83,7 +112,7 @@ export async function getWorksheetRecords(
 }
 
 /** Get all rows as records plus 0-based row index in sheet (row 0 = header, first data row = 1). */
-async function getWorksheetRecordsWithRowIndices(
+export async function getWorksheetRecordsWithRowIndices(
   spreadsheetName: string,
   worksheetName: string
 ): Promise<{ record: Record<string, string | number>; zeroBasedRowIndex: number }[]> {
@@ -261,13 +290,28 @@ export async function loadGamesFromSheets(
 export async function loadUserTipsFromSheets(
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<UserTip[]> {
+  const season = getSeasonFromSpreadsheetName(spreadsheetName);
+  const cachedWithRows = getCachedTipsWithRows(season);
+  const cachedRounds = new Set(cachedWithRows.map((c) => c.round));
+  const cachedTips = cachedWithRows.map((c) => c.tip);
+
+  if (cachedRounds.size > 0) {
+    console.info(`[Disk Cache] Loaded tips for rounds: ${Array.from(cachedRounds).sort((a,b) => a - b).join(', ')}`);
+  }
+
   const names = await getWorksheetNames(spreadsheetName);
-  const roundSheets = names.filter((n) => n.startsWith("Round "));
-  const tips: UserTip[] = [];
+  const roundSheets = names.filter((n) => {
+    if (!n.startsWith("Round ")) return false;
+    const roundNumber = Number(n.replace("Round ", ""));
+    return !cachedRounds.has(roundNumber);
+  });
+  
+  const fetchedTips: UserTip[] = [];
   for (const sheetName of roundSheets) {
+    console.info(`[Google Sheets API] Fetching live tips for ${sheetName}`);
     const records = await getWorksheetRecords(spreadsheetName, sheetName);
     for (const r of records) {
-      tips.push({
+      fetchedTips.push({
         email: String(r.email ?? ""),
         username: String(r.username ?? ""),
         season: Number(r.season),
@@ -279,19 +323,31 @@ export async function loadUserTipsFromSheets(
       });
     }
   }
-  return tips;
+  return [...cachedTips, ...fetchedTips];
 }
-
-export type UserTipWithRow = { tip: UserTip; round: number; zeroBasedRowIndex: number };
 
 /** Load all user tips with their sheet row index (for duplicate cleanup). */
 export async function loadUserTipsWithRowIndices(
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<UserTipWithRow[]> {
+  const season = getSeasonFromSpreadsheetName(spreadsheetName);
+  const cachedWithRows = getCachedTipsWithRows(season);
+  const cachedRounds = new Set(cachedWithRows.map((c) => c.round));
+
+  if (cachedRounds.size > 0) {
+    console.info(`[Disk Cache] (With Rows) Loaded tips for rounds: ${Array.from(cachedRounds).sort((a,b) => a - b).join(', ')}`);
+  }
+
   const names = await getWorksheetNames(spreadsheetName);
-  const roundSheets = names.filter((n) => n.startsWith("Round "));
-  const out: UserTipWithRow[] = [];
+  const roundSheets = names.filter((n) => {
+    if (!n.startsWith("Round ")) return false;
+    const roundNumber = Number(n.replace("Round ", ""));
+    return !cachedRounds.has(roundNumber);
+  });
+  
+  const out: UserTipWithRow[] = [...cachedWithRows];
   for (const sheetName of roundSheets) {
+    console.info(`[Google Sheets API] Fetching live tips with rows for ${sheetName}`);
     const withIndices = await getWorksheetRecordsWithRowIndices(
       spreadsheetName,
       sheetName
