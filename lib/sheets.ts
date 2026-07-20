@@ -295,6 +295,10 @@ export async function loadUserTipsFromSheets(
   const cachedRounds = new Set(cachedWithRows.map((c) => c.round));
   const cachedTips = cachedWithRows.map((c) => c.tip);
 
+  if (cachedRounds.size > 0) {
+    console.info(`[Disk Cache] Loaded tips for rounds: ${Array.from(cachedRounds).sort((a,b) => a - b).join(', ')}`);
+  }
+
   const names = await getWorksheetNames(spreadsheetName);
   const roundSheets = names.filter((n) => {
     if (!n.startsWith("Round ")) return false;
@@ -304,6 +308,7 @@ export async function loadUserTipsFromSheets(
   
   const fetchedTips: UserTip[] = [];
   for (const sheetName of roundSheets) {
+    console.info(`[Google Sheets API] Fetching live tips for ${sheetName}`);
     const records = await getWorksheetRecords(spreadsheetName, sheetName);
     for (const r of records) {
       fetchedTips.push({
@@ -329,6 +334,10 @@ export async function loadUserTipsWithRowIndices(
   const cachedWithRows = getCachedTipsWithRows(season);
   const cachedRounds = new Set(cachedWithRows.map((c) => c.round));
 
+  if (cachedRounds.size > 0) {
+    console.info(`[Disk Cache] (With Rows) Loaded tips for rounds: ${Array.from(cachedRounds).sort((a,b) => a - b).join(', ')}`);
+  }
+
   const names = await getWorksheetNames(spreadsheetName);
   const roundSheets = names.filter((n) => {
     if (!n.startsWith("Round ")) return false;
@@ -338,6 +347,7 @@ export async function loadUserTipsWithRowIndices(
   
   const out: UserTipWithRow[] = [...cachedWithRows];
   for (const sheetName of roundSheets) {
+    console.info(`[Google Sheets API] Fetching live tips with rows for ${sheetName}`);
     const withIndices = await getWorksheetRecordsWithRowIndices(
       spreadsheetName,
       sheetName
