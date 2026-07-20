@@ -104,7 +104,6 @@ export async function allGameResults(spreadsheetName: string = SPREADSHEET_NAME)
 
 export async function allPlayersInRound(
   round: number,
-  _competitionId: number = 111,
   season: number = CURRENT_SEASON
 ): Promise<string[]> {
   const key = CACHE_KEYS.players(round);
