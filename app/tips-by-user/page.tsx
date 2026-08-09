@@ -26,6 +26,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Skeleton } from "@/components/ui/skeleton";
+import { MAGIC_ROUNDS, CURRENT_SEASON } from "@/lib/constants";
 
 type ResultRow = {
   round: number;
@@ -91,10 +92,11 @@ export default function TipsByUserPage() {
         })
       : [];
 
+  const magicRound = MAGIC_ROUNDS[CURRENT_SEASON];
   const homeCount =
-    data?.results.filter((r) => r.home && r.round !== 9).length ?? 0;
+    data?.results.filter((r) => r.home && r.round !== magicRound).length ?? 0;
   const awayCount =
-    data?.results.filter((r) => !r.home && r.round !== 9).length ?? 0;
+    data?.results.filter((r) => !r.home && r.round !== magicRound).length ?? 0;
 
   const teamSummary =
     data?.teams

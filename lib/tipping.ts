@@ -117,30 +117,31 @@ export async function getMakeTipPayload(email: string): Promise<MakeTipPayload> 
         unavailableTeams.set(tip.team, existing);
       }
     }
-    const teamCounts = new Map<string, number>();
-    for (const r of userResults) {
-      teamCounts.set(r.team, (teamCounts.get(r.team) ?? 0) + 1);
+  }
+
+  const teamCounts = new Map<string, number>();
+  for (const r of userResults) {
+    teamCounts.set(r.team, (teamCounts.get(r.team) ?? 0) + 1);
+  }
+  for (const [team, count] of teamCounts) {
+    if (count >= MAX_TIPS_PER_TEAM) {
+      const existing = unavailableTeams.get(team) ?? [];
+      existing.push(`Team already tipped ${count} times`);
+      unavailableTeams.set(team, existing);
     }
-    for (const [team, count] of teamCounts) {
-      if (count >= MAX_TIPS_PER_TEAM) {
-        const existing = unavailableTeams.get(team) ?? [];
-        existing.push(`Team already tipped ${count} times`);
-        unavailableTeams.set(team, existing);
-      }
-    }
-    const nonMagic = userResults.filter((r) => MAGIC_ROUNDS[r.season] !== r.round);
-    const homeCount = nonMagic.filter((r) => r.home).length;
-    const awayCount = nonMagic.filter((r) => !r.home).length;
-    for (const [team, tip] of Object.entries(currentRoundTips)) {
-      if (tip.home && homeCount >= MAX_HOME_AWAY_TIPS) {
-        const existing = unavailableTeams.get(team) ?? [];
-        existing.push(`Already tipped ${MAX_HOME_AWAY_TIPS} home teams`);
-        unavailableTeams.set(team, existing);
-      } else if (!tip.home && awayCount >= MAX_HOME_AWAY_TIPS) {
-        const existing = unavailableTeams.get(team) ?? [];
-        existing.push(`Already tipped ${MAX_HOME_AWAY_TIPS} away teams`);
-        unavailableTeams.set(team, existing);
-      }
+  }
+  const nonMagic = userResults.filter((r) => MAGIC_ROUNDS[r.season] !== r.round);
+  const homeCount = nonMagic.filter((r) => r.home).length;
+  const awayCount = nonMagic.filter((r) => !r.home).length;
+  for (const [team, tip] of Object.entries(currentRoundTips)) {
+    if (tip.home && homeCount >= MAX_HOME_AWAY_TIPS) {
+      const existing = unavailableTeams.get(team) ?? [];
+      existing.push(`Already tipped ${MAX_HOME_AWAY_TIPS} home teams`);
+      unavailableTeams.set(team, existing);
+    } else if (!tip.home && awayCount >= MAX_HOME_AWAY_TIPS) {
+      const existing = unavailableTeams.get(team) ?? [];
+      existing.push(`Already tipped ${MAX_HOME_AWAY_TIPS} away teams`);
+      unavailableTeams.set(team, existing);
     }
   }
 
