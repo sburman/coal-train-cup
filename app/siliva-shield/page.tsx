@@ -46,14 +46,6 @@ interface ShieldPayload {
   error?: string;
 }
 
-function formatKickoff(iso: string): string {
-  return new Date(iso).toLocaleString("en-AU", {
-    weekday: "short",
-    hour: "numeric",
-    minute: "2-digit",
-  });
-}
-
 export default function SilivaShieldPage() {
   const [email, setEmail] = useState("");
   /** The email the current payload was loaded for - what we submit against. */
@@ -69,11 +61,9 @@ export default function SilivaShieldPage() {
     text: string;
   } | null>(null);
 
-  // keepMessage is set when reloading straight after a submit, so the success
-  // confirmation is not wiped out by its own refresh.
-  const loadPayload = async (forEmail: string, keepMessage = false) => {
+  const loadPayload = async (forEmail: string) => {
     setLoading(true);
-    if (!keepMessage) setMessage(null);
+    setMessage(null);
     try {
       const res = await fetch(
         `/api/siliva-shield?email=${encodeURIComponent(forEmail)}`
@@ -134,10 +124,19 @@ export default function SilivaShieldPage() {
       });
       const data = await res.json();
       if (res.ok && data.ok) {
-        setMessage({ type: "ok", text: "Siliva Shield tip submitted." });
+        // Reset to a clean form. Reloading the payload here would re-render
+        // the whole filled-in form under the confirmation, which reads as if
+        // nothing was submitted and invites a second (appended) entry.
+        setMessage({
+          type: "ok",
+          text: `Siliva Shield tip submitted: ${selectedTeam} / ${selectedTryscorer}.`,
+        });
+        setEmail("");
+        setLoadedEmail("");
+        setPayload(null);
         setSelectedTeam("");
         setSelectedTryscorer("");
-        await loadPayload(loadedEmail, true);
+        setMatchTotal("");
       } else {
         setMessage({ type: "err", text: data.error || "Submit failed" });
       }
@@ -306,7 +305,7 @@ export default function SilivaShieldPage() {
                   <option value="">--</option>
                   {availableTeams.map((t) => (
                     <option key={t.team} value={t.team}>
-                      {t.team} v {t.opponent} ({formatKickoff(t.kickoff)})
+                      {t.team}
                     </option>
                   ))}
                 </Select>
