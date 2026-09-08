@@ -6,9 +6,6 @@ import Link from "next/link";
 import {
   IconHome,
   IconPencil,
-  IconScroll,
-  IconChartBar,
-  IconUser,
 } from "@/components/icons/nav-icons";
 
 const spaceGrotesk = Space_Grotesk({
@@ -29,12 +26,14 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
+// Rendered from index 1 onwards - the first entry is the home link, already
+// shown as the logo/title beside the nav. Keep Home first: removing it would
+// silently drop the next item out of the menu.
+// /tips-by-round, /tips-by-user, /make-tip and the leaderboards all remain
+// live at their URLs; they are just not promoted during the finals.
 const navItems = [
   { href: "/", label: "Home", Icon: IconHome },
-  { href: "/make-tip", label: "Make a tip", Icon: IconPencil },
-  { href: "/leaderboard", label: "Leaderboard", Icon: IconScroll },
-  { href: "/tips-by-round", label: "Tips by round", Icon: IconChartBar },
-  { href: "/tips-by-user", label: "Tips by user", Icon: IconUser },
+  { href: "/siliva-shield", label: "Make your Siliva Shield tip", Icon: IconPencil },
 ] as const;
 
 export default function RootLayout({

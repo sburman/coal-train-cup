@@ -14,3 +14,24 @@ export const MAX_TIPS_PER_TEAM = 3;
 export const TIP_GRACE_PERIOD_MINUTES = 10;
 export const TIP_DISPLAY_GRACE_MINUTES = 5;
 export const ROUND_IN_PROGRESS_HOURS = 3;
+
+/**
+ * Siliva Shield: finals-only knockout side competition.
+ * The four finals weeks are SHIELD_FINALS_START_ROUND .. SHIELD_TIEBREAK_ROUND.
+ */
+export const SHIELD_FINALS_START_ROUND = 28;
+export const SHIELD_TIEBREAK_ROUND = 31;
+export const SHIELD_FINALS_WEEKS = 4;
+
+/**
+ * Deliberately far tighter than TIP_GRACE_PERIOD_MINUTES. A Shield selection
+ * includes a tryscorer, so minutes of grace after kickoff is a window to tip
+ * something already witnessed, not leniency. Kept as its own constant so the
+ * two cannot drift into each other.
+ */
+export const SHIELD_TIP_GRACE_MINUTES = 1;
+
+export const SHIELD_TIPS_CACHE_TTL_SECONDS = 60;
+
+/** Negative cache for a pending/incomplete lineup fetch - see data.roundLineups. */
+export const SHIELD_LINEUPS_PENDING_TTL_SECONDS = 30;

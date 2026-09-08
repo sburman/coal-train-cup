@@ -5,9 +5,12 @@ import {
   GAMES_CACHE_TTL_SECONDS,
   PLAYERS_CACHE_TTL_SECONDS,
   SHIELD_WINNERS_CACHE_TTL_SECONDS,
+  SHIELD_TIPS_CACHE_TTL_SECONDS,
+  SHIELD_LINEUPS_PENDING_TTL_SECONDS,
 } from "./constants";
 import * as sheets from "./sheets";
-import { getLatestDrawFromNrl, getPlayerNamesInRound as fetchPlayersInRound } from "./nrl";
+import { getLatestDrawFromNrl, getRoundLineups as fetchRoundLineups } from "./nrl";
+import type { RoundLineups } from "./nrl";
 import { get, set, invalidate } from "./cache";
 import type { User, UserTip, Game, GameResult, RoundStatus } from "./types";
 
@@ -18,6 +21,7 @@ const CACHE_KEYS = {
   tips: (name: string) => `data:tips:${name}`,
   shieldWinners: (name: string, round: number) => `data:shield:${name}:${round}`,
   players: (round: number) => `data:players:${round}`,
+  shieldTips: (name: string, round: number) => `data:shieldtips:${name}:${round}`,
 };
 
 export async function allUsers(): Promise<User[]> {
@@ -102,16 +106,28 @@ export async function allGameResults(spreadsheetName: string = SPREADSHEET_NAME)
   return results;
 }
 
-export async function allPlayersInRound(
+export async function roundLineups(
   round: number,
   season: number = CURRENT_SEASON
-): Promise<string[]> {
+): Promise<RoundLineups> {
   const key = CACHE_KEYS.players(round);
-  const cached = get<string[]>(key);
+  const cached = get<RoundLineups>(key);
   if (cached) return cached;
-  const list = await fetchPlayersInRound(round, season);
-  set(key, list, PLAYERS_CACHE_TTL_SECONDS);
-  return list;
+  const lineups = await fetchRoundLineups(round, season);
+  // A complete result caches normally. An incomplete one gets a short negative
+  // TTL: long enough to stop every request re-running the per-fixture fan-out
+  // (1 + up to 8 NRL calls), short enough that the form opens promptly once
+  // team lists actually drop.
+  const complete =
+    lineups.fixtureCount > 0 &&
+    lineups.fixturesWithLineups === lineups.fixtureCount &&
+    lineups.fixtureFetchFailures === 0;
+  set(
+    key,
+    lineups,
+    complete ? PLAYERS_CACHE_TTL_SECONDS : SHIELD_LINEUPS_PENDING_TTL_SECONDS
+  );
+  return lineups;
 }
 
 export async function getShieldWinners(
@@ -124,6 +140,25 @@ export async function getShieldWinners(
   const list = await sheets.loadShieldWinners(spreadsheetName, round);
   set(key, list, SHIELD_WINNERS_CACHE_TTL_SECONDS);
   return list;
+}
+
+export async function getShieldTips(
+  round: number,
+  spreadsheetName: string = SPREADSHEET_NAME
+): Promise<import("./types").UserShieldTip[]> {
+  const key = CACHE_KEYS.shieldTips(spreadsheetName, round);
+  const cached = get<import("./types").UserShieldTip[]>(key);
+  if (cached) return cached;
+  const list = await sheets.loadShieldTips(spreadsheetName, round);
+  set(key, list, SHIELD_TIPS_CACHE_TTL_SECONDS);
+  return list;
+}
+
+export function invalidateShieldTips(
+  round: number,
+  spreadsheetName: string = SPREADSHEET_NAME
+): void {
+  invalidate(CACHE_KEYS.shieldTips(spreadsheetName, round));
 }
 
 export function getRoundStatusFromGames(
