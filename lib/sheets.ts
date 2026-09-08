@@ -391,6 +391,39 @@ export async function loadShieldWinners(
   }));
 }
 
+export const SHIELD_TIP_HEADERS = [
+  "email",
+  "season",
+  "round",
+  "team",
+  "tryscorer",
+  "match_total",
+  "tipped_at",
+] as const;
+
+/** Submissions for a Shield round. Empty when the sheet does not exist yet. */
+export async function loadShieldTips(
+  spreadsheetName: string,
+  round: number
+): Promise<UserShieldTip[]> {
+  const sheetName = `Shield Round ${round}`;
+  const exists = await worksheetExists(spreadsheetName, sheetName);
+  if (!exists) return [];
+  const records = await getWorksheetRecords(spreadsheetName, sheetName);
+  return records.map((r) => ({
+    email: String(r.email ?? ""),
+    season: Number(r.season),
+    round: Number(r.round),
+    team: String(r.team ?? ""),
+    tryscorer: String(r.tryscorer ?? ""),
+    match_total:
+      r.match_total != null && String(r.match_total) !== ""
+        ? Number(r.match_total)
+        : null,
+    tipped_at: String(r.tipped_at ?? ""),
+  }));
+}
+
 // --- Writes ---
 
 export async function appendTipToSheet(
@@ -573,11 +606,46 @@ export async function migrateRoundTipSheetsSchema(
   return results;
 }
 
+/**
+ * Create `Shield Round N` with its header row if absent.
+ *
+ * createWorksheet() makes a bare grid, and getWorksheetRecordsWithRowIndices()
+ * treats row 0 as the header - so without this the FIRST tip of a finals week
+ * silently becomes the column headings and is invisible to every later read.
+ */
+async function ensureShieldSheetWithHeader(
+  spreadsheetName: string,
+  worksheetName: string
+): Promise<void> {
+  const exists = await worksheetExists(spreadsheetName, worksheetName);
+  if (!exists) {
+    await createWorksheet(spreadsheetName, worksheetName);
+  } else {
+    const sheets = await getSheetsClient();
+    const id = await getSpreadsheetId(spreadsheetName);
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: id,
+      range: `'${worksheetName}'!A1:Z1`,
+    });
+    const firstRow = (res.data.values?.[0] ?? []) as string[];
+    if (firstRow.length > 0) return;
+  }
+  const sheets = await getSheetsClient();
+  const id = await getSpreadsheetId(spreadsheetName);
+  await sheets.spreadsheets.values.update({
+    spreadsheetId: id,
+    range: `'${worksheetName}'!A1`,
+    valueInputOption: "USER_ENTERED",
+    requestBody: { values: [[...SHIELD_TIP_HEADERS]] },
+  });
+}
+
 export async function appendShieldTipToSheet(
   tip: UserShieldTip,
   spreadsheetName: string = SPREADSHEET_NAME
 ): Promise<void> {
   const worksheetName = `Shield Round ${tip.round}`;
+  await ensureShieldSheetWithHeader(spreadsheetName, worksheetName);
   const values = [
     tip.email,
     tip.season,

@@ -89,39 +89,99 @@ interface NrlSnapshot {
   gameStats?: {
     teams?: {
       teamsMatch?: Array<{
+        teamName?: string;
         teamLineup?: { teamPlayer?: { playerName?: string }[] };
       }>;
     };
   };
 }
 
-export async function getPlayerNamesInRound(
+/** A named player tied to the team whose fixture governs their availability. */
+export interface RoundPlayer {
+  name: string;
+  team: string;
+}
+
+/**
+ * Lineups for a round, with enough detail for callers to tell "not published
+ * yet" apart from "something broke".
+ *
+ * The NRL match endpoint returns HTTP 200 with an EMPTY teamLineup before team
+ * lists drop (Tuesday afternoon), so status codes cannot be used to detect
+ * readiness - only lineup population can.
+ */
+export interface RoundLineups {
+  players: RoundPlayer[];
+  /** Fixtures in the round, per the NRL draw. */
+  fixtureCount: number;
+  /** Fixtures for which at least one team lineup was populated. */
+  fixturesWithLineups: number;
+  /** Fixtures whose match payload could not be fetched or parsed. */
+  fixtureFetchFailures: number;
+}
+
+export async function getRoundLineups(
   round: number,
   season: number = CURRENT_SEASON
-): Promise<string[]> {
+): Promise<RoundLineups> {
   const { nrlAuth } = getEnv();
   const fixtures = await fetchFixturesFromNrl(season, round);
-  const allNames: string[] = [];
+  const players: RoundPlayer[] = [];
+  let fixturesWithLineups = 0;
+  let fixtureFetchFailures = 0;
+
   for (const f of fixtures) {
     const matchId = f.gameId;
-    if (!matchId) continue;
-    const url = `http://rugbyleague-api.stats.com/api/NRL/matchStatsAndEvents/${matchId}.json`;
-    const res = await fetch(url, {
-      headers: {
-        Authorization: nrlAuth,
-        "Content-Type": "application/json, charset=UTF-8",
-      },
-    });
-    if (!res.ok) continue;
-    const data = (await res.json()) as NrlSnapshot;
+    if (!matchId) {
+      fixtureFetchFailures += 1;
+      continue;
+    }
+    const url = `${NRL_BASE}/matchStatsAndEvents/${matchId}.json`;
+    let data: NrlSnapshot;
+    try {
+      const res = await fetch(url, {
+        headers: {
+          Authorization: nrlAuth,
+          "Content-Type": "application/json, charset=UTF-8",
+        },
+      });
+      if (!res.ok) {
+        fixtureFetchFailures += 1;
+        continue;
+      }
+      data = (await res.json()) as NrlSnapshot;
+    } catch {
+      fixtureFetchFailures += 1;
+      continue;
+    }
+
     const teams = data.gameStats?.teams?.teamsMatch ?? [];
+    let fixtureHadLineup = false;
     for (const team of teams) {
-      const lineup = team?.teamLineup as { teamPlayer?: { playerName?: string }[] } | undefined;
-      const players = lineup?.teamPlayer ?? [];
-      for (const p of players) {
-        if (p.playerName) allNames.push(p.playerName);
+      const teamName = team?.teamName;
+      const lineup = team?.teamLineup?.teamPlayer ?? [];
+      if (!teamName || lineup.length === 0) continue;
+      fixtureHadLineup = true;
+      for (const p of lineup) {
+        if (p.playerName) players.push({ name: p.playerName, team: teamName });
       }
     }
+    if (fixtureHadLineup) fixturesWithLineups += 1;
   }
-  return [...new Set(allNames)].sort();
+
+  const seen = new Set<string>();
+  const deduped = players.filter((p) => {
+    const key = `${p.team}|${p.name}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+  deduped.sort((a, b) => a.name.localeCompare(b.name));
+
+  return {
+    players: deduped,
+    fixtureCount: fixtures.length,
+    fixturesWithLineups,
+    fixtureFetchFailures,
+  };
 }

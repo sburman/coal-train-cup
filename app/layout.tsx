@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const navItems = [
   { href: "/", label: "Home", Icon: IconHome },
-  { href: "/make-tip", label: "Make a tip", Icon: IconPencil },
+  { href: "/siliva-shield", label: "Make your Siliva Shield tip", Icon: IconPencil },
   { href: "/leaderboard", label: "Leaderboard", Icon: IconScroll },
   { href: "/tips-by-round", label: "Tips by round", Icon: IconChartBar },
   { href: "/tips-by-user", label: "Tips by user", Icon: IconUser },

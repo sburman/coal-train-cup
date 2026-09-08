@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SectionHeader } from "@/components/layout/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,25 +9,54 @@ import { Select } from "@/components/ui/select";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
 
-const THIS_WEEK = 31;
-const AVAILABLE_TEAMS = ["Melbourne Storm", "Brisbane Broncos"];
+type ExclusionReason = "used" | "locked";
+
+interface TeamOption {
+  team: string;
+  opponent: string;
+  kickoff: string;
+  available: boolean;
+  reason?: ExclusionReason;
+}
+
+interface TryscorerOption {
+  name: string;
+  team: string;
+  available: boolean;
+  reason?: ExclusionReason;
+}
+
+interface ShieldPayload {
+  shieldActive: boolean;
+  round: number;
+  weekLabel: string;
+  requiresTieBreak: boolean;
+  readiness: "not_published" | "partial" | "ready";
+  fixtures: { home_team: string; away_team: string; kickoff: string }[];
+  eligibility: {
+    eligible: boolean;
+    reason?: "not_registered" | "not_previous_winner";
+    qualifyingSelection: { team: string; tryscorer: string } | null;
+  } | null;
+  pool: { teams: TeamOption[]; tryscorers: TryscorerOption[] } | null;
+  existingTips: { team: string; tryscorer: string; tipped_at: string }[];
+  error?: string;
+}
+
+function formatKickoff(iso: string): string {
+  return new Date(iso).toLocaleString("en-AU", {
+    weekday: "short",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
 
 export default function SilivaShieldPage() {
   const [email, setEmail] = useState("");
-  const [players, setPlayers] = useState<string[]>([]);
-  const [winners28, setWinners28] = useState<
-    { email: string; team: string; tryscorer: string }[]
-  >([]);
-  const [winners29, setWinners29] = useState<
-    { email: string; team: string; tryscorer: string }[]
-  >([]);
-  const [winners30, setWinners30] = useState<
-    { email: string; team: string; tryscorer: string }[]
-  >([]);
-  const [selectedTeam, setSelectedTeam] = useState<string | null>(null);
-  const [selectedTryscorer, setSelectedTryscorer] = useState<string | null>(
-    null
-  );
+  const [payload, setPayload] = useState<ShieldPayload | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedTryscorer, setSelectedTryscorer] = useState("");
   const [matchTotal, setMatchTotal] = useState<number | "">("");
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<{
@@ -35,56 +64,31 @@ export default function SilivaShieldPage() {
     text: string;
   } | null>(null);
 
-  useEffect(() => {
-    Promise.all([
-      fetch(`/api/siliva-shield/players?round=${THIS_WEEK}`).then((r) =>
-        r.json()
-      ),
-      fetch("/api/siliva-shield/winners?round=28").then((r) => r.json()),
-      fetch("/api/siliva-shield/winners?round=29").then((r) => r.json()),
-      fetch("/api/siliva-shield/winners?round=30").then((r) => r.json()),
-    ]).then(([p, w28, w29, w30]) => {
-      setPlayers(p.players ?? []);
-      setWinners28(w28.winners ?? []);
-      setWinners29(w29.winners ?? []);
-      setWinners30(w30.winners ?? []);
-    });
-  }, []);
+  const loadPayload = async (forEmail: string) => {
+    setLoading(true);
+    setMessage(null);
+    try {
+      const res = await fetch(
+        `/api/siliva-shield?email=${encodeURIComponent(forEmail)}`
+      );
+      const data = (await res.json()) as ShieldPayload;
+      setPayload(data);
+    } catch {
+      setMessage({ type: "err", text: "Could not load the Siliva Shield." });
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const lastRoundWinners = winners30;
-  const earlierWinners = [...winners28, ...winners29];
-  const userLastRound = email
-    ? lastRoundWinners.filter(
-        (w) => w.email.toLowerCase() === email.toLowerCase()
-      )
-    : [];
-  const userEarlier = email
-    ? earlierWinners.filter(
-        (w) => w.email.toLowerCase() === email.toLowerCase()
-      )
-    : [];
-
-  const unavailableTeams = new Set<string>();
-  const unavailableTryscorers = new Set<string>();
-  if (userLastRound.length) {
-    unavailableTeams.add(userLastRound[0].team);
-    unavailableTryscorers.add(userLastRound[0].tryscorer);
-  }
-  userEarlier.forEach((w) => {
-    unavailableTeams.add(w.team);
-    unavailableTryscorers.add(w.tryscorer);
-  });
-
-  const availableTeams = AVAILABLE_TEAMS.filter((t) => !unavailableTeams.has(t));
-  const availablePlayers = players.filter(
-    (p) => !unavailableTryscorers.has(p)
-  );
+  const handleLookup = () => {
+    if (!email.trim()) return;
+    setSelectedTeam("");
+    setSelectedTryscorer("");
+    loadPayload(email.trim());
+  };
 
   const handleSubmit = async () => {
-    if (!email.trim()) {
-      setMessage({ type: "err", text: "Please enter your Patreon email" });
-      return;
-    }
+    if (!payload) return;
     if (!selectedTeam) {
       setMessage({ type: "err", text: "Please select a team" });
       return;
@@ -93,14 +97,8 @@ export default function SilivaShieldPage() {
       setMessage({ type: "err", text: "Please select a tryscorer" });
       return;
     }
-    if (
-      THIS_WEEK === 31 &&
-      (matchTotal === "" || matchTotal === null)
-    ) {
-      setMessage({
-        type: "err",
-        text: "Please enter match points total",
-      });
+    if (payload.requiresTieBreak && matchTotal === "") {
+      setMessage({ type: "err", text: "Please enter match points total" });
       return;
     }
     setSubmitting(true);
@@ -111,16 +109,16 @@ export default function SilivaShieldPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: email.trim(),
-          season: 2026,
-          round: THIS_WEEK,
+          round: payload.round,
           team: selectedTeam,
           tryscorer: selectedTryscorer,
-          match_total: THIS_WEEK === 31 ? Number(matchTotal) : null,
+          match_total: payload.requiresTieBreak ? Number(matchTotal) : null,
         }),
       });
       const data = await res.json();
       if (res.ok && data.ok) {
         setMessage({ type: "ok", text: "Siliva Shield tip submitted." });
+        await loadPayload(email.trim());
       } else {
         setMessage({ type: "err", text: data.error || "Submit failed" });
       }
@@ -131,12 +129,23 @@ export default function SilivaShieldPage() {
     }
   };
 
+  const pool = payload?.pool;
+  const availableTeams = pool?.teams.filter((t) => t.available) ?? [];
+  const availableTryscorers = pool?.tryscorers.filter((p) => p.available) ?? [];
+  const usedTeams = pool?.teams.filter((t) => t.reason === "used") ?? [];
+  const usedTryscorers =
+    pool?.tryscorers.filter((p) => p.reason === "used") ?? [];
+  const lockedTeams = pool?.teams.filter((t) => t.reason === "locked") ?? [];
+
   return (
     <>
       <SectionHeader as="h1">Siliva Shield</SectionHeader>
-      <h2 className="mb-6 font-display text-xl font-semibold text-white/90">
-        Finals Week 4
-      </h2>
+      {payload?.shieldActive && (
+        <h2 className="mb-6 font-display text-xl font-semibold text-white/90">
+          {payload.weekLabel}
+        </h2>
+      )}
+
       <Card className="mb-6">
         <CardHeader className="pb-2">
           <p className="font-medium">Rules:</p>
@@ -145,6 +154,7 @@ export default function SilivaShieldPage() {
           <ul className="ml-5 mt-2 list-disc space-y-1">
             <li>Submit 1 team that you think will win this weekend</li>
             <li>Submit 1 player as a tryscorer for this weekend</li>
+            <li>Selections lock when that team&apos;s game kicks off</li>
           </ul>
           <p className="mt-2">
             <em>IMPORTANT</em> – You can&apos;t repeat a team or tryscorer
@@ -152,6 +162,7 @@ export default function SilivaShieldPage() {
           </p>
         </CardContent>
       </Card>
+
       <div className="mb-6 max-w-xs space-y-2">
         <Label htmlFor="shield-email">Patreon email</Label>
         <Input
@@ -159,96 +170,175 @@ export default function SilivaShieldPage() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleLookup()}
           placeholder="your@email.com"
         />
+        <Button
+          type="button"
+          onClick={handleLookup}
+          disabled={loading || !email.trim()}
+        >
+          {loading ? "Loading…" : "Continue"}
+        </Button>
       </div>
-      {email && userLastRound.length === 0 && lastRoundWinners.length > 0 && (
+
+      {payload && !payload.shieldActive && (
+        <Alert variant="info" className="mb-4">
+          The Siliva Shield runs during the finals. It isn&apos;t open right now.
+        </Alert>
+      )}
+
+      {payload?.shieldActive && payload.readiness === "not_published" && (
+        <Alert variant="info" className="mb-4">
+          Team lists for {payload.weekLabel} haven&apos;t been published yet.
+          They land on Tuesday afternoon — tipping opens then.
+        </Alert>
+      )}
+
+      {payload?.shieldActive && payload.readiness === "partial" && (
+        <Alert variant="warning" className="mb-4">
+          The player list is incomplete right now, so we can&apos;t show you a
+          full set of options. Please try again shortly rather than tipping from
+          a partial list.
+        </Alert>
+      )}
+
+      {payload?.eligibility?.reason === "not_registered" && (
+        <Alert variant="destructive" className="mb-4">
+          No user found with email: {email.trim()}
+        </Alert>
+      )}
+
+      {payload?.eligibility?.reason === "not_previous_winner" && (
         <Alert variant="destructive" className="mb-4">
           Sorry, it looks like you were not a winner in the last round. Only
           previous round winners can continue in the Siliva Shield.
         </Alert>
       )}
-      {userLastRound.length > 0 && (
+
+      {payload?.eligibility?.qualifyingSelection && (
+        <Alert variant="success" className="mb-4">
+          Congratulations! You were a winner last round tipping{" "}
+          {payload.eligibility.qualifyingSelection.team} and{" "}
+          {payload.eligibility.qualifyingSelection.tryscorer}.
+        </Alert>
+      )}
+
+      {payload && payload.existingTips.length > 0 && (
+        <Alert variant="warning" className="mb-4">
+          You have already tipped this round:{" "}
+          {payload.existingTips
+            .map((t) => `${t.team} / ${t.tryscorer}`)
+            .join("; ")}
+          . Submitting again will add another entry rather than replace it.
+        </Alert>
+      )}
+
+      {payload?.shieldActive && payload.readiness === "ready" && pool && (
         <>
-          <Alert variant="success" className="mb-4">
-            Congratulations! You were a winner last round tipping{" "}
-            {userLastRound[0].team} and {userLastRound[0].tryscorer}.
-          </Alert>
-          {(unavailableTeams.size > 0 || unavailableTryscorers.size > 0) && (
+          {(usedTeams.length > 0 || usedTryscorers.length > 0) && (
             <Card className="mb-4 border-white/20 bg-[var(--code-bg)]">
               <CardContent className="pt-4">
                 <p className="text-sm text-white/90">
-                  You have already selected:{" "}
-                  {Array.from(unavailableTeams).join(", ")};{" "}
-                  {Array.from(unavailableTryscorers).join(", ")}
+                  Already used in earlier finals weeks:{" "}
+                  {[
+                    ...usedTeams.map((t) => t.team),
+                    ...usedTryscorers.map((p) => p.name),
+                  ].join(", ")}
                 </p>
               </CardContent>
             </Card>
           )}
-          <div className="mb-4 max-w-xs space-y-2">
-            <Label htmlFor="shield-team">Select a team</Label>
-            <Select
-              id="shield-team"
-              value={selectedTeam ?? ""}
-              onChange={(e) => setSelectedTeam(e.target.value || null)}
-            >
-              <option value="">--</option>
-              {availableTeams.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </Select>
-          </div>
-          <div className="mb-4 max-w-xs space-y-2">
-            <Label htmlFor="shield-tryscorer">Select a tryscorer</Label>
-            <Select
-              id="shield-tryscorer"
-              value={selectedTryscorer ?? ""}
-              onChange={(e) => setSelectedTryscorer(e.target.value || null)}
-            >
-              <option value="">Type to search...</option>
-              {availablePlayers.map((p) => (
-                <option key={p} value={p}>
-                  {p}
-                </option>
-              ))}
-            </Select>
-          </div>
-          {THIS_WEEK === 31 && (
-            <div className="mb-4 max-w-[8rem] space-y-2">
-              <Label htmlFor="shield-total">Match points total</Label>
-              <Input
-                id="shield-total"
-                type="number"
-                min={0}
-                max={100}
-                value={matchTotal}
-                onChange={(e) =>
-                  setMatchTotal(
-                    e.target.value === "" ? "" : Number(e.target.value)
-                  )
-                }
-              />
-            </div>
+
+          {lockedTeams.length > 0 && (
+            <Card className="mb-4 border-white/20 bg-[var(--code-bg)]">
+              <CardContent className="pt-4">
+                <p className="text-sm text-white/70">
+                  Locked (already kicked off):{" "}
+                  {lockedTeams.map((t) => t.team).join(", ")}
+                </p>
+              </CardContent>
+            </Card>
           )}
-          <Button
-            type="button"
-            onClick={handleSubmit}
-            disabled={submitting}
-          >
-            {submitting ? "Submitting…" : "Submit"}
-          </Button>
-          {message && (
-            <Alert
-              variant={message.type === "ok" ? "success" : "destructive"}
-              className="mt-4"
-            >
-              {message.type === "ok" ? "" : ""}
-              {message.text}
+
+          {availableTeams.length === 0 ? (
+            <Alert variant="info" className="mb-4">
+              {lockedTeams.length === pool.teams.length
+                ? "Every game this week has kicked off. Tipping is closed."
+                : "You have no teams left to pick — every side still to play this week is one you have already used in an earlier finals week."}
             </Alert>
+          ) : (
+            <>
+              <div className="mb-4 max-w-xs space-y-2">
+                <Label htmlFor="shield-team">Select a team</Label>
+                <Select
+                  id="shield-team"
+                  value={selectedTeam}
+                  onChange={(e) => setSelectedTeam(e.target.value)}
+                >
+                  <option value="">--</option>
+                  {availableTeams.map((t) => (
+                    <option key={t.team} value={t.team}>
+                      {t.team} v {t.opponent} ({formatKickoff(t.kickoff)})
+                    </option>
+                  ))}
+                </Select>
+              </div>
+
+              <div className="mb-4 max-w-xs space-y-2">
+                <Label htmlFor="shield-tryscorer">Select a tryscorer</Label>
+                <Input
+                  id="shield-tryscorer"
+                  list="shield-tryscorer-options"
+                  value={selectedTryscorer}
+                  onChange={(e) => setSelectedTryscorer(e.target.value)}
+                  placeholder="Type to search…"
+                />
+                <datalist id="shield-tryscorer-options">
+                  {availableTryscorers.map((p) => (
+                    <option key={`${p.team}|${p.name}`} value={p.name}>
+                      {p.team}
+                    </option>
+                  ))}
+                </datalist>
+                <p className="text-xs text-white/60">
+                  {availableTryscorers.length} players available
+                </p>
+              </div>
+
+              {payload.requiresTieBreak && (
+                <div className="mb-4 max-w-[8rem] space-y-2">
+                  <Label htmlFor="shield-total">Match points total</Label>
+                  <Input
+                    id="shield-total"
+                    type="number"
+                    min={0}
+                    max={100}
+                    value={matchTotal}
+                    onChange={(e) =>
+                      setMatchTotal(
+                        e.target.value === "" ? "" : Number(e.target.value)
+                      )
+                    }
+                  />
+                </div>
+              )}
+
+              <Button type="button" onClick={handleSubmit} disabled={submitting}>
+                {submitting ? "Submitting…" : "Submit"}
+              </Button>
+            </>
           )}
         </>
+      )}
+
+      {message && (
+        <Alert
+          variant={message.type === "ok" ? "success" : "destructive"}
+          className="mt-4"
+        >
+          {message.text}
+        </Alert>
       )}
     </>
   );
