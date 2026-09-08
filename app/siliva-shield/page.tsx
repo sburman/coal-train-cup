@@ -46,6 +46,18 @@ interface ShieldPayload {
   error?: string;
 }
 
+function formatSubmitted(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleString("en-AU", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
 export default function SilivaShieldPage() {
   const [email, setEmail] = useState("");
   /** The email the current payload was loaded for - what we submit against. */
@@ -146,6 +158,12 @@ export default function SilivaShieldPage() {
       setSubmitting(false);
     }
   };
+
+  // Sheet order is append order, but sort explicitly so the list is genuinely
+  // chronological rather than incidentally so.
+  const existingTipsChronological = [...(payload?.existingTips ?? [])].sort(
+    (a, b) => new Date(a.tipped_at).getTime() - new Date(b.tipped_at).getTime()
+  );
 
   const pool = payload?.pool;
   const availableTeams = pool?.teams.filter((t) => t.available) ?? [];
@@ -252,11 +270,33 @@ export default function SilivaShieldPage() {
 
       {payload && payload.existingTips.length > 0 && (
         <Alert variant="warning" className="mb-4">
-          You have already tipped this round:{" "}
-          {payload.existingTips
-            .map((t) => `${t.team} / ${t.tryscorer}`)
-            .join("; ")}
-          . Submitting again will add another entry rather than replace it.
+          <p className="font-medium">
+            {payload.existingTips.length === 1
+              ? "You have already tipped this round:"
+              : `You have already tipped this round (${payload.existingTips.length} entries):`}
+          </p>
+          <ul className="ml-5 mt-2 list-disc space-y-1.5">
+            {existingTipsChronological.map((t, i) => (
+              <li key={`${t.tipped_at}-${i}`}>
+                <span className="font-medium">{t.team}</span>
+                <span className="opacity-70"> to win, </span>
+                <span className="font-medium">{t.tryscorer}</span>
+                <span className="opacity-70"> to score</span>
+                <span className="block text-xs opacity-70">
+                  submitted {formatSubmitted(t.tipped_at)}
+                </span>
+              </li>
+            ))}
+          </ul>
+          {payload.existingTips.length > 1 && (
+            <p className="mt-2 text-sm opacity-90">
+              Every entry above is recorded. Duplicates are resolved by hand, so
+              don&apos;t rely on the newest one replacing the others.
+            </p>
+          )}
+          <p className="mt-2 text-sm opacity-90">
+            Submitting again adds another entry rather than replacing one.
+          </p>
         </Alert>
       )}
 
