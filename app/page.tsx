@@ -57,40 +57,6 @@ export default function HomePage() {
         </Link>
       </p>
 
-      <details className="mb-4 rounded-brand border border-white/20 bg-brand-elevated/50 px-4 py-3">
-        <summary className="cursor-pointer text-sm text-white/70">
-          2026 Coal Train Cup rules (season complete)
-        </summary>
-        <div className="mt-3">
-          <p className="mb-1 font-medium text-white/90">Weekly rules</p>
-          <ul className="mb-4 ml-5 list-disc space-y-1 text-sm text-white/80">
-            <li>Return to this site weekly to submit one tip per round</li>
-            <li>
-              If you choose to submit again, your previous tip will be replaced
-            </li>
-            <li>
-              You can&apos;t tip <em>for</em> the same team in consecutive rounds
-            </li>
-            <li>
-              You can&apos;t tip <em>against</em> the same team in consecutive
-              rounds
-            </li>
-          </ul>
-          <p className="mb-1 font-medium text-white/90">
-            End of season compliance
-          </p>
-          <p className="mb-2 text-sm text-white/80">After 27 rounds, you must have:</p>
-          <ul className="ml-5 list-disc space-y-1 text-sm text-white/80">
-            <li>
-              tipped 13 home teams and 13 away teams (magic round counts as
-              neutral)
-            </li>
-            <li>tipped every team at least once</li>
-            <li>tipped no single team more than 3 times</li>
-          </ul>
-        </div>
-      </details>
-
       <hr className="my-6 border-white/20" />
 
       <SectionHeader as="h2" className="mb-4">
