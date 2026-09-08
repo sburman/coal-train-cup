@@ -35,7 +35,10 @@ interface ShieldPayload {
   fixtures: { home_team: string; away_team: string; kickoff: string }[];
   eligibility: {
     eligible: boolean;
-    reason?: "not_registered" | "not_previous_winner";
+    reason?:
+      | "not_registered"
+      | "not_previous_winner"
+      | "winners_not_published";
     qualifyingSelection: { team: string; tryscorer: string } | null;
   } | null;
   pool: { teams: TeamOption[]; tryscorers: TryscorerOption[] } | null;
@@ -53,6 +56,8 @@ function formatKickoff(iso: string): string {
 
 export default function SilivaShieldPage() {
   const [email, setEmail] = useState("");
+  /** The email the current payload was loaded for - what we submit against. */
+  const [loadedEmail, setLoadedEmail] = useState("");
   const [payload, setPayload] = useState<ShieldPayload | null>(null);
   const [loading, setLoading] = useState(false);
   const [selectedTeam, setSelectedTeam] = useState("");
@@ -64,15 +69,18 @@ export default function SilivaShieldPage() {
     text: string;
   } | null>(null);
 
-  const loadPayload = async (forEmail: string) => {
+  // keepMessage is set when reloading straight after a submit, so the success
+  // confirmation is not wiped out by its own refresh.
+  const loadPayload = async (forEmail: string, keepMessage = false) => {
     setLoading(true);
-    setMessage(null);
+    if (!keepMessage) setMessage(null);
     try {
       const res = await fetch(
         `/api/siliva-shield?email=${encodeURIComponent(forEmail)}`
       );
       const data = (await res.json()) as ShieldPayload;
       setPayload(data);
+      setLoadedEmail(forEmail);
     } catch {
       setMessage({ type: "err", text: "Could not load the Siliva Shield." });
     } finally {
@@ -87,8 +95,17 @@ export default function SilivaShieldPage() {
     loadPayload(email.trim());
   };
 
+  const emailChanged = email.trim() !== loadedEmail && loadedEmail !== "";
+
   const handleSubmit = async () => {
     if (!payload) return;
+    if (emailChanged) {
+      setMessage({
+        type: "err",
+        text: "Your email has changed since these options were loaded. Press Continue first.",
+      });
+      return;
+    }
     if (!selectedTeam) {
       setMessage({ type: "err", text: "Please select a team" });
       return;
@@ -108,7 +125,7 @@ export default function SilivaShieldPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: email.trim(),
+          email: loadedEmail,
           round: payload.round,
           team: selectedTeam,
           tryscorer: selectedTryscorer,
@@ -118,7 +135,9 @@ export default function SilivaShieldPage() {
       const data = await res.json();
       if (res.ok && data.ok) {
         setMessage({ type: "ok", text: "Siliva Shield tip submitted." });
-        await loadPayload(email.trim());
+        setSelectedTeam("");
+        setSelectedTryscorer("");
+        await loadPayload(loadedEmail, true);
       } else {
         setMessage({ type: "err", text: data.error || "Submit failed" });
       }
@@ -203,6 +222,14 @@ export default function SilivaShieldPage() {
         </Alert>
       )}
 
+      {payload?.eligibility?.reason === "winners_not_published" && (
+        <Alert variant="info" className="mb-4">
+          Last round&apos;s Siliva Shield winners haven&apos;t been published
+          yet, so we can&apos;t confirm who is still in. Please check back
+          shortly.
+        </Alert>
+      )}
+
       {payload?.eligibility?.reason === "not_registered" && (
         <Alert variant="destructive" className="mb-4">
           No user found with email: {email.trim()}
@@ -263,7 +290,7 @@ export default function SilivaShieldPage() {
 
           {availableTeams.length === 0 ? (
             <Alert variant="info" className="mb-4">
-              {lockedTeams.length === pool.teams.length
+              {pool.teams.length > 0 && lockedTeams.length === pool.teams.length
                 ? "Every game this week has kicked off. Tipping is closed."
                 : "You have no teams left to pick — every side still to play this week is one you have already used in an earlier finals week."}
             </Alert>

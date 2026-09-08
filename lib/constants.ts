@@ -32,3 +32,6 @@ export const SHIELD_FINALS_WEEKS = 4;
 export const SHIELD_TIP_GRACE_MINUTES = 1;
 
 export const SHIELD_TIPS_CACHE_TTL_SECONDS = 60;
+
+/** Negative cache for a pending/incomplete lineup fetch - see data.roundLineups. */
+export const SHIELD_LINEUPS_PENDING_TTL_SECONDS = 30;

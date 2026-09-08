@@ -7,6 +7,7 @@ import {
   lineupReadiness,
   shieldEligibility,
   priorSelectionsFor,
+  lineupsMatchDraw,
   shieldSelectionPool,
   isLocked,
   validateAndBuildShieldTip,
@@ -185,10 +186,39 @@ describe("shieldEligibility", () => {
     expect(jo.reason).toBe("not_previous_winner");
   });
 
+  it("reads an empty winners sheet as not-yet-published, not elimination", () => {
+    // Monday of finals week 2: `Winners - Shield Round 28` is absent or empty,
+    // so loadShieldWinners returns []. Telling everyone they lost here would be
+    // wrong AND would block the actual winners.
+    const e = shieldEligibility("steve@example.com", USERS, []);
+    expect(e.eligible).toBe(false);
+    expect(e.reason).toBe("winners_not_published");
+  });
+
   it("returns the qualifying selection so the UI can echo it back", () => {
     const winners = [winner("steve@example.com", 28, "Penrith Panthers", "Nathan Cleary")];
     const e = shieldEligibility("steve@example.com", USERS, winners);
     expect(e.qualifyingSelection?.team).toBe("Penrith Panthers");
+  });
+});
+
+describe("lineupsMatchDraw", () => {
+  it("accepts lineups whose teams are all in the draw", () => {
+    expect(lineupsMatchDraw(R28, PLAYERS)).toBe(true);
+  });
+
+  it("rejects a lineup team missing from the draw", () => {
+    expect(
+      lineupsMatchDraw(R28, [...PLAYERS, player("Reece Walsh", "Brisbane Broncos")])
+    ).toBe(false);
+  });
+
+  it("rejects everything when the draw is empty", () => {
+    expect(lineupsMatchDraw([], PLAYERS)).toBe(false);
+  });
+
+  it("is vacuously true with no players", () => {
+    expect(lineupsMatchDraw(R28, [])).toBe(true);
   });
 });
 
@@ -300,6 +330,14 @@ describe("validateAndBuildShieldTip", () => {
     expect(() =>
       validateAndBuildShieldTip(baseInput({ email: "nobody@example.com" }))
     ).toThrow(/No user found/);
+  });
+
+  it("refuses to run week 2 before last round's winners are published", () => {
+    expect(() =>
+      validateAndBuildShieldTip(
+        baseInput({ round: 29, previousRoundWinners: [] })
+      )
+    ).toThrow(/winners have not been published/);
   });
 
   it("refuses a non-winner from week 2 onwards", () => {

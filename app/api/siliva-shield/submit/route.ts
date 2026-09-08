@@ -23,13 +23,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // The round is not taken on trust: a stale tab (or a crafted body) must not
+    // be able to write into a different finals week.
+    const currentRound = await data.getCurrentTippingRound();
+    if (Number(round) !== currentRound) {
+      return NextResponse.json(
+        {
+          error:
+            "That tipping round has moved on. Please refresh and try again.",
+        },
+        { status: 400 }
+      );
+    }
+
     // Every rule is enforced here. The form filters the same options for
     // usability, but this is the only place the rules actually hold.
     let tip;
     try {
       tip = await submitShieldTip({
         email: String(email),
-        round: Number(round),
+        round: currentRound,
         team: String(team),
         tryscorer: String(tryscorer),
         match_total: match_total ?? null,

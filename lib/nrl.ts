@@ -156,17 +156,22 @@ export async function getRoundLineups(
     }
 
     const teams = data.gameStats?.teams?.teamsMatch ?? [];
-    let fixtureHadLineup = false;
+    let teamsResolved = 0;
     for (const team of teams) {
       const teamName = team?.teamName;
       const lineup = team?.teamLineup?.teamPlayer ?? [];
       if (!teamName || lineup.length === 0) continue;
-      fixtureHadLineup = true;
+      teamsResolved += 1;
       for (const p of lineup) {
         if (p.playerName) players.push({ name: p.playerName, team: teamName });
       }
     }
-    if (fixtureHadLineup) fixturesWithLineups += 1;
+    // Both squads must be published. One club posting ahead of the other would
+    // otherwise read as "ready" while half the players are missing from the
+    // tryscorer list - the exact silent partial pool we are avoiding.
+    if (teams.length > 0 && teamsResolved === teams.length) {
+      fixturesWithLineups += 1;
+    }
   }
 
   const seen = new Set<string>();

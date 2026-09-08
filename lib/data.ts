@@ -6,6 +6,7 @@ import {
   PLAYERS_CACHE_TTL_SECONDS,
   SHIELD_WINNERS_CACHE_TTL_SECONDS,
   SHIELD_TIPS_CACHE_TTL_SECONDS,
+  SHIELD_LINEUPS_PENDING_TTL_SECONDS,
 } from "./constants";
 import * as sheets from "./sheets";
 import { getLatestDrawFromNrl, getRoundLineups as fetchRoundLineups } from "./nrl";
@@ -113,14 +114,19 @@ export async function roundLineups(
   const cached = get<RoundLineups>(key);
   if (cached) return cached;
   const lineups = await fetchRoundLineups(round, season);
-  // Only cache a complete result. Caching a pre-Tuesday empty response would
-  // keep the form shut for the whole TTL after team lists actually drop.
-  if (
+  // A complete result caches normally. An incomplete one gets a short negative
+  // TTL: long enough to stop every request re-running the per-fixture fan-out
+  // (1 + up to 8 NRL calls), short enough that the form opens promptly once
+  // team lists actually drop.
+  const complete =
     lineups.fixtureCount > 0 &&
-    lineups.fixturesWithLineups === lineups.fixtureCount
-  ) {
-    set(key, lineups, PLAYERS_CACHE_TTL_SECONDS);
-  }
+    lineups.fixturesWithLineups === lineups.fixtureCount &&
+    lineups.fixtureFetchFailures === 0;
+  set(
+    key,
+    lineups,
+    complete ? PLAYERS_CACHE_TTL_SECONDS : SHIELD_LINEUPS_PENDING_TTL_SECONDS
+  );
   return lineups;
 }
 

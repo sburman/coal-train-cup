@@ -67,7 +67,10 @@ export function lineupReadiness(lineups: RoundLineups): LineupReadiness {
 
 // --- Eligibility ---------------------------------------------------------
 
-export type IneligibleReason = "not_registered" | "not_previous_winner";
+export type IneligibleReason =
+  | "not_registered"
+  | "not_previous_winner"
+  | "winners_not_published";
 
 export interface Eligibility {
   eligible: boolean;
@@ -102,6 +105,18 @@ export function shieldEligibility(
   }
   if (previousRoundWinners === null) {
     return { eligible: true, user, qualifyingSelection: null };
+  }
+  // An absent or empty `Winners - Shield Round N` sheet means last round's
+  // winners have not been published yet - NOT that everyone was eliminated.
+  // Without this, every visitor (winners included) is told they are out on the
+  // Monday of each finals week, before the sheet is filled in.
+  if (previousRoundWinners.length === 0) {
+    return {
+      eligible: false,
+      reason: "winners_not_published",
+      user,
+      qualifyingSelection: null,
+    };
   }
   const win = previousRoundWinners.find((w) => sameEmail(w.email, email));
   if (!win) {
@@ -168,6 +183,24 @@ export function lockTimeFor(game: Game): number {
 
 export function isLocked(game: Game, now: Date): boolean {
   return now.getTime() > lockTimeFor(game);
+}
+
+/**
+ * True when every team with a published lineup also appears in the round's
+ * draw. Games come from the Sheet and players from the NRL API, joined by exact
+ * team name - a mismatch would silently mark every player "locked".
+ */
+export function lineupsMatchDraw(
+  roundGames: Game[],
+  players: RoundPlayer[]
+): boolean {
+  if (players.length === 0) return true;
+  const drawTeams = new Set<string>();
+  for (const g of roundGames) {
+    drawTeams.add(g.home_team);
+    drawTeams.add(g.away_team);
+  }
+  return players.every((p) => drawTeams.has(p.team));
 }
 
 export function shieldSelectionPool(
@@ -276,10 +309,16 @@ export function validateAndBuildShieldTip(
 
   const eligibility = shieldEligibility(email, users, previousRoundWinners);
   if (!eligibility.eligible || !eligibility.user) {
+    if (eligibility.reason === "not_registered") {
+      throw new Error(`No user found with email: ${email}`);
+    }
+    if (eligibility.reason === "winners_not_published") {
+      throw new Error(
+        "Last round's winners have not been published yet. Please try again shortly."
+      );
+    }
     throw new Error(
-      eligibility.reason === "not_registered"
-        ? `No user found with email: ${email}`
-        : "Only previous round winners can continue in the Siliva Shield."
+      "Only previous round winners can continue in the Siliva Shield."
     );
   }
 
@@ -390,7 +429,13 @@ export async function getShieldPayload(
     (g) => g.round === round && g.season === CURRENT_SEASON
   );
   const lineups = await data.roundLineups(round);
-  const readiness = lineupReadiness(lineups);
+  let readiness = lineupReadiness(lineups);
+  // Guard the seam between the two data sources. Without this an empty draw or
+  // a team-name mismatch marks every player "locked" and the page reports
+  // "every game has kicked off" - closed for the wrong reason, silently.
+  if (roundGames.length === 0 || !lineupsMatchDraw(roundGames, lineups.players)) {
+    readiness = "partial";
+  }
   const fixtures = roundGames.map((g) => ({
     home_team: g.home_team,
     away_team: g.away_team,
@@ -464,16 +509,22 @@ export async function submitShieldTip(
     spreadsheetName
   );
 
+  const roundGames = games.filter(
+    (g) => g.round === round && g.season === CURRENT_SEASON
+  );
+  const readiness =
+    roundGames.length === 0 || !lineupsMatchDraw(roundGames, lineups.players)
+      ? "partial"
+      : lineupReadiness(lineups);
+
   return validateAndBuildShieldTip({
     ...input,
     users,
     previousRoundWinners,
     priorWinners,
-    roundGames: games.filter(
-      (g) => g.round === round && g.season === CURRENT_SEASON
-    ),
+    roundGames,
     players: lineups.players,
-    readiness: lineupReadiness(lineups),
+    readiness,
     now: new Date(),
   });
 }

@@ -621,22 +621,26 @@ async function ensureShieldSheetWithHeader(
   if (!exists) {
     await createWorksheet(spreadsheetName, worksheetName);
   } else {
-    const sheets = await getSheetsClient();
-    const id = await getSpreadsheetId(spreadsheetName);
-    const res = await sheets.spreadsheets.values.get({
-      spreadsheetId: id,
-      range: `'${worksheetName}'!A1:Z1`,
+    const firstRow = await withRetry429(async () => {
+      const sheets = await getSheetsClient();
+      const id = await getSpreadsheetId(spreadsheetName);
+      const res = await sheets.spreadsheets.values.get({
+        spreadsheetId: id,
+        range: `'${worksheetName}'!A1:Z1`,
+      });
+      return (res.data.values?.[0] ?? []) as string[];
     });
-    const firstRow = (res.data.values?.[0] ?? []) as string[];
     if (firstRow.length > 0) return;
   }
-  const sheets = await getSheetsClient();
-  const id = await getSpreadsheetId(spreadsheetName);
-  await sheets.spreadsheets.values.update({
-    spreadsheetId: id,
-    range: `'${worksheetName}'!A1`,
-    valueInputOption: "USER_ENTERED",
-    requestBody: { values: [[...SHIELD_TIP_HEADERS]] },
+  await withRetry429(async () => {
+    const sheets = await getSheetsClient();
+    const id = await getSpreadsheetId(spreadsheetName);
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: id,
+      range: `'${worksheetName}'!A1`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: { values: [[...SHIELD_TIP_HEADERS]] },
+    });
   });
 }
 
