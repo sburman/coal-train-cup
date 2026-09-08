@@ -5,9 +5,9 @@ import { SectionHeader } from "@/components/layout/section-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select } from "@/components/ui/select";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Alert } from "@/components/ui/alert";
+import { cn } from "@/lib/utils";
 
 type ExclusionReason = "used" | "locked";
 
@@ -295,21 +295,36 @@ export default function SilivaShieldPage() {
             </Alert>
           ) : (
             <>
-              <div className="mb-4 max-w-xs space-y-2">
-                <Label htmlFor="shield-team">Select a team</Label>
-                <Select
-                  id="shield-team"
-                  value={selectedTeam}
-                  onChange={(e) => setSelectedTeam(e.target.value)}
-                >
-                  <option value="">--</option>
+              {/*
+                A button list rather than a <select>: only a handful of teams,
+                no type-ahead needed, and it matches RoundSwitcher. It also
+                sidesteps the native dropdown, whose popup ignored the dark
+                theme and rendered white option text on a white background.
+              */}
+              <fieldset className="mb-4 space-y-2">
+                <legend className="mb-2 text-sm font-medium text-white/90">
+                  Select a team
+                </legend>
+                <div className="flex flex-wrap gap-2">
                   {availableTeams.map((t) => (
-                    <option key={t.team} value={t.team}>
+                    <button
+                      key={t.team}
+                      type="button"
+                      onClick={() => setSelectedTeam(t.team)}
+                      aria-pressed={selectedTeam === t.team}
+                      className={cn(
+                        "min-h-[44px] rounded-brand px-3 py-2 text-sm font-medium transition-colors",
+                        "focus-visible:outline focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-surface",
+                        selectedTeam === t.team
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-brand-elevated text-white hover:bg-white/10"
+                      )}
+                    >
                       {t.team}
-                    </option>
+                    </button>
                   ))}
-                </Select>
-              </div>
+                </div>
+              </fieldset>
 
               <div className="mb-4 max-w-xs space-y-2">
                 <Label htmlFor="shield-tryscorer">Select a tryscorer</Label>
