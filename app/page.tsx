@@ -69,7 +69,7 @@ export default function HomePage() {
           icon={<IconTrophy />}
         >
           <Link
-            href="/leaderboard"
+            href="/leaderboard-2026"
             className="text-sm text-primary underline-offset-2 hover:underline"
           >
             View 2026 results

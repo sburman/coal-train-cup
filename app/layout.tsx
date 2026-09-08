@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   IconHome,
   IconPencil,
-  IconScroll,
   IconChartBar,
   IconUser,
 } from "@/components/icons/nav-icons";
@@ -32,7 +31,6 @@ export const metadata: Metadata = {
 const navItems = [
   { href: "/", label: "Home", Icon: IconHome },
   { href: "/siliva-shield", label: "Make your Siliva Shield tip", Icon: IconPencil },
-  { href: "/leaderboard", label: "Leaderboard", Icon: IconScroll },
   { href: "/tips-by-round", label: "Tips by round", Icon: IconChartBar },
   { href: "/tips-by-user", label: "Tips by user", Icon: IconUser },
 ] as const;
