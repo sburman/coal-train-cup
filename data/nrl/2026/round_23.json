@@ -1,0 +1,996 @@
+[
+  {
+    "tip": {
+      "email": "matthew.duggan@my.jcu.edu.au",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-02T21:18:12.445Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 1
+  },
+  {
+    "tip": {
+      "email": "mradamsmall1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Gold Coast Titans",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-08-02T21:28:17.960Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 2
+  },
+  {
+    "tip": {
+      "email": "joel.nevile@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-03T00:17:50.152Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 3
+  },
+  {
+    "tip": {
+      "email": "langerslpc@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-03T01:03:11.979Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 4
+  },
+  {
+    "tip": {
+      "email": "andrew.cussen1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Melbourne Storm",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": true,
+      "tipped_at": "2026-08-03T01:51:49.400Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 5
+  },
+  {
+    "tip": {
+      "email": "jtmthompson1998@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-03T02:01:33.016Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 6
+  },
+  {
+    "tip": {
+      "email": "jasperbruce1@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Sydney Roosters",
+      "opponent": "Canterbury-Bankstown Bulldogs",
+      "home": true,
+      "tipped_at": "2026-08-03T03:22:22.265Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 7
+  },
+  {
+    "tip": {
+      "email": "sam_stephens89@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Canberra Raiders",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-08-03T03:27:38.312Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 8
+  },
+  {
+    "tip": {
+      "email": "erik.nielsen2759@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-03T06:27:13.866Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 9
+  },
+  {
+    "tip": {
+      "email": "blake.ritchie93@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-03T07:28:42.067Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 10
+  },
+  {
+    "tip": {
+      "email": "charlierwinterburn@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-03T07:57:31.110Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 11
+  },
+  {
+    "tip": {
+      "email": "lstehbens83@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-03T11:57:08.569Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 12
+  },
+  {
+    "tip": {
+      "email": "fmwakeford@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Gold Coast Titans",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-08-03T21:14:57.015Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 13
+  },
+  {
+    "tip": {
+      "email": "joshb78@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-03T21:44:30.588Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 14
+  },
+  {
+    "tip": {
+      "email": "maddie.jenkins@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-03T23:26:48.413Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 15
+  },
+  {
+    "tip": {
+      "email": "adamrosser86@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-04T02:38:35.120Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 16
+  },
+  {
+    "tip": {
+      "email": "djbutlerplastering@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-04T03:47:05.035Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 17
+  },
+  {
+    "tip": {
+      "email": "cameron.hull@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-04T04:43:40.869Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 18
+  },
+  {
+    "tip": {
+      "email": "warwick.ahern@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Sydney Roosters",
+      "opponent": "Canterbury-Bankstown Bulldogs",
+      "home": true,
+      "tipped_at": "2026-08-04T06:41:48.784Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 19
+  },
+  {
+    "tip": {
+      "email": "steven.burman@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-04T07:01:30.889Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 20
+  },
+  {
+    "tip": {
+      "email": "dan_gerritsen@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-04T07:14:16.539Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 21
+  },
+  {
+    "tip": {
+      "email": "alasitisashley@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-04T10:50:59.954Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 22
+  },
+  {
+    "tip": {
+      "email": "n.townsend@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-04T22:30:20.126Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 23
+  },
+  {
+    "tip": {
+      "email": "jameswdeady@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-04T22:54:48.752Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 24
+  },
+  {
+    "tip": {
+      "email": "dragonpunk33@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Sydney Roosters",
+      "opponent": "Canterbury-Bankstown Bulldogs",
+      "home": true,
+      "tipped_at": "2026-08-04T23:00:00.215Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 25
+  },
+  {
+    "tip": {
+      "email": "dom@sunroom.group",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-05T00:43:55.117Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 26
+  },
+  {
+    "tip": {
+      "email": "john.m.millward@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Penrith Panthers",
+      "opponent": "New Zealand Warriors",
+      "home": false,
+      "tipped_at": "2026-08-05T00:49:06.165Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 27
+  },
+  {
+    "tip": {
+      "email": "nigel_smith66@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-05T05:50:21.121Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 28
+  },
+  {
+    "tip": {
+      "email": "markjhindle29@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Gold Coast Titans",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-08-05T06:18:43.787Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 29
+  },
+  {
+    "tip": {
+      "email": "jesse.nolan@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Gold Coast Titans",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-08-05T07:08:23.427Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 30
+  },
+  {
+    "tip": {
+      "email": "adricmason@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-05T07:34:40.182Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 31
+  },
+  {
+    "tip": {
+      "email": "melindabrennan297@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Sydney Roosters",
+      "opponent": "Canterbury-Bankstown Bulldogs",
+      "home": true,
+      "tipped_at": "2026-08-05T11:55:06.488Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 32
+  },
+  {
+    "tip": {
+      "email": "gnbm@live.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-05T12:39:09.585Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 33
+  },
+  {
+    "tip": {
+      "email": "tom.k.pollard91@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-05T20:15:06.751Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 34
+  },
+  {
+    "tip": {
+      "email": "miles.petersen99@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T00:18:30.552Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 35
+  },
+  {
+    "tip": {
+      "email": "samuel.john.mullins@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T01:43:20.102Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 36
+  },
+  {
+    "tip": {
+      "email": "michaeljdavid87@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-06T03:27:42.355Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 37
+  },
+  {
+    "tip": {
+      "email": "rorydoyle01@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T03:41:27.543Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 38
+  },
+  {
+    "tip": {
+      "email": "danielgsullivan@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-06T04:37:55.811Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 39
+  },
+  {
+    "tip": {
+      "email": "mwbxyz@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-06T05:48:15.939Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 40
+  },
+  {
+    "tip": {
+      "email": "aliciamartin647@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Gold Coast Titans",
+      "opponent": "North Queensland Cowboys",
+      "home": true,
+      "tipped_at": "2026-08-06T06:06:38.791Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 41
+  },
+  {
+    "tip": {
+      "email": "edwin_smith@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Melbourne Storm",
+      "opponent": "Manly-Warringah Sea Eagles",
+      "home": true,
+      "tipped_at": "2026-08-06T06:14:47.775Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 42
+  },
+  {
+    "tip": {
+      "email": "matthew.bungard@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-06T06:20:27.024Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 43
+  },
+  {
+    "tip": {
+      "email": "daniel_henrypt@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-06T06:35:23.469Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 44
+  },
+  {
+    "tip": {
+      "email": "gclarke@aap.com.au",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T06:53:25.924Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 45
+  },
+  {
+    "tip": {
+      "email": "aaronjrose@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-06T07:02:31.757Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 46
+  },
+  {
+    "tip": {
+      "email": "reecewilliambrown@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-06T08:00:34.827Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 47
+  },
+  {
+    "tip": {
+      "email": "thedecider00994@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T08:02:23.498Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 48
+  },
+  {
+    "tip": {
+      "email": "brendan.dacosta@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-06T08:16:54.082Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 49
+  },
+  {
+    "tip": {
+      "email": "marcusevans94@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-06T08:46:31.836Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 50
+  },
+  {
+    "tip": {
+      "email": "twfbyrnes@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-06T09:02:54.200Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 51
+  },
+  {
+    "tip": {
+      "email": "jackbrady93@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Sydney Roosters",
+      "opponent": "Canterbury-Bankstown Bulldogs",
+      "home": true,
+      "tipped_at": "2026-08-06T09:22:56.402Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 52
+  },
+  {
+    "tip": {
+      "email": "ajlopez29@live.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T09:28:22.498Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 53
+  },
+  {
+    "tip": {
+      "email": "andre.gilovitch@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "North Queensland Cowboys",
+      "opponent": "Gold Coast Titans",
+      "home": false,
+      "tipped_at": "2026-08-06T09:29:59.682Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 54
+  },
+  {
+    "tip": {
+      "email": "jack@bohointeractive.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T11:37:07.725Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 55
+  },
+  {
+    "tip": {
+      "email": "Drewcratchley@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-06T14:55:30.319Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 56
+  },
+  {
+    "tip": {
+      "email": "chewco88888@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-06T21:19:36.009Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 57
+  },
+  {
+    "tip": {
+      "email": "brockcorfe@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-06T22:33:24.824Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 58
+  },
+  {
+    "tip": {
+      "email": "johndoe92@y7mail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-07T00:18:45.764Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 59
+  },
+  {
+    "tip": {
+      "email": "ben.robertsdtd@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-07T02:30:14.489Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 60
+  },
+  {
+    "tip": {
+      "email": "a_kirkpatrick_13@hotmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Parramatta Eels",
+      "opponent": "South Sydney Rabbitohs",
+      "home": false,
+      "tipped_at": "2026-08-07T04:29:02.279Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 61
+  },
+  {
+    "tip": {
+      "email": "matt.anderson2101@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Canberra Raiders",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-08-07T07:07:55.463Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 62
+  },
+  {
+    "tip": {
+      "email": "tlunn3750@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-07T07:48:52.134Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 63
+  },
+  {
+    "tip": {
+      "email": "jack.parle1989@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-07T20:29:29.595Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 64
+  },
+  {
+    "tip": {
+      "email": "teamvivzilla@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-07T22:42:01.917Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 65
+  },
+  {
+    "tip": {
+      "email": "harry.scorse@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Canberra Raiders",
+      "opponent": "Newcastle Knights",
+      "home": true,
+      "tipped_at": "2026-08-08T01:21:11.573Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 66
+  },
+  {
+    "tip": {
+      "email": "ryan.graham.dunn@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Manly-Warringah Sea Eagles",
+      "opponent": "Melbourne Storm",
+      "home": false,
+      "tipped_at": "2026-08-08T01:45:35.609Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 67
+  },
+  {
+    "tip": {
+      "email": "spudgun242@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-08T01:56:47.466Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 68
+  },
+  {
+    "tip": {
+      "email": "daniel.poppi@bigpond.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Cronulla-Sutherland Sharks",
+      "opponent": "St. George Illawarra Dragons",
+      "home": false,
+      "tipped_at": "2026-08-08T02:38:48.647Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 69
+  },
+  {
+    "tip": {
+      "email": "mickey.bee@gmail.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "Dolphins",
+      "opponent": "Brisbane Broncos",
+      "home": true,
+      "tipped_at": "2026-08-08T03:14:58.058Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 70
+  },
+  {
+    "tip": {
+      "email": "dannyando32@outlook.com",
+      "username": "",
+      "season": 2026,
+      "round": 23,
+      "team": "South Sydney Rabbitohs",
+      "opponent": "Parramatta Eels",
+      "home": true,
+      "tipped_at": "2026-08-08T04:21:03.099Z"
+    },
+    "round": 23,
+    "zeroBasedRowIndex": 71
+  }
+]
