@@ -76,7 +76,8 @@ column headings and disappears from every later read.
 2. **During the week** - entrants tip. Each team locks as its own game kicks
    off, along with that team's players.
 3. **After the last game** - work out who got both legs right and write them
-   into `Winners - Shield Round {N}`.
+   into `Winners - Shield Round {N}`. Resolve any duplicate entries first, per
+   **Rulings** below.
 4. **Then** mark round `N` closed in the `Rounds` worksheet. The app rolls to
    the next finals week on its own.
 
@@ -84,6 +85,46 @@ Order matters. Between step 2 and step 3 the winners sheet is empty, and the app
 reports "last round's winners haven't been published yet" rather than telling
 everyone they were eliminated - but nobody can tip the next week until step 3 is
 done.
+
+## Rulings
+
+Precedents set during the 2026 finals. Apply these when computing a winners
+sheet - both came up in Finals Week 1 and both will recur.
+
+### Duplicate entries: the last legal tip counts
+
+The app lets a person submit more than once and appends every entry, so a
+duplicate is resolved by hand. **The latest entry that was legal when it was
+made is the one that stands**; delete the superseded rows before building the
+winners sheet.
+
+Precedent (round 28): one entrant submitted South Sydney / Alex Johnston on
+8 Sep and Cronulla / Alex Johnston on 10 Sep. Both were legal when submitted.
+The 8 Sep row was deleted and the 10 Sep row counted.
+
+Note the trap this creates: anyone testing the form under a real entrant's
+email can silently displace that entrant's genuine tip. Use a dedicated test
+address seeded into the winners sheet instead.
+
+### A tryscorer withdrawn after you tip is a missed tip
+
+Clubs name a squad of 22 on Tuesday and cut it to 19 by match day. If your
+selection is in the Tuesday squad but omitted before kickoff, the tip was legal
+and stays on the record - but the player cannot score, so the tryscorer leg
+fails and the entrant is out. **There is no re-pick.**
+
+Precedent (round 28): an entrant picked Leka Halasima, named in the Warriors'
+22 and cut from the final 19. The tip was validated correctly at submission
+time; the entrant was eliminated.
+
+### Auditing implication
+
+A post-match audit that checks tips against the *final* lineups will produce
+false "player not in team list" flags, because the list it compares against is
+smaller than the one that existed at submission time. The lineup that mattered
+is the one the server validated against when the tip was accepted, and it is
+not retained. Treat such a flag as "withdrawn after tipping" unless the
+timestamp shows the tip was made after that fixture kicked off.
 
 ## Lineups And Readiness
 
@@ -110,7 +151,7 @@ have no way to tell it had happened.
   mismatch reports `partial` rather than silently marking every player locked.
 - **Duplicate submissions are allowed by design.** The page warns, the sheet
   gets multiple rows, cleanup is manual. Accepted deliberately for a comp this
-  size - no `/admin` support was built.
+  size - no `/admin` support was built. See **Rulings** for which entry counts.
 - **Eligibility depends on winners-sheet quality.** If a week's winners sheet is
   wrong, valid entrants are blocked.
 - **Identity is a typed email.** No auth, matching `/make-tip`. `User.pin`
